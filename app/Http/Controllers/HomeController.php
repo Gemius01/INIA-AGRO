@@ -3,9 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use PDF;
 class HomeController extends Controller
 {
+
+  public function downloadPDF()
+
+    {
+
+    	$pdf = PDF::loadView('pdfView');
+
+		return $pdf->download('invoice.pdf');
+
+    }
+    public function vistaPdf()
+    {
+        return view('pdfView');
+    }
     /**
      * Create a new controller instance.
      *

@@ -16,7 +16,27 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <style media="screen">
+  i.mce-i-[icon-youtube]:before {   // FONT-AWESOME-CLASSNAME e.g. "icon-youtube"
+  content: "[\f166]";       // FONT-AWESOME-CONTENT e.g. "\f166"
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  color: #000;
+  font-size: 1.5em;
+  padding-right: 0.5em;
+  position: absolute;
+  top: 15%;
+  left: 0;
+}
+  </style>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -93,7 +113,7 @@
             <div class="container">
                 <div class="alert alert-success">
                     {{ session('info') }}
-                </div>   
+                </div>
             </div>
             @endif
             @yield('content')

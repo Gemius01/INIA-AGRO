@@ -18,9 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/pdfView', 'HomeController@vistaPdf')->name('pdfView');
 //Routes
-
+Route::get("download-pdf","HomeController@downloadPDF");
 Route::middleware(['auth'])->group(function(){
 	//Roles
 	Route::post('roles/store','RoleController@store')->name('roles.store')
@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function(){
 		->middleware('permission:products.edit');
 
 	//Usuarios
-		
+
 	Route::post('users/store','UserController@store')->name('users.store')
 		->middleware('permission:users.create');
 
