@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RegionsTableSeeder::class);
         $this->call(SeccionsTableSeeder::class);
         $this->call(RubrosTableSeeder::class);
+        $this->call(MacrozonasTableSeeder::class);
 
     }
 }

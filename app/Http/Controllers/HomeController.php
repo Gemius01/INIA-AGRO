@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use PDF;
 use App\Region;
@@ -39,7 +40,8 @@ class HomeController extends Controller
      */
     public function index(User $user)
     {
-        
+        $user = Auth::user();
+        print_r($user);
         $regiones = Region::get();
         return view('home', compact([
             'regiones',

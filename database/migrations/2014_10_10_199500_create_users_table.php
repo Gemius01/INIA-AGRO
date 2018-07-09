@@ -17,8 +17,6 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('cargo');
-            $table->integer('region_id')->unsigned()->nullable();
-            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
