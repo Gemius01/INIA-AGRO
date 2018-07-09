@@ -16,14 +16,19 @@ class User extends Authenticatable
      *
      * @var array
      */
-    public function region()
+    public function regiones()
     {
-        return $this->belongsTo(Region::class);
+        return $this->belongsToMany(Region::class);
     }
 
     public function secciones()
     {
         return $this->belongsToMany(Seccion::class);
+    }
+
+    public function macrozonas()
+    {
+        return $this->belongsToMany(Macrozona::class);
     }
 
     protected $fillable = [

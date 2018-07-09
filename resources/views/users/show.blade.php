@@ -11,7 +11,7 @@
                     <p><strong>Nombre</strong> {{ $user->name }} </p>
                     <p><strong>E-mail</strong> {{ $user->email }} </p>
                     <p><strong>Cargo</strong> {{ $user->cargo }} </p>
-                    <p><strong>Region</strong> {{ $user->region->name }} </p>
+                    <p><strong>Region</strong> @if($user->region['name'] != null){{ $user->region['name'] }} @else @endif</p>
                     <hr>
                     <label><strong>Rol</strong></label>
                     <ul>

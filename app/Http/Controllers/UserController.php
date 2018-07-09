@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Region;
 use App\Seccion;
+use App\Macrozona;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -41,10 +42,12 @@ class UserController extends Controller
     {
         $roles = Role::get();
         $seccions = Seccion::get();
-        $regions = Region::pluck('name', 'id');
-        
+        //$regions = Region::pluck('name', 'id');
+        $regions = Region::get();
+        $macrozonas = Macrozona::with('rubro')->get();
+        //dd($macrozonas);
         return view('users.create', compact([
-            'regions', 'roles', 'seccions',
+            'regions', 'roles', 'seccions', 'macrozonas',
         ]));
     }
 
@@ -62,12 +65,20 @@ class UserController extends Controller
             'email'     => $request['email'],
             'password'  => Hash::make($request['password']),
             'cargo'     => $request['cargo'],
-            'region_id' => $request['region_id'],
+            
 
         ]);
 
+        //Sincroniza las tablas intermedias de macrozona_user
+        $user->regiones()->sync($request->get('regions'));
+
+        //Sincroniza las tablas intermedias de macrozona_user
+        $user->macrozonas()->sync($request->get('macrozonas'));
+
+        //Sincroniza las tablas intermedias de role_user
         $user->roles()->sync($request->get('roles'));
-        //$user->->sync($request->get('seccions'));
+        
+        //Sincroniza las tablas intermedias de seccion_user
         $user->secciones()->sync($request->get('secciones'));
 
         return redirect()->route('users.index', $user->id)

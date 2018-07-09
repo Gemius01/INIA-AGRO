@@ -12,9 +12,20 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
+
                     @endif
 
                     You are logged in!
+                    <hr>
+                    <h4>Boletines</h4>
+                    <ul>
+                        @foreach($regiones as $region)
+                        <li>
+                            <a href="#">{{ $region->name }}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                    
                     <div>
                     <form id="get-data-form" method="post">
 
@@ -24,10 +35,11 @@
                     <div>
 
 
-                    <a href="{{ url('download-pdf') }}">Eportar PDF</a>
+                    <a href="{{ url('download-pdf') }}">Exportar PDF</a>
                     </div>
-
-                    <input type="button" value="clickme" onclick="pruebaConsole()" />
+                    <center>
+                        <input  type="button" value="Guardar Datos" onclick="pruebaConsole()" />
+                    </center>
                   </div>
                 </div>
             </div>

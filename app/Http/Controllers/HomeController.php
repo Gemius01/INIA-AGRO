@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PDF;
+use App\Region;
+use App\User;
 class HomeController extends Controller
 {
 
@@ -35,8 +37,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        return view('home');
+        
+        $regiones = Region::get();
+        return view('home', compact([
+            'regiones',
+        ]));
     }
 }

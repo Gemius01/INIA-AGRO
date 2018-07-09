@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Region extends Model
 {
 
-	public function user ()
+	public function users()
 	{
-		return $this->hasMany(User::class);
+		return $this->belongsToMany(User::class);
 	}
 	
     protected $fillable = [

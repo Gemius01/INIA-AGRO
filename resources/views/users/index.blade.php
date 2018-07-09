@@ -19,20 +19,28 @@
                                <th width="10px">ID</th>
                                <th>Nombre</th>
                                <th>E-mail</th>
-                               <th>Región</th>
-                               <th>Secciones</th>
+                               <th>Región(es)</th>
+                               <th>Sección(es)</th>
+                               <th>Macrozona(s)</th>
                                <th colspan="3"><center>Opciones</center></th>
                            </tr>
                        </thead>
                        <tbody>
-                           @foreach($users as $user )
+                           @foreach($users as $user)
                            <tr>
                                <td>{{ $user->id }}</td>
                                <td>{{ $user->name ?: '-' }}</td>
                                <td>{{ $user->email }}</td>
-                               <td>{{ $user->region['name'] }}</td>
+                               <td> @foreach($user->regiones as $region)
+                                    {{ $region->name }}, 
+                                    @endforeach
+                               </td>
                                <td> @foreach($user->secciones as $seccion)
                                     {{ $seccion->name }}, 
+                                    @endforeach
+                               </td>
+                               <td> @foreach($user->macrozonas as $macrozona)
+                                    {{ $macrozona->name }}, 
                                     @endforeach
                                </td>
                                @can('users.show')
