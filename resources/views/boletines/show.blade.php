@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
 @foreach($boletin->secciones as $seccion)
+
 <div >
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$seccion->name}}<a href="{{ route('users.create')}}"
+                <div class="card-header">{{$seccion->name}}<a href="{{ route('editor', ['boletin'=>$boletin->id, 'seccion'=>$seccion->id])}}"
                     class="btn btn-sm btn-success pull-right">Editar</a>
                 </div>
                 <div class="card-body">

@@ -103,6 +103,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('boletines/{boletin}','BoletinController@show')->name('boletines.show')
 		->middleware('permission:boletines.show');
 
-	Route::get('editor','BoletinController@editarSeccion');
+	Route::get('editor/{boletin}/{seccion}','BoletinController@editarSeccion')->name('editor');
+
+	Route::post('/editor/update','BoletinController@guardarEdicion')->name('editor.update');
 		
 });

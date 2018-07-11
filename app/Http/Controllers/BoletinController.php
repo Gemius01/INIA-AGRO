@@ -131,8 +131,32 @@ class BoletinController extends Controller
         //
     }
 
-    public function editarSeccion()
+    public function editarSeccion(Boletin $boletin, $seccion)
     {
-        return view('editor');
+        $seccionDetail = $boletin->secciones()->where('seccion_id', '=', $seccion)->first();
+        //dd($seccionDetail);
+        //dd($detalle);
+        //$secciones = $detalle->secciones()->get();
+        //dd($secciones[0]->pivot);
+        
+        return view('editor', compact([
+             'seccionDetail',
+        ]));
+    }
+
+    public function guardarEdicion(Request $request) 
+    {
+       $response = array(
+          'status' => 'success',
+          'boletin_id' => $request->input('boletin_id'),
+          'seccion_id' => $request->input('seccion_id'),
+          'contenido' => $request->input('contenido'),
+      );
+      $boletin = Boletin::find($response['boletin_id']);
+      $detail = $boletin->secciones()->where('seccion_id', '=', $response['seccion_id'])->first();
+      $detail->pivot->contenido =  $request->input('contenido');
+      $detail->pivot->save();
+      return $detail; 
+        //return 'hola';
     }
 }

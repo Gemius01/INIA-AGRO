@@ -95,7 +95,7 @@ class UserController extends Controller
     {
         $user->roles()->get();
         $roles = $user->roles()->get();
-        $regiones = $user->region()->get();
+        $regiones = $user->regiones()->get();
         $seccions = $user->secciones()->get(); 
         return view('users.show', compact('user', 'roles', 'seccions'));
     }
