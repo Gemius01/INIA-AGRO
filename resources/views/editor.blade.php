@@ -18,8 +18,7 @@
                     You are logged in!
                     <hr>
                     <h4>Boletines</h4>
-                    
-                    
+                   
                     <div>
                     <form id="get-data-form" method="post">
 
@@ -59,6 +58,7 @@ relative_urls: false,
 height: 200,
 setup: function(editor){
 editor.addButton('mybutton', {
+
 image: '/icons/grafico.png',
 tooltip: "Gráficos de información",
 onclick: function () {
@@ -69,6 +69,7 @@ alert("Proximamente");
 file_browser_callback : function(field_name, url, type, win) {
 var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
 var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+
 var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
 if (type == 'image') {
 cmsURL = cmsURL + "&type=Images";
@@ -82,9 +83,11 @@ width : x * 0.8,
 height : y * 0.8,
 resizable : "yes",
 close_previous : "no"
+
 });
 }
 };
+
 tinymce.init(editor_config);
 </script>
 
@@ -95,4 +98,3 @@ function pruebaConsole()
     console.log(selectContent);
 }
 </script>
-@endsection

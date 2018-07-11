@@ -11,7 +11,11 @@ class Seccion extends Model
     {
         return $this->belongsToMany(User::class);
     }
-    
+
+    public function boletines()
+    {
+        return $this->belongsToMany(Boletin::class);
+    }
     protected $fillable = [
         'name',
     ];

@@ -88,4 +88,21 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('users/{user}/edit','UserController@edit')->name('users.edit')
 		->middleware('permission:users.edit');
+
+	//Boletines
+
+	Route::post('boletines/store','BoletinController@store')->name('boletines.store')
+		->middleware('permission:boletines.create');
+
+	Route::get('boletines','BoletinController@index')->name('boletines.index')
+		->middleware('permission:boletines.index');
+
+	Route::get('boletines/create','BoletinController@create')->name('boletines.create')
+		->middleware('permission:boletines.create');
+
+	Route::get('boletines/{boletin}','BoletinController@show')->name('boletines.show')
+		->middleware('permission:boletines.show');
+
+	Route::get('editor','BoletinController@editarSeccion');
+		
 });

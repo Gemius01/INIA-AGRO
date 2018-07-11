@@ -87,5 +87,14 @@ class PermissionsTableSeeder extends Seeder
         	'slug' => 'products.destroy',
         	'description' => 'Eliminar Cualquier producto del sistema',
         ]);
+
+        Permission::create([
+            'name' => 'Ver Boletines',
+            'slug' => 'boletines.index',
+            'description' => 'Ver boletines del sistema',
+        ]);
+
+
+        
     }
 }

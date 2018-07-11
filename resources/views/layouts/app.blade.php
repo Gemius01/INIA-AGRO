@@ -72,6 +72,9 @@
                         <li class="nav-item"><a class="nav-link" href="#">Gestión Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Gestión Macrozona</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Gestión Rubros</a></li>
+                        @can('boletines.index')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('boletines.index') }}">Gestión Boletín</a></li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use PDF;
@@ -41,10 +42,22 @@ class HomeController extends Controller
     public function index(User $user)
     {
         $user = Auth::user();
-        print_r($user);
-        $regiones = Region::get();
-        return view('home', compact([
+        
+        $queryRegion = $user->regiones()->get();
+        /*
+        if($queryRegion[0]->id === 1){
+            $regiones = Region::get();
+        }else{
+            //$regiones = $user->regiones()->get();
+           
+            $regiones = $user->regiones()
+                     //->select('name')
+                     ->where('region_id', '<>', 1)
+                     ->get();
+        }
+        */
+        return view('home'/*, compact([
             'regiones',
-        ]));
+        ])*/);
     }
 }
