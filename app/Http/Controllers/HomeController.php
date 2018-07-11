@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function index(User $user)
     {
         $user = Auth::user();
-        
+        $blabla = '<h1>fafa</h1>';
         $queryRegion = $user->regiones()->get();
         /*
         if($queryRegion[0]->id === 1){
@@ -56,8 +56,6 @@ class HomeController extends Controller
                      ->get();
         }
         */
-        return view('home'/*, compact([
-            'regiones',
-        ])*/);
+        return view('home', compact([ 'blabla', ]));
     }
 }

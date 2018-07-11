@@ -23,7 +23,7 @@
                     <div>
                     <form id="get-data-form" method="post">
 
-                       <textarea name="content" id="tinymce" class="form-control my-editor" ></textarea>
+                       <textarea name="content" id="tinymce" class="form-control my-editor" ><?= htmlspecialchars($blabla); ?></textarea>
 
                     </form>
                     <div>
@@ -75,6 +75,7 @@ cmsURL = cmsURL + "&type=Images";
 } else {
 cmsURL = cmsURL + "&type=Files";
 }
+
 tinyMCE.activeEditor.windowManager.open({
 file : cmsURL,
 title : 'Filemanager',
@@ -89,10 +90,26 @@ tinymce.init(editor_config);
 </script>
 
 <script>
+$( document ).ready(function() {
+    ajaxLoad();
+});
+
+function ajaxLoad() {
+    var ed = tinyMCE.get('tinymce');
+
+    // Do you ajax call here, window.setTimeout fakes ajax call
+    ed.setProgressState(1); // Show progress
+    window.setTimeout(function() {
+        ed.setProgressState(0); // Hide progress
+        ed.setContent($blabla);
+    }, 100);
+}
+
 function pruebaConsole()
 {
-  var selectContent = tinymce.get('tinymce').getContent();
+  var selectContent = tinymce.get('tinymce').setContent('<h1>asd</h1>');
     console.log(selectContent);
 }
+pruebaConsole();
 </script>
 @endsection
