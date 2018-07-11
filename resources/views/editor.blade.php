@@ -5,20 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header"></div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-
-                    @endif
-
-                    You are logged in!
-                    <hr>
                     <h4>Boletines</h4>
-                   
+
                     <div>
                     <form id="get-data-form" method="post">
 
@@ -57,8 +48,19 @@ toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncent
 relative_urls: false,
 height: 200,
 setup: function(editor){
+    editor.on('keydown', function(event) {
+        if (event.keyCode == 9) { // tab pressed
+          if (event.shiftKey) {
+            editor.execCommand('Outdent');
+          }
+          else {
+            editor.execCommand('Indent');
+          }
+          event.preventDefault();
+          return false;
+        }
+    });
 editor.addButton('mybutton', {
-
 image: '/icons/grafico.png',
 tooltip: "Gráficos de información",
 onclick: function () {
@@ -98,3 +100,4 @@ function pruebaConsole()
     console.log(selectContent);
 }
 </script>
+@endsection
