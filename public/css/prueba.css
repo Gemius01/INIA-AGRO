@@ -1,9 +1,24 @@
 .prueba{
   background-color: red;
 }
-
-    @page { margin: 100px 25px; }
+.clasprueba{
+	background-color: red;
+    text-align: center !important;
+}
+p img {
+    display: block;
+}
+img.center{
+	text-align:center;
+}
+    /*@page { margin: 50px 25px; }*/
+    @page {
+	  margin-top: 50px;
+	  margin-left:50px;
+	}
+    /*
     header { position: fixed; top: -60px; left: 0px; right: 0px; background-color: lightblue; height: 50px; }
     footer { position: fixed; bottom: -60px; left: 0px; right: 0px; background-color: lightblue; height: 50px; }
+    
     p { page-break-after: always; }
-    p:last-child { page-break-after: never; }
+    p:last-child { page-break-after: never; }*/

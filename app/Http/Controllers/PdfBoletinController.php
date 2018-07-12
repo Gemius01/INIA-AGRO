@@ -24,8 +24,10 @@ class PdfBoletinController extends Controller
 
       	// $pdf = PDF::loadView('pdfExport/1');
   		  // return $pdf->download('invoice.pdf');
-
- return PDF::loadView('boletines.pdfTemplate',compact([ 'boletin', ]))->download('invoice.pdf');
+      return PDF::loadView('boletines.pdfTemplate', compact([ 'boletin', ]), [], [
+  'format' => 'A4'
+])->download('invoice.pdf');
+// return PDF::loadView('boletines.pdfTemplate',compact([ 'boletin', ]))->download('invoice.pdf');
 
       }
 }

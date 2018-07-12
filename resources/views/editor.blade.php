@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div >
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,16 +14,22 @@
                     <div>
                     <form id="get-data-form" method="post">
 
-                       <textarea name="content" id="tinymce" class="form-control my-editor" ></textarea>
+                       <textarea name="content" id="tinymce" class="form-control my-editor" >
+                        <?= htmlspecialchars($seccionDetail->pivot->contenido); ?>
+                        </textarea>
 
                     </form>
+                    <div style="display:none;">
+                        <input id="obj" value="{{ $seccionDetail }}"></input>
+                        
+                    </div>
                     <div>
-
+                    
 
                     <a href="{{ url('download-pdf') }}">Exportar PDF</a>
                     </div>
                     <center>
-                        <input  type="button" value="Guardar Datos" onclick="pruebaConsole()" />
+                        <input  type="button" value="Guardar Datos" onclick="guardarDatos()" />
                     </center>
                   </div>
                 </div>
@@ -45,8 +51,11 @@ plugins: [
 paste_enable_default_filters: false,
 paste_data_images: false,
 branding: false,
+image_description: false,
 toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton",
+
 relative_urls: false,
+remove_script_host: false,
 height: 200,
 setup: function(editor){
     editor.on('keydown', function(event) {
@@ -99,6 +108,32 @@ function pruebaConsole()
 {
   var selectContent = tinymce.get('tinymce').getContent();
     console.log(selectContent);
+}
+
+function guardarDatos()
+{   
+    var objSeccion = JSON.parse(document.getElementById('obj').value);
+    console.log(objSeccion)
+    var boletin_id = objSeccion.pivot.boletin_id;
+    var seccion_id = objSeccion.pivot.seccion_id;
+    console.log(boletin_id);
+    var contentTinymce = tinymce.get('tinymce').getContent();
+    $.ajax({
+    method: 'POST', // Type of response and matches what we said in the route
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    url: '/editor/update', // This is the url we gave in the route
+    data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
+    success: function(response){ // What to do if we succeed
+        console.log(response); 
+    },
+    error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+        //console.log(JSON.stringify(jqXHR));
+        //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+    }
+});
+
 }
 </script>
 @endsection
