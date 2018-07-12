@@ -103,8 +103,11 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('boletines/{boletin}','BoletinController@show')->name('boletines.show')
 		->middleware('permission:boletines.show');
 
+    Route::get('pdfExport/{boletin}','PdfBoletinController@exportarPDF')->name('boletines.pdfTemplate');
+
 	Route::get('editor/{boletin}/{seccion}','BoletinController@editarSeccion')->name('editor');
 
+
 	Route::post('/editor/update','BoletinController@guardarEdicion')->name('editor.update');
-		
+
 });
