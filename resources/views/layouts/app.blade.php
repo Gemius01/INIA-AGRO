@@ -63,7 +63,7 @@
                         -->
                         @can('users.index')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
+                            <a class="nav-link" href="{{ route('users.index') }}">Gestion Usuarios</a>
                         </li>
                         @endcan
                         <!--
@@ -73,11 +73,15 @@
                         </li>
                         @endcan
                         -->
-                        <li class="nav-item"><a class="nav-link" href="#">Gestión Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Gestión Macrozona</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Gestión Rubros</a></li>
+                        @can('rubros.index')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('rubros.index') }}">Gestión Rubros</a></li>
+                        @endcan
                         @can('boletines.index')
                         <li class="nav-item"><a class="nav-link" href="{{ route('boletines.index') }}">Gestión Boletín</a></li>
+                        @endcan
+                         @can('regiones.index')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('boletines.index') }}">Gestión Región</a></li>
                         @endcan
                     </ul>
 

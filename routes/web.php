@@ -110,4 +110,30 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::post('/editor/update','BoletinController@guardarEdicion')->name('editor.update');
 
+
+	//Rubros
+
+	Route::get('rubros/create','RubroController@create')->name('rubros.create')
+		->middleware('permission:users.create');
+
+	Route::post('rubros/store','RubroController@store')->name('rubros.store')
+		->middleware('permission:users.create');
+
+	Route::get('rubros','RubroController@index')->name('rubros.index')
+		->middleware('permission:boletines.index');
+
+	Route::get('rubros/{rubro}','RubroController@show')->name('rubros.show')
+		->middleware('permission:boletines.show');
+
+	Route::get('rubros/{rubro}/edit','RubroController@edit')->name('rubros.edit')
+		->middleware('permission:users.edit');
+
+	Route::put('rubros/{rubro}','RubroController@update')->name('rubros.update')
+		->middleware('permission:users.edit');
+
+	Route::delete('rubros/{rubro}','RubroController@destroy')->name('rubros.destroy')
+		->middleware('permission:roles.destroy');
+
+
+
 });
