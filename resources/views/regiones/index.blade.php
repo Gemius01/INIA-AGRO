@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Rubros
+                <div class="card-header">Regiones
                 @can('products.create')
-                    <a href="{{ route('rubros.create')}}"
+                    <a href="{{ route('regiones.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>
                 @endcan
                 </div>
@@ -21,27 +21,27 @@
                            </tr>
                        </thead>
                        <tbody>
-                          @foreach($rubros as $rubro)
+                          @foreach($regiones as $region)
                            <tr>
 
-                            <td>{{ $rubro->id }}</td>
-                            <td>{{ $rubro->name }}</td>
+                            <td>{{ $region->id }}</td>
+                            <td>{{ $region->name }}</td>
                             @can('products.show')
                                <td style="text-align: center;">
-                                   <a href="{{ route('rubros.show', $rubro->id) }}"
+                                   <a href="{{ route('regiones.show', $region->id) }}"
                                     class="btn btn-sm btn-primary">Ver</a>
                                </td>
                                @endcan
                                @can('products.edit')
                                <td style="text-align: center;">
-                                   <a href="{{ route('rubros.edit', $rubro->id) }}"
+                                   <a href="{{ route('regiones.edit', $region->id) }}"
                                     class="btn btn-sm btn-success">Editar</a>
                                    
                                </td>
                                @endcan
                                 @can('products.destroy')
                                <td style="text-align: center;">
-                                    {!! Form::open(['route' => ['rubros.destroy', $rubro->id], 
+                                    {!! Form::open(['route' => ['regiones.destroy', $region->id], 
                                     'method' => 'DELETE']) !!}
                                         <button class="btn btn-sm btn-danger">
                                             Eliminar

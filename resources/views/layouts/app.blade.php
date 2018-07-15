@@ -73,7 +73,7 @@
                         </li>
                         @endcan
                         -->
-                        <li class="nav-item"><a class="nav-link" href="#">Gestión Macrozona</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('macrozonas.index') }}">Gestión Macrozona</a></li>
                         @can('rubros.index')
                         <li class="nav-item"><a class="nav-link" href="{{ route('rubros.index') }}">Gestión Rubros</a></li>
                         @endcan
@@ -81,7 +81,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('boletines.index') }}">Gestión Boletín</a></li>
                         @endcan
                          @can('regiones.index')
-                        <li class="nav-item"><a class="nav-link" href="{{ route('boletines.index') }}">Gestión Región</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('regiones.index') }}">Gestión Región</a></li>
                         @endcan
                     </ul>
 

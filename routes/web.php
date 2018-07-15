@@ -134,6 +134,52 @@ Route::middleware(['auth'])->group(function(){
 	Route::delete('rubros/{rubro}','RubroController@destroy')->name('rubros.destroy')
 		->middleware('permission:roles.destroy');
 
+	//Regiones
+	
+	Route::get('regiones/create','RegionController@create')->name('regiones.create')
+		->middleware('permission:users.create');
 
+	Route::post('regiones/store','RegionController@store')->name('regiones.store')
+		->middleware('permission:users.create');
 
+	Route::get('regiones','RegionController@index')->name('regiones.index')
+		->middleware('permission:boletines.index');
+
+	Route::get('regiones/{region}','RegionController@show')->name('regiones.show')
+		->middleware('permission:boletines.show');
+
+	Route::get('regiones/{region}/edit','RegionController@edit')->name('regiones.edit')
+		->middleware('permission:users.edit');
+
+	Route::put('regiones/{region}','RegionController@update')->name('regiones.update')
+		->middleware('permission:users.edit');
+
+	Route::delete('regiones/{region}','RegionController@destroy')->name('regiones.destroy')
+		->middleware('permission:roles.destroy');	
+
+	//Macrozonas
+	
+	Route::get('macrozonas/create','MacrozonaController@create')->name('macrozonas.create')
+		->middleware('permission:users.create');
+
+	Route::post('macrozonas/store','MacrozonaController@store')->name('macrozonas.store')
+		->middleware('permission:users.create');
+
+	Route::get('macrozonas','MacrozonaController@index')->name('macrozonas.index')
+		->middleware('permission:boletines.index');
+
+	Route::get('macrozonas/{macrozona}','MacrozonaController@show')->name('macrozonas.show')
+		->middleware('permission:boletines.show');
+
+	Route::get('macrozonas/{macrozona}/edit','MacrozonaController@edit')->name('macrozonas.edit')
+		->middleware('permission:users.edit');
+
+	Route::put('macrozonas/{macrozona}','MacrozonaController@update')->name('macrozonas.update')
+		->middleware('permission:users.edit');
+
+	Route::delete('macrozonas/{macrozona}','MacrozonaController@destroy')->name('macrozonas.destroy')
+		->middleware('permission:roles.destroy');
+
+	Route::get('xmlview','BoletinController@generarXML')->name('xmlview')
+		->middleware('permission:boletines.index');	
 });

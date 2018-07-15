@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">Boletin
+                <div class="card-header">Boletines
 
                     <a href="{{ route('boletines.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>

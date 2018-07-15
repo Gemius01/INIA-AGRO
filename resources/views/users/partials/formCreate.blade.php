@@ -50,6 +50,7 @@
 	</ul>
 </div>
 <hr>
+
 <h3>Secciones</h3>
 <div class="form-group">
 	<ul class="list-unstyled">
@@ -64,6 +65,7 @@
 		@endforeach
 	</ul>
 </div>
+<!--
 <hr>
 <h3>Macrozonas</h3>
 <div class="form-group">
@@ -72,13 +74,14 @@
 		<li>
 			<label>
 		        {{ Form::checkbox('macrozonas[]', $macrozona->id) }}
-		        <strong>{{ $macrozona->name }}</strong> > <strong>{{ $macrozona->rubro->name}}</strong>
+		        <strong>{{ $macrozona->name }}</strong> > <strong>{{ $macrozona->name }}</strong>
 		        
 	        </label>
 		</li>
 		@endforeach
 	</ul>
 </div>
+-->
 <div class="form-group">
 	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
 </div>

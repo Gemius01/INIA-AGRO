@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Region;
 use App\Boletin;
 use App\Seccion;
+use App\Macrozona;
+use File;
+use Response;
 
 class BoletinController extends Controller
 {
@@ -157,6 +160,20 @@ class BoletinController extends Controller
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
       return $detail; 
-        //return 'hola';
+      
+    }
+
+    public function generarXML(){
+        $macrozonas = Macrozona::get();
+        $headers = array(
+  'Content-Type' => 'text/xml',
+);  
+        $content = view('boletines.xml', compact(['macrozonas',]))->render();
+        //File::put(storage_path().'/file.xml', $content);
+        //return Response::make($content, 200)->header('Content-Type', 'application/xml');
+        //return response()->download('boletines.xml', 'filename.xml', $headers);
+        //return response()->view('boletines.xml', compact(['macrozonas']))->header('Content-Type', 'text/xml')->download();
+
+        return response()->attachment($content, date('Y-m-d'));
     }
 }

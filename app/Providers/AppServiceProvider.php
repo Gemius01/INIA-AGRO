@@ -15,6 +15,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(120);
+        \Response::macro('attachment', function ($content, $nameFile) {
+            //dd($nameFile);
+        $headers = [
+            'Content-type'        => 'text/xml',
+            'Content-Disposition' => 'attachment; filename="'.$nameFile.'.xml"',
+        ];
+
+        return \Response::make($content, 200, $headers);
+
+});
     }
 
     /**
