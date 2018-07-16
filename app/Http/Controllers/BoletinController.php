@@ -49,7 +49,7 @@ class BoletinController extends Controller
      */
     public function store(Request $request)
     {
-        // ACA TA EL QUESO
+        
         if($request->region == 0){
             $regionesBD = Region::where('id', '<>', 1)->get();
             $secciones = Seccion::get();
@@ -166,8 +166,8 @@ class BoletinController extends Controller
     public function generarXML(){
         $macrozonas = Macrozona::get();
         $headers = array(
-  'Content-Type' => 'text/xml',
-);  
+      'Content-Type' => 'text/xml',
+    );  
         $content = view('boletines.xml', compact(['macrozonas',]))->render();
         //File::put(storage_path().'/file.xml', $content);
         //return Response::make($content, 200)->header('Content-Type', 'application/xml');

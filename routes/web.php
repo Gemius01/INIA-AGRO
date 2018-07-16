@@ -94,6 +94,20 @@ Route::middleware(['auth'])->group(function(){
 	Route::put('users/macrozonas/{user}','UserController@agregarMacrozonas')->name('users.guardarmacrozonas')
 		->middleware('permission:users.edit');
 
+	//Publcaciones
+	Route::post('publicaciones/store','PublicacionController@store')->name('publicaciones.store')
+		->middleware('permission:boletines.create');
+
+	Route::get('publicaciones','PublicacionController@index')->name('publicaciones.index')
+		->middleware('permission:boletines.index');
+
+	Route::get('publicaciones/create','PublicacionController@create')->name('publicaciones.create')
+		->middleware('permission:boletines.create');
+
+	Route::get('publicaciones/{publicacion}','PublicacionController@show')->name('publicaciones.show')
+		->middleware('permission:boletines.show');
+
+
 	//Boletines
 
 	Route::post('boletines/store','BoletinController@store')->name('boletines.store')
@@ -114,6 +128,7 @@ Route::middleware(['auth'])->group(function(){
 
 
 	Route::post('/editor/update','BoletinController@guardarEdicion')->name('editor.update');
+
 
 
 	//Rubros

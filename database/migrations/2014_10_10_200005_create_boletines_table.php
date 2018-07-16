@@ -17,7 +17,9 @@ class CreateBoletinesTable extends Migration
             $table->increments('id');
             $table->integer('region_id')->unsigned()->nullable();
             $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
-            $table->dateTime('creacion');
+            $table->integer('publicacion_id')->unsigned()->nullable();
+            $table->foreign('publicacion_id')->references('id')->on('publicaciones')->onDelete('cascade');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }

@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Boletin extends Model
 {
     //
-
+    public function publicacion()
+    {
+        return $this->belongsTo(Publicacion::class);
+    }
     public function region()
     {
         return $this->belongsTo(Region::class);
@@ -19,6 +22,6 @@ class Boletin extends Model
 	protected $table = 'boletines';
 
     protected $fillable = [
-        'region_id', 'creacion',
+        'region_id', 'estado', 'publicacion_id',
     ];
 }

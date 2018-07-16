@@ -78,7 +78,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('rubros.index') }}">Gestión Rubros</a></li>
                         @endcan
                         @can('boletines.index')
-                        <li class="nav-item"><a class="nav-link" href="{{ route('boletines.index') }}">Gestión Boletín</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('publicaciones.index') }}">Gestión Boletín</a></li>
                         @endcan
                          @can('regiones.index')
                         <li class="nav-item"><a class="nav-link" href="{{ route('regiones.index') }}">Gestión Región</a></li>

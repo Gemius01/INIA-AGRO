@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Nueva Publicacion
+                <div class="card-header">Boletin
                 </div>
                 <div class="card-body">
-                    {{ Form::open(['route' => 'boletines.store']) }}
+                    {{ Form::open(['route' => 'publicaciones.store']) }}
 
-                        @include('boletines.partials.formCreate')
+                        @include('publicaciones.partials.formCreate')
                         
                     {{ Form::close() }}
                 </div>
