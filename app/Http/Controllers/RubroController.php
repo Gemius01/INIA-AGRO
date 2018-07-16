@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RubroStoreRequest;
+use App\Http\Requests\RubroUpdateRequest;
 use App\Rubro;
 
 class RubroController extends Controller
@@ -34,8 +36,9 @@ class RubroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RubroStoreRequest $request)
     {
+      //validar
         $rubro = Rubro::create($request->all());
         return redirect()->route('rubros.index', $rubro->id)
             ->with('info', 'Agregado con exito');
@@ -71,8 +74,9 @@ class RubroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rubro $rubro)
+    public function update(RubroUpdateRequest $request, Rubro $rubro)
     {
+      //validar
         $rubro->update($request->all());
         return redirect()->route('rubros.index', $rubro->id)
             ->with('info', 'Rubro Agregado con exito');
