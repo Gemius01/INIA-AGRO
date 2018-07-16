@@ -150,4 +150,27 @@ class UserController extends Controller
         $user->delete();
         return back()->with('info', 'Eliminado Correctamente');
     }
+    public function vistaMacrozonas(User $user)
+    {
+
+        $macrozonasUser = $user->macrozonas;
+
+        $ids = [];
+        foreach ($user->regiones as $region) {
+        $ids[] = $region['id'];
+        }
+         $macrozonas = Macrozona::whereIn('region_id', $ids)->get();
+         //dd($macrozonas);
+    
+        //dd($macrozonas);
+        return view('users.macrozonas', compact(['user', 'macrozonasUser', 'macrozonas', ]));
+    }
+
+    public function agregarMacrozonas(Request $request, User $user)
+    {
+        //return view('users.macrozonas', compact(['user',]));
+        $user->macrozonas()->sync($request->get('macrozonas'));
+        return redirect()->route('users.index', $user->id)
+            ->with('info', 'Usuario actualizado al usuario '.$user->name);
+    }
 }

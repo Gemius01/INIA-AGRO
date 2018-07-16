@@ -89,6 +89,11 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('users/{user}/edit','UserController@edit')->name('users.edit')
 		->middleware('permission:users.edit');
 
+	Route::get('users/{user}/macrozonas','UserController@vistaMacrozonas')->name('users.macrozonas')
+		->middleware('permission:users.edit');
+	Route::put('users/macrozonas/{user}','UserController@agregarMacrozonas')->name('users.guardarmacrozonas')
+		->middleware('permission:users.edit');
+
 	//Boletines
 
 	Route::post('boletines/store','BoletinController@store')->name('boletines.store')

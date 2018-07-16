@@ -16,19 +16,19 @@
                    <table class="table table-striped table-hover table-bordered" width="100%">
                        <thead>
                            <tr>
-                               <th width="10px">ID</th>
+                               <!--<th width="10px">ID</th>-->
                                <th>Nombre</th>
                                <th>E-mail</th>
                                <th>Región(es)</th>
                                <th>Sección(es)</th>
                                <th>Macrozona(s)</th>
-                               <th colspan="3"><center>Opciones</center></th>
+                               <th colspan="4"><center>Opciones</center></th>
                            </tr>
                        </thead>
                        <tbody>
                            @foreach($users as $user)
                            <tr>
-                               <td>{{ $user->id }}</td>
+                               <!--<td>{{ $user->id }}</td>-->
                                <td>{{ $user->name ?: '-' }}</td>
                                <td>{{ $user->email }}</td>
                                <td> @foreach($user->regiones as $region)
@@ -39,9 +39,14 @@
                                     {{ $seccion->name }}, 
                                     @endforeach
                                </td>
-                               <td> @foreach($user->macrozonas as $macrozona)
-                                    {{ $macrozona->name }}, 
-                                    @endforeach
+                               <td>
+                                <ul> 
+                                  @foreach($user->macrozonas as $macrozona)
+                                  <li>
+                                    {{ $macrozona->name }} ({{ $macrozona->rubro->name }})
+                                  </li>
+                                  @endforeach
+                                </ul>
                                </td>
                                @can('users.show')
                                <td width="10px">
@@ -52,10 +57,10 @@
                                @can('users.edit')
                                <td width="10px">
                                    <a href="{{ route('users.edit', $user->id) }}"
-                                    class="btn btn-sm btn-success">Editar</a>
-                                   
+                                    class="btn btn-sm btn-success">Editar</a>  
                                </td>
                                @endcan
+
                                 @can('users.destroy')
                                <td width="10px">
                                     {!! Form::open(['route' => ['users.destroy', $user->id], 
@@ -64,6 +69,12 @@
                                             Eliminar
                                         </button>
                                     {!! Form::close() !!}
+                               </td>
+                               @endcan
+                               @can('users.edit')
+                               <td width="10px">
+                                   <a href="{{ route('users.macrozonas', $user->id) }}"
+                                    class="btn btn-sm btn-success">Macrozonas</a>  
                                </td>
                                @endcan
                            </tr>
