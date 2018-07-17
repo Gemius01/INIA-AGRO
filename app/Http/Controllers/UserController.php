@@ -7,6 +7,7 @@ use App\Region;
 use App\Seccion;
 use App\Macrozona;
 use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -80,6 +81,14 @@ class UserController extends Controller
         
         //Sincroniza las tablas intermedias de seccion_user
         $user->secciones()->sync($request->get('secciones'));
+
+        $secciones = $request->get('secciones');
+        //dd($secciones);
+        foreach($secciones as $seccion)
+        {
+            $permission = Permission::where('slug', 'seccion-'.$seccion)->first();
+            $user->permissions()->attach($permission);
+        }
 
         return redirect()->route('users.index', $user->id)
             ->with('info', 'user guardado con exito');
@@ -171,6 +180,33 @@ class UserController extends Controller
         //return view('users.macrozonas', compact(['user',]));
         $user->macrozonas()->sync($request->get('macrozonas'));
         return redirect()->route('users.index', $user->id)
-            ->with('info', 'Usuario actualizado al usuario '.$user->name);
+            ->with('info', 'Se ha actualizado el usuario '.$user->name);
+    }
+
+    public function vistaSecciones(User $user)
+    {
+        /*
+        $seccionesUser = $user->secciones;
+
+        $ids = [];
+        foreach ($user->regiones as $region) {
+        $ids[] = $region['id'];
+        }
+        */
+         //$secciones = Macrozona::whereIn('region_id', $ids)->get();
+         //dd($macrozonas);
+    
+        //dd($macrozonas);
+        $secciones = Seccion::get();
+        $seccionesUser = $user->secciones;
+        return view('users.macrozonas', compact(['user', 'seccionesUser', 'secciones', ]));
+    }
+
+    public function agregarSecciones(Request $request, User $user)
+    {
+        //return view('users.macrozonas', compact(['user',]));
+        $user->secciones()->sync($request->get('secciones'));
+        return redirect()->route('users.index', $user->id)
+            ->with('info', 'Se ha actualizado el usuario '.$user->name);
     }
 }

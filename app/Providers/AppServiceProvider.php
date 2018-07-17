@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\Observers\SectionObserver;
+use App\Seccion;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,8 +25,9 @@ class AppServiceProvider extends ServiceProvider
         ];
 
         return \Response::make($content, 200, $headers);
-
-});
+        });
+        
+        Seccion::observe(SectionObserver::class);
     }
 
     /**

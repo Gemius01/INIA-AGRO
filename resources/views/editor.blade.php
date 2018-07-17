@@ -24,9 +24,6 @@
                         
                     </div>
                     <div>
-                    
-
-                    <a href="{{ url('download-pdf') }}">Exportar PDF</a>
                     </div>
                     <center>
                         <input  type="button" value="Guardar Datos" onclick="guardarDatos()" />

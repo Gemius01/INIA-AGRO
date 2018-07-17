@@ -38,7 +38,7 @@ class RubroController extends Controller
      */
     public function store(RubroStoreRequest $request)
     {
-      //validar
+        //validar
         $rubro = Rubro::create($request->all());
         return redirect()->route('rubros.index', $rubro->id)
             ->with('info', 'Agregado con exito');

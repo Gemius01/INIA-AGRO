@@ -17,7 +17,7 @@ class PublicacionController extends Controller
      */
     public function index()
     {
-        $publicaciones = Publicacion::get();
+        $publicaciones = Publicacion::orderBy('id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', ]));
     }
 

@@ -94,7 +94,12 @@ Route::middleware(['auth'])->group(function(){
 	Route::put('users/macrozonas/{user}','UserController@agregarMacrozonas')->name('users.guardarmacrozonas')
 		->middleware('permission:users.edit');
 
-	//Publcaciones
+	Route::get('users/{user}/secciones','UserController@vistaSecciones')->name('users.secciones')
+		->middleware('permission:users.edit');
+	Route::put('users/secciones/{user}','UserController@agregarSecciones')->name('users.guardarsecciones')
+		->middleware('permission:users.edit');
+
+	//Publicaciones
 	Route::post('publicaciones/store','PublicacionController@store')->name('publicaciones.store')
 		->middleware('permission:boletines.create');
 

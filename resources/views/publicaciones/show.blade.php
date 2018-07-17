@@ -42,7 +42,7 @@
                               class="btn btn-sm btn-success">Agregar Boletin</a>
                             </td>
                             <td style="text-align: center;">
-                              <a href=""
+                              <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
                               class="btn btn-sm btn-warning">PDF</a>
                             </td>
                           </tr>

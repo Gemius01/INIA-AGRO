@@ -22,7 +22,7 @@
                                <th>Región(es)</th>
                                <th>Sección(es)</th>
                                <th>Macrozona(s)</th>
-                               <th colspan="4"><center>Opciones</center></th>
+                               <th colspan="5"><center>Opciones</center></th>
                            </tr>
                        </thead>
                        <tbody>
@@ -61,20 +61,26 @@
                                </td>
                                @endcan
 
-                                @can('users.destroy')
+                               @can('users.destroy')
                                <td width="10px">
                                     {!! Form::open(['route' => ['users.destroy', $user->id], 
                                     'method' => 'DELETE']) !!}
                                         <button class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>
-                                    {!! Form::close() !!}
+                                {!! Form::close() !!}
                                </td>
                                @endcan
                                @can('users.edit')
                                <td width="10px">
                                    <a href="{{ route('users.macrozonas', $user->id) }}"
                                     class="btn btn-sm btn-success">Macrozonas</a>  
+                               </td>
+                               @endcan
+                               @can('users.edit')
+                               <td width="10px">
+                                   <a href="{{ route('users.secciones', $user->id) }}"
+                                    class="btn btn-sm btn-success">Secciones</a>  
                                </td>
                                @endcan
                            </tr>
