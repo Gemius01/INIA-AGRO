@@ -65,7 +65,7 @@
                                <td width="10px">
                                     {!! Form::open(['route' => ['users.destroy', $user->id], 
                                     'method' => 'DELETE']) !!}
-                                        <button class="btn btn-sm btn-danger">
+                                        <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>
                                 {!! Form::close() !!}

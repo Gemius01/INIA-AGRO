@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/pdfView', 'HomeController@vistaPdf')->name('pdfView');
 //Routes
 Route::get("download-pdf","HomeController@downloadPDF");
@@ -110,6 +110,12 @@ Route::middleware(['auth'])->group(function(){
 		->middleware('permission:boletines.create');
 
 	Route::get('publicaciones/{publicacion}','PublicacionController@show')->name('publicaciones.show')
+		->middleware('permission:boletines.show');
+
+	Route::get('publicaciones/eleccion/{publicacion}','PublicacionController@vistaElegir')->name('publicaciones.vistaElegir')
+		->middleware('permission:boletines.create');
+
+	Route::put('publicaciones/elegido/{publicacion}','PublicacionController@elegirPublicacion')->name('publicaciones.elegirPublicacion')
 		->middleware('permission:boletines.show');
 
 

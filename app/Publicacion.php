@@ -18,4 +18,6 @@ class Publicacion extends Model
     	return $this->hasMany(Boletin::class);
     }
 
+   
+
 }

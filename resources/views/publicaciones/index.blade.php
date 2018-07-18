@@ -12,13 +12,21 @@
                 @endcan
                 </div>
                 <div class="card-body">
+                  <strong>Publicación elegida actualmente</strong>
+                  <ul>
+                   
+                    <li><strong>MES :</strong> {{ $publicacionActual->mes}}</li>
+                    <li><strong>AÑO :</strong> {{ $publicacionActual->año}}</li>
+                    
+                  </ul>
+                  <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
                                <th width="10%">ID</th>
                                <th>Mes</th>
                                <th>Año</th>
-                               <th colspan="3" style="text-align: center;" width="30%">Opciones</th>
+                               <th colspan="4" style="text-align: center;" width="30%">Opciones</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -36,9 +44,14 @@
                               class="btn btn-sm btn-success">Agregar Boletin</a>
                             </td>
                             <td style="text-align: center;">
-                              <a href="{{ route('publicaciones.show', $publicacion->id) }}"
+                              <a href="{{ route('xmlview', $publicacion->id) }}"
                               class="btn btn-sm btn-warning">XML</a>
                             </td>
+                            <td style="text-align: center;">
+                              <a href="{{ route('publicaciones.vistaElegir', $publicacion->id) }}"
+                              class="btn btn-sm btn-warning">Elegir</a>
+                            </td>
+                            
                           </tr>
                         @endforeach
                         

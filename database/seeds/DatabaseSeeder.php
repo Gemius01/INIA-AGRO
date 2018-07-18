@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SeccionsTableSeeder::class);
         $this->call(RubrosTableSeeder::class);
         $this->call(MacrozonasTableSeeder::class);
+        $this->call(ColaboradorPermissionsSeeder::class);
+        $this->call(EleccionTableSeeder::class);
 
     }
 }

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use PDF;
 use App\Region;
 use App\User;
+use App\Publicacion;
+use App\Eleccion;
 class HomeController extends Controller
 {
 
@@ -41,21 +43,21 @@ class HomeController extends Controller
      */
     public function index(User $user)
     {
+
         $user = Auth::user();
-        $blabla = '<h1>fafa</h1>';
-        $queryRegion = $user->regiones()->get();
-        /*
-        if($queryRegion[0]->id === 1){
-            $regiones = Region::get();
-        }else{
-            //$regiones = $user->regiones()->get();
-           
-            $regiones = $user->regiones()
-                     //->select('name')
-                     ->where('region_id', '<>', 1)
-                     ->get();
+        $queryRegion = $user->regiones()->pluck('region_id');
+        $publicacionElegida = Eleccion::find(1);
+        if($publicacionElegida != null && $publicacionElegida->publicacion_id != null){
+
+        $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
+        $boletines = $publicacion->boletines;
+
+
+        $userBoletines = $boletines->whereIn('region_id', $queryRegion);
+        } else {
+            $userBoletines = [];
         }
-        */
-        return view('home', compact([ 'blabla', ]));
+        
+        return view('home', compact([ 'userBoletines', ]));
     }
 }

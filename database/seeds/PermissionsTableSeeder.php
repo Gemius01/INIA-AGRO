@@ -94,6 +94,13 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Ver boletines del sistema',
         ]);
 
+        //Permisos para acceder al Boletín
+         Permission::create([
+            'name' => 'Ver Boletin en detalle',
+            'slug' => 'boletines.show',
+            'description' => 'Lista las secciones del boletin clickeado',
+        ]);
+         
 
         
     }

@@ -7,6 +7,7 @@ use App\Publicacion;
 use App\Region;
 use App\Boletin;
 use App\Seccion;
+use App\Eleccion;
 
 class PublicacionController extends Controller
 {
@@ -17,8 +18,18 @@ class PublicacionController extends Controller
      */
     public function index()
     {
+        $eleccion = Eleccion::find(1);
+        //dd($pubElegida);
+        if ($eleccion->publicacion_id != null) {
+        $publicacionActual = Publicacion::find($eleccion->publicacion_id);
         $publicaciones = Publicacion::orderBy('id', 'desc')->get();
-        return view('publicaciones.index', compact(['publicaciones', ]));
+        return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
+        }else {
+        $publicacionActual = [];  
+        $publicaciones = Publicacion::orderBy('id', 'desc')->get();
+        return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
+        }
+        
     }
 
     /**
@@ -116,5 +127,20 @@ class PublicacionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function vistaElegir(Publicacion $publicacion)
+    {
+        return view('publicaciones.eleccion', compact(['publicacion', ]));
+    }
+
+    public function elegirPublicacion($publicacion)
+    {
+        //dd($publicacion);
+        $eleccionAntigua = Eleccion::findOrFail(1);
+        $eleccionAntigua->update(["publicacion_id" => $publicacion]);
+
+        return redirect()->route('publicaciones.index')
+            ->with('info', 'Se ha elegido correctamente');
     }
 }
