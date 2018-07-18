@@ -91,7 +91,7 @@ class UserController extends Controller
         }
 
         return redirect()->route('users.index', $user->id)
-            ->with('info', 'user guardado con exito');
+            ->with('info', 'Usuario registrado con exito');
     }
 
     /**
@@ -119,12 +119,12 @@ class UserController extends Controller
     {
         //$user = User::find($user->id)->secciones;
         $roles = Role::get();
-        $regions = Region::pluck('name', 'id'); 
-        $seccions = Seccion::get();
+        $regiones = Region::get();
+        //$seccions = Seccion::get();
         
         //$checkeds = User::find($user->id)->secciones;
         //return $checkeds;
-        return view('users.edit', compact(['user', 'roles', 'regions', 'seccions']));
+        return view('users.edit', compact(['user', 'roles', 'regiones', ]));
     }
 
     /**
@@ -140,7 +140,9 @@ class UserController extends Controller
         $user->roles()->sync($request->get('roles'));
 
         
-        $user->secciones()->sync($request->get('secciones'));
+        //$user->secciones()->sync($request->get('secciones'));
+
+        $user->regiones()->sync($request->get('regiones'));
 
         $user->update($request->all());
         //$user->roles()->sync($request->get('seccions'));
@@ -193,19 +195,31 @@ class UserController extends Controller
         $ids[] = $region['id'];
         }
         */
-         //$secciones = Macrozona::whereIn('region_id', $ids)->get();
-         //dd($macrozonas);
+        //$secciones = Macrozona::whereIn('region_id', $ids)->get();
+        //dd($macrozonas);
     
         //dd($macrozonas);
         $secciones = Seccion::get();
         $seccionesUser = $user->secciones;
-        return view('users.macrozonas', compact(['user', 'seccionesUser', 'secciones', ]));
+        return view('users.secciones', compact(['user', 'seccionesUser', 'secciones', ]));
     }
 
     public function agregarSecciones(Request $request, User $user)
     {
-        //return view('users.macrozonas', compact(['user',]));
+
         $user->secciones()->sync($request->get('secciones'));
+
+        $secciones = $request->get('secciones');
+
+        $permission = array();
+        $i = 0;
+        foreach($secciones as $seccion)
+        {
+            $permisoEncontrado = Permission::where('slug', 'seccion-'.$seccion)->first();
+            $permission[$seccion] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+        }
+
+        $user->permissions()->sync($permission);
         return redirect()->route('users.index', $user->id)
             ->with('info', 'Se ha actualizado el usuario '.$user->name);
     }

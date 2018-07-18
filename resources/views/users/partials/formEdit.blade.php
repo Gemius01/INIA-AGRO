@@ -10,16 +10,14 @@
 	{{ Form::label('email', 'E-Mail') }}
 	{{ Form::text('email', null, ['class' => 'form-control', 'id' => 'email']) }}
 </div>
+<!--
 <div class="form-group">
 	{{ Form::label('password', 'Contraseña') }}
 	{{ Form::text('password', null, ['class' => 'form-control', 'id' => 'password']) }}
 </div>
-<div class="form-group">
-	{{ Form::label('region_id', 'Región') }}
-	{{ Form::select('region_id', $regions, null, array('class' => 'form-control' , 'id' => 'region')) }}
-</div>
+-->
 <hr>
-<h3>Lista de roles</h3>
+<h3>Rol</h3>
 <div class="form-group">
 	<ul class="list-unstyled">
 		@foreach($roles as $role)
@@ -34,24 +32,21 @@
 	</ul>
 </div>
 <hr>
-<h3>Macrozonas</h3>
-<hr>
-<h3>Secciones</h3>
+<h3>Región(es)</h3>
 <div class="form-group">
 	<ul class="list-unstyled">
-		@foreach($seccions as $seccion)
+		@foreach($regiones as $region)
 		<li>
 			<label>
-				{{ Form::checkbox('secciones[]', $seccion->id, $seccion->users->contains($user->id) ? true : false) }}
-		        
-		        {{ $seccion->name }}
-		        
+		        {{ Form::checkbox('regiones[]', $region->id, null) }}
+		        {{ $region->name }}
 	        </label>
 		</li>
 		@endforeach
 	</ul>
 </div>
 
+<hr>
 <div class="form-group">
 	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
 </div>

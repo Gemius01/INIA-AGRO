@@ -31,13 +31,24 @@
                                <!--<td>{{ $user->id }}</td>-->
                                <td>{{ $user->name ?: '-' }}</td>
                                <td>{{ $user->email }}</td>
-                               <td> @foreach($user->regiones as $region)
-                                    {{ $region->name }}, 
-                                    @endforeach
+                               <td>
+                                <ul>
+
+                                @foreach($user->regiones as $region)
+                                  <li>
+                                    {{ $region->name }}
+                                  </li>
+                                @endforeach
+                                </ul>
                                </td>
-                               <td> @foreach($user->secciones as $seccion)
-                                    {{ $seccion->name }}, 
+                               <td> 
+                                <ul>
+                                  @foreach($user->secciones as $seccion)
+                                  <li>
+                                    {{ $seccion->name }}
+                                  </li>
                                     @endforeach
+                                  </ul>
                                </td>
                                <td>
                                 <ul> 
@@ -61,16 +72,7 @@
                                </td>
                                @endcan
 
-                               @can('users.destroy')
-                               <td width="10px">
-                                    {!! Form::open(['route' => ['users.destroy', $user->id], 
-                                    'method' => 'DELETE']) !!}
-                                        <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger">
-                                            Eliminar
-                                        </button>
-                                {!! Form::close() !!}
-                               </td>
-                               @endcan
+                               
                                @can('users.edit')
                                <td width="10px">
                                    <a href="{{ route('users.macrozonas', $user->id) }}"
@@ -81,6 +83,16 @@
                                <td width="10px">
                                    <a href="{{ route('users.secciones', $user->id) }}"
                                     class="btn btn-sm btn-success">Secciones</a>  
+                               </td>
+                               @endcan
+                               @can('users.destroy')
+                               <td width="10px">
+                                    {!! Form::open(['route' => ['users.destroy', $user->id], 
+                                    'method' => 'DELETE']) !!}
+                                        <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger">
+                                            Eliminar
+                                        </button>
+                                {!! Form::close() !!}
                                </td>
                                @endcan
                            </tr>

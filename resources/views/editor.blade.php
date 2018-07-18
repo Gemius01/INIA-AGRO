@@ -123,7 +123,8 @@ function guardarDatos()
     url: '/editor/update', // This is the url we gave in the route
     data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
     success: function(response){ // What to do if we succeed
-        console.log(response); 
+        //console.log(response); 
+        
     },
     error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
         //console.log(JSON.stringify(jqXHR));

@@ -4,7 +4,7 @@
 			<th>Nombre</th>
 			<th>E-mail</th>
 			<th>Región(es)</th>
-			<th>Macrozona(s)</th>
+			<th>Sección(es)</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,7 +33,7 @@
 		@foreach($secciones as $seccion)
 		<li>
 			<label>
-		        {{ Form::checkbox('secciones[]', $seccion->id) }}
+		        {{ Form::checkbox('secciones[]', $seccion->id, null) }}
 		        {{ $seccion->name }}
 		        
 	        </label>
