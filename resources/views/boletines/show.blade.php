@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-header">{{$seccion->name}}
                     @can('seccion-'.$seccion->id)
-                    <a href="{{ route('editor', ['boletin'=>$boletin->id, 'seccion'=>$seccion->id])}}"
+                    <a href="{{ route('editor', ['boletin'=>$boletin->id, 'seccion'=>encrypt($seccion->id)])}}"
                     class="btn btn-sm btn-success pull-right">Editar</a>
                     @endcan
                 </div>

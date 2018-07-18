@@ -20,7 +20,7 @@
 @else
 <htmlpageheader name="page-header">
 <div class="header">
-	Boletín de Riesgos Agroclimáticos - {{$boletin->region->name}} - {{date('F-Y')}}
+	Boletín de Riesgos Agroclimáticos - {{$boletin->region->name}} - {{$boletin->publicacion->mes}}/{{$boletin->publicacion->año}} 
 </div>
 <div class="border"></div>
 </htmlpageheader>

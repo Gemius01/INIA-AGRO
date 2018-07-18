@@ -136,7 +136,7 @@ class BoletinController extends Controller
 
     public function editarSeccion(Boletin $boletin, $seccion)
     {
-        $seccionDetail = $boletin->secciones()->where('seccion_id', '=', $seccion)->first();
+        $seccionDetail = $boletin->secciones()->where('seccion_id', '=', decrypt($seccion))->first();
         //dd($seccionDetail);
         //dd($detalle);
         //$secciones = $detalle->secciones()->get();
@@ -149,6 +149,7 @@ class BoletinController extends Controller
 
     public function guardarEdicion(Request $request) 
     {
+       //dd('asd');
        $response = array(
           'status' => 'success',
           'boletin_id' => $request->input('boletin_id'),
@@ -160,7 +161,8 @@ class BoletinController extends Controller
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
       return $detail; 
-      
+
+     
     }
 
     public function generarXML(){

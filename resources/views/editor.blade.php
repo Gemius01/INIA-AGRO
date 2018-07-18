@@ -68,7 +68,7 @@ setup: function(editor){
         }
     });
 editor.addButton('mybutton', {
-image: '/icons/grafico.png',
+image: '/public/icons/grafico.png',
 tooltip: "Gráficos de información",
 onclick: function () {
 alert("Proximamente");
@@ -124,7 +124,7 @@ function guardarDatos()
     data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
     success: function(response){ // What to do if we succeed
         //console.log(response); 
-        
+        window.history.back();
     },
     error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
         //console.log(JSON.stringify(jqXHR));
