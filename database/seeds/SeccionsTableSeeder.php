@@ -19,6 +19,9 @@ class SeccionsTableSeeder extends Seeder
        		'name' => 'Introducción'
        ]);
        Seccion::create([
+          'name' => 'Resumen Ejecutivo'
+       ]);
+       Seccion::create([
        		'name' => 'Componente Meteorológico'
        ]);  
        Seccion::create([

@@ -39,7 +39,7 @@
 	<div class="border"></div>
 	<div class="footer">
 	Instituto de Investigaciones Agropecuarias (INIA) <br>
-	www.inia.cl - agromet.inia.cl
+	<a href="http://www.inia.cl">www.inia.cl</a> - agromet.inia.cl
 	</div>
 	<div class="paginacion">
 		{PAGENO}

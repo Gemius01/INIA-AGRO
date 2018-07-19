@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Macrozona extends Model
 {
-	
+	protected $fillable = [
+        'name', 'region_id', 'rubro_id',
+    ];
+
 	public function users()
     {
         return $this->belongsToMany(User::class);
@@ -20,7 +23,10 @@ class Macrozona extends Model
     {
         return $this->belongsTo(Region::class);
     }
-    protected $fillable = [
-        'name', 'region_id', 'rubro_id',
-    ];
+
+    public function subsecciones()
+    {
+        return $this->belongsToMany(Subseccion::class);
+    }
+
 }

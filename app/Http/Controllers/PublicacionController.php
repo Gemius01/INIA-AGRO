@@ -8,6 +8,8 @@ use App\Region;
 use App\Boletin;
 use App\Seccion;
 use App\Eleccion;
+use App\Subseccion;
+use App\Macrozona;
 
 class PublicacionController extends Controller
 {
@@ -25,7 +27,7 @@ class PublicacionController extends Controller
         $publicaciones = Publicacion::orderBy('id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
         }else {
-        $publicacionActual = [];  
+        $publicacionActual = (object) array( 'mes' => '', 'año' => '');  
         $publicaciones = Publicacion::orderBy('id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
         }
@@ -53,7 +55,7 @@ class PublicacionController extends Controller
     public function store(Request $request)
     {
         //dd($request['region']);
-        if($request['region'] == 0){
+        if($request['region'] == 0){//Crear Boletines para todas las regiones
             $publicacion = Publicacion::create($request->all());
             $regiones = Region::where('id', '<>', '1')->get();   
             foreach($regiones as $region){
@@ -64,6 +66,17 @@ class PublicacionController extends Controller
                 ]);
                 $secciones = Seccion::get();
                 $boletin->secciones()->sync($secciones);
+                $subseccion = Subseccion::create([
+                    'seccion_id' => 6,
+                    'boletin_id' => $boletin->id,
+                ]);
+                $macrozonasByRegion = Macrozona::where('region_id', '=', $region->id)->get();
+                if($macrozonasByRegion != null){
+                  $subseccion->macrozonas()->sync($macrozonasByRegion);
+                  }else{
+
+                  }
+                
             }
         }else{
             $publicacion = Publicacion::create($request->all());

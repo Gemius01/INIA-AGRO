@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Boletin extends Model
 {
     //
+    protected $table = 'boletines';
+
+    protected $fillable = [
+        'region_id', 'estado', 'publicacion_id',
+    ];
     public function publicacion()
     {
         return $this->belongsTo(Publicacion::class);
@@ -19,9 +24,10 @@ class Boletin extends Model
     {
         return $this->belongsToMany(Seccion::class)->withPivot('contenido');
     }
-	protected $table = 'boletines';
 
-    protected $fillable = [
-        'region_id', 'estado', 'publicacion_id',
-    ];
+    public function subsecciones()
+    {
+        return $this->hasMany(Subseccion::class);
+    }
+
 }

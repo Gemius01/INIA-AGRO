@@ -14,8 +14,29 @@
                     class="btn btn-sm btn-success pull-right">Editar</a>
                     @endcan
                 </div>
+
                 <div class="card-body">
                  {!! $seccion->pivot->contenido !!}
+                 @if($seccion->id == 6)
+                     @foreach($boletin->subsecciones as $subseccion)
+                        @foreach($subseccion->macrozonas as $macrozona)
+                        <p>
+                            <p class="text-muted btn">
+                                <strong>
+                                    {{$macrozona->name}} > {{ $macrozona->rubro->name }}
+                                </strong>
+                            </p>
+                            @can('macrozona-'.$macrozona->id)
+                            <a class="btn btn-sm btn-primary pull-right" href="#">Editar</a>
+                            @endcan
+                        </p>
+
+                        {!! $macrozona->pivot->contenido !!}
+                        <hr>
+                        @endforeach
+                     @endforeach
+                 @else
+                 @endif
 
                 </div>
             </div>

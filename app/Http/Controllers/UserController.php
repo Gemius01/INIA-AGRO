@@ -181,24 +181,34 @@ class UserController extends Controller
     {
         //return view('users.macrozonas', compact(['user',]));
         $user->macrozonas()->sync($request->get('macrozonas'));
+        $permission = array();
+        $macrozonas = $request->get('macrozonas');
+        $secciones = $user->secciones()->pluck('seccion_id');
+        //dd($secciones);
+        if($secciones != null)
+        {
+            foreach($secciones as $seccion)
+            {
+               $permisoEncontrado = Permission::where('slug', 'seccion-'.$seccion)->first();
+               $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+            }
+        }
+        if($macrozonas !=null)
+        {    
+            foreach($macrozonas as $macrozona)
+            {
+                $permisoEncontrado = Permission::where('slug', 'macrozona-'.$macrozona)->first();
+                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+            }
+        }
+        $user->permissions()->sync($permission);
         return redirect()->route('users.index', $user->id)
             ->with('info', 'Se ha actualizado el usuario '.$user->name);
     }
 
     public function vistaSecciones(User $user)
     {
-        /*
-        $seccionesUser = $user->secciones;
 
-        $ids = [];
-        foreach ($user->regiones as $region) {
-        $ids[] = $region['id'];
-        }
-        */
-        //$secciones = Macrozona::whereIn('region_id', $ids)->get();
-        //dd($macrozonas);
-    
-        //dd($macrozonas);
         $secciones = Seccion::get();
         $seccionesUser = $user->secciones;
         return view('users.secciones', compact(['user', 'seccionesUser', 'secciones', ]));
@@ -212,13 +222,23 @@ class UserController extends Controller
         $secciones = $request->get('secciones');
 
         $permission = array();
-        $i = 0;
-        foreach($secciones as $seccion)
+        $macrozonas = $user->macrozonas()->pluck('macrozona_id');
+        if($macrozonas != null)
         {
-            $permisoEncontrado = Permission::where('slug', 'seccion-'.$seccion)->first();
-            $permission[$seccion] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+            foreach($macrozonas as $macrozona)
+            {
+                $permisoEncontrado = Permission::where('slug', 'macrozona-'.$macrozona)->first();
+                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+            }
         }
-
+        if($secciones != null)
+        {    
+            foreach($secciones as $seccion)
+            {
+                $permisoEncontrado = Permission::where('slug', 'seccion-'.$seccion)->first();
+                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+            }
+        }
         $user->permissions()->sync($permission);
         return redirect()->route('users.index', $user->id)
             ->with('info', 'Se ha actualizado el usuario '.$user->name);

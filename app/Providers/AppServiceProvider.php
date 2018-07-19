@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Observers\SectionObserver;
+use App\Observers\MacrozonaObserver;
+use App\Macrozona;
 use App\Seccion;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         });
         
         Seccion::observe(SectionObserver::class);
+        Macrozona::observe(MacrozonaObserver::class);
     }
 
     /**

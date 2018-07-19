@@ -11,6 +11,10 @@ p img {
 img.center{
     text-align:center;
 }*/
+p:has(> img) {
+    text-align:center;
+    border-color: red;
+}
 @page {
   margin-top: 75px;
   margin-left:50px;
