@@ -18,6 +18,8 @@ class Publicacion extends Model
     	return $this->hasMany(Boletin::class);
     }
 
-   
-
+    public function resumen()
+    {
+    	return $this->hasOne(Resumen::class);
+    }
 }

@@ -213,4 +213,9 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('xmlview','BoletinController@generarXML')->name('xmlview')
 		->middleware('permission:boletines.index');	
+
+	//Resumen Nacional
+
+	Route::get('resumen/{resumen}','ResumenController@show')->name('resumenes.show')
+		->middleware('permission:boletines.index');	
 });

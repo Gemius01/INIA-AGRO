@@ -10,6 +10,7 @@ use App\Seccion;
 use App\Eleccion;
 use App\Subseccion;
 use App\Macrozona;
+use App\Resumen;
 
 class PublicacionController extends Controller
 {
@@ -57,7 +58,12 @@ class PublicacionController extends Controller
         //dd($request['region']);
         if($request['region'] == 0){//Crear Boletines para todas las regiones
             $publicacion = Publicacion::create($request->all());
-            $regiones = Region::where('id', '<>', '1')->get();   
+            $regiones = Region::where('id', '<>', '1')->get();
+            $regionesResumen = Region::get();
+            $resumen = Resumen::create([
+                'publicacion_id' => $publicacion->id,
+            ]);
+            $resumen->regiones()->sync($regionesResumen);
             foreach($regiones as $region){
                 $boletin = Boletin::create([
                     'region_id' => $region->id,
@@ -73,12 +79,10 @@ class PublicacionController extends Controller
                 $macrozonasByRegion = Macrozona::where('region_id', '=', $region->id)->get();
                 if($macrozonasByRegion != null){
                   $subseccion->macrozonas()->sync($macrozonasByRegion);
-                  }else{
-
-                  }
+                }
                 
             }
-        }else{
+        }else{// Crear Boletin para una región
             $publicacion = Publicacion::create($request->all());
             $boletin = Boletin::create([
                 'region_id' => $request['region'],
@@ -105,7 +109,16 @@ class PublicacionController extends Controller
        
         //dd($publicacion->boletines);
         $boletines = $publicacion->boletines;
-        return view('publicaciones.show', compact(['boletines', ]));
+        
+        if($publicacion->resumen != null)
+        {
+            $resumen = $publicacion->resumen;
+        }else{
+            $resumen = (object) array( 'mes' => '-', 'año' => '-');
+        }
+        
+        //dd($resumen);
+        return view('publicaciones.show', compact(['boletines', 'resumen', ]));
     }
 
     /**

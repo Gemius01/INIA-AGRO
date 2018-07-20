@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Publicaciones
+                <div class="card-header">
+                  Publicacion del mes de {{ $resumen->publicacion->mes }} del {{ $resumen->publicacion->año }}
                 @can('products.create')
                     <a href="{{ route('publicaciones.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>
@@ -18,7 +19,35 @@
                                <th width="10%">ID</th>
                                <th>Región</th>
                                <th>Estado</th>
-                               <th colspan="3" style="text-align: center;" width="30%">Opciones</th>
+                               <th colspan="2" style="text-align: center;" width="30%">Opciones</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                        
+                          <tr>
+                            <td>{{ $resumen->id }}</td>
+                            <td>{{ $resumen->publicacion->mes }}</td>
+                            <td>{{ $resumen->publicacion->año }}</td>
+                            <td style="text-align: center;">
+                              <a href="{{ route('resumenes.show', $resumen->id) }}"
+                              class="btn btn-sm btn-primary">Ver</a>
+                            </td>
+                            <td style="text-align: center;">
+                              <a href="{{ route('boletines.pdfTemplate', $resumen->id) }}"
+                              class="btn btn-sm btn-warning">PDF</a>
+                            </td>
+                          </tr>
+                        
+                       </tbody>
+                   </table>
+                   <hr>
+                   <table class="table table-striped table-hover table-bordered">
+                       <thead>
+                           <tr>
+                               <th width="10%">ID</th>
+                               <th>Región</th>
+                               <th>Estado</th>
+                               <th colspan="2" style="text-align: center;" width="30%">Opciones</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -36,10 +65,6 @@
                             <td style="text-align: center;">
                               <a href="{{ route('boletines.show', $boletin->id) }}"
                               class="btn btn-sm btn-primary">Ver</a>
-                            </td>
-                            <td style="text-align: center;">
-                              <a href=""
-                              class="btn btn-sm btn-success">Agregar Boletin</a>
                             </td>
                             <td style="text-align: center;">
                               <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
