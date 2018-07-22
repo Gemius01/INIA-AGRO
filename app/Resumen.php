@@ -19,6 +19,6 @@ class Resumen extends Model
 
     public function regiones()
 	{
-		return $this->belongsToMany(Region::class);
+		return $this->belongsToMany(Region::class)->withPivot('contenido');
 	}
 }

@@ -16,6 +16,7 @@ class CreateRubrosTable extends Migration
         Schema::create('rubros', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('subrubro')->nullable();
             $table->timestamps();
         });
     }

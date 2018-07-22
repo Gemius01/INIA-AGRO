@@ -17,6 +17,7 @@
                            <tr>
                                <th width="10%">ID</th>
                                <th>Nombre</th>
+                               <th>Subrubro</th>
                                <th colspan="3" style="text-align: center;">Opciones</th>
                            </tr>
                        </thead>
@@ -26,6 +27,7 @@
 
                             <td>{{ $rubro->id }}</td>
                             <td>{{ $rubro->name }}</td>
+                            <td>{{ $rubro->subrubro }}</td>
                             @can('products.show')
                                <td style="text-align: center;">
                                    <a href="{{ route('rubros.show', $rubro->id) }}"

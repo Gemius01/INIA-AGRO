@@ -12,6 +12,6 @@ class Rubro extends Model
     }
 	
     protected $fillable = [
-        'name',
+        'name', 'subrubro',
     ];
 }

@@ -160,9 +160,66 @@ class BoletinController extends Controller
       $detail = $boletin->secciones()->where('seccion_id', '=', $response['seccion_id'])->first();
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
-      return $detail; 
+      return '/boletines/'.$request->input('boletin_id'); 
 
+    }
+
+    public function editarSeccionMacrozona(Boletin $boletin, $subseccion, $macrozona)
+    {
+        
+        //Arreglar a una manera mas optima
+        //$macrozona = $boletin->subsecciones[0]->macrozonas;
+        //$detalleMacrozona = $macrozona[1]->pivot->;
+
+        $subsecciones = $boletin->subsecciones()->first();
+        $detalleMacrozona = $subsecciones->macrozonas()
+        ->wherePivot('macrozona_id', '=', $macrozona)
+        ->wherePivot('subseccion_id', '=', $subseccion)
+        ->first();
+        //$detalleMacrozona = $busquedaMacro->pivot;
+        //$asd3 = $asd2->pivot;
+        //$asd =$subsecciones->macrozonas()->wherePivot('macrozona_id', '=', $macrozona)->first();
+        
+        /*
+        [0]->pivot
+        ->where([
+            ['macrozona_id', '=', $macrozona],
+            ['subseccion_id', '=', $subseccion]
+        ])->first();
+        */
+        
+        return view('editorMacrozona', compact([
+             'detalleMacrozona', 'boletin',
+        ]));
+    }
+
+    public function guardarEdicionMacrozona(Request $request) 
+    {
+       //dd('asd');
+        //return $request;
+        
+       $response = array(
+          'boletin_id' => $request->input('boletin_id'),
+          'subseccion_id' => $request->input('subseccion_id'),
+          'macrozona_id' => $request->input('macrozona_id'),
+          'contenido' => $request->input('contenido'),
+      );
+      $boletin = Boletin::find($response['boletin_id']);
+      $subsecciones = $boletin->subsecciones()->first();
      
+      
+      $detail = $subsecciones->macrozonas()
+        ->wherePivot('macrozona_id', '=', $request->input('macrozona_id'))
+        ->wherePivot('subseccion_id', '=', $request->input('subseccion_id'))
+        ->first();
+      
+       
+     
+      $detail->pivot->contenido =  $request->input('contenido');
+      $detail->pivot->save();
+
+      return '/boletines/'.$request->input('boletin_id'); 
+       
     }
 
     public function generarXML(){

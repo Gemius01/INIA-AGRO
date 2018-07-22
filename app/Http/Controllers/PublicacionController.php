@@ -169,4 +169,44 @@ class PublicacionController extends Controller
         return redirect()->route('publicaciones.index')
             ->with('info', 'Se ha elegido correctamente');
     }
+
+    public function vistaAbrirCerrarBoletines(Publicacion $publicacion)
+    {
+
+       return view('publicaciones.abrirCerrar', compact(['publicacion', ]));
+    }
+    public function cerrarBoletin(Boletin $boletin, $publicacion)
+    {
+        $boletin->update(["estado" => 0]);
+        return redirect()->route('publicaciones.abrirCerrar', $publicacion)
+            ->with('info', 'Se ha cerrado correctamente');
+
+    }
+
+    public function abrirBoletin(Boletin $boletin, $publicacion)
+    {
+         $boletin->update(["estado" => 1]);
+        return redirect()->route('publicaciones.abrirCerrar', $publicacion)
+            ->with('info', 'Se ha cerrado correctamente');
+    }
+
+    public function abrirTodosBoletines(Publicacion $publicacion)
+    {
+        foreach($publicacion->boletines as $boletin)
+        {
+            $boletin->update(["estado" => 1]);
+        }
+        return redirect()->route('publicaciones.abrirCerrar', $publicacion->id)
+            ->with('info', 'Se han abierto correctamente los boletines');
+    }
+
+    public function cerrarTodosBoletines(Publicacion $publicacion)
+    {
+        foreach($publicacion->boletines as $boletin)
+        {
+            $boletin->update(["estado" => 0]);
+        }
+        return redirect()->route('publicaciones.abrirCerrar', $publicacion->id)
+            ->with('info', 'Se ha cerrado correctamente los boletines');
+    }
 }

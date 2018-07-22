@@ -50,7 +50,6 @@ paste_data_images: false,
 branding: false,
 image_description: false,
 toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton",
-
 relative_urls: false,
 remove_script_host: false,
 height: 200,
@@ -124,7 +123,7 @@ function guardarDatos()
     data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
     success: function(response){ // What to do if we succeed
         //console.log(response); 
-        window.history.back();
+        window.location.href = response;
     },
     error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
         //console.log(JSON.stringify(jqXHR));

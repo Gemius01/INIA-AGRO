@@ -8,6 +8,10 @@
 	@endif
 </div>
 <div class="form-group">
+	{{ Form::label('subrubro', 'Nombre del Subrubro') }}
+	{{ Form::text('subrubro', null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
 	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
 
 </div>

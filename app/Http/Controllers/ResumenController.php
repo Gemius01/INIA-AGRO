@@ -83,4 +83,30 @@ class ResumenController extends Controller
     {
         //
     }
+
+    public function vistaSeccionResumen(Resumen $resumen, $region)
+    {
+        $seccionDetail = $resumen->regiones()->where('region_id', '=', $region)->first();
+        return view('editorResumen', compact([
+             'seccionDetail',
+        ]));
+    }
+
+    public function guardarEdicion(Request $request) 
+    {
+       //dd('asd');
+       $response = array(
+          
+          'region_id' => $request->input('region_id'),
+          'resumen_id' => $request->input('resumen_id'),
+          'contenido' => $request->input('contenido'),
+      );
+      $resumen = Resumen::find($response['resumen_id']);
+      $detail = $resumen->regiones()->where('region_id', '=', $response['region_id'])->first();
+      $detail->pivot->contenido =  $request->input('contenido');
+      $detail->pivot->save();
+      return '/resumen/'.$request->input('resumen_id'); 
+
+     
+    }
 }

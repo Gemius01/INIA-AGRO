@@ -8,9 +8,6 @@
                 <div class="card-header">Nuevo Rubro
                 </div>
                 <div class="card-body">
-
-
-                  
                     {{ Form::open(['route' => 'rubros.store']) }}
 
                         @include('rubros.partials.formCreate')

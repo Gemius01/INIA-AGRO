@@ -117,6 +117,9 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::put('publicaciones/elegido/{publicacion}','PublicacionController@elegirPublicacion')->name('publicaciones.elegirPublicacion')
 		->middleware('permission:boletines.show');
+		
+	Route::get('publicaciones/{publicacion}/abrircerrar','PublicacionController@vistaAbrirCerrarBoletines')->name('publicaciones.abrirCerrar')
+		->middleware('permission:boletines.show');
 
 
 	//Boletines
@@ -133,13 +136,32 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('boletines/{boletin}','BoletinController@show')->name('boletines.show')
 		->middleware('permission:boletines.show');
 
+	Route::put('boletines/cerrar/{boletin}/{publicacion}','PublicacionController@cerrarBoletin')->name('boletines.cerrar')
+		->middleware('permission:boletines.show');
+
+	Route::put('boletines/abrir/{boletin}/{publicacion}','PublicacionController@abrirBoletin')->name('boletines.abrir')
+		->middleware('permission:boletines.show');
+
+	Route::put('boletines/abrirTodos/{publicacion}','PublicacionController@abrirTodosBoletines')->name('boletines.abrirtodos')
+		->middleware('permission:boletines.show');
+
+	Route::put('boletines/cerrarTodos/{publicacion}','PublicacionController@cerrarTodosBoletines')->name('boletines.cerrartodos')
+		->middleware('permission:boletines.show');
+
+
     Route::get('pdfExport/{boletin}','PdfBoletinController@exportarPDF')->name('boletines.pdfTemplate');
 
 	Route::get('editor/{boletin}/{seccion}','BoletinController@editarSeccion')->name('editor');
 
-
 	Route::post('/editor/update','BoletinController@guardarEdicion')->name('editor.update');
 
+	Route::get('editorResumen/{resumen}/{region}','ResumenController@vistaSeccionResumen')->name('editorresumen');
+
+	Route::post('/editorResumen/update','ResumenController@guardarEdicion')->name('editorresumen.update');
+
+	Route::get('editorMacrozona/{boletin}/{subseccion}/{macrozona}','BoletinController@editarSeccionMacrozona')->name('editormacrozona');
+
+	Route::post('/editorMacrozona/update','BoletinController@guardarEdicionMacrozona')->name('editormacrozona.update');
 
 
 	//Rubros

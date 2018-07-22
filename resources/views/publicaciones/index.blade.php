@@ -26,7 +26,7 @@
                                <th width="10%">ID</th>
                                <th>Mes</th>
                                <th>Año</th>
-                               <th colspan="4" style="text-align: center;" width="30%">Opciones</th>
+                               <th colspan="5" style="text-align: center;" width="30%">Opciones</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -35,6 +35,10 @@
                             <td>{{ $publicacion->id }}</td>
                             <td>{{ $publicacion->mes }}</td>
                             <td>{{ $publicacion->año }}</td>
+                            <td style="text-align: center;">
+                              <a href="{{ route('publicaciones.abrirCerrar', $publicacion->id) }}"
+                              class="btn btn-sm btn-primary">Abrir/Cerrar</a>
+                            </td>
                             <td style="text-align: center;">
                               <a href="{{ route('publicaciones.show', $publicacion->id) }}"
                               class="btn btn-sm btn-primary">Ver</a>
