@@ -15,8 +15,25 @@
                   <strong>Publicación elegida actualmente</strong>
                   <ul>
                    
-                    <li><strong>MES :</strong> {{ $publicacionActual->mes}}</li>
-                    <li><strong>AÑO :</strong> {{ $publicacionActual->año}}</li>
+                    <li>
+                      <strong>
+                        MES : 
+                        @if($publicacionActual->mes != null) 
+                          {{$publicacionActual->mes->nombre}}
+                        @else
+                          
+                        @endif
+                      </strong> 
+                    </li>
+                    <li>
+                      <strong>
+                        AÑO : 
+                        @if($publicacionActual->año !=null)
+                        {{$publicacionActual->año}}
+                        @else
+                        @endif
+                      </strong> 
+                    </li>
                     
                   </ul>
                   <hr>
@@ -32,9 +49,9 @@
                        <tbody>
                         @foreach($publicaciones as $publicacion)
                           <tr>
-                            <td>{{ $publicacion->id }}</td>
-                            <td>{{ $publicacion->mes }}</td>
-                            <td>{{ $publicacion->año }}</td>
+                            <td>{{$publicacion->id}}</td>
+                            <td>{{$publicacion->mes->nombre}}</td>
+                            <td>{{$publicacion->año}}</td>
                             <td style="text-align: center;">
                               <a href="{{ route('publicaciones.abrirCerrar', $publicacion->id) }}"
                               class="btn btn-sm btn-primary">Abrir/Cerrar</a>

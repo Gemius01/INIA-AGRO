@@ -10,7 +10,7 @@ class Publicacion extends Model
 	protected $table = 'publicaciones';
 
 	protected $fillable = [
-        'mes', 'año',
+        'mes_id', 'año',
     ];
 
     public function boletines()
@@ -21,5 +21,10 @@ class Publicacion extends Model
     public function resumen()
     {
     	return $this->hasOne(Resumen::class);
+    }
+
+    public function mes()
+    {
+        return $this->belongsTo(Mes::class);
     }
 }

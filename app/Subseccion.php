@@ -8,7 +8,7 @@ class Subseccion extends Model
 {
 	protected $table = 'subsecciones';
 	protected $fillable = [
-        'seccion_id', 'boletin_id',
+        'seccion_id', 'boletin_id', 
     ];
 	
     public function seccion()
@@ -23,6 +23,6 @@ class Subseccion extends Model
 
     public function macrozonas()
     {
-    	return $this->belongsToMany(Macrozona::class)->withPivot('contenido');
+    	return $this->belongsToMany(Macrozona::class)->withPivot('contenido', 'resumen', 'autor', 'email', 'id');
     }
 }

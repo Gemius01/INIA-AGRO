@@ -163,6 +163,10 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::post('/editorMacrozona/update','BoletinController@guardarEdicionMacrozona')->name('editormacrozona.update');
 
+	
+	Route::post('/editorMacrozonaResumen/update','BoletinController@guardarEdicionMacrozonaResumen')
+		->name('editormacrozonaresumen.update');
+
 
 	//Rubros
 
@@ -233,11 +237,14 @@ Route::middleware(['auth'])->group(function(){
 	Route::delete('macrozonas/{macrozona}','MacrozonaController@destroy')->name('macrozonas.destroy')
 		->middleware('permission:roles.destroy');
 
-	Route::get('xmlview','BoletinController@generarXML')->name('xmlview')
+	Route::get('xmlview/{publicacion}','BoletinController@generarXML')->name('xmlview')
 		->middleware('permission:boletines.index');	
 
 	//Resumen Nacional
 
 	Route::get('resumen/{resumen}','ResumenController@show')->name('resumenes.show')
-		->middleware('permission:boletines.index');	
+		->middleware('permission:boletines.index');
+
+	Route::get('resumenPDF/{resumen}','ResumenController@descargarPDF')->name('resumenespdf')
+		->middleware('permission:boletines.index');
 });

@@ -8,7 +8,7 @@
                 <div class="card-header">
                     
                         <strong>
-                            Boletín Agrometeorológico - Vista previa - {{ $boletin->region->name}} - Publicacion de {{ $boletin->publicacion->mes}} {{ $boletin->publicacion->año}}
+                            Boletín Agrometeorológico - Vista previa - {{ $boletin->region->name}} - Publicacion de {{ $boletin->publicacion->mes->nombre}} {{ $boletin->publicacion->año}}
                         </strong>
                     
                 </div>
@@ -43,7 +43,15 @@
                         <p>
                             <p class="text-muted btn">
                                 <strong>
-                                    {{$macrozona->name}} > {{ $macrozona->rubro->name }} > {{ $macrozona->rubro->subrubro}}
+                                    {{$macrozona->name}} 
+                                    @if($macrozona->rubro != null)
+                                    > {{ $macrozona->rubro->name }}
+                                        @if($macrozona->rubro->subrubro != null) 
+                                        > {{ $macrozona->rubro->subrubro}}
+                                        @else
+                                        @endif
+                                    @else
+                                    @endif
                                 </strong>
                             </p>
                             @can('macrozona-'.$macrozona->id)

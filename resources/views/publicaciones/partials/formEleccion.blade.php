@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{ $publicacion->mes }}</td>
+      <td>{{ $publicacion->mes->nombre }}</td>
       <td>{{ $publicacion->año }}</td>
     </tr>
   </tbody>

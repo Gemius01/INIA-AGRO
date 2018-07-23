@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Region;
 use App\Boletin;
 use App\Seccion;
 use App\Macrozona;
+use App\Publicacion;
+use App\User;
 use File;
 use Response;
 
@@ -143,7 +146,7 @@ class BoletinController extends Controller
         //dd($secciones[0]->pivot);
         
         return view('editor', compact([
-             'seccionDetail',
+             'seccionDetail', 'boletin',
         ]));
     }
 
@@ -222,17 +225,78 @@ class BoletinController extends Controller
        
     }
 
-    public function generarXML(){
+    public function guardarEdicionMacrozonaResumen(Request $request, User $user) 
+    {
+       //dd('asd');
+        //return $request;
+       $user = Auth::user();
+       $response = array(
+          'boletin_id' => $request->input('boletin_id'),
+          'subseccion_id' => $request->input('subseccion_id'),
+          'macrozona_id' => $request->input('macrozona_id'),
+          'resumen' => $request->input('resumen'),
+      );
+      $boletin = Boletin::find($response['boletin_id']);
+      $subsecciones = $boletin->subsecciones()->first();
+     
+      
+      $detail = $subsecciones->macrozonas()
+        ->wherePivot('macrozona_id', '=', $request->input('macrozona_id'))
+        ->wherePivot('subseccion_id', '=', $request->input('subseccion_id'))
+        ->first();
+      
+       
+     
+      $detail->pivot->resumen =  $request->input('resumen');
+      $detail->pivot->autor = $user->name;
+      $detail->pivot->email = $user->email;
+      $detail->pivot->save();
+
+      return '/boletines/'.$request->input('boletin_id'); 
+     
+       
+    }
+
+    public function generarXML(Publicacion $publicacion){
+
+        $boletines = $publicacion->boletines;
+        $array = array();
+        foreach($boletines as $boletin)
+        {
+            /*
+            $seccion = $boletin->secciones()
+            ->where([
+                ['boletin_id', '=', $boletin->id],
+                ['seccion_id', '=', 6],
+            ])
+            ->first();
+            */
+            $subsecciones = $boletin->subsecciones()->first();
+     
+      
+            $macrozonas = $subsecciones->macrozonas()->get();
+            foreach($macrozonas as $macrozona)
+            {
+                //if($macrozona == null)
+                $array[] = $macrozona;
+            }
+            //$array[] = $seccion->subsecciones->macrozonas();
+
+        }
+        //dd($array);
+       
         $macrozonas = Macrozona::get();
+
         $headers = array(
       'Content-Type' => 'text/xml',
     );  
-        $content = view('boletines.xml', compact(['macrozonas',]))->render();
+        $content = view('boletines.xml', compact(['array', 'publicacion', ]))->render();
         //File::put(storage_path().'/file.xml', $content);
         //return Response::make($content, 200)->header('Content-Type', 'application/xml');
         //return response()->download('boletines.xml', 'filename.xml', $headers);
         //return response()->view('boletines.xml', compact(['macrozonas']))->header('Content-Type', 'text/xml')->download();
 
         return response()->attachment($content, date('Y-m-d'));
+        
     }
 }

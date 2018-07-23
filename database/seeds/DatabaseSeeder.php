@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MacrozonasTableSeeder::class);
         $this->call(ColaboradorPermissionsSeeder::class);
         $this->call(EleccionTableSeeder::class);
-
+        $this->call(MesTableSeeder::class);
     }
 }

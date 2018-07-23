@@ -1,16 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div >
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"></div>
+                <div class="card-header">
+                    <strong>
+                    Boletín Agrometeorológico - Región: {{ $boletin->region->name}} - 
+                    {{ $boletin->publicacion->mes->nombre }} - {{ $boletin->publicacion->año }}
+                    </strong>
+                     <a href="{{ route('boletines.show', $boletin->id)}}"
+                    class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
+                </div>
 
                 <div class="card-body">
-                    <h4>Boletines</h4>
-
+ 
+                    Seccion: {{ $seccionDetail->name }}
+                    <hr>
                     <div>
                     <form id="get-data-form" method="post">
 
@@ -21,12 +30,12 @@
                     </form>
                     <div style="display:none;">
                         <input id="obj" value="{{ $seccionDetail }}"></input>
-                        
                     </div>
                     <div>
                     </div>
+                    <br>
                     <center>
-                        <input  type="button" value="Guardar Datos" onclick="guardarDatos()" />
+                        <button  class="btn btn-sm btn-primary"  onclick="guardarDatos()">Guardar Datos</button>
                     </center>
                   </div>
                 </div>

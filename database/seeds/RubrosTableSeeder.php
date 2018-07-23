@@ -92,10 +92,6 @@ class RubrosTableSeeder extends Seeder
          'subrubro' => 'Quínoa'
        ]);
        Rubro::create([
-         'name' => 'Cultivos',
-         'subrubro' => 'Cebada'
-       ]);
-       Rubro::create([
          'name' => 'Frutales',
          'subrubro' => 'Pomáceas'
        ]);

@@ -15,7 +15,8 @@ class CreatePublicacionesTable extends Migration
     {
         Schema::create('publicaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('mes');
+            $table->integer('mes_id')->unsigned()->nullable();
+            $table->foreign('mes_id')->references('id')->on('meses')->onDelete('cascade');
             $table->string('año');
             $table->timestamps();
         });

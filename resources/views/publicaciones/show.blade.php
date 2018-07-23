@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                  Publicacion del mes de {{ $resumen->publicacion->mes }} del {{ $resumen->publicacion->año }}
+                  Publicacion del mes de {{ $resumen->publicacion->mes->nombre }} del {{ $resumen->publicacion->año }}
                 @can('products.create')
                     <a href="{{ route('publicaciones.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>
@@ -26,14 +26,14 @@
                         
                           <tr>
                             <td>{{ $resumen->id }}</td>
-                            <td>{{ $resumen->publicacion->mes }}</td>
+                            <td>{{ $resumen->publicacion->mes->nombre }}</td>
                             <td>{{ $resumen->publicacion->año }}</td>
                             <td style="text-align: center;">
                               <a href="{{ route('resumenes.show', $resumen->id) }}"
                               class="btn btn-sm btn-primary">Ver</a>
                             </td>
                             <td style="text-align: center;">
-                              <a href="{{ route('boletines.pdfTemplate', $resumen->id) }}"
+                              <a href="{{ route('resumenespdf', $resumen->id) }}"
                               class="btn btn-sm btn-warning">PDF</a>
                             </td>
                           </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Resumen;
+use PDF;
 
 class ResumenController extends Controller
 {
@@ -88,7 +89,7 @@ class ResumenController extends Controller
     {
         $seccionDetail = $resumen->regiones()->where('region_id', '=', $region)->first();
         return view('editorResumen', compact([
-             'seccionDetail',
+             'seccionDetail', 'resumen', 
         ]));
     }
 
@@ -106,7 +107,12 @@ class ResumenController extends Controller
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
       return '/resumen/'.$request->input('resumen_id'); 
+    }
 
-     
+    public function descargarPDF(Resumen $resumen)
+    {
+        return PDF::loadView('resumenes.pdfResumenTemplate', compact([ 'resumen', ]), [], [
+        'format' => 'A4'
+      ])->download('invoice.pdf');
     }
 }

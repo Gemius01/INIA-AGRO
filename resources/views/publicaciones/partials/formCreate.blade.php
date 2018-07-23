@@ -4,7 +4,8 @@
 </div>
 <div class="form-group">
 	{{ Form::label('name', 'Mes de la Publicación') }}
-	{{ Form::text('mes', null, ['class' => 'form-control']) }}
+	{!! Form::select('mes_id', $meses, null, ['class' => 'form-control']) !!}
+	
 </div>
 <div class="form-group">
 	{{ Form::label('name', 'Año de la Publicación') }}
@@ -14,3 +15,4 @@
 	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
 	
 </div>
+
