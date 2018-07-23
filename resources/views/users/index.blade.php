@@ -54,7 +54,17 @@
                                 <ul> 
                                   @foreach($user->macrozonas as $macrozona)
                                   <li>
-                                    {{ $macrozona->name }} ({{ $macrozona->rubro->name }})
+                                    {{ $macrozona->name}}
+                                    @if($macrozona->rubro != null)
+                                     > {{ $macrozona->rubro->name }} 
+                                     @if($macrozona->rubro->subrubro !=null)
+                                     > {{ $macrozona->rubro->subrubro }} 
+                                     @else
+                                     
+                                     @endif
+                                    @else
+                                     
+                                    @endif
                                   </li>
                                   @endforeach
                                 </ul>

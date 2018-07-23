@@ -26,21 +26,26 @@
 		</td>
 	</tbody>
 </table>
-<hr>
+
 <h3>Secciones</h3>
-<div class="form-group">
-	<ul class="list-unstyled">
-		@foreach($secciones as $seccion)
-		<li>
-			<label>
-		        {{ Form::checkbox('secciones[]', $seccion->id, null) }}
-		        {{ $seccion->name }}
-		        
-	        </label>
-		</li>
+<table class="table table-striped table-hover table-bordered" width="100%">
+	<thead>
+	<tr>
+		<th style="text-align: center;">Check</th>
+		<th>Sección</th>
+	</tr>
+	</thead>
+	<tbody>
+		 @foreach($secciones as $seccion)
+		 <tr>
+			<td style="text-align: center;">{{ Form::checkbox('secciones[]', $seccion->id, null) }}</td>
+			<td>{{ $seccion->name }}</td>
+			</tr>
 		@endforeach
-	</ul>
-</div>
+	</tbody>
+</table>
 <div class="form-group">
-	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+	<center>
+		{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+	</center>
 </div>
