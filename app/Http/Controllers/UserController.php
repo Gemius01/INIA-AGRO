@@ -110,7 +110,8 @@ class UserController extends Controller
         $roles = $user->roles()->get();
         $regiones = $user->regiones()->get();
         $seccions = $user->secciones()->get();
-        return view('users.show', compact('user', 'roles', 'seccions'));
+        $macrozonas = $user->macrozonas()->get();
+        return view('users.show', compact('user', 'roles', 'seccions', 'regiones', 'macrozonas'));
     }
 
     /**

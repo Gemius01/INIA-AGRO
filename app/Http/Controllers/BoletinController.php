@@ -100,7 +100,9 @@ class BoletinController extends Controller
 
         //$boletin = Boletin::where('id', '=', $id);
         //dd($boletin->secciones);
-        return view('boletines.show', compact([ 'boletin', ]));
+        $user = Auth::user();
+        $rol = $user->roles()->first();
+        return view('boletines.show', compact([ 'boletin', 'rol']));
     }
 
     /**
