@@ -30,7 +30,7 @@ class RubroStoreRequest extends FormRequest
 
     public function messages(){
       return [
-          'name.required' => 'Nombre del rubro esta vacio',
+          'name.required' => 'El nombre del rubro esta vacío',
           'name.max' => 'El nombre del rubro no debe contener más de 30 caracteres.',
           'name.min' => 'El nombre del rubro debe contener más de 2 caracteres.'
       ];

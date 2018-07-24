@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RubroUpdateRequest extends FormRequest
+class MacrozonaStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +23,16 @@ class RubroUpdateRequest extends FormRequest
      */
      public function rules()
      {
-         return [
-             'name' => 'required|max:30|min:2',
-         ];
+       return [
+           'name' => 'required|max:100|min:2',
+       ];
      }
 
      public function messages(){
        return [
-           'name.required' => 'El nombre del rubro esta vacío',
-           'name.max' => 'El nombre del rubro no debe contener más de 30 caracteres.',
-           'name.min' => 'El nombre del rubro debe contener más de 2 caracteres.'
+           'name.required' => 'El Nombre de la macrozona esta vacío.',
+           'name.max' => 'El Nombre de la macrozona no debe contener más de 100 caracteres.',
+           'name.min' => 'El Nombre de la macrozona debe contener al menos 2 caracteres.',
        ];
      }
 }

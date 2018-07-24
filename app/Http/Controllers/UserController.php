@@ -10,6 +10,9 @@ use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
+
 
 class UserController extends Controller
 {
@@ -17,15 +20,15 @@ class UserController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     
+
      */
- 
+
 
     public function index()
     {
         //$users = User::paginate();
         //$users = User::with('region_id')->paginate(20);
-       
+
 
         $users = User::with('secciones')->paginate(20);
 
@@ -59,15 +62,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        
+
         $user = User::create([
             'name'      => $request['name'],
             'email'     => $request['email'],
             'password'  => Hash::make($request['password']),
             'cargo'     => $request['cargo'],
-            
+
 
         ]);
 
@@ -79,7 +82,7 @@ class UserController extends Controller
 
         //Sincroniza las tablas intermedias de role_user
         $user->roles()->sync($request->get('roles'));
-        
+
         //Sincroniza las tablas intermedias de seccion_user
         $user->secciones()->sync($request->get('secciones'));
 
@@ -106,7 +109,7 @@ class UserController extends Controller
         $user->roles()->get();
         $roles = $user->roles()->get();
         $regiones = $user->regiones()->get();
-        $seccions = $user->secciones()->get(); 
+        $seccions = $user->secciones()->get();
         return view('users.show', compact('user', 'roles', 'seccions'));
     }
 
@@ -122,7 +125,7 @@ class UserController extends Controller
         $roles = Role::get();
         $regiones = Region::get();
         //$seccions = Seccion::get();
-        
+
         //$checkeds = User::find($user->id)->secciones;
         //return $checkeds;
         return view('users.edit', compact(['user', 'roles', 'regiones', ]));
@@ -135,12 +138,12 @@ class UserController extends Controller
      * @param  \App\User  $User
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        
+
         $user->roles()->sync($request->get('roles'));
 
-        
+
         //$user->secciones()->sync($request->get('secciones'));
 
         $user->regiones()->sync($request->get('regiones'));
@@ -173,7 +176,7 @@ class UserController extends Controller
         }
          $macrozonas = Macrozona::whereIn('region_id', $ids)->get();
          //dd($macrozonas);
-    
+
         //dd($macrozonas);
         return view('users.macrozonas', compact(['user', 'macrozonasUser', 'macrozonas', ]));
     }
@@ -191,15 +194,15 @@ class UserController extends Controller
             foreach($secciones as $seccion)
             {
                $permisoEncontrado = Permission::where('slug', 'seccion-'.$seccion)->first();
-               $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+               $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id);
             }
         }
         if($macrozonas !=null)
-        {    
+        {
             foreach($macrozonas as $macrozona)
             {
                 $permisoEncontrado = Permission::where('slug', 'macrozona-'.$macrozona)->first();
-                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id);
             }
         }
         $user->permissions()->sync($permission);
@@ -229,15 +232,15 @@ class UserController extends Controller
             foreach($macrozonas as $macrozona)
             {
                 $permisoEncontrado = Permission::where('slug', 'macrozona-'.$macrozona)->first();
-                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id);
             }
         }
         if($secciones != null)
-        {    
+        {
             foreach($secciones as $seccion)
             {
                 $permisoEncontrado = Permission::where('slug', 'seccion-'.$seccion)->first();
-                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id); 
+                $permission[] = array('permission_id' => $permisoEncontrado->id, 'user_id' => $user->id);
             }
         }
         $user->permissions()->sync($permission);

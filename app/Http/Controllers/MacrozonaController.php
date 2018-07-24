@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\MacrozonaStoreRequest;
+use App\Http\Requests\MacrozonaUpdateRequest;
 use App\Macrozona;
 use App\Region;
 use App\Rubro;
@@ -27,7 +29,7 @@ class MacrozonaController extends Controller
             //$regiones = Region::where('id', '<>', 1)->get();
          //$macrozonas = Macrozona::paginate(10);
             //$regiones = Region::where('id', '<>', 1)->get();
-        
+
         return view('macrozonas.index', compact([ 'macrozonas', 'regiones', ]));
     }
 
@@ -50,10 +52,10 @@ class MacrozonaController extends Controller
            }else{
             $arrayRubros[$rubro->id] = $rubro->name;
            }
-           
-           
+
+
         }
-        
+
         return view('macrozonas.create', compact(['regiones', 'arrayRubros', ]));
     }
 
@@ -63,13 +65,13 @@ class MacrozonaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MacrozonaStoreRequest $request)
     {
 
         $macrozona = Macrozona::create([
             'name'           => $request['name'],
             'region_id'      => $request['region'],
-            'rubro_id'       => $request['rubro'],        
+            'rubro_id'       => $request['rubro'],
         ]);
 
         return redirect()->route('macrozonas.index', $macrozona->id)
@@ -96,7 +98,7 @@ class MacrozonaController extends Controller
     public function edit(Macrozona $macrozona)
     {
         $regiones = Region::where('id', '<>', 1)->pluck('name', 'id');
-        $rubros = Rubro::pluck('name', 'id'); 
+        $rubros = Rubro::pluck('name', 'id');
 
         return view('macrozonas.edit', compact([ 'macrozona','regiones', 'rubros', ]));
     }
@@ -108,7 +110,7 @@ class MacrozonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Macrozona $macrozona)
+    public function update(MacrozonaUpdateRequest $request, Macrozona $macrozona)
     {
         $macrozona->update($request->all());
 

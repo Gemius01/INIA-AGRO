@@ -38,7 +38,7 @@ class BoletinController extends Controller
 
         $regiones = Region::where('id', '<>', 1)->pluck('name', 'id');
         $regiones[0] = 'Todas las anteriores';
-        
+
         return view('boletines.create', compact([
             'regiones',
         ]));
@@ -52,17 +52,17 @@ class BoletinController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         if($request->region == 0){
             $regionesBD = Region::where('id', '<>', 1)->get();
             $secciones = Seccion::get();
             foreach($regionesBD as $region){
-                
+
               $boletin = Boletin::create([
                     'region_id' => $region->id,
                     'creacion' => $request->fecha,
                 ]);
-                
+
             }
         }else {
 
@@ -87,7 +87,7 @@ class BoletinController extends Controller
         return redirect()->route('boletines.index')
             ->with('info', 'boletín(es) creado(s) con exito');
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -144,13 +144,13 @@ class BoletinController extends Controller
         //dd($detalle);
         //$secciones = $detalle->secciones()->get();
         //dd($secciones[0]->pivot);
-        
+
         return view('editor', compact([
              'seccionDetail', 'boletin',
         ]));
     }
 
-    public function guardarEdicion(Request $request) 
+    public function guardarEdicion(Request $request)
     {
        //dd('asd');
        $response = array(
@@ -163,13 +163,13 @@ class BoletinController extends Controller
       $detail = $boletin->secciones()->where('seccion_id', '=', $response['seccion_id'])->first();
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
-      return '/boletines/'.$request->input('boletin_id'); 
+      return '/boletines/'.$request->input('boletin_id');
 
     }
 
     public function editarSeccionMacrozona(Boletin $boletin, $subseccion, $macrozona)
     {
-        
+
         //Arreglar a una manera mas optima
         //$macrozona = $boletin->subsecciones[0]->macrozonas;
         //$detalleMacrozona = $macrozona[1]->pivot->;
@@ -182,7 +182,7 @@ class BoletinController extends Controller
         //$detalleMacrozona = $busquedaMacro->pivot;
         //$asd3 = $asd2->pivot;
         //$asd =$subsecciones->macrozonas()->wherePivot('macrozona_id', '=', $macrozona)->first();
-        
+
         /*
         [0]->pivot
         ->where([
@@ -190,17 +190,17 @@ class BoletinController extends Controller
             ['subseccion_id', '=', $subseccion]
         ])->first();
         */
-        
+
         return view('editorMacrozona', compact([
              'detalleMacrozona', 'boletin',
         ]));
     }
 
-    public function guardarEdicionMacrozona(Request $request) 
+    public function guardarEdicionMacrozona(Request $request)
     {
        //dd('asd');
         //return $request;
-        
+
        $response = array(
           'boletin_id' => $request->input('boletin_id'),
           'subseccion_id' => $request->input('subseccion_id'),
@@ -209,23 +209,23 @@ class BoletinController extends Controller
       );
       $boletin = Boletin::find($response['boletin_id']);
       $subsecciones = $boletin->subsecciones()->first();
-     
-      
+
+
       $detail = $subsecciones->macrozonas()
         ->wherePivot('macrozona_id', '=', $request->input('macrozona_id'))
         ->wherePivot('subseccion_id', '=', $request->input('subseccion_id'))
         ->first();
-      
-       
-     
+
+
+
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
 
-      return '/boletines/'.$request->input('boletin_id'); 
-       
+      return '/boletines/'.$request->input('boletin_id');
+
     }
 
-    public function guardarEdicionMacrozonaResumen(Request $request, User $user) 
+    public function guardarEdicionMacrozonaResumen(Request $request, User $user)
     {
        //dd('asd');
         //return $request;
@@ -238,23 +238,23 @@ class BoletinController extends Controller
       );
       $boletin = Boletin::find($response['boletin_id']);
       $subsecciones = $boletin->subsecciones()->first();
-     
-      
+
+
       $detail = $subsecciones->macrozonas()
         ->wherePivot('macrozona_id', '=', $request->input('macrozona_id'))
         ->wherePivot('subseccion_id', '=', $request->input('subseccion_id'))
         ->first();
-      
-       
-     
+
+
+
       $detail->pivot->resumen =  $request->input('resumen');
       $detail->pivot->autor = $user->name;
       $detail->pivot->email = $user->email;
       $detail->pivot->save();
 
-      return '/boletines/'.$request->input('boletin_id'); 
-     
-       
+      return '/boletines/'.$request->input('boletin_id');
+
+
     }
 
     public function generarXML(Publicacion $publicacion){
@@ -272,8 +272,8 @@ class BoletinController extends Controller
             ->first();
             */
             $subsecciones = $boletin->subsecciones()->first();
-     
-      
+
+
             $macrozonas = $subsecciones->macrozonas()->get();
             foreach($macrozonas as $macrozona)
             {
@@ -284,12 +284,12 @@ class BoletinController extends Controller
 
         }
         //dd($array);
-       
+
         $macrozonas = Macrozona::get();
 
         $headers = array(
       'Content-Type' => 'text/xml',
-    );  
+    );
         $content = view('boletines.xml', compact(['array', 'publicacion', ]))->render();
         //File::put(storage_path().'/file.xml', $content);
         //return Response::make($content, 200)->header('Content-Type', 'application/xml');
@@ -297,6 +297,6 @@ class BoletinController extends Controller
         //return response()->view('boletines.xml', compact(['macrozonas']))->header('Content-Type', 'text/xml')->download();
 
         return response()->attachment($content, date('Y-m-d'));
-        
+
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Publicacion;
+use App\Http\Requests\PublicacionStoreRequest;
 use App\Region;
 use App\Boletin;
 use App\Seccion;
@@ -29,11 +30,11 @@ class PublicacionController extends Controller
         $publicaciones = Publicacion::orderBy('id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
         }else {
-        $publicacionActual = (object) array( 'mes' => null, 'año' => null); 
+        $publicacionActual = (object) array( 'mes' => null, 'año' => null);
         $publicaciones = Publicacion::orderBy('id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
         }
-        
+
     }
 
     /**
@@ -55,14 +56,14 @@ class PublicacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PublicacionStoreRequest $request)
     {
         //dd($request['region']);
-      
+
 
         if($request['region'] == 0){//Crear Boletines para todas las regiones
             $publicacion = Publicacion::create($request->all());
-            
+
             $regiones = Region::where('id', '<>', '1')->get();
             $regionesResumen = Region::get();
             $secciones = Seccion::get();
@@ -78,7 +79,7 @@ class PublicacionController extends Controller
                 ]);
                 $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
-      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="src="../../photos/shares/logo-inia.png"" alt="" width="585" height="124" /></strong></span></p>
+      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../photos/shares/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
       <p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
       <strong>BOLETÍNES NACIONAL DE ANÁLISIS DE RIESGOS AGROCLIMÁTICOS PARA LAS PRINCIPALES ESPECIES FRUTALES Y CULTIVOS, Y LA GANADERÍA</strong></span></p>
@@ -99,7 +100,7 @@ class PublicacionController extends Controller
                 ->wherePivot('boletin_id', '=', $boletin->id)
                 ->wherePivot('seccion_id', '=', 1)
                 ->first();
-                
+
 
                 $seccionPortada->pivot->contenido = $portada; //carga el txt de portada a la variable
                 $seccionPortada->pivot->save(); //
@@ -111,7 +112,7 @@ class PublicacionController extends Controller
                 if($macrozonasByRegion != null){
                   $subseccion->macrozonas()->sync($macrozonasByRegion);
                 }
-                
+
             }
         }else{// Crear Boletin para una región
             $publicacion = Publicacion::create($request->all());
@@ -137,17 +138,17 @@ class PublicacionController extends Controller
      */
     public function show(Publicacion $publicacion)
     {
-       
+
         //dd($publicacion->boletines);
         $boletines = $publicacion->boletines;
-        
+
         if($publicacion->resumen != null)
         {
             $resumen = $publicacion->resumen;
         }else{
             $resumen = (object) array( 'mes' => '-', 'año' => '-');
         }
-        
+
         //dd($resumen);
         return view('publicaciones.show', compact(['boletines', 'resumen', ]));
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Region;
+use App\Http\Requests\RegionStoreRequest;
+use App\Http\Requests\RegionUpdateRequest;
 
 class RegionController extends Controller
 {
@@ -35,11 +37,11 @@ class RegionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegionStoreRequest $request)
     {
         $region = Region::create([
             'name'           => $request['name'],
-            'country_id'     => 1,         
+            'country_id'     => 1,
         ]);
 
         return redirect()->route('regiones.index', $region->id)
@@ -75,7 +77,7 @@ class RegionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(RegionUpdateRequest $request, Region $region)
     {
         $region->update($request->all());
 

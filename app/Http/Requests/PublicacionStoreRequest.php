@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RubroUpdateRequest extends FormRequest
+class PublicacionStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +23,16 @@ class RubroUpdateRequest extends FormRequest
      */
      public function rules()
      {
-         return [
-             'name' => 'required|max:30|min:2',
-         ];
+       return [
+           'año' => 'required|max:4|min:4',
+       ];
      }
 
      public function messages(){
        return [
-           'name.required' => 'El nombre del rubro esta vacío',
-           'name.max' => 'El nombre del rubro no debe contener más de 30 caracteres.',
-           'name.min' => 'El nombre del rubro debe contener más de 2 caracteres.'
+           'año.required' => 'El Año de la publicación esta vacio.',
+           'año.max' => 'El Año de la publicación no debe contener más de 4 digitos.',
+           'año.min' => 'El Año de la publicación debe contener al menos 4 digitos.'
        ];
      }
 }
