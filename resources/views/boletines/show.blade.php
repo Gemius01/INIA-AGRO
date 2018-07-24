@@ -59,7 +59,11 @@
                                     <a  
                                         class="btn btn-sm btn-primary pull-right" 
                                         href="{{ route('editormacrozona', ['boletin'=>$boletin->id, 'subseccion'=>$subseccion->id, 'macrozona' => $macrozona->id ])}}"
-                                    >Editar</a>
+                                    >Editar</a> 
+                                    <a  
+                                        class="btn btn-sm btn-primary pull-right disabled" 
+                                        href="{{ route('editormacrozona', ['boletin'=>$boletin->id, 'subseccion'=>$subseccion->id, 'macrozona' => $macrozona->id ])}}"
+                                    >Ver Resumen</a>
                                 @else
                                     <a class="btn btn-sm btn-primary pull-right" href="#">Cerrado</a>
                                 @endif

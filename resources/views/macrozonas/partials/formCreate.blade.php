@@ -8,9 +8,10 @@
 </div>
 
 <div class="form-group">
-	{{ Form::label('region', 'Seleccione Rubro') }}
-	{!! Form::select('rubro', $rubros, null, ['class' => 'form-control', 'placeholder' => 'Pick a size...']) !!}
+	{{ Form::label('region', 'Seleccione Rubro (Opcional)') }}
+	{!! Form::select('rubro', $arrayRubros, null, ['class' => 'form-control', 'placeholder' => 'Elige un Rubro']) !!}
 </div>
+
 
 <center>
 	<div class="form-group">

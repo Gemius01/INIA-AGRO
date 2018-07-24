@@ -24,17 +24,49 @@
 </div>
 <div class="border"></div>
 </htmlpageheader>
-@if($seccion->pivot->contenido != null)
-<div class="titulo">
-	{{$seccion->name}}
-</div>
-<div class="contenido">
-	{!! $seccion->pivot->contenido !!}
-</div>
+@if($i==5)
+	<div class="titulo">
+		{{$seccion->name}}
+	</div>
+	<div class="contenido">
+		{!! $seccion->pivot->contenido !!}
+		<br>
+		@foreach($arrayMacro as $macrozona)
+			@if($macrozona->pivot->contenido != null)
+			<div>
+				<strong>
+				{{ $macrozona->name }} 
+				@if($macrozona->rubro != null)
+				> {{ $macrozona->rubro->name }} 
+					@if($macrozona->rubro->subrubro !=null)
+					> {{ $macrozona->rubro->subrubro }}
+					@else
+					@endif
+				@else
+				@endif
+			</strong>
+			</div>
+			<div>
+				{!! $macrozona->pivot->contenido !!}
+			</div>
+			@else
+			@endif
+		@endforeach
+	</div>
+	
 @else
+	@if($seccion->pivot->contenido != null)
+	<div class="titulo">
+		{{$seccion->name}}
+	</div>
+	<div class="contenido">
+		{!! $seccion->pivot->contenido !!}
 
+	</div>
+	@else
+
+	@endif
 @endif
-
 <htmlpagefooter name="page-footer">
 	<div class="border"></div>
 	<div class="footer">

@@ -39,8 +39,22 @@ class MacrozonaController extends Controller
     public function create()
     {
         $regiones = Region::where('id', '<>', 1)->pluck('name', 'id');
-        $rubros = Rubro::pluck('name', 'id');
-        return view('macrozonas.create', compact(['regiones', 'rubros', ]));
+        //$rubros = Rubro::pluck('name', 'id');
+        $rubros = Rubro::get();
+        $arrayRubros = array();
+        foreach($rubros as $rubro)
+        {
+           if($rubro->subrubro != null)
+           {
+            $arrayRubros[$rubro->id] = $rubro->name.' > '.$rubro->subrubro;
+           }else{
+            $arrayRubros[$rubro->id] = $rubro->name;
+           }
+           
+           
+        }
+        
+        return view('macrozonas.create', compact(['regiones', 'arrayRubros', ]));
     }
 
     /**
@@ -51,6 +65,7 @@ class MacrozonaController extends Controller
      */
     public function store(Request $request)
     {
+
         $macrozona = Macrozona::create([
             'name'           => $request['name'],
             'region_id'      => $request['region'],

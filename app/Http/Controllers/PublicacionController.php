@@ -78,7 +78,7 @@ class PublicacionController extends Controller
                 ]);
                 $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
-      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="http://www.example.com/photos/shares/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
+      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="src="../../photos/shares/logo-inia.png"" alt="" width="585" height="124" /></strong></span></p>
       <p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
       <strong>BOLETÍNES NACIONAL DE ANÁLISIS DE RIESGOS AGROCLIMÁTICOS PARA LAS PRINCIPALES ESPECIES FRUTALES Y CULTIVOS, Y LA GANADERÍA</strong></span></p>
@@ -94,15 +94,15 @@ class PublicacionController extends Controller
       <strong><em>Marcel Fuentes Bustamante, Ing. Civil Agrícola M.Sc, INIA Quilamapu <br />Cristóbal Campos Muñoz, Ing. Civil Agrícola, INIA Quilamapu
       <br />Rubén Ruiz Muñoz, Ing. Civil Agrícola, INIA Quilamapu </em></strong></span></p>
       <p><span style="color: green; font-size: medium;"><strong><em>Coordinador INIA:</em></strong></span><br /><span style="font-size: small;"><strong><em>Claudio Pérez Castillo, Ing. Agr. M.Sc. Ph.D, INIA Kampenaike</em></strong></span></p>';
-                $boletin->secciones()->sync($secciones);
-                $seccionPortada = $boletin->secciones()
+                $boletin->secciones()->sync($secciones);//sincroniza las secciones con el boletin
+                $seccionPortada = $boletin->secciones()//Busca la seccion de portada
                 ->wherePivot('boletin_id', '=', $boletin->id)
                 ->wherePivot('seccion_id', '=', 1)
                 ->first();
                 
 
-                $seccionPortada->pivot->contenido = $portada;
-                $seccionPortada->pivot->save();
+                $seccionPortada->pivot->contenido = $portada; //carga el txt de portada a la variable
+                $seccionPortada->pivot->save(); //
                 $subseccion = Subseccion::create([
                     'seccion_id' => 6,
                     'boletin_id' => $boletin->id,
