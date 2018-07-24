@@ -26,7 +26,6 @@
 		</td>
 	</tbody>
 </table>
-
 <h3>Secciones</h3>
 <table class="table table-striped table-hover table-bordered" width="100%">
 	<thead>
