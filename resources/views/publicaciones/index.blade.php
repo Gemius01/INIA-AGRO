@@ -60,10 +60,12 @@
                               <a href="{{ route('publicaciones.show', $publicacion->id) }}"
                               class="btn btn-sm btn-primary">Ver</a>
                             </td>
+                            <!--
                             <td style="text-align: center;">
                               <a href="{{ route('publicaciones.show', $publicacion->id) }}"
                               class="btn btn-sm btn-success">Agregar Boletin</a>
                             </td>
+                          -->
                             <td style="text-align: center;">
                               <a href="{{ route('xmlview', $publicacion->id) }}"
                               class="btn btn-sm btn-warning">XML</a>

@@ -13,6 +13,7 @@ use App\Subseccion;
 use App\Macrozona;
 use App\Resumen;
 use App\Mes;
+use App\User;
 
 class PublicacionController extends Controller
 {
@@ -59,8 +60,11 @@ class PublicacionController extends Controller
     public function store(PublicacionStoreRequest $request)
     {
         //dd($request['region']);
-
-
+        
+        
+      
+       
+        
         //if($request['region'] == 0){//Crear Boletines para todas las regiones
             $publicacion = Publicacion::create($request->all());
              $this->crearResumen($publicacion);
@@ -118,6 +122,17 @@ class PublicacionController extends Controller
     public function crearPortada(Boletin $boletin, Publicacion $publicacion)
     {
       $secciones = Seccion::get();
+      $users = User::get();
+        $stringUsuarios = '';
+        foreach($users as $user)
+        {
+          $userByRegion = $user->regiones()->wherePivot('region_id', '=', $boletin->region->id)->first();
+          if($userByRegion != null)
+          {
+            $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', Ing. Agr&oacute;nomo, INIA Ururi<br />';
+          }
+          
+      }
       $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
       <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../photos/shares/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
@@ -131,7 +146,7 @@ class PublicacionController extends Controller
       <p><br /><br /></p>
       <p><span style="font-size: medium; color: green;">
       <strong><em>Autores INIA:</em></strong></span><br />
-      <span style="font-size: small;"><strong><em>//Autores</em></strong></span></p>
+      '.$stringUsuarios.'
       <p><span style="font-size: medium; color: green;">
       <strong><em>Marcel Fuentes Bustamante, Ing. Civil Agrícola M.Sc, INIA Quilamapu <br />Cristóbal Campos Muñoz, Ing. Civil Agrícola, INIA Quilamapu
       <br />Rubén Ruiz Muñoz, Ing. Civil Agrícola, INIA Quilamapu </em></strong></span></p>

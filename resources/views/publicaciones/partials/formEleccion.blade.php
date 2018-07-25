@@ -15,6 +15,8 @@
 <div class="form-group">
   <center>
   <a href="{{ route('publicaciones.index') }}" class="btn btn-sm btn-info">Cancelar</a>
-  {{ Form::submit('Elegir', ['class' => 'btn btn-sm btn-success']) }}
+  <center>
+  <button type="submit"  class="btn btn-sm btn-primary" name="submitBtn" onclick="this.disabled=true;this.form.submit();">Guardar</button>
+  </center>
   </center>
 </div>

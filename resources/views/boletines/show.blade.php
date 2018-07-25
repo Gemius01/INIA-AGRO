@@ -8,7 +8,7 @@
                 <div class="card-header">
                     
                         <strong>
-                            Boletín Agrometeorológico - Vista previa - {{ $boletin->region->name}} - Publicacion de {{ $boletin->publicacion->mes->nombre}} {{ $boletin->publicacion->año}}
+                            Boletín Agrometeorológico - Vista previa - {{ $boletin->region->name}} - Publicación de {{ $boletin->publicacion->mes->nombre}} {{ $boletin->publicacion->año}}
                         </strong>
                     
                 </div>
