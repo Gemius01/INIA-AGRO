@@ -11,6 +11,7 @@
             {{ session('status') }}
           </div>
           @endif
+          @can('resumenes.show')
           <strong>RESUMEN EJECUTIVO</strong>
           <hr>
           <table class="table table-striped table-hover table-bordered" width="100%">
@@ -19,29 +20,28 @@
                 <!--<th width="10px">ID</th>-->
                 <th>Mes</th>
                 <th>Año</th>
-                <th colspan="2"><center>Opciones</center></th>
+                <th colspan="1"><center>Opciones</center></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Julio</td>
-                <td>2018</td>
+                <td>{{ $resumen->publicacion->mes->nombre ?: '-'}}</td>
+                <td>{{ $resumen->publicacion->año ?: '-'}}</td>
                 
-                @can('users.show')
+                @if($resumen != null)
+                @can('resumen.show')
                 <td width="10px">
                   <a href=""
-                  class="btn btn-sm btn-primary disabled">Ver</a>
+                  class="btn btn-sm btn-primary">Ver</a>
                 </td>
                 @endcan
-                @can('users.edit')
-                <td width="10px">
-                  <a href=""
-                  class="btn btn-sm btn-success disabled">Editar</a>
-                </td>
-                @endcan
+                @else
+                @endif
+                
               </tr>
             </tbody>
           </table>
+          @endcan
           <strong>BOLETINES</strong>
           <hr>
           <table class="table table-striped table-hover table-bordered" width="100%">
@@ -58,12 +58,16 @@
               <tr>
                 
                 <td>{{ $boletin->region->name }} </td>
-                <td>@if($boletin->estado == 1)
-                  Abierto
-                  @else
-                  Cerrado
-                  @endif
-                </td>
+                @if($boletin->estado == 1)
+                  <td style="background-color: #e6ffe6; text-align: center;">
+                    Abierto
+                  </td> 
+                @else
+                  <td style="background-color: #ffcccc; text-align: center;">
+                    Cerrado
+                  </td>
+                @endif
+               
                 <td width="10px">
                   <a href="{{ route('boletines.show', $boletin->id) }}"
                   class="btn btn-sm btn-primary">Ver</a>

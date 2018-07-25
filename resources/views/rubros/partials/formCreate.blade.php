@@ -12,6 +12,8 @@
 	{{ Form::text('subrubro', null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
-	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+	<center>
+	<button type="submit"  class="btn btn-sm btn-primary" name="submitBtn" onclick="this.disabled=true;this.form.submit();">Guardar</button>
+	</center>
 
 </div>
