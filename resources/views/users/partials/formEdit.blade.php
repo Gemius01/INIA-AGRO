@@ -45,6 +45,11 @@
 		</li>
 		@endforeach
 	</ul>
+	@if($errors->has('roles'))
+	@foreach($errors->get('roles',":message") as $error)
+	<p class="alert alert-danger alert-dismissible" >{{$error}}</p>
+	@endforeach
+	@endif
 </div>
 <hr>
 <h3>Región(es)</h3>
