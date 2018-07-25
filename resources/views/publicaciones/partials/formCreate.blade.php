@@ -10,7 +10,7 @@
 </div>
 <div class="form-group">
 	{{ Form::label('name', 'Año de la Publicación') }}
-	{{ Form::text('año', null, ['class' => 'form-control']) }}
+	{{ Form::number('año', null, ['class' => 'form-control']) }}
 	@if($errors->has('año'))
 	@foreach($errors->get('año',":message") as $error)
 	<p class="alert alert-danger alert-dismissible" >{{$error}}</p>
