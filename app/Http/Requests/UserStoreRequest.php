@@ -28,6 +28,7 @@ class UserStoreRequest extends FormRequest
            'cargo' => 'required|max:100|min:2',
            'email' => 'required|max:100|email|min:2|unique:users,email',
            'password' => 'required|max:100|min:3',
+           'roles' => 'required',
        ];
      }
 
@@ -46,6 +47,7 @@ class UserStoreRequest extends FormRequest
            'password.required' => 'La contraseña del usuario esta vacía.',
            'password.max' => 'La contraseña del usuario no debe contener más de 100 caracteres.',
            'password.min' => 'La contraseña del usuario debe contener al menos 3 caracteres.',
+           'roles.required' => 'El rol del usuario esta vacío.',
        ];
      }
 }

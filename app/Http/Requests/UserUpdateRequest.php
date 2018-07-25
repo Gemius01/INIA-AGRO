@@ -27,6 +27,7 @@ class UserUpdateRequest extends FormRequest
            'name' => 'required|max:100|min:2',
            'cargo' => 'required|max:100|min:2',
            'email' => 'required|max:100|email|min:2|unique:users,email,'.$this->user->id,
+           'roles' => 'required',
        ];
      }
 
@@ -42,6 +43,7 @@ class UserUpdateRequest extends FormRequest
            'email.max' => 'El email del usuario no debe contener más de 100 caracteres.',
            'email.min' => 'El email del usuario debe contener al menos 2 caracteres.',
            'email.unique' => 'El Mail ya está registrado.',
+           'roles.required' => 'El rol del usuario esta vacío.',
        ];
      }
 }

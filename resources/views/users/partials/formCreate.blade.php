@@ -41,6 +41,26 @@
 </div>
 -->
 <hr>
+<h3>Rol</h3>
+<div class="form-group">
+	<ul class="list-unstyled">
+		@foreach($roles as $role)
+		<li>
+			<label>
+		        {{ Form::checkbox('roles[]', $role->id, null) }}
+		        {{ $role->name }}
+		        <em>({{ $role->description ?: 'Sin descripción' }})</em>
+	        </label>
+		</li>
+		@endforeach
+	</ul>
+	@if($errors->has('roles'))
+	@foreach($errors->get('roles',":message") as $error)
+	<p class="alert alert-danger alert-dismissible" >{{$error}}</p>
+	@endforeach
+	@endif
+</div>
+<hr>
 <h3>Región(es)</h3>
 <div class="form-group">
 	<ul class="list-unstyled">
@@ -55,22 +75,6 @@
 	</ul>
 </div>
 <hr>
-<h3>Rol</h3>
-<div class="form-group">
-	<ul class="list-unstyled">
-		@foreach($roles as $role)
-		<li>
-			<label>
-		        {{ Form::checkbox('roles[]', $role->id, null) }}
-		        {{ $role->name }}
-		        <em>({{ $role->description ?: 'Sin descripción' }})</em>
-	        </label>
-		</li>
-		@endforeach
-	</ul>
-</div>
-<hr>
-
 <h3>Secciones</h3>
 <div class="form-group">
 	<ul class="list-unstyled">
