@@ -40,7 +40,7 @@
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <th width="10%">ID</th>
+                               <!--<th width="10%">ID</th>-->
                                <th>Mes</th>
                                <th>Año</th>
                                <th colspan="5" style="text-align: center;" width="30%">Opciones</th>
@@ -49,7 +49,7 @@
                        <tbody>
                         @foreach($publicaciones as $publicacion)
                           <tr>
-                            <td>{{$publicacion->id}}</td>
+                            <!--<td>{{$publicacion->id}}</td> -->
                             <td>{{$publicacion->mes->nombre}}</td>
                             <td>{{$publicacion->año}}</td>
                             <td style="text-align: center;">

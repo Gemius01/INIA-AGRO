@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                  Publicacion del mes de {{ $resumen->publicacion->mes->nombre }} del {{ $resumen->publicacion->año }}
+                  Publicación del mes de {{ $resumen->publicacion->mes->nombre }} del {{ $resumen->publicacion->año }}
                 @can('products.create')
                     <a href="{{ route('publicaciones.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>
@@ -16,16 +16,16 @@
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <th width="10%">ID</th>
-                               <th>Región</th>
-                               <th>Estado</th>
+                               <!--<th width="10%">ID</th>-->
+                               <th>Mes</th>
+                               <th>Año</th>
                                <th colspan="2" style="text-align: center;" width="30%">Opciones</th>
                            </tr>
                        </thead>
                        <tbody>
                         
                           <tr>
-                            <td>{{ $resumen->id }}</td>
+                            <!--<td>{{ $resumen->id }}</td>-->
                             <td>{{ $resumen->publicacion->mes->nombre }}</td>
                             <td>{{ $resumen->publicacion->año }}</td>
                             <td style="text-align: center;">
@@ -44,7 +44,7 @@
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <th width="10%">ID</th>
+                               <!--<th width="10%">ID</th>-->
                                <th>Región</th>
                                <th>Estado</th>
                                <th colspan="2" style="text-align: center;" width="30%">Opciones</th>
@@ -53,7 +53,7 @@
                        <tbody>
                         @foreach($boletines as $boletin)
                           <tr>
-                            <td>{{ $boletin->id }}</td>
+                            <!--<td>{{ $boletin->id }}</td>-->
                             <td>{{ $boletin->region->name }}</td>
                             <td>
                               @if($boletin->estado == 1)

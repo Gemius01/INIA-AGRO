@@ -61,23 +61,64 @@ class PublicacionController extends Controller
         //dd($request['region']);
 
 
-        if($request['region'] == 0){//Crear Boletines para todas las regiones
+        //if($request['region'] == 0){//Crear Boletines para todas las regiones
             $publicacion = Publicacion::create($request->all());
-
+             $this->crearResumen($publicacion);
             $regiones = Region::where('id', '<>', '1')->get();
-            $regionesResumen = Region::get();
-            $secciones = Seccion::get();
-            $resumen = Resumen::create([
-                'publicacion_id' => $publicacion->id,
-            ]);
-            $resumen->regiones()->sync($regionesResumen);
+            //$secciones = Seccion::get();
+           
             foreach($regiones as $region){
                 $boletin = Boletin::create([
                     'region_id' => $region->id,
                     'estado' => 1,
                     'publicacion_id' => $publicacion->id,
                 ]);
-                $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
+
+                $this->crearPortada($boletin, $publicacion);
+                $this->sincronizarMacrozonas($boletin, $region);
+            }
+            /*
+        }else{// Crear Boletin para una región
+            $publicacion = Publicacion::create($request->all());
+            $boletin = Boletin::create([
+                'region_id' => $request['region'],
+                'estado' => true,
+                'publicacion_id' => $publicacion->id,
+            ]);
+            $secciones = Seccion::get();
+            $boletin->secciones()->sync($secciones);
+        }
+        */
+
+        return redirect()->route('publicaciones.index', $publicacion->id)
+            ->with('info', 'Publicación creada con éxito');
+    }
+
+    public function crearResumen(Publicacion $publicacion)
+    {
+       $regionesResumen = Region::get();
+       $resumen = Resumen::create([
+           'publicacion_id' => $publicacion->id,
+            ]);
+       $resumen->regiones()->sync($regionesResumen);
+    }
+
+    public function sincronizarMacrozonas(Boletin $boletin, Region $region)
+    {
+      $subseccion = Subseccion::create([
+                    'seccion_id' => 6,
+                    'boletin_id' => $boletin->id,
+                ]);
+      $macrozonasByRegion = Macrozona::where('region_id', '=', $region->id)->get();
+      if($macrozonasByRegion != null){
+        $subseccion->macrozonas()->sync($macrozonasByRegion);
+      }
+    }
+
+    public function crearPortada(Boletin $boletin, Publicacion $publicacion)
+    {
+      $secciones = Seccion::get();
+      $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
       <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../photos/shares/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
       <p style="padding-top: 40px; padding-bottom: 40px;" align="center">
@@ -104,30 +145,7 @@ class PublicacionController extends Controller
 
                 $seccionPortada->pivot->contenido = $portada; //carga el txt de portada a la variable
                 $seccionPortada->pivot->save(); //
-                $subseccion = Subseccion::create([
-                    'seccion_id' => 6,
-                    'boletin_id' => $boletin->id,
-                ]);
-                $macrozonasByRegion = Macrozona::where('region_id', '=', $region->id)->get();
-                if($macrozonasByRegion != null){
-                  $subseccion->macrozonas()->sync($macrozonasByRegion);
-                }
-
-            }
-        }else{// Crear Boletin para una región
-            $publicacion = Publicacion::create($request->all());
-            $boletin = Boletin::create([
-                'region_id' => $request['region'],
-                'estado' => true,
-                'publicacion_id' => $publicacion->id,
-            ]);
-            $secciones = Seccion::get();
-            $boletin->secciones()->sync($secciones);
-        }
-        //$publicacion = Publicacion::create($request->all());
-
-        return redirect()->route('publicaciones.index', $publicacion->id)
-            ->with('info', 'Publicación creada con éxito');
+                
     }
 
     /**

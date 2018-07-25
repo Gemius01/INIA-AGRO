@@ -15,25 +15,27 @@
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <th width="10%">ID</th>
-                               <th>Nombre</th>
-                               <th>Subrubro</th>
-                               <th colspan="3" style="text-align: center;">Opciones</th>
+                               <!-- <th width="10%">ID</th> -->
+                               <th width="35%">Nombre</th>
+                               <th width="35%">Subrubro</th>
+                               <th colspan="3" width="30%" style="text-align: center;">Opciones</th>
                            </tr>
                        </thead>
                        <tbody>
                           @foreach($rubros as $rubro)
                            <tr>
 
-                            <td>{{ $rubro->id }}</td>
+                            <!--<td>{{ $rubro->id }}</td> -->
                             <td>{{ $rubro->name }}</td>
                             <td>{{ $rubro->subrubro }}</td>
+                            <!--
                             @can('products.show')
                                <td style="text-align: center;">
                                    <a href="{{ route('rubros.show', $rubro->id) }}"
                                     class="btn btn-sm btn-primary">Ver</a>
                                </td>
                                @endcan
+                             -->
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('rubros.edit', $rubro->id) }}"

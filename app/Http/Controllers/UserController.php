@@ -87,11 +87,16 @@ class UserController extends Controller
         $user->secciones()->sync($request->get('secciones'));
 
         $secciones = $request->get('secciones');
-        //dd($secciones);
-        foreach($secciones as $seccion)
+        
+        if($secciones != null)
         {
-            $permission = Permission::where('slug', 'seccion-'.$seccion)->first();
-            $user->permissions()->attach($permission);
+
+            foreach($secciones as $seccion)
+                {
+                    $permission = Permission::where('slug', 'seccion-'.$seccion)->first();
+                    $user->permissions()->attach($permission);
+                }
+
         }
 
         return redirect()->route('users.index', $user->id)

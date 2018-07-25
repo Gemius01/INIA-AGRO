@@ -12,29 +12,35 @@
                 @endcan
                 </div>
                 <div class="card-body">
-                  <select class="form-control" id="selectRegion">
+                  <div>
+                    <label>Macrozonas por región</label>
+                  <select id="selectRegion" class="form-control" >
                     @foreach($regiones as $region)
                     <option value="{{$region->id}}">{{ $region->name }}</option>
                     @endforeach
                   </select>
+                </div>
+                <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <th width="10%">ID</th>
-                               <th>Nombre</th>
+                               <!--<th width="10%">ID</th> -->
                                <th>Región</th>
+                               <th width="30%">Nombre</th>
                                <th>Rubro</th>
-                               <th colspan="3" style="text-align: center;">Opciones</th>
+                               <th>Subrubro</th>
+                               <th colspan="3" width="20%" style="text-align: center;">Opciones</th>
                            </tr>
                        </thead>
                        <tbody>
                           @foreach($macrozonas as $macrozona)
                            <tr>
 
-                            <td>{{ $macrozona->id }}</td>
-                            <td>{{ $macrozona->name }}</td>
+                            <!--<td>{{ $macrozona->id }}</td>-->
                             <td>{{ $macrozona->region['name'] ?: '-'}}
+                            <td>{{ $macrozona->name }}</td>
                             <td>{{ $macrozona->rubro['name'] ?: '-' }}
+                            <td>{{ $macrozona->rubro['subrubro'] ?: '-' }}</td>
                             @can('products.show')
                                <td style="text-align: center;">
                                    <a href="{{ route('macrozonas.show', $macrozona->id) }}"
@@ -74,9 +80,10 @@
 <script>
   $( document ).ready(function() {
     $( "#selectRegion" ).change(function() {
-      var idRegion = document.getElementById('#selectRegion').value;
-    var url = document.location.href+"?region="+ idRegion;
-      document.location = url;
+      var idRegion = document.getElementById('selectRegion').value;
+      console.log(idRegion);
+      var url = window.location.origin + '/macrozonas?region=' + idRegion;
+      window.location.href = url;
 });
 });
   
