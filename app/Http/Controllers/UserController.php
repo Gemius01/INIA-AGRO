@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
-
+use App\Http\Requests\UserContraseñaRequest;
 
 class UserController extends Controller
 {
@@ -87,7 +87,7 @@ class UserController extends Controller
         $user->secciones()->sync($request->get('secciones'));
 
         $secciones = $request->get('secciones');
-        
+
         if($secciones != null)
         {
 
@@ -259,7 +259,7 @@ class UserController extends Controller
         return view('users.password', compact(['user']));
     }
 
-    public function cambiarContraseña(Request $request, User $user)
+    public function cambiarContraseña(UserContraseñaRequest $request, User $user)
     {
         $user->password = Hash::make($request['password']);
         $user->save();

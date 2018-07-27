@@ -3,9 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Macrozona;
 
 class MacrozonaStoreRequest extends FormRequest
 {
+    public $valido=null;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -23,16 +25,38 @@ class MacrozonaStoreRequest extends FormRequest
      */
      public function rules()
      {
-       return [
-           'name' => 'required|max:100|min:2',
-       ];
+        $this->valido=true;
+       $macrozona = Macrozona::where([['name', '=', $this->name],['region_id', '=', $this->region],['rubro_id', '=', $this->rubro ]])->first();
+       if($macrozona!=null){
+        $this->valido=false;
+        return [
+            'name' => 'max:0',
+            // 'mes_id' => 'unique:publicaciones,mes_id'
+        ];
+      }
+      else{
+        $this->valido=true;
+        return [
+            'name' => 'required|max:100|min:2',
+        ];
+      }
+
      }
 
      public function messages(){
-       return [
-           'name.required' => 'El Nombre de la macrozona esta vacío.',
-           'name.max' => 'El Nombre de la macrozona no debe contener más de 100 caracteres.',
-           'name.min' => 'El Nombre de la macrozona debe contener al menos 2 caracteres.',
-       ];
+       if($this->valido==false){
+         return [
+              'name.max' => 'Esta macrozona ya existe con esta región y rubro seleccionados.',
+             // 'año.unique' = > 'lalala'
+         ];
+       }
+       else{
+         return [
+             'name.required' => 'El Nombre de la macrozona esta vacío.',
+             'name.max' => 'El Nombre de la macrozona no debe contener más de 100 caracteres.',
+             'name.min' => 'El Nombre de la macrozona debe contener al menos 2 caracteres.',
+         ];
+       }
+
      }
 }

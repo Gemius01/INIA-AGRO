@@ -11,6 +11,9 @@
 	{{ Form::label('region', 'Seleccione Región') }}
 	{!! Form::select('region', $regiones, null, ['class' => 'form-control']) !!}
 </div>
+<div class="form-group" style="display: none;">
+	
+</div>
 
 <div class="form-group">
 	{{ Form::label('region', 'Seleccione Rubro (Opcional)') }}
