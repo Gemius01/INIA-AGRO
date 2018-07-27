@@ -18,7 +18,6 @@
     </div>
 </div>
 @foreach($boletin->secciones as $seccion)
-
 <div >
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -191,7 +190,7 @@
                                             @else
                                             @endif   
 
-                                        </h4>
+                                        </h6>
                                       </div>
                                       <div class="modal-body">
                                         {!! $macrozona->pivot->resumen !!}

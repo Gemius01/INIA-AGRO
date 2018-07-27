@@ -6,6 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Usuario
+                     <a href="{{ route('users.editpassword', $user->id)}}"
+                    class="btn btn-sm btn-primary pull-right">Editar Contraseña</a>
                 </div>
                 <div class="card-body">
                    {!! Form::model($user, ['route' => ['users.update', $user->id],

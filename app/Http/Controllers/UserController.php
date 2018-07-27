@@ -253,4 +253,18 @@ class UserController extends Controller
         return redirect()->route('users.index', $user->id)
             ->with('info', 'Se ha actualizado el usuario '.$user->name);
     }
+
+    public function cambiarContraseñaVista(User $user)
+    {
+        return view('users.password', compact(['user']));
+    }
+
+    public function cambiarContraseña(Request $request, User $user)
+    {
+        $user->password = Hash::make($request['password']);
+        $user->save();
+
+        return redirect()->route('users.index', $user->id)
+            ->with('info', 'Se ha actualizado el usuario '.$user->name);
+    }
 }

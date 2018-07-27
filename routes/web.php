@@ -94,6 +94,12 @@ Route::middleware(['auth'])->group(function(){
 	Route::put('users/macrozonas/{user}','UserController@agregarMacrozonas')->name('users.guardarmacrozonas')
 		->middleware('permission:users.edit');
 
+	Route::get('users/{user}/editpassword','UserController@cambiarContraseñaVista')->name('users.editpassword')
+		->middleware('permission:users.edit');
+
+	Route::put('users/{user}/edit/password','UserController@cambiarContraseña')->name('users.editpasswordrequest')
+		->middleware('permission:users.edit');
+
 	Route::get('users/{user}/secciones','UserController@vistaSecciones')->name('users.secciones')
 		->middleware('permission:users.edit');
 	Route::put('users/secciones/{user}','UserController@agregarSecciones')->name('users.guardarsecciones')

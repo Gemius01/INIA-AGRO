@@ -129,7 +129,7 @@ class PublicacionController extends Controller
           $userByRegion = $user->regiones()->wherePivot('region_id', '=', $boletin->region->id)->first();
           if($userByRegion != null)
           {
-            $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', Ing. Agr&oacute;nomo, INIA Ururi<br />';
+            $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', Ing. Agr&oacute;nomo, INIA Ururi</em></strong></span><br />';
           }
           
       }
@@ -138,7 +138,7 @@ class PublicacionController extends Controller
       <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../photos/shares/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
       <p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
-      <strong>BOLETÍNES NACIONAL DE ANÁLISIS DE RIESGOS AGROCLIMÁTICOS PARA LAS PRINCIPALES ESPECIES FRUTALES Y CULTIVOS, Y LA GANADERÍA</strong></span></p>
+      <strong>BOLETÍN NACIONAL DE ANÁLISIS DE RIESGOS AGROCLIMÁTICOS PARA LAS PRINCIPALES ESPECIES FRUTALES Y CULTIVOS, Y LA GANADERÍA</strong></span></p>
       <p align="center"><span style="color: red; font-size: 24px;">
       <strong>'.strtoupper($publicacion->mes->nombre).' '.strtoupper($publicacion->año).'</strong></span></p>
       <p align="center">

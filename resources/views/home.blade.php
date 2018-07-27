@@ -30,9 +30,9 @@
                 
                 @if($resumen != null)
                 @can('resumen.show')
-                <td width="10px">
-                  <a href=""
-                  class="btn btn-sm btn-primary">Ver</a>
+                <td style="text-align: center;">
+                    <a href="{{ route('resumenes.show', $resumen->id) }}"
+                    class="btn btn-sm btn-primary">Ver</a>
                 </td>
                 @endcan
                 @else

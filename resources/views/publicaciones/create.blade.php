@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Boletin
+                <div class="card-header">Nueva Publicación
                 </div>
                 <div class="card-body">
                     {{ Form::open(['route' => 'publicaciones.store']) }}
