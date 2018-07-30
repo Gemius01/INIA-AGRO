@@ -43,7 +43,7 @@ class HomeController extends Controller
      */
     public function index(User $user)
     {
-
+        
         $user = Auth::user();
         $rol = $user->roles()->first();
         if($rol->id != 1 )

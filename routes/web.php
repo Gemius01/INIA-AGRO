@@ -99,6 +99,9 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::put('users/{user}/edit/password','UserController@cambiarContraseña')->name('users.editpasswordrequest')
 		->middleware('permission:users.edit');
+		
+	Route::get('show/{user}/info','UserController@showByUser')->name('users.showByUser');
+		
 
 	Route::get('users/{user}/secciones','UserController@vistaSecciones')->name('users.secciones')
 		->middleware('permission:users.edit');

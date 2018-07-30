@@ -28,20 +28,28 @@
             <a href="javascript:fileView('{{ $item->url }}', '{{ $item->updated }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-view') }}">
               <i class="fa fa-image fa-fw"></i>
             </a>
+              @can('Filemanager.cropImage')
             <a href="javascript:cropImage('{{ $item->name }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-crop') }}">
               <i class="fa fa-crop fa-fw"></i>
             </a>
+            @endcan
+              @can('Filemanager.resizeImage')
             <a href="javascript:resizeImage('{{ $item->name }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-resize') }}">
               <i class="fa fa-arrows fa-fw"></i>
             </a>
+            @endcan
           @endif
         @endif
+          @can('Filemanager.rename')
         <a href="javascript:rename('{{ $item->name }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-rename') }}">
           <i class="fa fa-edit fa-fw"></i>
         </a>
+        @endcan
+          @can('Filemanager.delete')
         <a href="javascript:trash('{{ $item->name }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-delete') }}">
           <i class="fa fa-trash fa-fw"></i>
         </a>
+        @endcan
       </td>
     </tr>
     @endforeach

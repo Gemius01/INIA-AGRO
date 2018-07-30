@@ -267,4 +267,13 @@ class UserController extends Controller
         return redirect()->route('users.index', $user->id)
             ->with('info', 'Se ha actualizado el usuario '.$user->name);
     }
+
+    public function showByUser(User $user)
+    {
+        $rol = $user->roles()->first();
+        $regiones = $user->regiones()->get();
+        $seccions = $user->secciones()->get();
+        $macrozonas = $user->macrozonas()->get();
+        return view('users.showByUser', compact(['user', 'regiones', 'seccions', 'macrozonas', 'rol']));
+    }
 }

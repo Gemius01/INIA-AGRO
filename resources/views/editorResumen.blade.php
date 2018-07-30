@@ -43,6 +43,16 @@
                          <button  class="btn btn-sm btn-primary"  onclick="guardarDatos()">Guardar Datos</button>
                     </center>
                   </div>
+                  <div>
+                      <h4>imagenes</h4>
+                      @foreach($arrayImages as $image)
+
+                         {!! $image !!}
+                        
+                      @endforeach
+                      <img src="{{asset('photos/shares/descarga.jpg')}}"/>
+                      
+                  </div>
                 </div>
             </div>
         </div>
