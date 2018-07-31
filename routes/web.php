@@ -94,13 +94,21 @@ Route::middleware(['auth'])->group(function(){
 	Route::put('users/macrozonas/{user}','UserController@agregarMacrozonas')->name('users.guardarmacrozonas')
 		->middleware('permission:users.edit');
 
-	Route::get('users/{user}/editpassword','UserController@cambiarContraseñaVista')->name('users.editpassword')
-		->middleware('permission:users.edit');
+	Route::get('users/{user}/editpassword','UserController@cambiarContraseñaVista')->name('users.editpassword');
+		
 
-	Route::put('users/{user}/edit/password','UserController@cambiarContraseña')->name('users.editpasswordrequest')
-		->middleware('permission:users.edit');
+	Route::put('users/{user}/edit/password','UserController@cambiarContraseña')->name('users.editpasswordrequest');
+
+	//Rutas Editar password personalmente por cada usuario
+	Route::get('user/{user}/editpassword','UserController@editPasswordByUserVista')->name('users.editpasswordbyUser');
+		
+	Route::put('user/{user}/edit/password','UserController@editPasswordByUser')->name('users.editpasswordrequestByUser');
 		
 	Route::get('show/{user}/info','UserController@showByUser')->name('users.showByUser');
+
+	Route::get('editByUser/{user}/info','UserController@editByUserView')->name('users.editByUser');
+
+	Route::put('editByUser/{user}/edit/password','UserController@editByUser')->name('users.editByUserRequest');
 		
 
 	Route::get('users/{user}/secciones','UserController@vistaSecciones')->name('users.secciones')

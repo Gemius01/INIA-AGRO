@@ -46,36 +46,51 @@ class HomeController extends Controller
         
         $user = Auth::user();
         $rol = $user->roles()->first();
-        if($rol->id != 1 )
-        {
-            $queryRegion = $user->regiones()->pluck('region_id');
-            $publicacionElegida = Eleccion::find(1);
-            if($publicacionElegida != null && $publicacionElegida->publicacion_id != null){
+        if($rol != null) {
+            if($rol->id != 1 )
+            {
+                $queryRegion = $user->regiones()->pluck('region_id');
+                $publicacionElegida = Eleccion::find(1);
+                if($publicacionElegida != null && $publicacionElegida->publicacion_id != null){
 
-            $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
-            $boletines = $publicacion->boletines;
+                $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
+                $boletines = $publicacion->boletines;
 
 
-            $userBoletines = $boletines->whereIn('region_id', $queryRegion);
-            $resumen = $publicacion->resumen;
-            return view('home', compact([ 'userBoletines', 'resumen' ]));
-            } else {
-                $userBoletines = [];
-                return view('home', compact([ 'userBoletines', ]));
+                $userBoletines = $boletines->whereIn('region_id', $queryRegion);
+                $resumen = $publicacion->resumen;
+                return view('home', compact([ 'userBoletines', 'resumen' ]));
+                } else {
+                    $userBoletines = [];
+                    return view('home', compact([ 'userBoletines', ]));
+                }
+
+            }else{
+
+                //Lo que se le mostrará al administrador
+                $publicacionElegida = Eleccion::find(1);
+                $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
+                if($publicacion != null)
+                {
+                $boletines = $publicacion->boletines;
+
+                $queryRegion = Region::where('id', '<>', '1')->pluck('id');
+
+                $userBoletines = $boletines->whereIn('region_id', $queryRegion);
+
+                $resumen = $publicacion->resumen;
+                return view('home', compact([ 'userBoletines', 'resumen' ]));
+                }else
+                {
+                    $resumen = [];
+                    $userBoletines = [];
+                    return view('home', compact(['resumen', 'userBoletines']));
+                }
             }
         }else{
-
-            //Lo que se le mostrará al administrador
-            $publicacionElegida = Eleccion::find(1);
-            $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
-            $boletines = $publicacion->boletines;
-
-            $queryRegion = Region::where('id', '<>', '1')->pluck('id');
-
-            $userBoletines = $boletines->whereIn('region_id', $queryRegion);
-
-            $resumen = $publicacion->resumen;
-            return view('home', compact([ 'userBoletines', 'resumen' ]));
+            $resumen = [];
+            $userBoletines = [];
+            return view('home', compact(['resumen', 'userBoletines']));
         }
         
     }

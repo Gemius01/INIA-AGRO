@@ -13,7 +13,7 @@
 </div>
 <div class="form-group">
 	{{ Form::label('region', 'Seleccione Rubro') }}
-	{!! Form::select('rubro_id', $rubros, $macrozona->rubro_id, ['class' => 'form-control']) !!}
+	{!! Form::select('rubro_id', $arrayRubros, $macrozona->rubro_id, ['class' => 'form-control', 'placeholder' => 'Ninguno']) !!}
 </div>
 
 <center>

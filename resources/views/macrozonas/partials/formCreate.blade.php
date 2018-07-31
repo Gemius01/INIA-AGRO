@@ -17,7 +17,7 @@
 
 <div class="form-group">
 	{{ Form::label('region', 'Seleccione Rubro (Opcional)') }}
-	{!! Form::select('rubro', $arrayRubros, null, ['class' => 'form-control', 'placeholder' => 'Elige un Rubro']) !!}
+	{!! Form::select('rubro', $arrayRubros, null, ['class' => 'form-control', 'placeholder' => 'Ninguno']) !!}
 </div>
 
 

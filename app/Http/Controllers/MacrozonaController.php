@@ -42,7 +42,7 @@ class MacrozonaController extends Controller
     {
         $regiones = Region::where('id', '<>', 1)->pluck('name', 'id');
         //$rubros = Rubro::pluck('name', 'id');
-        $rubros = Rubro::get();
+        $rubros = Rubro::orderBy('name', 'asc')->get();
         $arrayRubros = array();
         foreach($rubros as $rubro)
         {
@@ -98,9 +98,21 @@ class MacrozonaController extends Controller
     public function edit(Macrozona $macrozona)
     {
         $regiones = Region::where('id', '<>', 1)->pluck('name', 'id');
-        $rubros = Rubro::pluck('name', 'id');
+        $rubros = Rubro::orderBy('name', 'asc')->get();
+        $arrayRubros = array();
+        foreach($rubros as $rubro)
+        {
+           if($rubro->subrubro != null)
+           {
+            $arrayRubros[$rubro->id] = $rubro->name.' > '.$rubro->subrubro;
+           }else{
+            $arrayRubros[$rubro->id] = $rubro->name;
+           }
 
-        return view('macrozonas.edit', compact([ 'macrozona','regiones', 'rubros', ]));
+
+        }
+
+        return view('macrozonas.edit', compact([ 'macrozona','regiones', 'arrayRubros', ]));
     }
 
     /**

@@ -6,14 +6,14 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Usuario
-                     <a href="{{ route('users.create')}}"
-                    class="btn btn-sm btn-primary pull-right">Crear</a>
+                     <a href="{{ route('users.editByUser', $user->id)}}"
+                    class="btn btn-sm btn-primary pull-right">Editar Datos</a>
                 </div>
                 <div class="card-body">
                     <p><strong>Nombre</strong> {{ $user->name }} </p>
                     <p><strong>E-mail</strong> {{ $user->email }} </p>
                     <p><strong>Cargo</strong> {{ $user->cargo }} </p>
-                    <p><strong>Rol</strong> {{ $rol->name }} </p>
+                    <p><strong>Rol</strong> @if($rol != null) {{ $rol->name}}@else No tiene @endif </p>
                     <hr>
                     <label><strong>Región(es)</strong></label>
                     <ul>

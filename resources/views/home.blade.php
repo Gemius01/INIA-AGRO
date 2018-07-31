@@ -25,10 +25,12 @@
             </thead>
             <tbody>
               <tr>
-                <td>{{ $resumen->publicacion->mes->nombre ?: '-'}}</td>
-                <td>{{ $resumen->publicacion->año ?: '-'}}</td>
+
+                
                 
                 @if($resumen != null)
+                <td>{{ $resumen->publicacion->mes->nombre ?: '-'}}</td>
+                <td>{{ $resumen->publicacion->año ?: '-'}}</td>
                 @can('resumen.show')
                 <td style="text-align: center;">
                     <a href="{{ route('resumenes.show', $resumen->id) }}"
@@ -36,6 +38,7 @@
                 </td>
                 @endcan
                 @else
+                
                 @endif
                 
               </tr>
@@ -54,6 +57,7 @@
               </tr>
             </thead>
             <tbody>
+              @if($userBoletines !=null)
               @foreach($userBoletines as $boletin)
               <tr>
                 
@@ -74,6 +78,8 @@
                 </td>
               </tr>
               @endforeach
+              @else
+              @endif
             </tbody>
           </table>
           

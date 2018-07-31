@@ -276,4 +276,32 @@ class UserController extends Controller
         $macrozonas = $user->macrozonas()->get();
         return view('users.showByUser', compact(['user', 'regiones', 'seccions', 'macrozonas', 'rol']));
     }
+
+    public function editByUserView(User $user)
+    {
+        
+        return view('users.editByUser', compact(['user']));
+    }
+
+    public function editByUser(User $user, Request $request)
+    {
+        $user->update($request->all());
+
+        return redirect()->route('users.editByUser', $user->id)
+            ->with('info', 'Se ha actualizado el usuario '.$user->name);
+    }
+
+    public function editPasswordByUserVista(User $user)
+    {
+        return view('users.editPasswordByNormalUser', compact(['user']));
+    }
+
+    public function editPasswordByUser(UserContraseñaRequest $request, User $user)
+    {
+        $user->password = Hash::make($request['password']);
+        $user->save();
+
+        return redirect()->route('users.editByUser', $user->id)
+            ->with('info', 'Se ha actualizado correctamente la contraseña');
+    }
 }
