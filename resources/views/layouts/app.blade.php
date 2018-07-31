@@ -83,6 +83,9 @@
                          @can('regiones.index')
                         <li class="nav-item"><a class="nav-link" href="{{ route('regiones.index') }}">Gestión Región</a></li>
                         @endcan
+                         @can('colaboradores.index')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('regiones.index') }}">Colaboradores</a></li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->

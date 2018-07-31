@@ -15,7 +15,7 @@ class CreatePublicacionesTable extends Migration
     {
         Schema::create('publicaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('publico')->default(false);
+            $table->boolean('public')->default(false);
             $table->integer('mes_id')->unsigned()->nullable();
             $table->foreign('mes_id')->references('id')->on('meses')->onDelete('cascade');
             $table->string('año');

@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="#">Boletines</a>
+                    <a href="{{ route('publicPublicaciones') }}">Boletines</a>
                     <a href="http://www.inia.cl/">inia.cl</a>
                     <a href="https://www.minagri.gob.cl/">Minagri</a>
                  

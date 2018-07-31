@@ -11,6 +11,7 @@
                     <p><strong>Nombre</strong> {{ $user->name }} </p>
                     <p><strong>E-mail</strong> {{ $user->email }} </p>
                     <p><strong>Cargo</strong> {{ $user->cargo }} </p>
+                    <p><strong>Cargo</strong> {{ $user->cri }} </p>
                     <p><strong>RoL</strong></p>
                     <ul>
                         @foreach($roles as $rol)

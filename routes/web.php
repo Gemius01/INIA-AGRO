@@ -19,6 +19,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/pdfView', 'HomeController@vistaPdf')->name('pdfView');
+
+Route::get("/public/publicaciones","PublicHtmlController@index", ['except' => ['boletinHtml']])->name('publicPublicaciones');
 //Routes
 Route::get("download-pdf","HomeController@downloadPDF");
 Route::middleware(['auth'])->group(function(){
@@ -260,8 +262,8 @@ Route::middleware(['auth'])->group(function(){
 	//Resumen Nacional
 
 	Route::get('resumen/{resumen}','ResumenController@show')->name('resumenes.show')
-		->middleware('permission:boletines.index');
+		->middleware('permission:resumen.show');
 
 	Route::get('resumenPDF/{resumen}','ResumenController@descargarPDF')->name('resumenespdf')
-		->middleware('permission:boletines.index');
+		->middleware('permission:resumen.show');
 });

@@ -49,6 +49,7 @@ class HomeController extends Controller
         if($rol != null) {
             if($rol->id != 1 )
             {
+
                 $queryRegion = $user->regiones()->pluck('region_id');
                 $publicacionElegida = Eleccion::find(1);
                 if($publicacionElegida != null && $publicacionElegida->publicacion_id != null){
@@ -59,6 +60,7 @@ class HomeController extends Controller
 
                 $userBoletines = $boletines->whereIn('region_id', $queryRegion);
                 $resumen = $publicacion->resumen;
+                //dd($resumen);
                 return view('home', compact([ 'userBoletines', 'resumen' ]));
                 } else {
                     $userBoletines = [];

@@ -95,12 +95,18 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         //Permisos para acceder al Boletín
-         Permission::create([
+        Permission::create([
             'name' => 'Ver Boletin en detalle',
             'slug' => 'boletines.show',
             'description' => 'Lista las secciones del boletin clickeado',
         ]);
-         
+
+         //Permission para acceder al resumen nacional
+        Permission::create([
+            'name' => 'Ver Resumen Nacional en detalle',
+            'slug' => 'resumen.show',
+            'description' => 'Ver las secciones del Resumen nacional al clickearlo',
+        ]);
 
         
     }

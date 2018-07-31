@@ -15,6 +15,7 @@ class CreateBoletinesTable extends Migration
     {
         Schema::create('boletines', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('publico')->default(false);
             $table->integer('region_id')->unsigned()->nullable();
             $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->integer('publicacion_id')->unsigned()->nullable();

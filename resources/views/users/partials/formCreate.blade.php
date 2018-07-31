@@ -17,6 +17,10 @@
 	@endif
 </div>
 <div class="form-group">
+	{{ Form::label('cri', 'CRI') }}
+	{{ Form::text('cri', null, ['class' => 'form-control', 'id' => 'cri']) }}
+</div>
+<div class="form-group">
 	{{ Form::label('email', 'E-Mail') }}
 	{{ Form::text('email', null, ['class' => 'form-control', 'id' => 'email']) }}
 	@if($errors->has('email'))

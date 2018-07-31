@@ -11,9 +11,10 @@
             {{ session('status') }}
           </div>
           @endif
-          @can('resumenes.show')
+          @can('resumen.show')
           <strong>RESUMEN EJECUTIVO</strong>
           <hr>
+         
           <table class="table table-striped table-hover table-bordered" width="100%">
             <thead>
               <tr>

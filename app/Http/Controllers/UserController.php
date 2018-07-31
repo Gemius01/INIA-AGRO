@@ -30,7 +30,7 @@ class UserController extends Controller
         //$users = User::with('region_id')->paginate(20);
 
 
-        $users = User::with('secciones')->paginate(20);
+        $users = User::where('id', '<>', 1)->with('secciones')->get();
 
         //dd($users);
         //$regions = Region::get();
@@ -68,6 +68,7 @@ class UserController extends Controller
         $user = User::create([
             'name'      => $request['name'],
             'email'     => $request['email'],
+            'cri'       => $request['cri'],
             'password'  => Hash::make($request['password']),
             'cargo'     => $request['cargo'],
 
