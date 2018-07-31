@@ -9,10 +9,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Resumen Ejecutivo {{$region->name}}
-                    @can('seccion-'.$region->id)
+                    @if($rol->id == 2)
                     <a href="{{ route('editorresumen', ['resumen'=>$resumen->id, 'region'=>$region->id])}}"
                     class="btn btn-sm btn-success pull-right">Editar</a>
-                    @endcan
+                    @else
+                        @can('seccion-'.$region->id)
+                        <a href="{{ route('editorresumen', ['resumen'=>$resumen->id, 'region'=>$region->id])}}"
+                        class="btn btn-sm btn-success pull-right">Editar</a>
+                        @endcan
+                    @endif
                 </div>
 
                 <div class="card-body">
@@ -29,10 +34,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{$region->name}}
-                    @can('seccion-'.$region->id)
+                    @if($rol->id == 2)
                     <a href="{{ route('editorresumen', ['resumen'=>$resumen->id, 'region'=>$region->id])}}"
                     class="btn btn-sm btn-success pull-right">Editar</a>
-                    @endcan
+                    @else
+                        @can('seccion-'.$region->id)
+                        <a href="{{ route('editorresumen', ['resumen'=>$resumen->id, 'region'=>$region->id])}}"
+                        class="btn btn-sm btn-success pull-right">Editar</a>
+                        @endcan
+                    @endif
                 </div>
 
                 <div class="card-body">

@@ -29,7 +29,15 @@
                            @foreach($users as $user)
                            <tr>
                                <!--<td>{{ $user->id }}</td>-->
-                               <td>{{ $user->name ?: '-' }}</td>
+                               <td>{{ $user->name ?: '-' }}
+                                @if($user->roles()->first() != null)
+                                <strong>
+                                [{{ $user->roles()->first()->name}}]
+                                </strong>
+                                @else
+
+                                @endif
+                              </td>
                                <td>{{ $user->email }}</td>
                                <td>
                                 <ul>

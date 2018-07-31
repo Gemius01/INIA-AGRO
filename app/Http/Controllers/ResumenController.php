@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Resumen;
 use PDF;
 
@@ -47,8 +48,17 @@ class ResumenController extends Controller
      */
     public function show(Resumen $resumen)
     {
+        $user = Auth::user();
+        $rol = $user->roles()->first();
+        if($rol != null){
+
+            return view('resumenes.show',  compact(['resumen', 'rol' ]));
+        }else
+        {
+            $rol = [];
+            return view('resumenes.show',  compact(['resumen', 'rol' ]));
+        }
         
-        return view('resumenes.show',  compact(['resumen', ]));
     }
 
     /**
