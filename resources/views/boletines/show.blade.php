@@ -23,7 +23,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{$seccion->name}}
-                    @if($rol->id != 1)
+
+                    @if($rol->id != 2 ?? $rol->id !=1)
                     @can('seccion-'.$seccion->id)
                         @if($boletin->estado == 1)
                         <a href="{{ route('editor', ['boletin'=>$boletin->id, 'seccion'=>encrypt($seccion->id)])}}"
@@ -34,12 +35,12 @@
                     @endif
                     @endcan
                     @else
-                    @can('seccion-'.$seccion->id)
+                    
                         
                         <a href="{{ route('editor', ['boletin'=>$boletin->id, 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right">Editar</a>
                         
-                    @endcan
+                    
                     @endif
                 </div>
 
@@ -62,7 +63,7 @@
                                     @endif
                                 </strong>
                             </p>
-                            @if($rol->id != 1)
+                            @if($rol->id !=2 ?? $rol->id != 1)
                             @can('macrozona-'.$macrozona->id)
                                 @if($boletin->estado == 1)
                                     <a  
@@ -162,8 +163,7 @@
                             @endcan
                             @else
                             <!-- Admin -->
-                                @can('macrozona-'.$macrozona->id)
-                                
+
                                     <a  
                                         class="btn btn-sm btn-primary pull-right" 
                                         href="{{ route('editormacrozona', ['boletin'=>$boletin->id, 'subseccion'=>$subseccion->id, 'macrozona' => $macrozona->id ])}}"
@@ -211,7 +211,7 @@
                                     >Resumen Vacío
                                     </a>
                                     @endif
-                            @endcan
+                            
                             <!--end admin -->
                             @endif
                         </p>
