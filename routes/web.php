@@ -20,7 +20,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/pdfView', 'HomeController@vistaPdf')->name('pdfView');
 
+//Rutas Públicas
+
+//Traer todas las publicaciones
 Route::get("/public/publicaciones","PublicHtmlController@index", ['except' => ['boletinHtml']])->name('publicPublicaciones');
+
+//Traer todos los boletines y resumen de la publicacion
+Route::get('public/publicacion/{publicacion}','PublicHtmlController@show')->name('publicPublicacion.show');
+
+//Descargar el XML publico
+Route::get('public/xmlview/{publicacion}','BoletinController@generarXML')->name('xmlviewPublic');
+
+//Mostrar las secciones de un boletín
+Route::get('public/boletines/{boletin}','PublicHtmlController@showBoletin')->name('Publicboletines.show');
+
+Route::get('public/resumen/{resumen}','PublicHtmlController@showResumen')->name('PublicResumen.show');
+
+Route::get('public/resumenPDF/{resumen}','PublicHtmlController@pdfResumen')->name('PublicResumenPDF');
+
+Route::get('public/boletinPDF/{boletin}','PublicHtmlController@pdfBoletin')->name('PublicBoletinPDF');	
+
+
+
 //Routes
 Route::get("download-pdf","HomeController@downloadPDF");
 Route::middleware(['auth'])->group(function(){
@@ -266,4 +287,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('resumenPDF/{resumen}','ResumenController@descargarPDF')->name('resumenespdf')
 		->middleware('permission:resumen.show');
+
+
+
 });
