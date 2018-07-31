@@ -14,27 +14,27 @@
                 <div class="card-body">
                   <strong>Publicación elegida actualmente</strong>
                   <ul>
-                   
+
                     <li>
                       <strong>
-                        MES : 
-                        @if($publicacionActual->mes != null) 
+                        MES :
+                        @if($publicacionActual->mes != null)
                           {{$publicacionActual->mes->nombre}}
                         @else
-                          
+
                         @endif
-                      </strong> 
+                      </strong>
                     </li>
                     <li>
                       <strong>
-                        AÑO : 
+                        AÑO :
                         @if($publicacionActual->año !=null)
                         {{$publicacionActual->año}}
                         @else
                         @endif
-                      </strong> 
+                      </strong>
                     </li>
-                    
+
                   </ul>
                   <hr>
                    <table class="table table-striped table-hover table-bordered">
@@ -74,14 +74,13 @@
                               <a href="{{ route('publicaciones.vistaElegir', $publicacion->id) }}"
                               class="btn btn-sm btn-warning">Elegir</a>
                             </td>
-                            
+
                           </tr>
                         @endforeach
-                        
                        </tbody>
                    </table>
                    <center>
-                  
+
                </center>
                 </div>
             </div>

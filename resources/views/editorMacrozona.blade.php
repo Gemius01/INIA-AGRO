@@ -11,20 +11,20 @@
             <div class="card">
 
                 <div class="card-header">
-                    <label>Boletin Agrometeorlógico -  Región: 
-                    {{ $detalleMacrozona->subsecciones[0]->boletin->region->name }} - 
-                    {{ $detalleMacrozona->subsecciones[0]->boletin->publicacion->mes->nombre }} 
-                    {{ $detalleMacrozona->subsecciones[0]->boletin->publicacion->año }} 
-                    </label>  
+                    <label>Boletin Agrometeorlógico -  Región:
+                    {{ $detalleMacrozona->subsecciones[0]->boletin->region->name }} -
+                    {{ $detalleMacrozona->subsecciones[0]->boletin->publicacion->mes->nombre }}
+                    {{ $detalleMacrozona->subsecciones[0]->boletin->publicacion->año }}
+                    </label>
                     <a href="{{ route('boletines.show', $boletin->id)}}"
                     class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
                 </div>
 
                 <div class="card-body">
                     <strong>
-                    Macrozona : {{ $detalleMacrozona->name}} 
+                    Macrozona : {{ $detalleMacrozona->name}}
                     @if($detalleMacrozona->rubro != null)
-                     > {{ $detalleMacrozona->rubro->name}} > 
+                     > {{ $detalleMacrozona->rubro->name}} >
                      @if($detalleMacrozona->rubro->subrubro != null)
                      {{ $detalleMacrozona->rubro->subrubro}}
                      @else
@@ -44,7 +44,7 @@
                     <div style="display:none;">
                         <input id="obj" value="{{ $detalleMacrozona }}"></input>
                         <input id="boletin" value="{{ $boletin }}"></input>
-                        
+
                     </div>
                     <div>
                     </div>
@@ -99,7 +99,7 @@ setup: function(editor){
         }
     });
 editor.addButton('mybutton', {
-image: '/public/icons/grafico.png',
+image: "{{ URL::to('/') }}/images//grafico.png",
 tooltip: "Gráficos de información",
 onclick: function () {
 alert("Proximamente");
@@ -139,14 +139,14 @@ function pruebaConsole()
 }
 
 function guardarDatos()
-{   
+{
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     var boletinObj = JSON.parse(document.getElementById('boletin').value);
 
     var subseccion_id = objSeccion.pivot.subseccion_id;
     var macrozona_id = objSeccion.pivot.macrozona_id;
     var boletin_id = boletinObj.id;
-    
+
     var contentTinymce = tinymce.get('tinymce').getContent();
     $.ajax({
     method: 'POST', // Type of response and matches what we said in the route
@@ -176,10 +176,10 @@ function guardarDatos()
     var subseccion_id = objSeccion.pivot.subseccion_id;
     var macrozona_id = objSeccion.pivot.macrozona_id;
     var boletin_id = boletinObj.id;
-    
+
     var contentResumen = document.getElementById('resumen').value;
     console.log(contentResumen);
-    
+
     $.ajax({
     method: 'POST', // Type of response and matches what we said in the route
     headers: {
@@ -197,7 +197,7 @@ function guardarDatos()
         //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
     }
     });
-    
+
  }
 </script>
 @endsection

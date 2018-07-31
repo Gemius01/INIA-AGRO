@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong>
-                    Boletín Agrometeorológico - Región: {{ $boletin->region->name}} - 
+                    Boletín Agrometeorológico - Región: {{ $boletin->region->name}} -
                     {{ $boletin->publicacion->mes->nombre }} - {{ $boletin->publicacion->año }}
                     </strong>
                      <a href="{{ route('boletines.show', $boletin->id)}}"
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="card-body">
- 
+
                     Seccion: {{ $seccionDetail->name }}
                     <hr>
                     <div>
@@ -36,7 +36,7 @@
                     <br>
                     <center>
                         <button  class="btn btn-sm btn-primary"  onclick="guardarDatos()">Guardar Datos</button>
-                        
+
                     </center>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
     <button  class="btn btn-sm btn-primary"  onclick="generarGrafico()">Generar Gráfico</button>
     <hr>
       <div id="container" style="width: 100%;
-    
+
     height: 400px;
     margin: 0 auto;"></div>
     </div>
@@ -116,7 +116,7 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: 'Hz' 
+            valueSuffix: 'Hz'
         },
         legend: {
             layout: 'vertical',
@@ -124,7 +124,7 @@ $(function () {
             verticalAlign: 'middle',
             borderWidth: 0
         },
-        series: 
+        series:
         [{
             data:             []
         }]
@@ -133,7 +133,7 @@ $(function () {
         options.series = [{name:'Hora frio', data: [4.3,4.2,4.8,4.5]}, {data: [1.3,1.2,1.8]}];//Acá seteo las opciones para crear las series del gráfico
 
         chart = new Highcharts.Chart(options);
-        
+
 
 });
 </script>
@@ -170,8 +170,8 @@ setup: function(editor){
         }
     });
 editor.addButton('mybutton', {
-icon: 'sun',
-//image: '../../public/icons/grafico.png',
+//icon: 'sun',
+image: "{{ URL::to('/') }}/images//grafico.png",
 tooltip: "Gráficos de información",
 onclick: function () {
 $('#modalGraficos').modal('show');
@@ -211,7 +211,7 @@ function pruebaConsole()
 }
 
 function guardarDatos()
-{   
+{
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     console.log(objSeccion)
     var boletin_id = objSeccion.pivot.boletin_id;
@@ -226,7 +226,7 @@ function guardarDatos()
     url: '/editor/update', // This is the url we gave in the route
     data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
     success: function(response){ // What to do if we succeed
-        //console.log(response); 
+        //console.log(response);
         window.location.href = response;
     },
     error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
@@ -240,7 +240,7 @@ function generarGrafico()
 {
     $.ajax({
     method: 'GET', // Type of response and matches what we said in the route
-    
+
     url: 'https://jsonplaceholder.typicode.com/todos/1', // This is the url we gave in the route
      // a JSON object to send back
     success: function(response){ // What to do if we succeed
@@ -250,7 +250,7 @@ function generarGrafico()
                         "id": 1,
                         "ema": {
                             "nombre": "meteo1",
-                            "grafico1": { 
+                            "grafico1": {
                                 "xAxis": {
                                    "categories": ["cat1", "cat2", "cat3"],
                                    "title": {
@@ -269,7 +269,7 @@ function generarGrafico()
                                     {"name": "serie4", "data":[9,5,5,6,5]},
                                     {"name": "serie5", "data":[10,5,3,7,20]}
                                     ]
-                                
+
                                 }
                                }
                             }
@@ -304,7 +304,7 @@ function generarGrafico()
             }]
         },
         tooltip: {
-            valueSuffix: 'Hz' 
+            valueSuffix: 'Hz'
         },
         legend: {
             layout: 'vertical',
@@ -312,7 +312,7 @@ function generarGrafico()
             verticalAlign: 'middle',
             borderWidth: 0
         },
-        series: 
+        series:
         [{
             data:             []
         }]
@@ -325,7 +325,7 @@ function generarGrafico()
                       json.region.ema.grafico1.series[3],
                       json.region.ema.grafico1.series[4] ];
     chart = new Highcharts.Chart(options);
-        
+
     },
     error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
         //console.log(JSON.stringify(jqXHR));

@@ -9,8 +9,8 @@
             <div class="card">
                 <div class="card-header">
                     <strong>
-                    Boletín Agrometeorológico - Resumen ejecutivo Nacional - 
-                    {{ $resumen->publicacion->mes->nombre }} - 
+                    Boletín Agrometeorológico - Resumen ejecutivo Nacional -
+                    {{ $resumen->publicacion->mes->nombre }} -
                     {{ $resumen->publicacion->año }}
                     </strong>
                     <a href="{{ route('resumenes.show', $resumen->id)}}"
@@ -34,7 +34,7 @@
                     </form>
                     <div style="display:none;">
                         <input id="obj" value="{{ $seccionDetail }}"></input>
-                        
+
                     </div>
                     <div>
                     </div>
@@ -48,10 +48,10 @@
                       @foreach($arrayImages as $image)
 
                          {!! $image !!}
-                        
+
                       @endforeach
                       <img src="{{asset('photos/shares/descarga.jpg')}}"/>
-                      
+
                   </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@ setup: function(editor){
         }
     });
 editor.addButton('mybutton', {
-image: '/public/icons/grafico.png',
+image: "{{ URL::to('/') }}/images//grafico.png",
 tooltip: "Gráficos de información",
 onclick: function () {
 alert("Proximamente");
@@ -131,12 +131,12 @@ function pruebaConsole()
 }
 
 function guardarDatos()
-{   
+{
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     console.log(objSeccion)
     var region_id = objSeccion.pivot.region_id;
     var resumen_id = objSeccion.pivot.resumen_id;
-    
+
     var contentTinymce = tinymce.get('tinymce').getContent();
     $.ajax({
     method: 'POST', // Type of response and matches what we said in the route
@@ -146,7 +146,7 @@ function guardarDatos()
     url: '/editorResumen/update', // This is the url we gave in the route
     data: {region_id: region_id, resumen_id: resumen_id, contenido: contentTinymce}, // a JSON object to send back
     success: function(response){ // What to do if we succeed
-        //console.log(response); 
+        //console.log(response);
         window.location.href = response;
     },
     error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
