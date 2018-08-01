@@ -46,8 +46,16 @@
 </div>
 <div class="modal fade bd-example-modal-lg" id="modalGraficos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
+
     <div class="modal-content">
-    <label>Seleccione EMA</label>
+    <div class="modal-header">
+        <h6 class="modal-title"><strong>Gráficos de Información</strong></h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div class="container">
+    <label><strong>Seleccione EMA</strong></label>
     <select class="custom-select">
       <option selected>Seleccione Estación Meteorológica Automática</option>
       <option value="1">Meteo1</option>
@@ -55,7 +63,7 @@
       <option value="3">Meteo3</option>
     </select>
     <hr>
-    <label>Gráfico</label>
+    <label><strong>Gráfico</strong></label>
     <select class="custom-select">
       <option selected>Seleccione el gráfico a crear</option>
       <option value="1">Gráfico 1</option>
@@ -63,12 +71,12 @@
       <option value="3">Gráfico 3</option>
     </select>
     <hr>
+    <center>
     <button  class="btn btn-sm btn-primary"  onclick="generarGrafico()">Generar Gráfico</button>
+    </center>
     <hr>
-      <div id="container" style="width: 100%;
-
-    height: 400px;
-    margin: 0 auto;"></div>
+      <div id="container" style="width: 100%;height: 400px;margin: 0 auto;"></div>
+    </div>
     </div>
   </div>
 </div>
