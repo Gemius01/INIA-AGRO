@@ -29,7 +29,7 @@
                                <td>{{ $boletin->region->name }}</td>
                                @can('boletines.show')
                                <td>
-                                   <a href="{{ route('boletines.show', $boletin->id) }}"
+                                   <a href="{{ route('boletines.show', encrypt($boletin->id)) }}"
                                     class="btn btn-sm btn-primary">Ver</a>
                                </td>
                                @endcan

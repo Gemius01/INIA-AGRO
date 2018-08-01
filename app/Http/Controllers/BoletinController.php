@@ -95,10 +95,11 @@ class BoletinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Boletin $boletin)
+    public function show($idBoletin)
     {
 
-        //$boletin = Boletin::where('id', '=', $id);
+      $boletin = Boletin::find(decrypt($idBoletin));
+
         //dd($boletin->secciones);
         $user = Auth::user();
         $rol = $user->roles()->first();
@@ -139,8 +140,9 @@ class BoletinController extends Controller
         //
     }
 
-    public function editarSeccion(Boletin $boletin, $seccion)
+    public function editarSeccion($idBoletin, $seccion)
     {
+        $boletin = Boletin::find(decrypt($idBoletin));
         $seccionDetail = $boletin->secciones()->where('seccion_id', '=', decrypt($seccion))->first();
         //dd($seccionDetail);
         //dd($detalle);

@@ -23,7 +23,7 @@
                            </tr>
                        </thead>
                        <tbody>
-                        
+
                           <tr>
                             <!--<td>{{ $resumen->id }}</td>-->
                             <td>{{ $resumen->publicacion->mes->nombre }}</td>
@@ -37,7 +37,7 @@
                               class="btn btn-sm btn-warning">PDF</a>
                             </td>
                           </tr>
-                        
+
                        </tbody>
                    </table>
                    <hr>
@@ -63,7 +63,7 @@
                               @endif
                             </td>
                             <td style="text-align: center;">
-                              <a href="{{ route('boletines.show', $boletin->id) }}"
+                              <a href="{{ route('boletines.show', encrypt($boletin->id)) }}"
                               class="btn btn-sm btn-primary">Ver</a>
                             </td>
                             <td style="text-align: center;">
@@ -75,7 +75,7 @@
                        </tbody>
                    </table>
                    <center>
-                  
+
                </center>
                 </div>
             </div>
