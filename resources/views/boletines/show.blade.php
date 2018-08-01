@@ -27,7 +27,7 @@
                     @if($rol->id != 2 ?? $rol->id !=1)
                     @can('seccion-'.$seccion->id)
                         @if($boletin->estado == 1)
-                        <a href="{{ route('editor', ['boletin'=>$boletin->id, 'seccion'=>encrypt($seccion->id)])}}"
+                        <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right">Editar</a>
                         @else
                         <a href="#"
@@ -37,7 +37,7 @@
                     @else
 
 
-                        <a href="{{ route('editor', ['boletin'=>$boletin->id, 'seccion'=>encrypt($seccion->id)])}}"
+                        <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right">Editar</a>
 
 
