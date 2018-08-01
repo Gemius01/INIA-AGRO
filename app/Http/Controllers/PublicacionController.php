@@ -274,4 +274,73 @@ class PublicacionController extends Controller
         return redirect()->route('publicaciones.abrirCerrar', $publicacion->id)
             ->with('info', 'Se ha cerrado correctamente los boletines');
     }
+
+    public function publicHtmlvista()
+    {
+      $publicaciones = Publicacion::get();
+      return view('publicaciones.publicar', compact(['publicaciones']));
+    }
+
+    public function habilitarDeshabilitar(Publicacion $publicacion)
+    {
+
+      if($publicacion->public == true)
+      {
+        $publicacion->public = false;
+        $publicacion->save();
+      return redirect()->route('publichtml.enabledisable')
+            ->with('info', 'Se ha deshabilitado correctamente');
+      }else{
+        $publicacion->public = true;
+        $publicacion->save();
+      return redirect()->route('publichtml.enabledisable')
+            ->with('info', 'Se ha habilitado correctamente');
+      }
+      
+    }
+
+    public function publicBoletinesVista(Publicacion $publicacion)
+    {
+      return view('publicaciones.publicarBoletines', compact(['publicacion']));
+
+    }
+
+    public function publicBoletin(Boletin $boletin)
+    {
+
+      if($boletin->publico == true)
+      {
+        $boletin->publico = false;
+        $boletin->save();
+      return redirect()->route('publichtml.boletines.show', $boletin->publicacion->id)
+            ->with('info', 'Se ha deshabilitado correctamente');
+      }else{
+        $boletin->publico = true;
+        $boletin->save();
+      return redirect()->route('publichtml.boletines.show', $boletin->publicacion->id)
+            ->with('info', 'Se ha habilitado correctamente');
+      }
+    }
+
+    public function publicBoletinHabilitarTodos(Publicacion $publicacion)
+    {
+      foreach($publicacion->boletines as $boletin)
+        {
+            $boletin->publico = true;
+            $boletin->save();
+        }
+      return redirect()->route('publichtml.boletines.show', $publicacion->id)
+            ->with('info', 'Se han habilitado todos los boletines');
+    }
+
+    public function publicBoletinDeshabilitarTodos(Publicacion $publicacion)
+    {
+      foreach($publicacion->boletines as $boletin)
+        {
+            $boletin->publico = false;
+            $boletin->save();
+        }
+      return redirect()->route('publichtml.boletines.show', $publicacion->id)
+            ->with('info', 'Se han deshabilitado todos los boletines');
+    }
 }

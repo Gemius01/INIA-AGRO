@@ -8,7 +8,12 @@
                 <div class="card-header">Publicaciones
                 @can('products.create')
                     <a href="{{ route('publicaciones.create')}}"
-                    class="btn btn-sm btn-primary pull-right">Crear</a>
+                    class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;">Crear</a>
+                @endcan
+
+                @can('publicaciones.publicar')
+                    <a href="{{ route('publichtml.enabledisable')}}"
+                    class="btn btn-sm btn-info pull-right">Publicar HTML</a>
                 @endcan
                 </div>
                 <div class="card-body">

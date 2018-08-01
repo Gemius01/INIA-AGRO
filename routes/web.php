@@ -159,7 +159,27 @@ Route::middleware(['auth'])->group(function(){
 		->middleware('permission:boletines.show');
 		
 	Route::get('publicaciones/{publicacion}/abrircerrar','PublicacionController@vistaAbrirCerrarBoletines')->name('publicaciones.abrirCerrar')
-		->middleware('permission:boletines.show');
+		->middleware('permission:admin');
+
+	Route::get('publichtml/habilitar/deshabilitar','PublicacionController@publicHtmlvista')->name('publichtml.enabledisable')
+		->middleware('permission:admin');
+
+	Route::put('publichtml/{publicacion}/habilitar/deshabilitarRequest','PublicacionController@habilitarDeshabilitar')->name('publichtml.enabledisableRequest')
+		->middleware('permission:admin');
+
+	Route::get('publichtml/{publicacion}/boletines','PublicacionController@publicBoletinesVista')->name('publichtml.boletines.show')
+		->middleware('permission:admin');
+
+	Route::put('publichtml/{boletin}/boletinRequest','PublicacionController@publicBoletin')->name('publichtml.boletin.enabledisable')
+		->middleware('permission:admin');
+
+	Route::put('publichtml/{publicacion}/habilitarTodos','PublicacionController@publicBoletinHabilitarTodos')->name('publichtml.boletin.habilitarTodos')
+		->middleware('permission:admin');
+
+	Route::put('publichtml/{publicacion}/deshabilitarTodos',
+		'PublicacionController@publicBoletinDeshabilitarTodos')
+		->name('publichtml.boletin.deshabilitarTodos')
+		->middleware('permission:admin');
 
 
 	//Boletines
