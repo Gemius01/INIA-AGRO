@@ -19,6 +19,11 @@
 <div class="form-group">
 	{{ Form::label('cri', 'CRI') }}
 	{{ Form::text('cri', null, ['class' => 'form-control', 'id' => 'cri']) }}
+	@if($errors->has('cri'))
+	@foreach($errors->get('cri',":message") as $error)
+	<p class="alert alert-danger alert-dismissible" >{{$error}}</p>
+	@endforeach
+	@endif
 </div>
 <div class="form-group">
 	{{ Form::label('email', 'E-Mail') }}

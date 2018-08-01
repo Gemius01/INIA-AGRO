@@ -26,6 +26,7 @@ class UserStoreRequest extends FormRequest
        return [
            'name' => 'required|max:100|min:2',
            'cargo' => 'required|max:100|min:2',
+           'cri' => 'required|max:100|min:2',
            'email' => 'required|max:100|email|min:2|unique:users,email',
            'password' => 'required|max:30|min:3',
            'roles' => 'required',
@@ -40,6 +41,9 @@ class UserStoreRequest extends FormRequest
            'cargo.required' => 'El cargo del usuario esta vacío.',
            'cargo.max' => 'El cargo del usuario no debe contener más de 100 caracteres.',
            'cargo.min' => 'El cargo del usuario debe contener al menos 2 caracteres.',
+           'cri.required' => 'El cri del usuario esta vacío.',
+           'cri.max' => 'El cri del usuario no debe contener más de 100 caracteres.',
+           'cri.min' => 'El cri del usuario debe contener al menos 2 caracteres.',
            'email.required' => 'El email del usuario esta vacío.',
            'email.max' => 'El email del usuario no debe contener más de 100 caracteres.',
            'email.min' => 'El email del usuario debe contener al menos 2 caracteres.',
