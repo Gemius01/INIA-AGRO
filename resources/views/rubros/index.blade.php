@@ -40,25 +40,25 @@
                                <td style="text-align: center;">
                                    <a href="{{ route('rubros.edit', $rubro->id) }}"
                                     class="btn btn-sm btn-success">Editar</a>
-                                   
+
                                </td>
                                @endcan
                                 @can('products.destroy')
                                <td style="text-align: center;">
-                                    {!! Form::open(['route' => ['rubros.destroy', $rubro->id], 
+                                    {!! Form::open(['route' => ['rubros.destroy', $rubro->id],
                                     'method' => 'DELETE']) !!}
-                                        <button class="btn btn-sm btn-danger">
-                                            Eliminar
-                                        </button>
+                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger">
+                                        Eliminar
+                                    </button>
                                     {!! Form::close() !!}
                                </td>
                                @endcan
-                          </tr>                          
+                          </tr>
                           @endforeach
                        </tbody>
                    </table>
                    <center>
-                  
+
                </center>
                 </div>
             </div>

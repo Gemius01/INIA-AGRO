@@ -6,11 +6,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    
+
                         <strong>
                             Boletín Agrometeorológico - Vista previa - {{ $boletin->region->name}} - Publicación de {{ $boletin->publicacion->mes->nombre}} {{ $boletin->publicacion->año}}
                         </strong>
-                    
+
                 </div>
 
             </div>
@@ -35,12 +35,12 @@
                     @endif
                     @endcan
                     @else
-                    
-                        
+
+
                         <a href="{{ route('editor', ['boletin'=>$boletin->id, 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right">Editar</a>
-                        
-                    
+
+
                     @endif
                 </div>
 
@@ -52,10 +52,10 @@
                         <p>
                             <p class="text-muted btn">
                                 <strong>
-                                    {{$macrozona->name}} 
+                                    {{$macrozona->name}}
                                     @if($macrozona->rubro != null)
                                     > {{ $macrozona->rubro->name }}
-                                        @if($macrozona->rubro->subrubro != null) 
+                                        @if($macrozona->rubro->subrubro != null)
                                         > {{ $macrozona->rubro->subrubro}}
                                         @else
                                         @endif
@@ -66,13 +66,13 @@
                             @if($rol->id !=2 ?? $rol->id != 1)
                             @can('macrozona-'.$macrozona->id)
                                 @if($boletin->estado == 1)
-                                    <a  
-                                        class="btn btn-sm btn-primary pull-right" 
+                                    <a
+                                        class="btn btn-sm btn-primary pull-right"
                                         href="{{ route('editormacrozona', ['boletin'=>$boletin->id, 'subseccion'=>$subseccion->id, 'macrozona' => $macrozona->id ])}}"
                                     >Editar</a>
                                     @if( $macrozona->pivot->resumen != null)
-                                        <a  
-                                        class="btn btn-sm btn-info pull-right " 
+                                        <a
+                                        class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
                                         href="#"
                                     >Ver Resumen</a>
@@ -80,17 +80,17 @@
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        
+
                                         <h6 class="modal-title" id="myModalLabel">
-                                         {{$macrozona->name}} 
+                                         {{$macrozona->name}}
                                             @if($macrozona->rubro != null)
                                             > {{ $macrozona->rubro->name }}
-                                                @if($macrozona->rubro->subrubro != null) 
+                                                @if($macrozona->rubro->subrubro != null)
                                                 > {{ $macrozona->rubro->subrubro}}
                                                 @else
                                                 @endif
                                             @else
-                                            @endif   
+                                            @endif
 
                                         </h4>
                                       </div>
@@ -100,15 +100,15 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar
                                         </button>
-                                        
+
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                     @else
-                                    <a  
-                                        class="btn btn-sm btn-info pull-right disabled" 
-                                        
+                                    <a
+                                        class="btn btn-sm btn-info pull-right disabled"
+
                                         href="#"
                                     >Resumen Vacío
                                     </a>
@@ -116,8 +116,8 @@
                                 @else
                                 <a class="btn btn-sm btn-primary pull-right disabled" href="#">Cerrado</a>
                                  @if( $macrozona->pivot->resumen != null)
-                                        <a  
-                                        class="btn btn-sm btn-info pull-right " 
+                                        <a
+                                        class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
                                         href="#"
                                     >Ver Resumen</a>
@@ -125,17 +125,17 @@
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        
+
                                         <h6 class="modal-title" id="myModalLabel">
-                                         {{$macrozona->name}} 
+                                         {{$macrozona->name}}
                                             @if($macrozona->rubro != null)
                                             > {{ $macrozona->rubro->name }}
-                                                @if($macrozona->rubro->subrubro != null) 
+                                                @if($macrozona->rubro->subrubro != null)
                                                 > {{ $macrozona->rubro->subrubro}}
                                                 @else
                                                 @endif
                                             @else
-                                            @endif   
+                                            @endif
 
                                         </h4>
                                       </div>
@@ -145,32 +145,32 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar
                                         </button>
-                                        
+
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                     @else
-                                    <a  
-                                        class="btn btn-sm btn-info pull-right disabled" 
-                                        
+                                    <a
+                                        class="btn btn-sm btn-info pull-right disabled"
+
                                         href="#"
                                     >Resumen Vacío
                                     </a>
                                     @endif
-                                    
+
                                 @endif
                             @endcan
                             @else
                             <!-- Admin -->
 
-                                    <a  
-                                        class="btn btn-sm btn-primary pull-right" 
+                                    <a
+                                        class="btn btn-sm btn-primary pull-right"
                                         href="{{ route('editormacrozona', ['boletin'=>$boletin->id, 'subseccion'=>$subseccion->id, 'macrozona' => $macrozona->id ])}}"
                                     >Editar</a>
                                     @if( $macrozona->pivot->resumen != null)
-                                        <a  
-                                        class="btn btn-sm btn-info pull-right " 
+                                        <a
+                                        class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
                                         href="#"
                                     >Ver Resumen</a>
@@ -178,17 +178,17 @@
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        
+
                                         <h6 class="modal-title" id="myModalLabel">
-                                         {{$macrozona->name}} 
+                                         {{$macrozona->name}}
                                             @if($macrozona->rubro != null)
                                             > {{ $macrozona->rubro->name }}
-                                                @if($macrozona->rubro->subrubro != null) 
+                                                @if($macrozona->rubro->subrubro != null)
                                                 > {{ $macrozona->rubro->subrubro}}
                                                 @else
                                                 @endif
                                             @else
-                                            @endif   
+                                            @endif
 
                                         </h6>
                                       </div>
@@ -198,20 +198,20 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar
                                         </button>
-                                        
+
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                     @else
-                                    <a  
-                                        class="btn btn-sm btn-info pull-right disabled" 
-                                        
+                                    <a
+                                        class="btn btn-sm btn-info pull-right disabled"
+
                                         href="#"
                                     >Resumen Vacío
                                     </a>
                                     @endif
-                            
+
                             <!--end admin -->
                             @endif
                         </p>
