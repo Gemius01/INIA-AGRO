@@ -14,7 +14,7 @@
                     'method' => 'PUT']) !!}
 
                         @include('users.partials.formEdit')
-                        
+
                     {!! Form::close() !!}
                 </div>
             </div>

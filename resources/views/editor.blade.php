@@ -12,7 +12,7 @@
                     Boletín Agrometeorológico - Región: {{ $boletin->region->name}} -
                     {{ $boletin->publicacion->mes->nombre }} - {{ $boletin->publicacion->año }}
                     </strong>
-                     <a href="{{ route('boletines.show', $boletin->id)}}"
+                     <a href="{{ route('boletines.show', encrypt($boletin->id))}}"
                     class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
                 </div>
 

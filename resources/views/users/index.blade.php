@@ -11,7 +11,7 @@
                     class="btn btn-sm btn-primary pull-right">Crear</a>
                 @endcan
                 </div>
-                
+
                 <div class="card-body" width="100%">
                    <table class="table table-striped table-hover table-bordered" width="100%">
                        <thead>
@@ -49,7 +49,7 @@
                                 @endforeach
                                 </ul>
                                </td>
-                               <td> 
+                               <td>
                                 <ul>
                                   @foreach($user->secciones as $seccion)
                                   <li>
@@ -59,19 +59,19 @@
                                   </ul>
                                </td>
                                <td>
-                                <ul> 
+                                <ul>
                                   @foreach($user->macrozonas as $macrozona)
                                   <li>
                                     {{ $macrozona->name}}
                                     @if($macrozona->rubro != null)
-                                     > {{ $macrozona->rubro->name }} 
+                                     > {{ $macrozona->rubro->name }}
                                      @if($macrozona->rubro->subrubro !=null)
-                                     > {{ $macrozona->rubro->subrubro }} 
+                                     > {{ $macrozona->rubro->subrubro }}
                                      @else
-                                     
+
                                      @endif
                                     @else
-                                     
+
                                     @endif
                                   </li>
                                   @endforeach
@@ -79,33 +79,33 @@
                                </td>
                                @can('users.show')
                                <td width="10px">
-                                   <a href="{{ route('users.show', $user->id) }}"
+                                   <a href="{{ route('users.show', encrypt($user->id)) }}"
                                     class="btn btn-sm btn-primary">Ver</a>
                                </td>
                                @endcan
                                @can('users.edit')
                                <td width="10px">
                                    <a href="{{ route('users.edit', $user->id) }}"
-                                    class="btn btn-sm btn-success">Editar</a>  
+                                    class="btn btn-sm btn-success">Editar</a>
                                </td>
                                @endcan
 
-                               
+
                                @can('users.edit')
                                <td width="10px">
                                    <a href="{{ route('users.macrozonas', $user->id) }}"
-                                    class="btn btn-sm btn-success">Macrozonas</a>  
+                                    class="btn btn-sm btn-success">Macrozonas</a>
                                </td>
                                @endcan
                                @can('users.edit')
                                <td width="10px">
                                    <a href="{{ route('users.secciones', $user->id) }}"
-                                    class="btn btn-sm btn-success">Secciones</a>  
+                                    class="btn btn-sm btn-success">Secciones</a>
                                </td>
                                @endcan
                                @can('users.destroy')
                                <td width="10px">
-                                    {!! Form::open(['route' => ['users.destroy', $user->id], 
+                                    {!! Form::open(['route' => ['users.destroy', $user->id],
                                     'method' => 'DELETE']) !!}
                                         <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger">
                                             Eliminar
@@ -118,7 +118,7 @@
                        </tbody>
                    </table>
                    <center>
-                   
+
                </center>
                 </div>
             </div>

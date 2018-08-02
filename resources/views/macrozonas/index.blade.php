@@ -41,12 +41,6 @@
                             <td>{{ $macrozona->name }}</td>
                             <td>{{ $macrozona->rubro['name'] ?: '-' }}
                             <td>{{ $macrozona->rubro['subrubro'] ?: '-' }}</td>
-                            @can('products.show')
-                               <td style="text-align: center;">
-                                   <a href="{{ route('macrozonas.show', $macrozona->id) }}"
-                                    class="btn btn-sm btn-primary">Ver</a>
-                               </td>
-                               @endcan
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('macrozonas.edit', $macrozona->id) }}"
