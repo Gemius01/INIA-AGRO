@@ -6,6 +6,9 @@ use App\User;
 use App\Region;
 use App\Seccion;
 use App\Macrozona;
+use Mail;
+use App\Mail\CreateUser;
+use Illuminate\Support\Facades\Auth;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
@@ -22,7 +25,19 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
 
      */
+    public function setEnvironmentValue($envKey, $envValue)
+    {
+        $envFile = app()->environmentFilePath();
+        $str = file_get_contents($envFile);
 
+        $oldValue = strtok($str, "{$envKey}=");
+
+        $str = str_replace("{$envKey}={$oldValue}", "{$envKey}={$envValue}\n", $str);
+
+        $fp = fopen($envFile, 'w');
+        fwrite($fp, $str);
+        fclose($fp);
+    }
 
     public function index()
     {
@@ -64,17 +79,28 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-
+        
+        $authUser = Auth::user();
+        $data = array('name'=>"Sam Jose", "body" => "Test mail");
+        config(['mail.username' => 'pablo.gmeio0123@gmail.com']);
+        config(['mail.password' => 'pablomundo2']);
+        try {
+        Mail::send('mails.mail', $data, function($message) {
+            $message->to('pablo.gemio01@gmail.com', 'Artisans Web')
+                    ->subject('Artisans Web Testing Mail');
+            $message->from('pablo.gmeio0123@gmail.com','Sajid Sayyad');
+        });
+        }
+        catch (\Exception $e) {
         $user = User::create([
             'name'      => $request['name'],
             'email'     => $request['email'],
             'cri'       => $request['cri'],
             'password'  => Hash::make($request['password']),
             'cargo'     => $request['cargo'],
-
-
         ]);
-
+        
+        //\Mail::to('pablo.gemio01@gmail.com')->send(new CreateUser);
         //Sincroniza las tablas intermedias de macrozona_user
         $user->regiones()->sync($request->get('regions'));
 
@@ -99,7 +125,47 @@ class UserController extends Controller
                 }
 
         }
+        
+        return redirect()->route('users.index', $user->id)
+            ->with('info', 'Usuario registrado con exito');
+        }
+        
+        $user = User::create([
+            'name'      => $request['name'],
+            'email'     => $request['email'],
+            'cri'       => $request['cri'],
+            'password'  => Hash::make($request['password']),
+            'cargo'     => $request['cargo'],
 
+
+        ]);
+        
+        //\Mail::to('pablo.gemio01@gmail.com')->send(new CreateUser);
+        //Sincroniza las tablas intermedias de macrozona_user
+        $user->regiones()->sync($request->get('regions'));
+
+        //Sincroniza las tablas intermedias de macrozona_user
+        $user->macrozonas()->sync($request->get('macrozonas'));
+
+        //Sincroniza las tablas intermedias de role_user
+        $user->roles()->sync($request->get('roles'));
+
+        //Sincroniza las tablas intermedias de seccion_user
+        $user->secciones()->sync($request->get('secciones'));
+
+        $secciones = $request->get('secciones');
+
+        if($secciones != null)
+        {
+
+            foreach($secciones as $seccion)
+                {
+                    $permission = Permission::where('slug', 'seccion-'.$seccion)->first();
+                    $user->permissions()->attach($permission);
+                }
+
+        }
+        
         return redirect()->route('users.index', $user->id)
             ->with('info', 'Usuario registrado con exito');
     }
