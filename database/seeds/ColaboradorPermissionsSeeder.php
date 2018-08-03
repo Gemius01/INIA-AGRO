@@ -13,7 +13,11 @@ class ColaboradorPermissionsSeeder extends Seeder
     {
         DB::table('permission_role')->insert([
             'permission_id' => 16,
-            'role_id' => 3,
+            'role_id' => 4,
+        ]);
+        DB::table('permission_role')->insert([
+            'permission_id' => 18,
+            'role_id' => 4,
         ]);
     }
 }

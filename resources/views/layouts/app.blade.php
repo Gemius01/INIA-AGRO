@@ -18,23 +18,9 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src="{{ asset('js/jquery.js') }}"></script>
-  <style media="screen">
-  i.mce-i-[icon-youtube]:before {   // FONT-AWESOME-CLASSNAME e.g. "icon-youtube"
-  content: "[\f166]";       // FONT-AWESOME-CONTENT e.g. "\f166"
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
-  color: #000;
-  font-size: 1.5em;
-  padding-right: 0.5em;
-  position: absolute;
-  top: 15%;
-  left: 0;
-}
-  </style>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -84,7 +70,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('regiones.index') }}">Gestión Región</a></li>
                         @endcan
                          @can('colaboradores.index')
-                        <li class="nav-item"><a class="nav-link" href="{{ route('regiones.index') }}">Colaboradores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('colaboradores.index') }}">Colaboradores</a></li>
                         @endcan
                     </ul>
 
@@ -132,6 +118,13 @@
             <div class="container">
                 <div class="alert alert-success">
                     {{ session('info') }}
+                </div>
+            </div>
+            @endif
+            @if(session('info-danger'))
+            <div class="container">
+                <div class="alert alert-danger">
+                    {!! session('info-danger') !!}
                 </div>
             </div>
             @endif

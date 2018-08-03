@@ -4,6 +4,6 @@
 	<title></title>
 </head>
 <body>
-<h1>Bienvenido</h1>
+	<p>{{ $contenido }}</p>
 </body>
 </html>

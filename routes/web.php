@@ -308,6 +308,12 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('resumenPDF/{resumen}','ResumenController@descargarPDF')->name('resumenespdf')
 		->middleware('permission:resumen.show');
 
+	//Mis Colaboradores
 
+	Route::get('colaboradores','ColaboradorController@index')->name('colaboradores.index');
+
+	Route::get('colaborador/{user}/send','ColaboradorController@email')->name('user.email');
+
+	Route::post('colaborador/sendup/{colaborador}','ColaboradorController@send')->name('user.emailsend');
 
 });

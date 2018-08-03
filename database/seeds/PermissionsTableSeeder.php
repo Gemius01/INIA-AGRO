@@ -108,6 +108,12 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Ver las secciones del Resumen nacional al clickearlo',
         ]);
 
+        //Permiso para ver mis colaboradores
+        Permission::create([
+            'name' => 'Ver mis colaboradores',
+            'slug' => 'colaboradores.index',
+            'description' => 'Ver mis colaboradores y enviar correos',
+        ]);
         
     }
 }
