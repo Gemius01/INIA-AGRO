@@ -10,9 +10,9 @@
                 <div class="card-body">
                   <p><strong>Tus Regiones: </strong>
                     @foreach($regiones as $region)
-                    {{$region->name}} / 
+                    {{$region->name}} /
                     @endforeach
-                    
+
                   </p>
                    <hr>
                    <table class="table table-striped table-hover table-bordered">
@@ -30,9 +30,9 @@
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
                           <td style="text-align: center;">
-                            <a href="{{ route('user.email', $user->id) }}" 
+                            <a href="{{ route('user.email', $user->id) }}"
                                 class="btn btn-sm btn-primary">
-                              <i class="far fa-envelope"></i>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
                             </a>
                           </td>
                         </tr>
