@@ -12,7 +12,7 @@
                     'method' => 'PUT']) !!}
 
                         @include('users.partials.formEditPassword')
-                        
+
                     {!! Form::close() !!}
                 </div>
             </div>

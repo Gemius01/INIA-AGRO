@@ -16,7 +16,7 @@
                     {{ $detalleMacrozona->subsecciones[0]->boletin->publicacion->mes->nombre }}
                     {{ $detalleMacrozona->subsecciones[0]->boletin->publicacion->año }}
                     </label>
-                    <a href="{{ route('boletines.show', $boletin->id)}}"
+                    <a href="{{ route('boletines.show', encrypt($boletin->id))}}"
                     class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
                 </div>
 

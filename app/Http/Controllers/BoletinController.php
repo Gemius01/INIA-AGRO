@@ -167,21 +167,21 @@ class BoletinController extends Controller
       $detail = $boletin->secciones()->where('seccion_id', '=', $response['seccion_id'])->first();
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
-      return '/boletines/'.$request->input('boletin_id');
+      return '/boletines/'.encrypt($request->input('boletin_id'));
 
     }
 
-    public function editarSeccionMacrozona(Boletin $boletin, $subseccion, $macrozona)
+    public function editarSeccionMacrozona($idBoletin, $subseccion, $macrozona)
     {
-
+      $boletin = Boletin::find(decrypt($idBoletin));
         //Arreglar a una manera mas optima
         //$macrozona = $boletin->subsecciones[0]->macrozonas;
         //$detalleMacrozona = $macrozona[1]->pivot->;
 
         $subsecciones = $boletin->subsecciones()->first();
         $detalleMacrozona = $subsecciones->macrozonas()
-        ->wherePivot('macrozona_id', '=', $macrozona)
-        ->wherePivot('subseccion_id', '=', $subseccion)
+        ->wherePivot('macrozona_id', '=', decrypt($macrozona))
+        ->wherePivot('subseccion_id', '=', decrypt($subseccion))
         ->first();
         //$detalleMacrozona = $busquedaMacro->pivot;
         //$asd3 = $asd2->pivot;

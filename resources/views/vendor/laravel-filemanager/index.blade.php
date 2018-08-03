@@ -195,7 +195,7 @@
       uploadMultiple: false,
       parallelUploads: 5,
       clickable: '#upload-button',
-      dictDefaultMessage: 'Or drop files here to upload',
+      dictDefaultMessage: 'O arrastre archivos aquí para subir',
       init: function() {
         var _this = this; // For the closure
         this.on('success', function(file, response) {

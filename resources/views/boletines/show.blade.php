@@ -68,7 +68,7 @@
                                 @if($boletin->estado == 1)
                                     <a
                                         class="btn btn-sm btn-primary pull-right"
-                                        href="{{ route('editormacrozona', ['boletin'=>$boletin->id, 'subseccion'=>$subseccion->id, 'macrozona' => $macrozona->id ])}}"
+                                        href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}"
                                     >Editar</a>
                                     @if( $macrozona->pivot->resumen != null)
                                         <a
@@ -166,7 +166,7 @@
 
                                     <a
                                         class="btn btn-sm btn-primary pull-right"
-                                        href="{{ route('editormacrozona', ['boletin'=>$boletin->id, 'subseccion'=>$subseccion->id, 'macrozona' => $macrozona->id ])}}"
+                                        href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}"
                                     >Editar</a>
                                     @if( $macrozona->pivot->resumen != null)
                                         <a

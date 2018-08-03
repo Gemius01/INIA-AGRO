@@ -14,7 +14,7 @@
           @can('resumen.show')
           <strong>RESUMEN EJECUTIVO</strong>
           <hr>
-         
+
           <table class="table table-striped table-hover table-bordered" width="100%">
             <thead>
               <tr>
@@ -27,21 +27,21 @@
             <tbody>
               <tr>
 
-                
-                
+
+
                 @if($resumen != null)
                 <td>{{ $resumen->publicacion->mes->nombre ?: '-'}}</td>
                 <td>{{ $resumen->publicacion->año ?: '-'}}</td>
                 @can('resumen.show')
                 <td style="text-align: center;">
-                    <a href="{{ route('resumenes.show', $resumen->id) }}"
+                    <a href="{{ route('resumenes.show', encrypt($resumen->id)) }}"
                     class="btn btn-sm btn-primary">Ver</a>
                 </td>
                 @endcan
                 @else
-                
+
                 @endif
-                
+
               </tr>
             </tbody>
           </table>
@@ -61,20 +61,20 @@
               @if($userBoletines !=null)
               @foreach($userBoletines as $boletin)
               <tr>
-                
+
                 <td>{{ $boletin->region->name }} </td>
                 @if($boletin->estado == 1)
                   <td style="background-color: #e6ffe6; text-align: center;">
                     Abierto
-                  </td> 
+                  </td>
                 @else
                   <td style="background-color: #ffcccc; text-align: center;">
                     Cerrado
                   </td>
                 @endif
-               
+
                 <td width="10px">
-                  <a href="{{ route('boletines.show', $boletin->id) }}"
+                  <a href="{{ route('boletines.show', encrypt($boletin->id)) }}"
                   class="btn btn-sm btn-primary">Ver</a>
                 </td>
               </tr>
@@ -83,7 +83,7 @@
               @endif
             </tbody>
           </table>
-          
+
         </div>
       </div>
     </div>

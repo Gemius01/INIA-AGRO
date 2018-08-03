@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Usuario
-                     <a href="{{ route('users.editByUser', $user->id)}}"
+                     <a href="{{ route('users.editByUser', encrypt($user->id))}}"
                     class="btn btn-sm btn-primary pull-right">Editar Datos</a>
                 </div>
                 <div class="card-body">
@@ -25,9 +25,9 @@
                     <label><strong>Macrozona(s)</strong></label>
                     <ul>
                         @foreach($macrozonas as $macrozona)
-                        <li>{{ $macrozona->region->name }} > {{$macrozona->name}} 
+                        <li>{{ $macrozona->region->name }} > {{$macrozona->name}}
                             @if($macrozona->rubro != null)
-                            > {{$macrozona->rubro->name}} 
+                            > {{$macrozona->rubro->name}}
                                 @if($macrozona->rubro->subrubro != null)
                                 > {{$macrozona->rubro->subrubro}}
                                 @else

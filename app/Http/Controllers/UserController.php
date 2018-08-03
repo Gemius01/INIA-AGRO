@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserContraseñaRequest;
+use App\Http\Requests\UserEditByUserRequest;
 
 class UserController extends Controller
 {
@@ -79,7 +80,7 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        
+
         $authUser = Auth::user();
         $data = array('name'=>"Sam Jose", "body" => "Test mail");
         config(['mail.username' => 'pablo.gmeio0123@gmail.com']);
@@ -99,7 +100,7 @@ class UserController extends Controller
             'password'  => Hash::make($request['password']),
             'cargo'     => $request['cargo'],
         ]);
-        
+
         //\Mail::to('pablo.gemio01@gmail.com')->send(new CreateUser);
         //Sincroniza las tablas intermedias de macrozona_user
         $user->regiones()->sync($request->get('regions'));
@@ -125,11 +126,11 @@ class UserController extends Controller
                 }
 
         }
-        
+
         return redirect()->route('users.index', $user->id)
             ->with('info', 'No se envió el correo '.$e->getMessage());
         }
-        
+
         $user = User::create([
             'name'      => $request['name'],
             'email'     => $request['email'],
@@ -139,7 +140,7 @@ class UserController extends Controller
 
 
         ]);
-        
+
         //\Mail::to('pablo.gemio01@gmail.com')->send(new CreateUser);
         //Sincroniza las tablas intermedias de macrozona_user
         $user->regiones()->sync($request->get('regions'));
@@ -165,7 +166,7 @@ class UserController extends Controller
                 }
 
         }
-        
+
         return redirect()->route('users.index', $user->id)
             ->with('info', 'Usuario registrado con exito');
     }
@@ -176,8 +177,9 @@ class UserController extends Controller
      * @param  \App\User  $User
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($idUser)
     {
+        $user = User::find(decrypt($idUser));
         $user->roles()->get();
         $roles = $user->roles()->get();
         $regiones = $user->regiones()->get();
@@ -335,8 +337,9 @@ class UserController extends Controller
             ->with('info', 'Se ha actualizado el usuario '.$user->name);
     }
 
-    public function showByUser(User $user)
+    public function showByUser($idUser)
     {
+        $user = User::find(decrypt($idUser));
         $rol = $user->roles()->first();
         $regiones = $user->regiones()->get();
         $seccions = $user->secciones()->get();
@@ -344,31 +347,34 @@ class UserController extends Controller
         return view('users.showByUser', compact(['user', 'regiones', 'seccions', 'macrozonas', 'rol']));
     }
 
-    public function editByUserView(User $user)
+    public function editByUserView($idUser)
     {
-        
+        $user = User::find(decrypt($idUser));
         return view('users.editByUser', compact(['user']));
     }
 
-    public function editByUser(User $user, Request $request)
+    public function editByUser($idUser, UserEditByUserRequest $request)
     {
+      $user = User::find(decrypt($idUser));
         $user->update($request->all());
 
-        return redirect()->route('users.editByUser', $user->id)
+        return redirect()->route('users.editByUser', encrypt($user->id))
             ->with('info', 'Se ha actualizado el usuario '.$user->name);
     }
 
-    public function editPasswordByUserVista(User $user)
+    public function editPasswordByUserVista($idUser)
     {
+      $user = User::find(decrypt($idUser));
         return view('users.editPasswordByNormalUser', compact(['user']));
     }
 
-    public function editPasswordByUser(UserContraseñaRequest $request, User $user)
+    public function editPasswordByUser(UserContraseñaRequest $request, $idUser)
     {
+        $user = User::find(decrypt($idUser));
         $user->password = Hash::make($request['password']);
         $user->save();
 
-        return redirect()->route('users.editByUser', $user->id)
+        return redirect()->route('users.editByUser',  encrypt($user->id))
             ->with('info', 'Se ha actualizado correctamente la contraseña');
     }
 }

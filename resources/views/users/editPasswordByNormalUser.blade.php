@@ -8,11 +8,11 @@
                 <div class="card-header">Usuario
                 </div>
                 <div class="card-body">
-                   {!! Form::model($user, ['route' => ['users.editpasswordrequestByUser', $user->id],
+                   {!! Form::model($user, ['route' => ['users.editpasswordrequestByUser', encrypt($user->id)],
                     'method' => 'PUT']) !!}
 
                         @include('users.partials.formEditPassword')
-                        
+
                     {!! Form::close() !!}
                 </div>
             </div>
