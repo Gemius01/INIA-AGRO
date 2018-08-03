@@ -14,6 +14,7 @@ use App\Macrozona;
 use App\Resumen;
 use App\Mes;
 use App\User;
+use File;
 
 class PublicacionController extends Controller
 {
@@ -65,8 +66,12 @@ class PublicacionController extends Controller
       
        
         
+        
         //if($request['region'] == 0){//Crear Boletines para todas las regiones
             $publicacion = Publicacion::create($request->all());
+            //$path = public_path().'/photos/shares/'.$request->input('año');
+            //File::makeDirectory($path, $mode = 0777, true, true);
+             $this->crearDirectorios($publicacion);
              $this->crearResumen($publicacion);
             $regiones = Region::where('id', '<>', '1')->get();
             //$secciones = Seccion::get();
@@ -98,6 +103,32 @@ class PublicacionController extends Controller
             ->with('info', 'Publicación creada con éxito');
     }
 
+    public function crearDirectorios(Publicacion $publicacion)
+    {
+      if(Publicacion::where([['año', '=', $publicacion->año],['id','<>', $publicacion->id]])->exists())
+        {
+          $path = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre;
+          File::makeDirectory($path, $mode = 0777, true, true);
+          $secciones = Seccion::get();
+          foreach($secciones as $seccion)
+          {
+            $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$seccion->name;
+            File::makeDirectory($pathSeccion, $mode = 0777, true, true);
+          }
+        }else{
+          $pathAño = public_path().'/photos/shares/'.$publicacion->año;
+          File::makeDirectory($pathAño, $mode = 0777, true, true);
+          $pathMes = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre;
+          File::makeDirectory($pathMes, $mode = 0777, true, true);
+          $secciones = Seccion::get();
+          foreach($secciones as $seccion)
+          {
+            $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$seccion->name;
+            File::makeDirectory($pathSeccion, $mode = 0777, true, true);
+          }
+        }
+    }
+
     public function crearResumen(Publicacion $publicacion)
     {
        $regionesResumen = Region::get();
@@ -105,6 +136,7 @@ class PublicacionController extends Controller
            'publicacion_id' => $publicacion->id,
             ]);
        $resumen->regiones()->sync($regionesResumen);
+
     }
 
     public function sincronizarMacrozonas(Boletin $boletin, Region $region)

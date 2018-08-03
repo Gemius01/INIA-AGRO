@@ -68,13 +68,13 @@
                                 @if($boletin->estado == 1)
                                     <a
                                         class="btn btn-sm btn-primary pull-right"
-                                        href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}"
+                                        href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}" style="margin-left: 5px;"
                                     >Editar</a>
                                     @if( $macrozona->pivot->resumen != null)
                                         <a
                                         class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
-                                        href="#"
+                                        href="#" style="margin-left: 5px;"
                                     >Ver Resumen</a>
                                      <div class="modal fade" id="modalResumen{{$macrozona->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                   <div class="modal-dialog" role="document">

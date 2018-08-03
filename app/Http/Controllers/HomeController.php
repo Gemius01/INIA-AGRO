@@ -46,8 +46,10 @@ class HomeController extends Controller
         
         $user = Auth::user();
         $rol = $user->roles()->first();
+        $nacional = $user->regiones()->first();
+        //dd($nacional);
         if($rol != null) {
-            if($rol->id != 1 )
+            if($rol->id != 1 and $nacional->id != 1)
             {
 
                 $queryRegion = $user->regiones()->pluck('region_id');
@@ -66,7 +68,6 @@ class HomeController extends Controller
                     $userBoletines = [];
                     return view('home', compact([ 'userBoletines', ]));
                 }
-
             }else{
 
                 //Lo que se le mostrará al administrador

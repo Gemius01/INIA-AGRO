@@ -7,8 +7,10 @@
             <div class="card">
                 <div class="card-header">Rubros
                 @can('products.create')
+                <div style="text-align:right;">
                     <a href="{{ route('rubros.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>
+                </div>
                 @endcan
                 </div>
                 <div class="card-body">
