@@ -46,8 +46,9 @@ class ResumenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Resumen $resumen)
+    public function show($idresumen)
     {
+        $resumen = Resumen::find(decrypt($idresumen));
         $user = Auth::user();
         $rol = $user->roles()->first();
         if($rol != null){
@@ -58,7 +59,7 @@ class ResumenController extends Controller
             $rol = [];
             return view('resumenes.show',  compact(['resumen', 'rol' ]));
         }
-        
+
     }
 
     /**
@@ -105,18 +106,18 @@ class ResumenController extends Controller
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
         }
-       
+
         $seccionDetail = $resumen->regiones()->where('region_id', '=', $region)->first();
         return view('editorResumen', compact([
              'seccionDetail', 'resumen', 'arrayImages', 'dirname',
         ]));
     }
 
-    public function guardarEdicion(Request $request) 
+    public function guardarEdicion(Request $request)
     {
        //dd('asd');
        $response = array(
-          
+
           'region_id' => $request->input('region_id'),
           'resumen_id' => $request->input('resumen_id'),
           'contenido' => $request->input('contenido'),
@@ -125,7 +126,7 @@ class ResumenController extends Controller
       $detail = $resumen->regiones()->where('region_id', '=', $response['region_id'])->first();
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
-      return '/resumen/'.$request->input('resumen_id'); 
+      return '/resumen/'.$request->input('resumen_id');
     }
 
     public function descargarPDF(Resumen $resumen)

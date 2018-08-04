@@ -31,7 +31,7 @@
                             <td>{{ $resumen->publicacion->mes->nombre }}</td>
                             <td>{{ $resumen->publicacion->año }}</td>
                             <td style="text-align: center;">
-                              <a href="{{ route('resumenes.show', $resumen->id) }}"
+                              <a href="{{ route('resumenes.show', encrypt($resumen->id)) }}"
                               class="btn btn-sm btn-primary">Ver</a>
                             </td>
                             <td style="text-align: center;">
