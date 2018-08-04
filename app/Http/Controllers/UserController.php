@@ -244,12 +244,20 @@ class UserController extends Controller
     {
 
         $macrozonasUser = $user->macrozonas;
-
+        
+        if($user->regiones()->first()->id != 1)
+        {
         $ids = [];
         foreach ($user->regiones as $region) {
         $ids[] = $region['id'];
         }
-         $macrozonas = Macrozona::whereIn('region_id', $ids)->get();
+        $macrozonas = Macrozona::whereIn('region_id', $ids)->orderBy('region_id', 'asc')->get();
+        }else
+        {
+          
+          $macrozonas = Macrozona::orderBy('region_id', 'asc')->get();
+        }
+         
          //dd($macrozonas);
 
         //dd($macrozonas);
