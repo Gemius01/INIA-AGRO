@@ -8,7 +8,7 @@
                 <div class="card-header">Envío de E-Mail
                 </div>
                 <div class="card-body">
-                    {{ Form::open(['route' => ['user.emailsend', $user->id]]) }}
+                    {{ Form::open(['route' => ['user.emailsend', encrypt($user->id)]]) }}
 
                         @include('colaboradores.partials.formSendEmail')
 

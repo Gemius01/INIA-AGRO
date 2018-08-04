@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Publicacion;
 use App\Http\Requests\PublicacionStoreRequest;
+use App\Http\Requests\PublicacionUpdateRequest;
 use App\Region;
 use App\Boletin;
 use App\Seccion;
@@ -61,12 +62,12 @@ class PublicacionController extends Controller
     public function store(PublicacionStoreRequest $request)
     {
         //dd($request['region']);
-        
-        
-      
-       
-        
-        
+
+
+
+
+
+
         //if($request['region'] == 0){//Crear Boletines para todas las regiones
             $publicacion = Publicacion::create($request->all());
             //$path = public_path().'/photos/shares/'.$request->input('año');
@@ -75,7 +76,7 @@ class PublicacionController extends Controller
              $this->crearResumen($publicacion);
             $regiones = Region::where('id', '<>', '1')->get();
             //$secciones = Seccion::get();
-           
+
             foreach($regiones as $region){
                 $boletin = Boletin::create([
                     'region_id' => $region->id,
@@ -168,7 +169,7 @@ class PublicacionController extends Controller
           {
             $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', '.$user->cargo.', '.$user->cri.'</em></strong></span><br />';
           }
-          
+
       }
       $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
@@ -197,7 +198,7 @@ class PublicacionController extends Controller
 
                 $seccionPortada->pivot->contenido = $portada; //carga el txt de portada a la variable
                 $seccionPortada->pivot->save(); //
-                
+
     }
 
     /**
@@ -242,24 +243,24 @@ class PublicacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PublicacionUpdateRequest $request, $id)
     {
-        
+
         $publicacion = Publicacion::find($id);
         $publicacion->mes_id = $request->input('mes_id');
         $publicacion->año    = $request->input('año');
         $publicacion->save();
-        
+
         $boletines = $publicacion->boletines;
         foreach($boletines as  $boletin)
         {
-         
+
           $this->editarPortada($boletin, $publicacion, $boletin->secciones[0]);
         }
-        
+
         return redirect()->route('publicaciones.index')
             ->with('info', 'Se ha editado la publicación correctamente');
-        
+
     }
 
     public function editarPortada(Boletin $boletin, Publicacion $publicacion, $varPivot)
@@ -273,7 +274,7 @@ class PublicacionController extends Controller
           {
             $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', '.$user->cargo.', '.$user->cri.'</em></strong></span><br />';
           }
-          
+
       }
       $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
@@ -385,7 +386,7 @@ class PublicacionController extends Controller
       return redirect()->route('publichtml.enabledisable')
             ->with('info', 'Se ha habilitado correctamente');
       }
-      
+
     }
 
     public function publicBoletinesVista(Publicacion $publicacion)

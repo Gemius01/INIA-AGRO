@@ -30,7 +30,7 @@
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
                           <td style="text-align: center;">
-                            <a href="{{ route('user.email', $user->id) }}"
+                            <a href="{{ route('user.email', encrypt($user->id)) }}"
                                 class="btn btn-sm btn-primary">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             </a>

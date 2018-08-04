@@ -4,7 +4,7 @@
 	{!! Form::select('mes_id', $meses, null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
-	{{ Form::label('name', 'Año de la Publicación') }}
+	{{ Form::label('año', 'Año de la Publicación') }}
 	{{ Form::number('año', null, ['class' => 'form-control']) }}
 	@if($errors->has('año'))
 	@foreach($errors->get('año',":message") as $error)

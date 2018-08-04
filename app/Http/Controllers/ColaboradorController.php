@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Mail;
+use App\Http\Requests\ColaboradorSendRequest;
 
 class ColaboradorController extends Controller
 {
@@ -33,10 +34,10 @@ class ColaboradorController extends Controller
                     }else{
 
                     }
-                    
+
                 }
             }
-            
+
             return view('colaboradores.index', compact(['arrayUsers', 'regiones']));
         }else{
             $arrayUsers = User::where('id', '<>', 1)->get();
@@ -45,13 +46,15 @@ class ColaboradorController extends Controller
         }
     }
 
-    public function email(User $user)
+    public function email($idUser)
     {
+      $user = User::find(decrypt($idUser));
         return view('colaboradores.send', compact(['user']));
     }
 
-    public function send(Request $request, User $colaborador)
+    public function send(ColaboradorSendRequest $request, $idUser)
     {
+      $user = User::find(decrypt($idUser));
         //Config para la persona que enviará el mail
         //$data = array('contenido' => $request->input('contenido'));
         try {
@@ -59,7 +62,7 @@ class ColaboradorController extends Controller
         config(['mail.username' => $request->input('email')]);
         config(['mail.password' => $request->input('password')]);
 
-        
+
         $data = array(
                 'contenido'     => $request->input('contenido')
         );
@@ -67,10 +70,10 @@ class ColaboradorController extends Controller
         $from = $request->input('email');
         $asunto = $request->input('asunto');
         $contenido = $request->input('contenido');
-        Mail::send('mails.emailcolaborador', $data, 
+        Mail::send('mails.emailcolaborador', $data,
             function ($message) use ($to, $from, $asunto, $authUser)
         {
-            
+
             $message->to($to, 'Artisans Web')
                     ->subject($asunto);
             $message->from($from, $authUser->name);
