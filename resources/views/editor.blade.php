@@ -112,6 +112,7 @@
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script type="text/javascript" src="{{ asset('data.json')}}"></script>
 
 <div id="container" style="min-width: 310px;
     max-width: 800px;
@@ -121,6 +122,8 @@
 var json = [{"name":"Date","data":["\n5/6/2015 00:00:00","\n17/6/2015 00:00:0","\n15/6/2015 00:00:0","\n11/6/2015 00:00:0","\n11/6/2015 00:00:0"]},{"name":"Traf_BH_TCH_Erl","data":[11.23,3.36,4.08,11.96,9.97]}];
 
 $(function () {
+    var mydata = JSON.parse(data);
+    console.log(mydata);
     var options = {
         chart: {
             renderTo: 'container',
