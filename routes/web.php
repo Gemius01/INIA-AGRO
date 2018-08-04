@@ -161,8 +161,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('publicaciones/{publicacion}/abrircerrar','PublicacionController@vistaAbrirCerrarBoletines')->name('publicaciones.abrirCerrar')
 		->middleware('permission:admin');
 
-	Route::get('publichtml/habilitar/deshabilitar','PublicacionController@publicHtmlvista')->name('publichtml.enabledisable')
-		->middleware('permission:admin');
+	Route::get('publichtml/habilitar/deshabilitar','PublicacionController@publicHtmlvista')->name('publichtml.enabledisable')->middleware('permission:admin');
 
 	Route::put('publichtml/{publicacion}/habilitar/deshabilitarRequest','PublicacionController@habilitarDeshabilitar')->name('publichtml.enabledisableRequest')
 		->middleware('permission:admin');
@@ -181,6 +180,14 @@ Route::middleware(['auth'])->group(function(){
 		->name('publichtml.boletin.deshabilitarTodos')
 		->middleware('permission:admin');
 
+	Route::get('publicacion/edit/{publicacion}','PublicacionController@edit')->name('publicacion.edit')
+		->middleware('permission:publicacion.edit');
+
+	Route::put('publicacion/update/{publicacion}','PublicacionController@update')->name('publicacion.update')
+		->middleware('permission:publicacion.update');
+
+	Route::get('adminImages','AdminImagesController@index')->name('adminImages.view')
+		->middleware('permission:publicacion.edit');
 
 	//Boletines
 

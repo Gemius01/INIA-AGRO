@@ -89,7 +89,7 @@ class RegionsTableSeeder extends Seeder
         ]);
         Region::create([
         	'name' => 'Metropolitana',
-            'numero' => 'RM',
+            'numero' => 13,
         	'country_id' => 1,
         ]);
         Region::create([

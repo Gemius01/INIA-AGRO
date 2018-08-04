@@ -5,7 +5,7 @@
 @foreach($array as $a)
 @if($a->pivot->resumen != null)
 <registro id="{{ $a->pivot->id }}" 
-		  region="14" 
+		  region="{{ $a->region->numero}}" 
 		  macrozona="{{ $a->name }}"
 		  @if($a->rubro != null)
 		  rubro="{{ $a->rubro->name }}"

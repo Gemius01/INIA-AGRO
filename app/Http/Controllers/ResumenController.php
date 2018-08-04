@@ -97,20 +97,18 @@ class ResumenController extends Controller
 
     public function vistaSeccionResumen(Resumen $resumen, $region)
     {
-        $carpeta = 'photos';
-        $dirname = "../public/".$carpeta."/shares/";
+        //dd($resumen->publicacion);
+        $dirname = '../public/photos/shares/'.$resumen->publicacion->año.'/'.$resumen->publicacion->mes->nombre.'/Resumen Nacional/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
         $arrayImages = array();
         foreach($images as $image) {
             $rest = substr($image, 10);
-      $arrayImages[] = '<p style="padding-top: 10px; padding-bottom: 10px;" >
-      <span style="color: red; font-size: 24px;">
-      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../'.$rest.'" alt="" width="100" height="100" /></strong></span></p>';
+            $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
         }
        
         $seccionDetail = $resumen->regiones()->where('region_id', '=', $region)->first();
         return view('editorResumen', compact([
-             'seccionDetail', 'resumen', 'arrayImages'
+             'seccionDetail', 'resumen', 'arrayImages', 'dirname',
         ]));
     }
 

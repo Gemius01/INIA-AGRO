@@ -144,13 +144,20 @@ class BoletinController extends Controller
     {
         $boletin = Boletin::find(decrypt($idBoletin));
         $seccionDetail = $boletin->secciones()->where('seccion_id', '=', decrypt($seccion))->first();
-        //dd($seccionDetail);
-        //dd($detalle);
-        //$secciones = $detalle->secciones()->get();
-        //dd($secciones[0]->pivot);
+
+        $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
+                                      $boletin->publicacion->mes->nombre.'/'.$seccionDetail->name.'/';
+        $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
+        $arrayImages = array();
+        foreach($images as $image) {
+            $rest = substr($image, 10);
+            $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
+        }
+
+
 
         return view('editor', compact([
-             'seccionDetail', 'boletin',
+             'seccionDetail', 'boletin', 'arrayImages', 'dirname',
         ]));
     }
 
@@ -173,30 +180,26 @@ class BoletinController extends Controller
 
     public function editarSeccionMacrozona($idBoletin, $subseccion, $macrozona)
     {
-      $boletin = Boletin::find(decrypt($idBoletin));
-        //Arreglar a una manera mas optima
-        //$macrozona = $boletin->subsecciones[0]->macrozonas;
-        //$detalleMacrozona = $macrozona[1]->pivot->;
-
+        $boletin = Boletin::find(decrypt($idBoletin));
+        $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
+                                      $boletin->publicacion->mes->nombre.
+                                      '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
+        $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
+        $arrayImages = array();
+        
+        foreach($images as $image) {
+            $rest = substr($image, 10);
+            $arrayImages[] = '<img src="../../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
+        }
+        //dd($arrayImages);
         $subsecciones = $boletin->subsecciones()->first();
         $detalleMacrozona = $subsecciones->macrozonas()
         ->wherePivot('macrozona_id', '=', decrypt($macrozona))
         ->wherePivot('subseccion_id', '=', decrypt($subseccion))
         ->first();
-        //$detalleMacrozona = $busquedaMacro->pivot;
-        //$asd3 = $asd2->pivot;
-        //$asd =$subsecciones->macrozonas()->wherePivot('macrozona_id', '=', $macrozona)->first();
-
-        /*
-        [0]->pivot
-        ->where([
-            ['macrozona_id', '=', $macrozona],
-            ['subseccion_id', '=', $subseccion]
-        ])->first();
-        */
 
         return view('editorMacrozona', compact([
-             'detalleMacrozona', 'boletin',
+             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname',
         ]));
     }
 

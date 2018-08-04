@@ -15,6 +15,7 @@
                   <div>
                     <label>Macrozonas por región</label>
                   <select id="selectRegion" class="form-control" >
+                    <option value="0">Seleccione Región</option>
                     @foreach($regiones as $region)
                     <option value="{{$region->id}}">{{ $region->name }}</option>
                     @endforeach

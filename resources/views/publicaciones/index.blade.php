@@ -1,19 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Publicaciones
-                @can('products.create')
+                @can('publicaciones.create')
                     <a href="{{ route('publicaciones.create')}}"
                     class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;">Crear</a>
                 @endcan
 
                 @can('publicaciones.publicar')
                     <a href="{{ route('publichtml.enabledisable')}}"
-                    class="btn btn-sm btn-info pull-right">Publicar HTML</a>
+                    class="btn btn-sm btn-info pull-right" style="margin-left: 5px;">Publicar HTML</a>
+                @endcan
+                @can('publicaciones.publicar')
+                    <a target="__blank" href="/laravel-filemanager?type=image"
+                    class="btn btn-sm btn-info pull-right" style="margin-left: 5px;"><i class="fa fa-picture-o"></i> Administrar Imagenes</a>
                 @endcan
                 </div>
                 <div class="card-body">
@@ -46,8 +50,8 @@
                        <thead>
                            <tr>
                                <!--<th width="10%">ID</th>-->
-                               <th>Mes</th>
                                <th>Año</th>
+                               <th>Mes</th>
                                <th colspan="5" style="text-align: center;" width="30%">Opciones</th>
                            </tr>
                        </thead>
@@ -55,8 +59,8 @@
                         @foreach($publicaciones as $publicacion)
                           <tr>
                             <!--<td>{{$publicacion->id}}</td> -->
-                            <td>{{$publicacion->mes->nombre}}</td>
                             <td>{{$publicacion->año}}</td>
+                            <td>{{$publicacion->mes->nombre}}</td>
                             <td style="text-align: center;">
                               <a href="{{ route('publicaciones.abrirCerrar', $publicacion->id) }}"
                               class="btn btn-sm btn-primary">Abrir/Cerrar</a>
@@ -65,12 +69,12 @@
                               <a href="{{ route('publicaciones.show', $publicacion->id) }}"
                               class="btn btn-sm btn-primary">Ver</a>
                             </td>
-                            <!--
+                            
                             <td style="text-align: center;">
-                              <a href="{{ route('publicaciones.show', $publicacion->id) }}"
-                              class="btn btn-sm btn-success">Agregar Boletin</a>
+                              <a href="{{ route('publicacion.edit', $publicacion->id) }}"
+                              class="btn btn-sm btn-success">Editar</a>
                             </td>
-                          -->
+                            
                             <td style="text-align: center;">
                               <a href="{{ route('xmlview', $publicacion->id) }}"
                               class="btn btn-sm btn-warning">XML</a>

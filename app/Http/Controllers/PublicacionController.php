@@ -29,11 +29,11 @@ class PublicacionController extends Controller
         //dd($pubElegida);
         if ($eleccion->publicacion_id != null) {
         $publicacionActual = Publicacion::find($eleccion->publicacion_id);
-        $publicaciones = Publicacion::orderBy('id', 'desc')->get();
+        $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
         }else {
         $publicacionActual = (object) array( 'mes' => null, 'año' => null);
-        $publicaciones = Publicacion::orderBy('id', 'desc')->get();
+        $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
         }
 
@@ -114,6 +114,9 @@ class PublicacionController extends Controller
           {
             $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$seccion->name;
             File::makeDirectory($pathSeccion, $mode = 0777, true, true);
+
+            $pathResumen = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/Resumen Nacional';
+            File::makeDirectory($pathResumen, $mode = 0777, true, true);
           }
         }else{
           $pathAño = public_path().'/photos/shares/'.$publicacion->año;
@@ -125,6 +128,8 @@ class PublicacionController extends Controller
           {
             $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$seccion->name;
             File::makeDirectory($pathSeccion, $mode = 0777, true, true);
+            $pathResumen = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/Resumen Nacional';
+            File::makeDirectory($pathResumen, $mode = 0777, true, true);
           }
         }
     }
@@ -161,7 +166,7 @@ class PublicacionController extends Controller
           $userByRegion = $user->regiones()->wherePivot('region_id', '=', $boletin->region->id)->first();
           if($userByRegion != null)
           {
-            $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', Ing. Agr&oacute;nomo, INIA Ururi</em></strong></span><br />';
+            $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', '.$user->cargo.', '.$user->cri.'</em></strong></span><br />';
           }
           
       }
@@ -224,9 +229,10 @@ class PublicacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Publicacion $publicacion)
     {
-        //
+        $meses = Mes::pluck('nombre', 'id');
+        return view('publicaciones.edit', compact(['publicacion', 'meses']));
     }
 
     /**
@@ -238,7 +244,58 @@ class PublicacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $publicacion = Publicacion::find($id);
+        $publicacion->mes_id = $request->input('mes_id');
+        $publicacion->año    = $request->input('año');
+        $publicacion->save();
+        
+        $boletines = $publicacion->boletines;
+        foreach($boletines as  $boletin)
+        {
+         
+          $this->editarPortada($boletin, $publicacion, $boletin->secciones[0]);
+        }
+        
+        return redirect()->route('publicaciones.index')
+            ->with('info', 'Se ha editado la publicación correctamente');
+        
+    }
+
+    public function editarPortada(Boletin $boletin, Publicacion $publicacion, $varPivot)
+    {
+      $users = User::get();
+        $stringUsuarios = '';
+        foreach($users as $user)
+        {
+          $userByRegion = $user->regiones()->wherePivot('region_id', '=', $boletin->region->id)->first();
+          if($userByRegion != null)
+          {
+            $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', '.$user->cargo.', '.$user->cri.'</em></strong></span><br />';
+          }
+          
+      }
+      $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
+      <span style="color: red; font-size: 24px;">
+      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../photos/shares/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
+      <p style="padding-top: 40px; padding-bottom: 40px;" align="center">
+      <span style="color: red; font-size: 24px;">
+      <strong>BOLETÍN NACIONAL DE ANÁLISIS DE RIESGOS AGROCLIMÁTICOS PARA LAS PRINCIPALES ESPECIES FRUTALES Y CULTIVOS, Y LA GANADERÍA</strong></span></p>
+      <p align="center"><span style="color: red; font-size: 24px;">
+      <strong>'.strtoupper($publicacion->mes->nombre).' '.strtoupper($publicacion->año).'</strong></span></p>
+      <p align="center">
+      <span style="color: black; font-size: 24px;"><strong>REGIÓN DE '.strtoupper($boletin->region->name).'</strong></span></p>
+      <p><br /><br /></p>
+      <p><span style="font-size: medium; color: green;">
+      <strong><em>Autores INIA:</em></strong></span><br />
+      '.$stringUsuarios.'
+      <p><span style="font-size: medium; color: green;">
+      <strong><em>Marcel Fuentes Bustamante, Ing. Civil Agrícola M.Sc, INIA Quilamapu <br />Cristóbal Campos Muñoz, Ing. Civil Agrícola, INIA Quilamapu
+      <br />Rubén Ruiz Muñoz, Ing. Civil Agrícola, INIA Quilamapu </em></strong></span></p>
+      <p><span style="color: green; font-size: medium;"><strong><em>Coordinador INIA:</em></strong></span><br /><span style="font-size: small;"><strong><em>Claudio Pérez Castillo, Ing. Agr. M.Sc. Ph.D, INIA Kampenaike</em></strong></span></p>';
+
+      $varPivot->pivot->contenido = $portada; //carga el txt de portada a la variable
+      $varPivot->pivot->save(); //
     }
 
     /**

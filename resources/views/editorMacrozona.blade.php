@@ -12,9 +12,9 @@
 
                 <div class="card-header">
                     <label>Boletin Agrometeorlógico -  Región:
-                    {{ $detalleMacrozona->subsecciones[0]->boletin->region->name }} -
-                    {{ $detalleMacrozona->subsecciones[0]->boletin->publicacion->mes->nombre }}
-                    {{ $detalleMacrozona->subsecciones[0]->boletin->publicacion->año }}
+                    {{ $boletin->region->name }} -
+                    {{ $boletin->publicacion->mes->nombre }}
+                    {{ $boletin->publicacion->año }}
                     </label>
                     <a href="{{ route('boletines.show', encrypt($boletin->id))}}"
                     class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
@@ -60,6 +60,33 @@
                     <center>
                         <button  class="btn btn-sm btn-primary"  onclick="guardarResumen()">Guardar Resumen</button>
                     </center>
+                    <div>
+                      <hr>
+                      <h4>IMAGENES</h4>
+                      @if(Auth::user()->roles()->first()->id == 1)
+                      <p>Directorio: {{ $dirname }}</p>
+                      @else
+                      @endif
+                      <hr>
+                      @if($arrayImages != null)
+                      <div width="100%" style="overflow-y:scroll; overflow-x:hidden; height:500px;">
+                      @foreach($arrayImages as $image)
+                         <div class="responsive">
+                          <div class="gallery" >
+                            <a  href="#">
+                              {!! $image !!} 
+                            </a>
+                          <div class="desc">Add a description of the image here</div>
+                          </div>
+                         </div>
+                      @endforeach
+                      </div>
+                      @else
+                      <h4>No hay imagenes para mostrar</h4>
+                      @endif
+                      
+
+                  </div>
                   </div>
                 </div>
             </div>
