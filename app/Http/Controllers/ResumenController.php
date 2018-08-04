@@ -96,9 +96,10 @@ class ResumenController extends Controller
         //
     }
 
-    public function vistaSeccionResumen(Resumen $resumen, $region)
+    public function vistaSeccionResumen($idresumen, $region)
     {
         //dd($resumen->publicacion);
+        $resumen = Resumen::find(decrypt($idresumen));
         $dirname = '../public/photos/shares/'.$resumen->publicacion->año.'/'.$resumen->publicacion->mes->nombre.'/Resumen Nacional/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
         $arrayImages = array();
@@ -107,7 +108,7 @@ class ResumenController extends Controller
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
         }
 
-        $seccionDetail = $resumen->regiones()->where('region_id', '=', $region)->first();
+        $seccionDetail = $resumen->regiones()->where('region_id', '=', decrypt($region))->first();
         return view('editorResumen', compact([
              'seccionDetail', 'resumen', 'arrayImages', 'dirname',
         ]));
@@ -126,7 +127,7 @@ class ResumenController extends Controller
       $detail = $resumen->regiones()->where('region_id', '=', $response['region_id'])->first();
       $detail->pivot->contenido =  $request->input('contenido');
       $detail->pivot->save();
-      return '/resumen/'.$request->input('resumen_id');
+      return '/resumen/'.encrypt($request->input('resumen_id'));
     }
 
     public function descargarPDF(Resumen $resumen)

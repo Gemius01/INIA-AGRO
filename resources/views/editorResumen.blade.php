@@ -14,7 +14,7 @@
                     {{ $resumen->publicacion->mes->nombre }} -
                     {{ $resumen->publicacion->año }}
                     </strong>
-                    <a href="{{ route('resumenes.show', $resumen->id)}}"
+                    <a href="{{ route('resumenes.show', encrypt($resumen->id))}}"
                     class="btn btn-sm btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                 </div>
 
@@ -58,7 +58,7 @@
                          <div class="responsive">
                           <div class="gallery" >
                             <a  href="#">
-                              {!! $image !!} 
+                              {!! $image !!}
                             </a>
                           <div class="desc">Add a description of the image here</div>
                           </div>
@@ -68,7 +68,7 @@
                       @else
                       <h4>No hay imagenes para mostrar</h4>
                       @endif
-                      
+
 
                   </div>
                 </div>
@@ -147,9 +147,9 @@ tinymce.init(editor_config);
 </script>
 <script>
 $( document ).ready(function() {
- 
+
 });
-    function unloadPage(){ 
+    function unloadPage(){
     if(unsavedd){
         return confirm('Tienes Cambios sin guardar ¿Deseas salir?');
     }

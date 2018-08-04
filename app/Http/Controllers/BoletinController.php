@@ -186,7 +186,7 @@ class BoletinController extends Controller
                                       '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
         $arrayImages = array();
-        
+
         foreach($images as $image) {
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';

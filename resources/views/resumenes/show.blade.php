@@ -34,11 +34,11 @@
             <div class="card">
                 <div class="card-header">Resumen Ejecutivo {{$region->name}}
                     @if($rol->id == 2)
-                    <a href="{{ route('editorresumen', ['resumen'=>$resumen->id, 'region'=>$region->id])}}"
+                    <a href="{{ route('editorresumen', ['resumen'=>encrypt($resumen->id), 'region'=>encrypt($region->id)])}}"
                     class="btn btn-sm btn-success pull-right"> <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                     @else
                         @can('seccion-'.$region->id)
-                        <a href="{{ route('editorresumen', ['resumen'=>$resumen->id, 'region'=>$region->id])}}"
+                        <a href="{{ route('editorresumen', ['resumen'=>encrypt($resumen->id), 'region'=>encrypt($region->id)])}}"
                         class="btn btn-sm btn-success pull-right"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                         @endcan
                     @endif
