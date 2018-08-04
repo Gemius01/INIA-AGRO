@@ -323,4 +323,6 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::post('colaborador/sendup/{colaborador}','ColaboradorController@send')->name('user.emailsend');
 
+	Route::get('colaborador/guia','ColaboradorController@guia')->name('user.guia');
+
 });

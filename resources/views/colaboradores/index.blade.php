@@ -30,8 +30,8 @@
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
                           <td style="text-align: center;">
-                            <button href="{{ route('user.email', encrypt($user->id)) }}" id="example"
-                                class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Enviar E-mail">
+                            <a href="{{ route('user.email', encrypt($user->id)) }}" id="example"
+                                class="btn btn-sm btn-primary">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             </a>
                           </td>

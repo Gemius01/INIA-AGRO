@@ -84,13 +84,18 @@ class ColaboradorController extends Controller
         }
         catch (\Exception $e) {
             return redirect()->back()->withInput()->with('info-danger', '<p>No se logró enviar el correo, puede ser debido a : </p><ul><li>1 .- No se ingreso el E-mail o Contraseña de GMAIL</li>
-                <li>2 .- No se tiene habilitado el Gmail para enviar correos a través de esta plataforma <a href="#" target="_blank">Ver más...</a></li></ul>');
+                <li>2 .- No se tiene habilitado el Gmail para enviar correos a través de esta plataforma <a href="/colaborador/guia" target="_blank" >Ver más...</a></li></ul><p>En caso contrario contactar al administrador.</p>');
             //return json_encode([ 'info-danger' => 'ocurrio un error' ]);
             /*
             return redirect()->route('user.email', $colaborador->id)
             ->with('info-danger', '<p>No se logró enviar el correo, puede ser debido a : </p>');
             */
         }
+    }
+
+    public function guia()
+    {
+        return view('colaboradores.guia');
     }
 
     /**
