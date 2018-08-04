@@ -10,19 +10,20 @@
                     class="btn btn-sm btn-primary pull-right">Editar Datos</a>
                 </div>
                 <div class="card-body">
-                    <p><strong>Nombre</strong> {{ $user->name }} </p>
-                    <p><strong>E-mail</strong> {{ $user->email }} </p>
-                    <p><strong>Cargo</strong> {{ $user->cargo }} </p>
-                    <p><strong>Rol</strong> @if($rol != null) {{ $rol->name}}@else No tiene @endif </p>
+                    <p><strong>Nombre: </strong> {{ $user->name }} </p>
+                    <p><strong>E-mail: </strong> {{ $user->email }} </p>
+                    <p><strong>Cargo: </strong> {{ $user->cargo }} </p>
+                    <p><strong>Cri: </strong> {{ $user->cri }} </p>
+                    <p><strong>Rol(es): </strong> @if($rol != null) {{ $rol->name}}@else No tiene @endif </p>
                     <hr>
-                    <label><strong>Región(es)</strong></label>
+                    <label><strong>Región(es): </strong></label>
                     <ul>
                         @foreach($regiones as $region)
                         <li>{{ $region->name }}</li>
                         @endforeach
                     </ul>
                     <hr>
-                    <label><strong>Macrozona(s)</strong></label>
+                    <label><strong>Macrozona(s): </strong></label>
                     <ul>
                         @foreach($macrozonas as $macrozona)
                         <li>{{ $macrozona->region->name }} > {{$macrozona->name}}
@@ -38,7 +39,7 @@
                         @endforeach
                     </ul>
                     <hr>
-                    <label><strong>Sección(es)</strong></label>
+                    <label><strong>Sección(es): </strong></label>
                     <ul>
                         @foreach($seccions as $seccion)
                         <li>{{ $seccion->name }}</li>

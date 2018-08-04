@@ -8,10 +8,16 @@
                 <div class="card-header">
 
                         <strong>
-                            Boletín Agrometeorológico - Vista previa - Resumen Ejecutivo Nacional - Publicación de {{ $resumen->publicacion->mes->nombre}} {{ $resumen->publicacion->año}}
+                            Boletín Agrometeorológico-Vista previa-Resumen Ejecutivo Nacional-Publicación de {{ $resumen->publicacion->mes->nombre}} {{ $resumen->publicacion->año}}
                         </strong>
+                        @if($rol->id == 1)
                         <a href="{{ route('publicaciones.show', $resumen->publicacion->id)}}"
                            class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
+                             @else
+                             <a href="/home"
+                         class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
+
+                             @endif
                         <a href="{{ route('resumenespdf', $resumen->id) }}"
                             class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
                 </div>
