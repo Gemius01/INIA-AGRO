@@ -37,7 +37,7 @@
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('regiones.edit', $region->id) }}"
-                                    class="btn btn-sm btn-success">Editar</a>
+                                    class="btn btn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
 
                                </td>
                                @endcan
@@ -45,7 +45,7 @@
                                <td style="text-align: center;">
                                     {!! Form::open(['route' => ['regiones.destroy', $region->id],
                                     'method' => 'DELETE']) !!}
-                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger">
+                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> 
                                         Eliminar
                                     </button>
                                     {!! Form::close() !!}

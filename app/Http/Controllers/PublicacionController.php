@@ -33,7 +33,7 @@ class PublicacionController extends Controller
         $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
         }else {
-        $publicacionActual = (object) array( 'mes' => null, 'año' => null);
+        $publicacionActual = (object) array( 'id' => 0, 'mes' => null, 'año' => null);
         $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
         return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
         }

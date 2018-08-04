@@ -13,7 +13,7 @@
 
                 @can('publicaciones.publicar')
                     <a href="{{ route('publichtml.enabledisable')}}"
-                    class="btn btn-sm btn-info pull-right" style="margin-left: 5px;">Publicar HTML</a>
+                    class="btn btn-sm btn-info pull-right" style="margin-left: 5px;"><i class="fa fa-html5" aria-hidden="true"></i> Publicar HTML</a>
                 @endcan
                 @can('publicaciones.publicar')
                     <a target="__blank" href="/laravel-filemanager?type=image"
@@ -23,7 +23,6 @@
                 <div class="card-body">
                   <strong>Publicación elegida actualmente</strong>
                   <ul>
-
                     <li>
                       <strong>
                         MES :
@@ -57,7 +56,11 @@
                        </thead>
                        <tbody>
                         @foreach($publicaciones as $publicacion)
+                          @if($publicacion->id == $publicacionActual->id)
+                          <tr style="background-color: #80ff80;">
+                          @else
                           <tr>
+                          @endif
                             <!--<td>{{$publicacion->id}}</td> -->
                             <td>{{$publicacion->año}}</td>
                             <td>{{$publicacion->mes->nombre}}</td>
@@ -77,7 +80,7 @@
                             
                             <td style="text-align: center;">
                               <a href="{{ route('xmlview', $publicacion->id) }}"
-                              class="btn btn-sm btn-warning">XML</a>
+                              class="btn btn-sm btn-warning"><i class="fa fa-file-code-o" aria-hidden="true"></i> XML</a>
                             </td>
                             <td style="text-align: center;">
                               <a href="{{ route('publicaciones.vistaElegir', $publicacion->id) }}"

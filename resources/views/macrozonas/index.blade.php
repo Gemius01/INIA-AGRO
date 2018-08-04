@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -45,7 +45,7 @@
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('macrozonas.edit', $macrozona->id) }}"
-                                    class="btn btn-sm btn-success">Editar</a>
+                                    class="btn btn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
 
                                </td>
                                @endcan
@@ -53,7 +53,7 @@
                                <td style="text-align: center;">
                                     {!! Form::open(['route' => ['macrozonas.destroy', $macrozona->id],
                                     'method' => 'DELETE']) !!}
-                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger">
+                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> 
                                         Eliminar
                                     </button>
                                     {!! Form::close() !!}

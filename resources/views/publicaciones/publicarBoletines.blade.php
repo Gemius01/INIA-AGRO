@@ -6,6 +6,19 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Publicacion : {{ $publicacion->mes->nombre }} / {{ $publicacion->año }}
+                  {!! Form::open(['route' => ['publichtml.boletin.deshabilitarTodos', $publicacion->id], 
+                                    'method' => 'PUT']) !!}
+                        <button onclick="return confirm('¿Estás seguro de deshabilitar todos los boletines?')" class="btn btn-sm btn-danger pull-right" style="margin-left: 5px;" ><i class="fa fa-toggle-off" aria-hidden="true"></i> 
+                                            DESHABILITAR TODOS
+                                        </button>
+                     {!! Form::close() !!}  
+                     
+                       {!! Form::open(['route' => ['publichtml.boletin.habilitarTodos', $publicacion->id], 
+                                    'method' => 'PUT']) !!}
+                        <button onclick="return confirm('¿Estás seguro de habilitar todos los boletines?')" class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;" ><i class="fa fa-toggle-on" aria-hidden="true"></i> 
+                                            HABILITAR TODOS
+                                        </button>
+                     {!! Form::close() !!}  
                 </div>
                 <div class="card-body">
                      <table class="table table-striped table-hover table-bordered">
@@ -58,25 +71,7 @@
 
                        </tbody>
                    </table>
-                   <center>
-                    
-                    <hr>
 
-                     {!! Form::open(['route' => ['publichtml.boletin.deshabilitarTodos', $publicacion->id], 
-                                    'method' => 'PUT']) !!}
-                        <button onclick="return confirm('¿Estás seguro de deshabilitar todos los boletines?')" class="btn btn-sm btn-danger" >
-                                            DESHABILITAR TODOS
-                                        </button>
-                     {!! Form::close() !!}  
-                     <hr>
-                       {!! Form::open(['route' => ['publichtml.boletin.habilitarTodos', $publicacion->id], 
-                                    'method' => 'PUT']) !!}
-                        <button onclick="return confirm('¿Estás seguro de habilitar todos los boletines?')" class="btn btn-sm btn-primary" >
-                                            HABILITAR TODOS
-                                        </button>
-                     {!! Form::close() !!}  
-                       
-                   </center>
                 </div>
             </div>
         </div>

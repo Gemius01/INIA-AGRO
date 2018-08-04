@@ -13,7 +13,7 @@
                     {{ $boletin->publicacion->mes->nombre }} - {{ $boletin->publicacion->año }}
                     </strong>
                      <a href="{{ route('boletines.show', encrypt($boletin->id))}}"
-                    class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
+                    class="btn btn-sm btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                 </div>
 
                 <div class="card-body">
@@ -176,6 +176,7 @@ $(function () {
 });
 </script>
 <script>
+var unsaved = false;
 var editor_config = {
 path_absolute : "/",
 selector: "textarea.my-editor",
@@ -206,6 +207,9 @@ setup: function(editor){
           event.preventDefault();
           return false;
         }
+    });
+     editor.on('change', function(event){
+      unsaved = true;
     });
 editor.addButton('mybutton', {
 //icon: 'sun',
@@ -240,6 +244,14 @@ close_previous : "no"
 
 tinymce.init(editor_config);
 </script>
+<script>
+function unloadPage(){ 
+    if(unsaved){
+        return confirm('Tienes Cambios sin guardar ¿Deseas salir?');
+    }
+}
+window.onbeforeunload = unloadPage;
+</script>
 
 <script>
 function pruebaConsole()
@@ -250,6 +262,7 @@ function pruebaConsole()
 
 function guardarDatos()
 {
+    unsaved = false;
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     console.log(objSeccion)
     var boletin_id = objSeccion.pivot.boletin_id;

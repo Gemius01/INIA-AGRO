@@ -7,10 +7,10 @@
             <div class="card">
                 <div class="card-header">Rubros
                 @can('products.create')
-                <div style="text-align:right;">
+                
                     <a href="{{ route('rubros.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>
-                </div>
+                
                 @endcan
                 </div>
                 <div class="card-body">
@@ -41,7 +41,7 @@
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('rubros.edit', $rubro->id) }}"
-                                    class="btn btn-sm btn-success">Editar</a>
+                                    class="btn btn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
 
                                </td>
                                @endcan
@@ -49,7 +49,7 @@
                                <td style="text-align: center;">
                                     {!! Form::open(['route' => ['rubros.destroy', $rubro->id],
                                     'method' => 'DELETE']) !!}
-                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger">
+                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> 
                                         Eliminar
                                     </button>
                                     {!! Form::close() !!}

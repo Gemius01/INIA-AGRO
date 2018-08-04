@@ -17,7 +17,7 @@
                     {{ $boletin->publicacion->año }}
                     </label>
                     <a href="{{ route('boletines.show', encrypt($boletin->id))}}"
-                    class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
+                    class="btn btn-sm btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                 </div>
 
                 <div class="card-body">
@@ -94,6 +94,8 @@
     </div>
 </div>
 <script>
+var unsaved = false;
+var unsavedResumen = false;
 var editor_config = {
 path_absolute : "/",
 selector: "textarea.my-editor",
@@ -124,6 +126,9 @@ setup: function(editor){
           event.preventDefault();
           return false;
         }
+    });
+    editor.on('change', function(event){
+      unsaved = true;
     });
 editor.addButton('mybutton', {
 image: "{{ URL::to('/') }}/images//grafico.png",
@@ -157,6 +162,24 @@ close_previous : "no"
 
 tinymce.init(editor_config);
 </script>
+<script>
+$( document ).ready(function() {
+    $("#resumen").on('change keyup paste', function() {
+      unsavedResumen = true;
+    // your code here
+});
+});
+
+function unloadPage(){
+    if(unsaved){
+        return confirm('Tienes Cambios sin guardar en la macrozona ¿Deseas salir?');
+    }else if (unsavedResumen)
+    {
+      return confirm('Tienes Cambios sin guardar en resumen ¿Deseas salir?');
+    }
+}
+window.onbeforeunload = unloadPage;
+</script>
 
 <script>
 function pruebaConsole()
@@ -167,6 +190,8 @@ function pruebaConsole()
 
 function guardarDatos()
 {
+
+    unsaved = false;
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     var boletinObj = JSON.parse(document.getElementById('boletin').value);
 
@@ -197,6 +222,7 @@ function guardarDatos()
 
  function guardarResumen()
  {
+    unsavedResumen = false;
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     var boletinObj = JSON.parse(document.getElementById('boletin').value);
 

@@ -23,7 +23,7 @@
                        <tbody>
                         @foreach($publicaciones as $publicacion)
                           @if($publicacion->public == true)
-                          <tr style="background-color: #ccffe6">
+                          <tr style="background-color: #80ff80">
                             <!--<td>{{$publicacion->id}}</td> -->
                             <td>{{$publicacion->mes->nombre}}</td>
                             <td>{{$publicacion->año}}</td>
@@ -42,7 +42,7 @@
                             </td>
                           </tr>
                           @else
-                          <tr style="background-color: #ffb3b3">
+                          <tr style="background-color: #ff6666">
                             <!--<td>{{$publicacion->id}}</td> -->
                             <td>{{$publicacion->mes->nombre}}</td>
                             <td>{{$publicacion->año}}</td>

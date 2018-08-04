@@ -10,6 +10,11 @@
                         <strong>
                             Boletín Agrometeorológico - Vista previa - {{ $boletin->region->name}} - Publicación de {{ $boletin->publicacion->mes->nombre}} {{ $boletin->publicacion->año}}
                         </strong>
+                        <a href="{{ route('publicaciones.show', $boletin->publicacion->id)}}"
+                    class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
+                        <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
+                              class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+                       
 
                 </div>
 
@@ -28,7 +33,7 @@
                     @can('seccion-'.$seccion->id)
                         @if($boletin->estado == 1)
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
-                        class="btn btn-sm btn-success pull-right">Editar</a>
+                        class="btn btn-sm btn-success pull-right"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                         @else
                         <a href="#"
                         class="btn btn-sm btn-success pull-right disabled">Cerrado</a>
@@ -38,7 +43,7 @@
 
 
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
-                        class="btn btn-sm btn-success pull-right">Editar</a>
+                        class="btn btn-sm btn-success pull-right"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
 
 
                     @endif
@@ -69,13 +74,13 @@
                                     <a
                                         class="btn btn-sm btn-primary pull-right"
                                         href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}" style="margin-left: 5px;"
-                                    >Editar</a>
+                                    > <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                                     @if( $macrozona->pivot->resumen != null)
                                         <a
                                         class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
                                         href="#" style="margin-left: 5px;"
-                                    >Ver Resumen</a>
+                                    > <i class="fa fa-eye" aria-hidden="true"></i> Ver Resumen</a>
                                      <div class="modal fade" id="modalResumen{{$macrozona->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">

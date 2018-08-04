@@ -150,7 +150,7 @@ Route::middleware(['auth'])->group(function(){
 		->middleware('permission:boletines.create');
 
 	Route::get('publicaciones/{publicacion}','PublicacionController@show')->name('publicaciones.show')
-		->middleware('permission:boletines.show');
+		->middleware('permission:publicaciones.show');
 
 	Route::get('publicaciones/eleccion/{publicacion}','PublicacionController@vistaElegir')->name('publicaciones.vistaElegir')
 		->middleware('permission:boletines.create');

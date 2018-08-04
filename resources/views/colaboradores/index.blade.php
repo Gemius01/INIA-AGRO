@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Tus Colaboradores
                 </div>
@@ -21,7 +21,7 @@
                                <!-- <th width="10%">ID</th> -->
                                <th width="">Nombre</th>
                                <th width="">Email</th>
-                               <th width="10%">Opciones</th>
+                               <th width="10%">Opción</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -30,8 +30,8 @@
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
                           <td style="text-align: center;">
-                            <a href="{{ route('user.email', encrypt($user->id)) }}"
-                                class="btn btn-sm btn-primary">
+                            <button href="{{ route('user.email', encrypt($user->id)) }}" id="example"
+                                class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Enviar E-mail">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             </a>
                           </td>
@@ -47,4 +47,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -15,7 +15,7 @@
                     {{ $resumen->publicacion->año }}
                     </strong>
                     <a href="{{ route('resumenes.show', $resumen->id)}}"
-                    class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
+                    class="btn btn-sm btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                 </div>
 
                 <div class="card-body">
@@ -77,6 +77,7 @@
     </div>
 </div>
 <script>
+var unsavedd = false;
 var editor_config = {
 path_absolute : "/",
 selector: "textarea.my-editor",
@@ -107,6 +108,10 @@ setup: function(editor){
           event.preventDefault();
           return false;
         }
+
+    });
+    editor.on('change', function(event){
+      unsavedd = true;
     });
 editor.addButton('mybutton', {
 image: "{{ URL::to('/') }}/images//grafico.png",
@@ -140,6 +145,17 @@ close_previous : "no"
 
 tinymce.init(editor_config);
 </script>
+<script>
+$( document ).ready(function() {
+ 
+});
+    function unloadPage(){ 
+    if(unsavedd){
+        return confirm('Tienes Cambios sin guardar ¿Deseas salir?');
+    }
+}
+window.onbeforeunload = unloadPage;
+</script>
 
 <script>
 function pruebaConsole()
@@ -150,6 +166,7 @@ function pruebaConsole()
 
 function guardarDatos()
 {
+    unsavedd = false;
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     console.log(objSeccion)
     var region_id = objSeccion.pivot.region_id;

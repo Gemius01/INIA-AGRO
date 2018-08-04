@@ -8,9 +8,11 @@
                 <div class="card-header">
                   Publicación del mes de {{ $resumen->publicacion->mes->nombre }} del {{ $resumen->publicacion->año }}
                 @can('products.create')
-                    <a href="{{ route('publicaciones.create')}}"
-                    class="btn btn-sm btn-primary pull-right">Crear</a>
+                    <a href="{{ route('publicaciones.index')}}"
+                    class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                 @endcan
+                    <a href="{{ route('xmlview', $resumen->publicacion->id) }}"
+                              class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-file-code-o" aria-hidden="true"></i> XML</a>
                 </div>
                 <div class="card-body">
                    <table class="table table-striped table-hover table-bordered">
@@ -34,7 +36,7 @@
                             </td>
                             <td style="text-align: center;">
                               <a href="{{ route('resumenespdf', $resumen->id) }}"
-                              class="btn btn-sm btn-warning">PDF</a>
+                              class="btn btn-sm btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
                             </td>
                           </tr>
 
@@ -68,7 +70,7 @@
                             </td>
                             <td style="text-align: center;">
                               <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
-                              class="btn btn-sm btn-warning">PDF</a>
+                              class="btn btn-sm btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
                             </td>
                           </tr>
                         @endforeach
