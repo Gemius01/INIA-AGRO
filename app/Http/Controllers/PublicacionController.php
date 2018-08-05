@@ -19,32 +19,25 @@ use File;
 
 class PublicacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $eleccion = Eleccion::find(1);
-        //dd($pubElegida);
-        if ($eleccion->publicacion_id != null) {
-        $publicacionActual = Publicacion::find($eleccion->publicacion_id);
-        $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
-        return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
-        }else {
-        $publicacionActual = (object) array( 'id' => 0, 'mes' => null, 'año' => null);
-        $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
-        return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
-        }
 
+        if ($eleccion->publicacion_id != null) {
+
+          $publicacionActual = Publicacion::find($eleccion->publicacion_id);
+          $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
+          return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
+
+        }else {
+
+          $publicacionActual = (object) array( 'id' => 0, 'mes' => null, 'año' => null);
+          $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
+          return view('publicaciones.index', compact(['publicaciones', 'pubElegida', 'publicacionActual', ]));
+
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $regiones = Region::where('id', '<>', '1')->pluck('name', 'id');
@@ -53,29 +46,12 @@ class PublicacionController extends Controller
         return view('publicaciones.create', compact(['regiones', 'meses', ]));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(PublicacionStoreRequest $request)
     {
-        //dd($request['region']);
-
-
-
-
-
-
-        //if($request['region'] == 0){//Crear Boletines para todas las regiones
             $publicacion = Publicacion::create($request->all());
-            //$path = public_path().'/photos/shares/'.$request->input('año');
-            //File::makeDirectory($path, $mode = 0777, true, true);
-             $this->crearDirectorios($publicacion);
-             $this->crearResumen($publicacion);
+            $this->crearDirectorios($publicacion);
+            $this->crearResumen($publicacion);
             $regiones = Region::where('id', '<>', '1')->get();
-            //$secciones = Seccion::get();
 
             foreach($regiones as $region){
                 $boletin = Boletin::create([
@@ -83,23 +59,9 @@ class PublicacionController extends Controller
                     'estado' => 1,
                     'publicacion_id' => $publicacion->id,
                 ]);
-
                 $this->crearPortada($boletin, $publicacion);
                 $this->sincronizarMacrozonas($boletin, $region);
             }
-            /*
-        }else{// Crear Boletin para una región
-            $publicacion = Publicacion::create($request->all());
-            $boletin = Boletin::create([
-                'region_id' => $request['region'],
-                'estado' => true,
-                'publicacion_id' => $publicacion->id,
-            ]);
-            $secciones = Seccion::get();
-            $boletin->secciones()->sync($secciones);
-        }
-        */
-
         return redirect()->route('publicaciones.index', $publicacion->id)
             ->with('info', 'Publicación creada con éxito');
     }
@@ -210,16 +172,8 @@ class PublicacionController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Publicacion $publicacion)
     {
-
-        //dd($publicacion->boletines);
         $boletines = $publicacion->boletines;
 
         if($publicacion->resumen != null)
@@ -229,29 +183,15 @@ class PublicacionController extends Controller
             $resumen = (object) array( 'mes' => '-', 'año' => '-');
         }
 
-        //dd($resumen);
         return view('publicaciones.show', compact(['boletines', 'resumen', ]));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Publicacion $publicacion)
     {
         $meses = Mes::pluck('nombre', 'id');
         return view('publicaciones.edit', compact(['publicacion', 'meses']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(PublicacionUpdateRequest $request, $id)
     {
 
@@ -308,17 +248,6 @@ class PublicacionController extends Controller
       $varPivot->pivot->save(); //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function vistaElegir(Publicacion $publicacion)
     {
         return view('publicaciones.eleccion', compact(['publicacion', ]));
@@ -326,7 +255,6 @@ class PublicacionController extends Controller
 
     public function elegirPublicacion($publicacion)
     {
-        //dd($publicacion);
         $eleccionAntigua = Eleccion::findOrFail(1);
         $eleccionAntigua->update(["publicacion_id" => $publicacion]);
 
@@ -336,7 +264,6 @@ class PublicacionController extends Controller
 
     public function vistaAbrirCerrarBoletines(Publicacion $publicacion)
     {
-
        return view('publicaciones.abrirCerrar', compact(['publicacion', ]));
     }
     public function cerrarBoletin(Boletin $boletin, $publicacion)
@@ -344,12 +271,11 @@ class PublicacionController extends Controller
         $boletin->update(["estado" => 0]);
         return redirect()->route('publicaciones.abrirCerrar', $publicacion)
             ->with('info', 'Se ha cerrado correctamente');
-
     }
 
     public function abrirBoletin(Boletin $boletin, $publicacion)
     {
-         $boletin->update(["estado" => 1]);
+        $boletin->update(["estado" => 1]);
         return redirect()->route('publicaciones.abrirCerrar', $publicacion)
             ->with('info', 'Se ha cerrado correctamente');
     }
@@ -382,7 +308,6 @@ class PublicacionController extends Controller
 
     public function habilitarDeshabilitar(Publicacion $publicacion)
     {
-
       if($publicacion->public == true)
       {
         $publicacion->public = false;
@@ -395,7 +320,6 @@ class PublicacionController extends Controller
       return redirect()->route('publichtml.enabledisable')
             ->with('info', 'Se ha habilitado correctamente');
       }
-
     }
 
     public function publicBoletinesVista(Publicacion $publicacion)
@@ -406,7 +330,6 @@ class PublicacionController extends Controller
 
     public function publicBoletin(Boletin $boletin)
     {
-
       if($boletin->publico == true)
       {
         $boletin->publico = false;

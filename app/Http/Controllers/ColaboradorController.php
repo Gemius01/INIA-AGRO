@@ -10,11 +10,6 @@ use App\Http\Requests\ColaboradorSendRequest;
 
 class ColaboradorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $authUser = Auth::user();
@@ -58,15 +53,13 @@ class ColaboradorController extends Controller
 
     public function email($idUser)
     {
-      $user = User::find(decrypt($idUser));
+        $user = User::find(decrypt($idUser));
         return view('colaboradores.send', compact(['user']));
     }
 
     public function send(ColaboradorSendRequest $request, $idUser)
     {
       $user = User::find(decrypt($idUser));
-        //Config para la persona que enviará el mail
-        //$data = array('contenido' => $request->input('contenido'));
         try {
         $authUser = Auth::user();
         config(['mail.username' => $request->input('email')]);
@@ -95,82 +88,11 @@ class ColaboradorController extends Controller
         catch (\Exception $e) {
             return redirect()->back()->withInput()->with('info-danger', '<p>No se logró enviar el correo, puede ser debido a : </p><ul><li>1 .- No se ingreso el E-mail o Contraseña de GMAIL</li>
                 <li>2 .- No se tiene habilitado el Gmail para enviar correos a través de esta plataforma <a href="/colaborador/guia" target="_blank" >Ver más...</a></li></ul><p>En caso contrario contactar al administrador.</p>');
-            //return json_encode([ 'info-danger' => 'ocurrio un error' ]);
-            /*
-            return redirect()->route('user.email', $colaborador->id)
-            ->with('info-danger', '<p>No se logró enviar el correo, puede ser debido a : </p>');
-            */
         }
     }
 
     public function guia()
     {
         return view('colaboradores.guia');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

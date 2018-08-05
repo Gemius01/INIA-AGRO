@@ -198,6 +198,5 @@ class BoletinController extends Controller
         );
         $content = view('boletines.xml', compact(['array', 'publicacion', ]))->render();
         return response()->attachment($content, date('Y-m-d'));
-
     }
 }

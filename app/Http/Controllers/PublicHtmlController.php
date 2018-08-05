@@ -27,13 +27,11 @@ class PublicHtmlController extends Controller
             $resumen = (object) array( 'mes' => '-', 'año' => '-');
         }
 
-        //dd($resumen);
         return view('public.publicaciones.show', compact(['boletines', 'resumen', ]));
     }
 
     public function showBoletin(Boletin $boletin)
     {
-    	
     	return view('public.boletines.show', compact(['boletin']));
     }
 
@@ -51,21 +49,17 @@ class PublicHtmlController extends Controller
 
     public function pdfBoletin(Boletin $boletin)
     {
-
     	foreach($boletin->subsecciones as $subseccion)
       {
         foreach($subseccion->macrozonas as $macrozona)
         {
           $arrayMacro[] = $macrozona;
         }
-        
       }
 
       return PDF::loadView('public.boletines.publicPDFBoletin', compact([ 'boletin', 'arrayMacro']), [], [
         'format' => 'A4'
       ])->download('invoiceee.pdf');
-// return PDF::loadView('boletines.pdfTemplate',compact([ 'boletin', ]))->download('invoice.pdf');
-
       }
     
 }

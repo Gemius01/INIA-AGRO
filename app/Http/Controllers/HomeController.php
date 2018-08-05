@@ -13,45 +13,32 @@ use App\Eleccion;
 class HomeController extends Controller
 {
 
-  public function downloadPDF()
-
+    public function downloadPDF()
     {
-
     	$pdf = PDF::loadView('pdfView');
 
 		return $pdf->download('invoice.pdf');
-
     }
+
     public function vistaPdf()
     {
         return view('pdfView');
     }
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(User $user)
     {
-        
         $user = Auth::user();
         $rol = $user->roles()->first();
         $nacional = $user->regiones()->first();
-        //dd($nacional);
+
         if($rol != null) {
             if($rol->id != 1 and $nacional->id != 1)
             {
-
                 $queryRegion = $user->regiones()->pluck('region_id');
                 $publicacionElegida = Eleccion::find(1);
                 if($publicacionElegida != null && $publicacionElegida->publicacion_id != null){
