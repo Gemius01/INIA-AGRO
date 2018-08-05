@@ -1,12 +1,10 @@
 @extends('layouts.app')
-
 @section('content')
 <div >
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-
                         <strong>
                             Boletín Agrometeorológico - Vista previa - {{ $boletin->region->name}} - Publicación de {{ $boletin->publicacion->mes->nombre}} {{ $boletin->publicacion->año}}
                         </strong>
@@ -16,14 +14,10 @@
                     @else
                     <a href="/home"
                 class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
-
                     @endif
                         <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
                               class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
-
-
                 </div>
-
             </div>
         </div>
     </div>
@@ -34,7 +28,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{$seccion->name}}
-
                     @if($rol->id != 2 ?? $rol->id !=1)
                     @can('seccion-'.$seccion->id)
                         @if($boletin->estado == 1)
@@ -46,15 +39,10 @@
                     @endif
                     @endcan
                     @else
-
-
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-
-
                     @endif
                 </div>
-
                 <div class="card-body">
                  {!! $seccion->pivot->contenido !!}
                  @if($seccion->id == 6)
@@ -91,7 +79,6 @@
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-
                                         <h6 class="modal-title" id="myModalLabel">
                                          {{$macrozona->name}}
                                             @if($macrozona->rubro != null)
@@ -102,7 +89,6 @@
                                                 @endif
                                             @else
                                             @endif
-
                                         </h4>
                                       </div>
                                       <div class="modal-body">
@@ -111,7 +97,6 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar
                                         </button>
-
                                       </div>
                                     </div>
                                   </div>
@@ -119,7 +104,6 @@
                                     @else
                                     <a
                                         class="btn btn-sm btn-info pull-right disabled"
-
                                         href="#"
                                     >Resumen Vacío
                                     </a>
@@ -136,7 +120,6 @@
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-
                                         <h6 class="modal-title" id="myModalLabel">
                                          {{$macrozona->name}}
                                             @if($macrozona->rubro != null)
@@ -147,7 +130,6 @@
                                                 @endif
                                             @else
                                             @endif
-
                                         </h4>
                                       </div>
                                       <div class="modal-body">
@@ -156,7 +138,6 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar
                                         </button>
-
                                       </div>
                                     </div>
                                   </div>
@@ -169,12 +150,10 @@
                                     >Resumen Vacío
                                     </a>
                                     @endif
-
                                 @endif
                             @endcan
                             @else
                             <!-- Admin -->
-
                                     <a
                                         class="btn btn-sm btn-primary pull-right"
                                         href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}"
@@ -189,7 +168,6 @@
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-
                                         <h6 class="modal-title" id="myModalLabel">
                                          {{$macrozona->name}}
                                             @if($macrozona->rubro != null)
@@ -200,7 +178,6 @@
                                                 @endif
                                             @else
                                             @endif
-
                                         </h6>
                                       </div>
                                       <div class="modal-body">
@@ -209,7 +186,6 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar
                                         </button>
-
                                       </div>
                                     </div>
                                   </div>
@@ -217,23 +193,19 @@
                                     @else
                                     <a
                                         class="btn btn-sm btn-info pull-right disabled"
-
                                         href="#"
                                     >Resumen Vacío
                                     </a>
                                     @endif
-
                             <!--end admin -->
                             @endif
                         </p>
-
                         {!! $macrozona->pivot->contenido !!}
                         <hr>
                         @endforeach
                      @endforeach
                  @else
                  @endif
-
                 </div>
             </div>
         </div>

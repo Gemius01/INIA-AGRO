@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -25,7 +24,6 @@
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <!--<th width="10%">ID</th> -->
                                <th>Región</th>
                                <th width="30%">Nombre</th>
                                <th>Rubro</th>
@@ -36,8 +34,6 @@
                        <tbody>
                           @foreach($macrozonas as $macrozona)
                            <tr>
-
-                            <!--<td>{{ $macrozona->id }}</td>-->
                             <td>{{ $macrozona->region['name'] ?: '-'}}
                             <td>{{ $macrozona->name }}</td>
                             <td>{{ $macrozona->rubro['name'] ?: '-' }}
@@ -46,14 +42,13 @@
                                <td style="text-align: center;">
                                    <a href="{{ route('macrozonas.edit', $macrozona->id) }}"
                                     class="btn btn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-
                                </td>
                                @endcan
                                 @can('products.destroy')
                                <td style="text-align: center;">
                                     {!! Form::open(['route' => ['macrozonas.destroy', $macrozona->id],
                                     'method' => 'DELETE']) !!}
-                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> 
+                                    <button onclick="return confirm('¿Esta seguro de eliminar?')" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>
                                         Eliminar
                                     </button>
                                     {!! Form::close() !!}
@@ -63,11 +58,7 @@
                           @endforeach
                        </tbody>
                    </table>
-
                 </div>
-                 <center>
-
-               </center>
             </div>
         </div>
     </div>
@@ -81,6 +72,5 @@
       window.location.href = url;
 });
 });
-
 </script>
 @endsection

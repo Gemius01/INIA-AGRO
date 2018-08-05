@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -12,13 +11,11 @@
                     @foreach($regiones as $region)
                     {{$region->name}} /
                     @endforeach
-
                   </p>
                    <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <!-- <th width="10%">ID</th> -->
                                <th width="">Nombre</th>
                                <th width="">Email</th>
                                <th width="10%">Opción</th>
@@ -40,12 +37,10 @@
                        </tbody>
                    </table>
                    <center>
-
                </center>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

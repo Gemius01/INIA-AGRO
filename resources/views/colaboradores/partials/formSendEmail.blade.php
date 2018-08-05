@@ -45,6 +45,5 @@
 		<center>
 	<button type="submit"  class="btn btn-sm btn-primary" name="submitBtn" onclick="this.disabled=true;this.form.submit();">Enviar</button>
 	</center>
-
 	</div>
 </center>

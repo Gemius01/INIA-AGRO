@@ -12,15 +12,13 @@
 <htmlpageheader name="page-portada">
 </htmlpageheader>
 	{!! $seccion->pivot->contenido !!}
-
 	<htmlpagefooter name="page-footerPortada">
 	</htmlpagefooter>
 <pagebreak>
-
 @else
 <htmlpageheader name="page-header">
 <div class="header">
-	Boletín de Riesgos Agroclimáticos - {{$boletin->region->name}} - {{$boletin->publicacion->mes->nombre}}/{{$boletin->publicacion->año}} 
+	Boletín de Riesgos Agroclimáticos - {{$boletin->region->name}} - {{$boletin->publicacion->mes->nombre}}/{{$boletin->publicacion->año}}
 </div>
 <div class="border"></div>
 </htmlpageheader>
@@ -35,9 +33,9 @@
 			@if($macrozona->pivot->contenido != null)
 			<div>
 				<strong>
-				{{ $macrozona->name }} 
+				{{ $macrozona->name }}
 				@if($macrozona->rubro != null)
-				> {{ $macrozona->rubro->name }} 
+				> {{ $macrozona->rubro->name }}
 					@if($macrozona->rubro->subrubro !=null)
 					> {{ $macrozona->rubro->subrubro }}
 					@else
@@ -53,7 +51,6 @@
 			@endif
 		@endforeach
 	</div>
-	
 @else
 	@if($seccion->pivot->contenido != null)
 	<div class="titulo">
@@ -61,10 +58,8 @@
 	</div>
 	<div class="contenido">
 		{!! $seccion->pivot->contenido !!}
-
 	</div>
 	@else
-
 	@endif
 @endif
 <htmlpagefooter name="page-footer">
@@ -77,15 +72,12 @@
 		{PAGENO}
 	</div>
 </htmlpagefooter>
-
 @endif
 @php
   $i++
 @endphp
 @endforeach
-
 </body>
 <script>
-
 </script>
 </html>

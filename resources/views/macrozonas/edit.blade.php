@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -10,9 +9,7 @@
                 <div class="card-body">
                    {!! Form::model($macrozona, ['route' => ['macrozonas.update', $macrozona->id],
                     'method' => 'PUT']) !!}
-
                         @include('macrozonas.partials.formEdit')
-                        
                     {!! Form::close() !!}
                 </div>
             </div>

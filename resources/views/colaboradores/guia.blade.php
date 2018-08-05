@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -12,8 +11,7 @@
                 </div>
                 <div class="card-body">
                   <h5><strong>PASO N°1</strong></h5>
-                  
-                  <p>Acceda a su cuenta de GMAIL ingresando su Correo electrónico y contraseña 
+                  <p>Acceda a su cuenta de GMAIL ingresando su Correo electrónico y contraseña
                     (Link: <a href="https://accounts.google.com/signin/v2/identifier?service=accountsettings&passive=1209600&osid=1&continue=https%3A%2F%2Fmyaccount.google.com%2Fintro&followup=https%3A%2F%2Fmyaccount.google.com%2Fintro&csig=AF-SEna8r_xT3YdqllII%3A1533418812&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank">www.gmail.com</a>)</p>
                   <!-- imagen login -->
                   <center>
@@ -21,7 +19,6 @@
                   </center>
                   <hr>
                   <h5><strong>PASO N°2</strong></h5>
-                  
                   <p>Dar clickear en el botón de su perfil ubicado en la esquina superior derecha</p>
                   <!-- imagen botón perfil -->
                   <center>
@@ -33,13 +30,11 @@
                   </center>
                   <hr>
                   <h5><strong>PASO N°3</strong></h5>
-                  
                   <p>Clickear en el botón "Sign-in & Security"</p>
                   <!-- imagen botón opción seguridad y aplicaciones -->
                   <img src="{{ asset('guia/Sign-in security.png')}}" width="100%"  />
                   <hr>
                   <h5><strong>PASO N°4</strong></h5>
-                  
                   <p>Bajar hasta llegar hasta la opción "Allow less secure apps" o "Habilitar aplicaciones menos seguras" y dejarlo habilitado como se muestra en la imagen</p>
                   <!-- imagen botón nombre de la opcion -->
                   <img src="{{ asset('guia/on.png')}}" width="100%"  />
@@ -56,5 +51,4 @@
         </div>
     </div>
 </div>
-
 @endsection

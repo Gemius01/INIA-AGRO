@@ -1,11 +1,10 @@
 <informe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="appxsd.xsd">
-<resumenes fecha_inicio="{{ $publicacion->año }}-{{ $publicacion->mes->inicio }}" 
+<resumenes fecha_inicio="{{ $publicacion->año }}-{{ $publicacion->mes->inicio }}"
 		   fecha_termino="{{ $publicacion->año }}-{{ $publicacion->mes->fin }}">
-	
 @foreach($array as $a)
 @if($a->pivot->resumen != null)
-<registro id="{{ $a->pivot->id }}" 
-		  region="{{ $a->region->numero}}" 
+<registro id="{{ $a->pivot->id }}"
+		  region="{{ $a->region->numero}}"
 		  macrozona="{{ $a->name }}"
 		  @if($a->rubro != null)
 		  rubro="{{ $a->rubro->name }}"
@@ -15,14 +14,11 @@
 			  @endif
 		  @else
 		  @endif
-		  
-		  autor="{{ $a->pivot->autor}}" 
+		  autor="{{ $a->pivot->autor}}"
 		  mail="{{ $a->pivot->email }}"
 		  >
 <![CDATA[
-
  {{$a->pivot->resumen }}
-
 ]]>
 </registro>
 @else

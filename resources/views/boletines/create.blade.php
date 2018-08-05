@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -11,7 +10,7 @@
                     {{ Form::open(['route' => 'boletines.store']) }}
 
                         @include('boletines.partials.formCreate')
-                        
+
                     {{ Form::close() }}
                 </div>
             </div>

@@ -1,17 +1,13 @@
 @extends('layouts.app')
-
 @section('content')
-<div class=""><!--container class -->
+<div class="">
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">Boletines
-
                     <a href="{{ route('boletines.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>
-
                 </div>
-
                 <div class="card-body" width="100%">
                    <table class="table table-striped table-hover table-bordered" width="100%">
                        <thead>
@@ -37,7 +33,6 @@
                                <td>
                                    <a href="{{ route('products.edit', $boletin->id) }}"
                                     class="btn btn-sm btn-success">Editar</a>
-
                                </td>
                                @endcan
                                 @can('products.destroy')
@@ -57,11 +52,9 @@
                            </tr>
                            @endforeach
                        <tbody>
-
                        </tbody>
                    </table>
                    <center>
-
                </center>
                 </div>
             </div>
