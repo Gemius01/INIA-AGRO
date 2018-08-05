@@ -22,20 +22,30 @@ class ColaboradorController extends Controller
         if($rol->id != 1)
         {
             $regiones = $authUser->regiones()->get();
-            $arrayUsers = array();
-            $usuarios = User::where('id', '<>', 1)->get();
-            foreach($regiones as $region)
+            if($authUser->regiones()->exists())
             {
-                foreach($usuarios as $usuario)
+                if($authUser->regiones()->first()->id != 1)
                 {
-                    $userEncontrado = $usuario->regiones()->where('region_id', '=', $region->id)->first();
-                    if($userEncontrado != null){
-                        $arrayUsers[$usuario->id] = $usuario;
-                    }else{
+                    $arrayUsers = array();
+                    $usuarios = User::where('id', '<>', 1)->get();
+                    foreach($regiones as $region)
+                    {
+                        foreach($usuarios as $usuario)
+                        {
+                            $userEncontrado = $usuario->regiones()->where('region_id', '=', $region->id)->first();
+                            if($userEncontrado != null){
+                                $arrayUsers[$usuario->id] = $usuario;
+                            }else{
 
+                            }
+
+                        }
                     }
-
+                }else{
+                    $arrayUsers = User::where('id', '<>', 1)->get();
                 }
+            }else{
+
             }
 
             return view('colaboradores.index', compact(['arrayUsers', 'regiones']));

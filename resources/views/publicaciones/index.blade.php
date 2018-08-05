@@ -6,6 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Publicaciones
+                   
                 @can('publicaciones.create')
                     <a href="{{ route('publicaciones.create')}}"
                     class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;">Crear</a>
@@ -19,6 +20,8 @@
                     <a target="__blank" href="/laravel-filemanager?type=image"
                     class="btn btn-sm btn-info pull-right" style="margin-left: 5px;"><i class="fa fa-picture-o"></i> Administrar Imagenes</a>
                 @endcan
+                <a  href="{{ route('elegir.eliminar')}}"
+                    class="btn btn-sm btn-danger pull-right" style="margin-left: 5px;"><i class="fa fa-trash-o" aria-hidden="true"></i> Vaciar elegir</a>
                 </div>
                 <div class="card-body">
                   <strong>Publicación elegida actualmente</strong>
@@ -44,6 +47,7 @@
                     </li>
 
                   </ul>
+                 
                   <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>

@@ -157,6 +157,15 @@ class PublicacionController extends Controller
       }
     }
 
+    public function eliminarElegir()
+    {
+        $eleccionAntigua = Eleccion::findOrFail(1);
+        $eleccionAntigua->update(["publicacion_id" => 0]);
+
+        return redirect()->route('publicaciones.index')
+            ->with('info', 'Se ha eliminado la elección de la publicación correctamente');
+    }
+
     public function crearPortada(Boletin $boletin, Publicacion $publicacion)
     {
       $secciones = Seccion::get();

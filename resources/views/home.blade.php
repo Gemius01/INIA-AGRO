@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div >
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Dashboard</div>
+        <div class="card-header">Publicación: {{$resumen->publicacion->mes->nombre ?: '-' }} - {{ $resumen->publicacion->año ?: '-'}}</div>
         <div class="card-body">
           @if (session('status'))
           <div class="alert alert-success" role="alert">
@@ -21,14 +21,11 @@
                 <!--<th width="10px">ID</th>-->
                 <th>Mes</th>
                 <th>Año</th>
-                <th colspan="1"><center>Opciones</center></th>
+                <th colspan="2" width="30%"><center>Opciones</center></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-
-
-
                 @if($resumen != null)
                 <td>{{ $resumen->publicacion->mes->nombre ?: '-'}}</td>
                 <td>{{ $resumen->publicacion->año ?: '-'}}</td>
@@ -38,6 +35,10 @@
                     class="btn btn-sm btn-primary">Ver</a>
                 </td>
                 @endcan
+                <td style="text-align: center;">
+                  <a href="{{ route('resumenespdf', $resumen->id) }}"
+                     class="btn btn-sm btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+                </td>
                 @else
 
                 @endif
@@ -54,7 +55,7 @@
                 <!--<th width="10px">ID</th>-->
                 <th>Región</th>
                 <th>Estado</th>
-                <th colspan="1"><center>Opciones</center></th>
+                <th colspan="2" width="30%"><center>Opciones</center></th>
               </tr>
             </thead>
             <tbody>
@@ -73,9 +74,13 @@
                   </td>
                 @endif
 
-                <td width="10px">
+                <td style="text-align: center;">
                   <a href="{{ route('boletines.show', encrypt($boletin->id)) }}"
                   class="btn btn-sm btn-primary">Ver</a>
+                </td>
+                <td style="text-align: center;">
+                  <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
+                     class="btn btn-sm btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
                 </td>
               </tr>
               @endforeach

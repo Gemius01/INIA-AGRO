@@ -189,6 +189,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('adminImages','AdminImagesController@index')->name('adminImages.view')
 		->middleware('permission:publicacion.edit');
 
+	Route::get('publicacion/eliminarElegir','PublicacionController@eliminarElegir')->name('elegir.eliminar')
+		->middleware('permission:publicacion.eliminar.elegir');
+
 	//Boletines
 
 	Route::post('boletines/store','BoletinController@store')->name('boletines.store')
