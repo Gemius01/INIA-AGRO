@@ -19,6 +19,7 @@ class Macrozona extends Model
     {
         return $this->belongsTo(Rubro::class);
     }
+    
     public function region()
     {
         return $this->belongsTo(Region::class);
