@@ -43,12 +43,6 @@
 	@endforeach
 	@endif
 </div>
-<!--
-<div class="form-group">
-	{{ Form::label('region_id', 'Región') }}
-	{{ Form::select('region_id', $regions, null, array('class' => 'form-control' , 'id' => 'region')) }}
-</div>
--->
 <hr>
 <h3>Rol</h3>
 <div class="form-group">
@@ -98,23 +92,6 @@
 		@endforeach
 	</ul>
 </div>
-<!--
-<hr>
-<h3>Macrozonas</h3>
-<div class="form-group">
-	<ul class="list-unstyled">
-		@foreach($macrozonas as $macrozona)
-		<li>
-			<label>
-		        {{ Form::checkbox('macrozonas[]', $macrozona->id) }}
-		        <strong>{{ $macrozona->name }}</strong> > <strong>{{ $macrozona->name }}</strong>
-
-	        </label>
-		</li>
-		@endforeach
-	</ul>
-</div>
--->
 <div class="form-group">
 	<center>
 	<button type="submit"  class="btn btn-sm btn-primary" name="submitBtn" onclick="this.disabled=true;this.form.submit();">Guardar</button>

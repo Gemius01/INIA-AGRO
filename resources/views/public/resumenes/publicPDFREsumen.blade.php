@@ -32,13 +32,13 @@
 					<td>:</td>
 					<td style="text-align:left;">
 						<p style="color:green;">
-						{{ substr($resumen->publicacion->mes->inicio, -2) }}
-						al
-						{{ substr($resumen->publicacion->mes->fin, -2) }}
-						de
-						{{ $resumen->publicacion->mes->nombre }}
-						de
-						{{ $resumen->publicacion->año}}
+							{{ substr($resumen->publicacion->mes->inicio, -2) }}
+							al
+							{{ substr($resumen->publicacion->mes->fin, -2) }}
+							de
+							{{ $resumen->publicacion->mes->nombre }}
+							de
+							{{ $resumen->publicacion->año}}
 						</p>
 					</td>
 				</tr>
@@ -54,8 +54,8 @@
 					<td>:</td>
 					<td style="text-align:left;">
 						<p style="color:green;">
-						Unidad Nacional de Emergencia Agrícola y Riesgo Agroclimático (UNEA),
-						Ministerio de Agricultura.
+							Unidad Nacional de Emergencia Agrícola y Riesgo Agroclimático (UNEA),
+							Ministerio de Agricultura.
 						</p>
 					</td>
 				</tr>

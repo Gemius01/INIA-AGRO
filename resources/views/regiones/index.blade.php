@@ -15,7 +15,6 @@
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <!-- <th width="10%">ID</th> -->
                                <th width="70%">Nombre</th>
                                <th colspan="3" width="30%" style="text-align: center;">Opciones</th>
                            </tr>
@@ -23,22 +22,13 @@
                        <tbody>
                           @foreach($regiones as $region)
                            <tr>
-
-                            <!--<td>{{ $region->id }}</td> -->
                             <td>{{ $region->name }}</td>
-                            <!--
-                            @can('products.show')
-                               <td style="text-align: center;">
-                                   <a href="{{ route('regiones.show', $region->id) }}"
-                                    class="btn btn-sm btn-primary">Ver</a>
-                               </td>
-                               @endcan
-                             -->
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('regiones.edit', $region->id) }}"
-                                    class="btn btn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-
+                                    class="btn btn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> 
+                                    Editar
+                                  </a>
                                </td>
                                @endcan
                                 @can('products.destroy')
@@ -55,9 +45,6 @@
                           @endforeach
                        </tbody>
                    </table>
-                   <center>
-
-               </center>
                 </div>
             </div>
         </div>

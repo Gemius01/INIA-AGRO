@@ -5,13 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Publicaciones
-                   
+                <div class="card-header">Publicaciones  
                 @can('publicaciones.create')
                     <a href="{{ route('publicaciones.create')}}"
                     class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;">Crear</a>
                 @endcan
-
                 @can('publicaciones.publicar')
                     <a href="{{ route('publichtml.enabledisable')}}"
                     class="btn btn-sm btn-info pull-right" style="margin-left: 5px;"><i class="fa fa-html5" aria-hidden="true"></i> Publicar HTML</a>
@@ -45,14 +43,11 @@
                         @endif
                       </strong>
                     </li>
-
                   </ul>
-                 
                   <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <!--<th width="10%">ID</th>-->
                                <th>Año</th>
                                <th>Mes</th>
                                <th colspan="5" style="text-align: center;" width="30%">Opciones</th>
@@ -65,7 +60,6 @@
                           @else
                           <tr>
                           @endif
-                            <!--<td>{{$publicacion->id}}</td> -->
                             <td>{{$publicacion->año}}</td>
                             <td>{{$publicacion->mes->nombre}}</td>
                             <td style="text-align: center;">
@@ -76,12 +70,10 @@
                               <a href="{{ route('publicaciones.show', $publicacion->id) }}"
                               class="btn btn-sm btn-primary">Ver</a>
                             </td>
-                            
                             <td style="text-align: center;">
                               <a href="{{ route('publicacion.edit', $publicacion->id) }}"
                               class="btn btn-sm btn-success">Editar</a>
                             </td>
-                            
                             <td style="text-align: center;">
                               <a href="{{ route('xmlview', $publicacion->id) }}"
                               class="btn btn-sm btn-warning"><i class="fa fa-file-code-o" aria-hidden="true"></i> XML</a>
@@ -90,14 +82,10 @@
                               <a href="{{ route('publicaciones.vistaElegir', $publicacion->id) }}"
                               class="btn btn-sm btn-warning">Elegir</a>
                             </td>
-
                           </tr>
                         @endforeach
                        </tbody>
                    </table>
-                   <center>
-
-               </center>
                 </div>
             </div>
         </div>

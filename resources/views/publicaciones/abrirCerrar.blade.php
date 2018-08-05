@@ -18,13 +18,11 @@
                                             ABRIR TODOS
                                         </button>
                      {!! Form::close() !!}  
-                   
                 </div>
                 <div class="card-body">
                      <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               
                                <th>Region</th>
                                <th>Estado</th>
                                <th colspan="5" style="text-align: center;" width="30%">Opciones</th>
@@ -33,7 +31,6 @@
                        <tbody>
                         @foreach($publicacion->boletines as $boletin)
                           <tr>
-                            
                             <td>{{ $boletin->region->name }}</td>
                                 @if($boletin->estado == 1)
                                     <td style="background-color: #e6ffe6; text-align: center;">
@@ -43,7 +40,6 @@
                                     <td style="background-color: #ffcccc; text-align: center;">
                                         Cerrado
                                     </td>
-
                                 @endif
                                 <td style="text-align: center;">
                                     {!! Form::open(['route' => ['boletines.abrir', $boletin->id, $publicacion->id], 
@@ -63,10 +59,8 @@
                                </td>
                           </tr>
                         @endforeach
-
                        </tbody>
                    </table>
-         
                 </div>
             </div>
         </div>

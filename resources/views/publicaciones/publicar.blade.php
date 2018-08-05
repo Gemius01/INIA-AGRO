@@ -6,14 +6,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Publicaciones
-                
                 </div>
                 <div class="card-body">
                   <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <!--<th width="10%">ID</th>-->
                                <th>Mes</th>
                                <th>Año</th>
                                <th>Público</th>
@@ -24,7 +22,6 @@
                         @foreach($publicaciones as $publicacion)
                           @if($publicacion->public == true)
                           <tr style="background-color: #80ff80">
-                            <!--<td>{{$publicacion->id}}</td> -->
                             <td>{{$publicacion->mes->nombre}}</td>
                             <td>{{$publicacion->año}}</td>
                             <td>Habilitado</td>
@@ -43,7 +40,6 @@
                           </tr>
                           @else
                           <tr style="background-color: #ff6666">
-                            <!--<td>{{$publicacion->id}}</td> -->
                             <td>{{$publicacion->mes->nombre}}</td>
                             <td>{{$publicacion->año}}</td>
                             <td>Deshabilitado</td>
@@ -61,14 +57,9 @@
                             </td>
                           </tr>
                           @endif
-                            
-                          
                         @endforeach
                        </tbody>
                    </table>
-                   <center>
-
-               </center>
                 </div>
             </div>
         </div>

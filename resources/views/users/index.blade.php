@@ -16,7 +16,6 @@
                    <table class="table table-striped table-hover table-bordered" width="100%">
                        <thead>
                            <tr>
-                               <!--<th width="10px">ID</th>-->
                                <th>Nombre</th>
                                <th>E-mail</th>
                                <th>Región(es)</th>
@@ -28,7 +27,6 @@
                        <tbody>
                            @foreach($users as $user)
                            <tr>
-                               <!--<td>{{ $user->id }}</td>-->
                                <td>{{ $user->name ?: '-' }}
                                 @if($user->roles()->first() != null)
                                 <strong>

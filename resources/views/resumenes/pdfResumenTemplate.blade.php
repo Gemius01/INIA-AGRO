@@ -7,8 +7,6 @@
 	<body>
 		@php $i=0
 		@endphp
-		
-		
 		<htmlpageheader name="page-portada">
 		</htmlpageheader>
 		<center><img src="../../photos/shares/logo-inia.png" alt="" border="0" /></center>

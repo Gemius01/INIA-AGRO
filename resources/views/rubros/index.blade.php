@@ -7,17 +7,14 @@
             <div class="card">
                 <div class="card-header">Rubros
                 @can('products.create')
-                
                     <a href="{{ route('rubros.create')}}"
                     class="btn btn-sm btn-primary pull-right">Crear</a>
-                
                 @endcan
                 </div>
                 <div class="card-body">
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <!-- <th width="10%">ID</th> -->
                                <th width="35%">Nombre</th>
                                <th width="35%">Subrubro</th>
                                <th colspan="3" width="30%" style="text-align: center;">Opciones</th>
@@ -26,23 +23,14 @@
                        <tbody>
                           @foreach($rubros as $rubro)
                            <tr>
-
-                            <!--<td>{{ $rubro->id }}</td> -->
                             <td>{{ $rubro->name }}</td>
                             <td>{{ $rubro->subrubro }}</td>
-                            <!--
-                            @can('products.show')
-                               <td style="text-align: center;">
-                                   <a href="{{ route('rubros.show', $rubro->id) }}"
-                                    class="btn btn-sm btn-primary">Ver</a>
-                               </td>
-                               @endcan
-                             -->
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('rubros.edit', $rubro->id) }}"
-                                    class="btn btn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-
+                                      class="btn btn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> 
+                                    Editar
+                                  </a>
                                </td>
                                @endcan
                                 @can('products.destroy')

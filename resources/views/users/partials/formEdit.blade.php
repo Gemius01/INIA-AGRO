@@ -34,12 +34,6 @@
 	@endforeach
 	@endif
 </div>
-<!--
-<div class="form-group">
-	{{ Form::label('password', 'Contraseña') }}
-	{{ Form::text('password', null, ['class' => 'form-control', 'id' => 'password']) }}
-</div>
--->
 <hr>
 <h3>Rol</h3>
 <div class="form-group">
