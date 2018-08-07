@@ -48,7 +48,7 @@
                       <hr>
                       <h4>IMAGENES</h4>
                       @if(Auth::user()->roles()->first()->id == 1)
-                      <p>Directorio: {{ $dirname }}</p>
+                      <p><strong>Directorio:</strong> {{ $dirname }}</p>
                       @else
                       @endif
                       <hr>
@@ -60,7 +60,7 @@
                             <a  href="#">
                               {!! $image !!}
                             </a>
-                          <div class="desc">Add a description of the image here</div>
+                          <div class="desc"></div>
                           </div>
                          </div>
                       @endforeach

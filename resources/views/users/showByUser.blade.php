@@ -14,7 +14,7 @@
                     <p><strong>E-mail: </strong> {{ $user->email }} </p>
                     <p><strong>Cargo: </strong> {{ $user->cargo }} </p>
                     <p><strong>Cri: </strong> {{ $user->cri }} </p>
-                    <p><strong>Rol(es): </strong> @if($rol != null) {{ $rol->name}}@else No tiene @endif </p>
+                    <p><strong>Rol:</strong> @if($rol != null) {{ $rol->name}}@else No tiene @endif </p>
                     <hr>
                     <label><strong>Región(es): </strong></label>
                     <ul>
