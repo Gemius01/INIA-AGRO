@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subseccion extends Model
 {
 	protected $table = 'subsecciones';
+    
 	protected $fillable = [
         'seccion_id', 'boletin_id', 
     ];

@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Rubro
+                <div class="card-header">Editar Macrozona
                 </div>
                 <div class="card-body">
                    {!! Form::model($macrozona, ['route' => ['macrozonas.update', $macrozona->id],

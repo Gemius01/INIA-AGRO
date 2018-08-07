@@ -12,7 +12,7 @@
                     <p><strong>E-mail: </strong> {{ $user->email }} </p>
                     <p><strong>Cargo: </strong> {{ $user->cargo }} </p>
                     <p><strong>Cri: </strong> {{ $user->cri }} </p>
-                    <p><strong>Rol(es): </strong></p>
+                    <p><strong>Rol:</strong></p>
                     <ul>
                         @foreach($roles as $rol)
                         <li>{{ $rol->name }}</li>

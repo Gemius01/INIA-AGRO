@@ -12,7 +12,6 @@ class Mes extends Model
          'nombre', 'inicio', 'fin'
     ];
     
-
     public function publicacion()
     {
     	return $this->hasMany(Publicacion::class);
