@@ -88,6 +88,15 @@ plugins: [
 "insertdatetime nonbreaking save table contextmenu directionality",
 "emoticons paste textcolor colorpicker textpattern "
 ],
+menu: {
+        file: {title: 'File', items: 'newdocument | print'},
+        edit: {title: 'Edit', items: 'undo redo | cut copy paste pastetext | selectall | searchreplace'},
+        view: {title: 'View', items: 'fullscreen | preview'},
+        insert: {title: 'Insert', items: ' template hr | charmap | insertdatetime'},
+        format: {title: 'Format', items: 'bold italic underline strikethrough superscript subscript | removeformat'},
+        tools: {title: 'Tools', items: 'spellchecker code'},
+        table: {title: 'Table', items: 'inserttable tableprops deletetable | cell row column'}
+      },
 paste_enable_default_filters: false,
 paste_data_images: false,
 branding: false,
