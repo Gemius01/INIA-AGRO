@@ -192,6 +192,11 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('publicacion/eliminarElegir','PublicacionController@eliminarElegir')->name('elegir.eliminar')
 		->middleware('permission:publicacion.eliminar.elegir');
 
+	Route::get('publicacion/eliminar/{publicacion}','PublicacionController@eliminarVista')->name('publicacion.eliminar.vista')
+		->middleware('permission:publicacion.eliminar');
+	Route::post('publicacion/eliminar/{publicacion}','PublicacionController@eliminarPublicacion')->name('publicacion.eliminar')
+		->middleware('permission:publicacion.eliminar');
+
 	//Boletines
 
 	Route::post('boletines/store','BoletinController@store')->name('boletines.store')
@@ -327,5 +332,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('colaborador/sendup/{colaborador}','ColaboradorController@send')->name('user.emailsend');
 
 	Route::get('colaborador/guia','ColaboradorController@guia')->name('user.guia');
+
+	//Json Gráficos
+
+	Route::get('json/graficos/{region}', 'GraficosController@index')->name('graficos.todos');
 
 });

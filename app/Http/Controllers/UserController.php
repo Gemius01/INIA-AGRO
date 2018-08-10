@@ -40,6 +40,7 @@ class UserController extends Controller
 
     public function create()
     {
+
         $roles = Role::get();
         $seccions = Seccion::get();
         $regions = Region::get();
@@ -53,22 +54,57 @@ class UserController extends Controller
     {
 
         $authUser = Auth::user();
-        $data = array('name'=>"Sam Jose", "body" => "Test mail");
+        $contadorUser = User::count();
+        
         config(['mail.username' => 'pablo.gmeio0123@gmail.com']);
         config(['mail.password' => 'pablomundo2']);
         try {
-        Mail::send('mails.mail', $data, function($message) {
-            $message->to('pablo.gemio01@gmail.com', 'Artisans Web')
-                    ->subject('Artisans Web Testing Mail');
-            $message->from('pablo.gmeio0123@gmail.com','Sajid Sayyad');
+        $user = User::create([
+            'name'      => $request['name'],
+            'email'     => $request['email'],
+            'cri'       => $request['cri'],
+            'password'  => Hash::make('boletin'.$contadorUser),
+            'cargo'     => $request['cargo'],
+        ]);
+        $data = array('nombre'=> $request['name'], 'email'=> $request['email'], 'password' => 'boletin'.$contadorUser);
+        $to = $user->email;
+        $toName = $user->name;
+        $from = $authUser->email;
+        $fromName = $authUser->name;
+        Mail::send('mails.mail', $data,
+         function ($message) use ($to, $from, $authUser, $toName, $fromName) {
+            $message->to($to, $toName)
+                    ->subject('Registro en la plataforma Boletín Agrometeorológico');
+            $message->from($from, $fromName);
         });
+        //Sincroniza las tablas intermedias de macrozona_user
+        $user->regiones()->sync($request->get('regions'));
+        //Sincroniza las tablas intermedias de macrozona_user
+        $user->macrozonas()->sync($request->get('macrozonas'));
+        //Sincroniza las tablas intermedias de role_user
+        $user->roles()->sync($request->get('roles'));
+        //Sincroniza las tablas intermedias de seccion_user
+        $user->secciones()->sync($request->get('secciones'));
+        $secciones = $request->get('secciones');
+        
+        if($secciones != null)
+        {
+            foreach($secciones as $seccion)
+                {
+                    $permission = Permission::where('slug', 'seccion-'.$seccion)->first();
+                    $user->permissions()->attach($permission);
+                }
+        }
+
+        return redirect()->route('users.index', $user->id)
+            ->with('info', 'Usuario registrado con exito');
         }
         catch (\Exception $e) {
         $user = User::create([
             'name'      => $request['name'],
             'email'     => $request['email'],
             'cri'       => $request['cri'],
-            'password'  => Hash::make($request['password']),
+            'password'  => Hash::make('boletin'.$contadorUser),
             'cargo'     => $request['cargo'],
         ]);
         //Sincroniza las tablas intermedias de macrozona_user
@@ -93,33 +129,7 @@ class UserController extends Controller
             ->with('info', 'No se envió el correo '.$e->getMessage());
         }
 
-        $user = User::create([
-            'name'      => $request['name'],
-            'email'     => $request['email'],
-            'cri'       => $request['cri'],
-            'password'  => Hash::make($request['password']),
-            'cargo'     => $request['cargo'],
-        ]);
-        //Sincroniza las tablas intermedias de macrozona_user
-        $user->regiones()->sync($request->get('regions'));
-        //Sincroniza las tablas intermedias de macrozona_user
-        $user->macrozonas()->sync($request->get('macrozonas'));
-        //Sincroniza las tablas intermedias de role_user
-        $user->roles()->sync($request->get('roles'));
-        //Sincroniza las tablas intermedias de seccion_user
-        $user->secciones()->sync($request->get('secciones'));
-        $secciones = $request->get('secciones');
-        if($secciones != null)
-        {
-            foreach($secciones as $seccion)
-                {
-                    $permission = Permission::where('slug', 'seccion-'.$seccion)->first();
-                    $user->permissions()->attach($permission);
-                }
-        }
 
-        return redirect()->route('users.index', $user->id)
-            ->with('info', 'Usuario registrado con exito');
     }
 
     public function show($idUser)

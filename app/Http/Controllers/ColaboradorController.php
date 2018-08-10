@@ -70,14 +70,15 @@ class ColaboradorController extends Controller
                 'contenido'     => $request->input('contenido')
         );
         $to = $user->email;
+        $toName = $user->name;
         $from = $request->input('email');
         $asunto = $request->input('asunto');
         $contenido = $request->input('contenido');
         Mail::send('mails.emailcolaborador', $data,
-            function ($message) use ($to, $from, $asunto, $authUser)
+            function ($message) use ($to, $from, $asunto, $authUser, $toName)
         {
 
-            $message->to($to, 'Artisans Web')
+            $message->to($to, $toName)
                     ->subject($asunto);
             $message->from($from, $authUser->name);
         });
@@ -87,7 +88,7 @@ class ColaboradorController extends Controller
         }
         catch (\Exception $e) {
             return redirect()->back()->withInput()->with('info-danger', '<p>No se logró enviar el correo, puede ser debido a : </p><ul><li>1 .- No se ingreso el E-mail o Contraseña de GMAIL</li>
-                <li>2 .- No se tiene habilitado el Gmail para enviar correos a través de esta plataforma <a href="/colaborador/guia" target="_blank" >Ver más...</a></li></ul><p>En caso contrario contactar al administrador.</p>');
+                <li>2 .- No se tiene habilitado el Gmail para enviar correos a través de esta plataforma <a href="/colaborador/guia" target="_blank" >Ver más...</a></li></ul><p>En caso contrario contactar al administrador.</p>'.$e->getMessage());
         }
     }
 

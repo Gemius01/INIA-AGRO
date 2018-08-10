@@ -15,7 +15,8 @@
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
-                               <th width="70%">Nombre</th>
+                               <th width="50%">Nombre</th>
+                               <th width="20%">Número</th>
                                <th colspan="3" width="30%" style="text-align: center;">Opciones</th>
                            </tr>
                        </thead>
@@ -23,6 +24,7 @@
                           @foreach($regiones as $region)
                            <tr>
                             <td>{{ $region->name }}</td>
+                            <td>{{ $region->numero }}</td>
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('regiones.edit', $region->id) }}"

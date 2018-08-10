@@ -23,8 +23,10 @@ class RegionController extends Controller
 
     public function store(RegionStoreRequest $request)
     {
+        
         $region = Region::create([
             'name'           => $request['name'],
+            'numero'         => $request['numero'],
             'country_id'     => 1,
         ]);
 

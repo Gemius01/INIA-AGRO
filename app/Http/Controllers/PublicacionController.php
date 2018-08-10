@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Publicacion;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PublicacionStoreRequest;
 use App\Http\Requests\PublicacionUpdateRequest;
+use Hash;
+use App\Publicacion;
 use App\Region;
 use App\Boletin;
 use App\Seccion;
@@ -73,13 +75,20 @@ class PublicacionController extends Controller
           $path = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre;
           File::makeDirectory($path, $mode = 0777, true, true);
           $secciones = Seccion::get();
-          foreach($secciones as $seccion)
+          $regiones = Region::where('id', '<>', 1)->get();
+          foreach($regiones as $region)
           {
-            $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$seccion->name;
+            $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$region->name;
             File::makeDirectory($pathSeccion, $mode = 0777, true, true);
 
+            foreach($secciones as $seccion)
+            {
+
+              $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$region->name.'/'.$seccion->name;
+              File::makeDirectory($pathSeccion, $mode = 0777, true, true);
+            }
             $pathResumen = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/Resumen Nacional';
-            File::makeDirectory($pathResumen, $mode = 0777, true, true);
+              File::makeDirectory($pathResumen, $mode = 0777, true, true);
           }
         }else{
           $pathAño = public_path().'/photos/shares/'.$publicacion->año;
@@ -87,12 +96,20 @@ class PublicacionController extends Controller
           $pathMes = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre;
           File::makeDirectory($pathMes, $mode = 0777, true, true);
           $secciones = Seccion::get();
-          foreach($secciones as $seccion)
+          $regiones = Region::where('id', '<>', 1)->get();
+          foreach($regiones as $region)
           {
-            $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$seccion->name;
+            $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$region->name;
             File::makeDirectory($pathSeccion, $mode = 0777, true, true);
+
+            foreach($secciones as $seccion)
+            {
+
+              $pathSeccion = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/'.$region->name.'/'.$seccion->name;
+              File::makeDirectory($pathSeccion, $mode = 0777, true, true);
+            }
             $pathResumen = public_path().'/photos/shares/'.$publicacion->año.'/'.$publicacion->mes->nombre.'/Resumen Nacional';
-            File::makeDirectory($pathResumen, $mode = 0777, true, true);
+              File::makeDirectory($pathResumen, $mode = 0777, true, true);
           }
         }
     }
@@ -227,7 +244,7 @@ class PublicacionController extends Controller
       }
       $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
-      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../photos/shares/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
+      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../images/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
       <p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
       <strong>BOLETÍN NACIONAL DE ANÁLISIS DE RIESGOS AGROCLIMÁTICOS PARA LAS PRINCIPALES ESPECIES FRUTALES Y CULTIVOS, Y LA GANADERÍA</strong></span></p>
@@ -364,5 +381,37 @@ class PublicacionController extends Controller
         }
       return redirect()->route('publichtml.boletines.show', $publicacion->id)
             ->with('info', 'Se han deshabilitado todos los boletines');
+    }
+
+    public function eliminarVista($publicacion)
+    {
+      $findPublicacion = Publicacion::find($publicacion);
+
+      return view('publicaciones.delete', compact(['findPublicacion']));
+    }
+
+    public function eliminarPublicacion(Request $request, $publicacion)
+    {
+      $user = Auth::user();
+      $eleccion = Eleccion::find(1);
+      
+      if(Hash::check($request->input('password'), $user->password))
+      {
+        $findPublicacion = Publicacion::find($publicacion);
+        $findPublicacion->delete();
+         $eleccion = Eleccion::find(1);
+        if($findPublicacion->id == $eleccion->publicacion_id )
+        {
+          $eleccion->publicacion_id = 0;
+          $eleccion->save();
+        }else{
+
+        }
+        File::deleteDirectory(public_path().'/photos/shares/'.$findPublicacion->año.'/'.$findPublicacion->mes->nombre);
+         return redirect()->route('publicaciones.index', $findPublicacion->id)
+              ->with('info', 'Se ha eliminado el boletín');
+      }else{
+         return redirect()->back()->with('info-danger', '<center><h4>Contraseña inválida</h4></center>');
+      }
     }
 }

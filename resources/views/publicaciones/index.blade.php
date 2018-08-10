@@ -23,6 +23,7 @@
                 </div>
                 <div class="card-body">
                   <strong>Publicación elegida actualmente</strong>
+                  @if($publicacionActual != null)
                   <ul>
                     <li>
                       <strong>
@@ -44,6 +45,9 @@
                       </strong>
                     </li>
                   </ul>
+                  @else
+                  <h4>No hay publicación elegida</h4>
+                  @endif
                   <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
@@ -70,10 +74,12 @@
                               <a href="{{ route('publicaciones.show', $publicacion->id) }}"
                               class="btn btn-sm btn-primary">Ver</a>
                             </td>
+                            <!--
                             <td style="text-align: center;">
                               <a href="{{ route('publicacion.edit', $publicacion->id) }}"
                               class="btn btn-sm btn-success">Editar</a>
                             </td>
+                            -->
                             <td style="text-align: center;">
                               <a href="{{ route('xmlview', $publicacion->id) }}"
                               class="btn btn-sm btn-warning"><i class="fa fa-file-code-o" aria-hidden="true"></i> XML</a>
@@ -81,6 +87,11 @@
                             <td style="text-align: center;">
                               <a href="{{ route('publicaciones.vistaElegir', $publicacion->id) }}"
                               class="btn btn-sm btn-warning">Elegir</a>
+                            </td>
+                            <td style="text-align: center;">
+                              <a href="{{ route('publicacion.eliminar.vista', $publicacion->id) }}"
+                                 onclick="return confirm('¿Esta seguro de eliminar?')"
+                              class="btn btn-sm btn-danger">Eliminar</a>
                             </td>
                           </tr>
                         @endforeach

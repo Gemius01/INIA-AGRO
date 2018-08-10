@@ -34,15 +34,7 @@
 	@endforeach
 	@endif
 </div>
-<div class="form-group">
-	{{ Form::label('password', 'Contraseña') }}
-	{{ Form::password('password', ['class' => 'form-control', 'id' => 'password']) }}
-	@if($errors->has('password'))
-	@foreach($errors->get('password',":message") as $error)
-	<p class="alert alert-danger alert-dismissible" >{{$error}}</p>
-	@endforeach
-	@endif
-</div>
+
 <hr>
 <h3>Rol</h3>
 <div class="form-group">

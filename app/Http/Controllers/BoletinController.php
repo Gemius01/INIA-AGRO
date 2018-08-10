@@ -79,7 +79,7 @@ class BoletinController extends Controller
         $seccionDetail = $boletin->secciones()->where('seccion_id', '=', decrypt($seccion))->first();
 
         $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
-                                      $boletin->publicacion->mes->nombre.'/'.$seccionDetail->name.'/';
+                                      $boletin->publicacion->mes->nombre.'/'.$boletin->region->name.'/'.$seccionDetail->name.'/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
         $arrayImages = array();
         foreach($images as $image) {
@@ -110,7 +110,7 @@ class BoletinController extends Controller
     {
         $boletin = Boletin::find(decrypt($idBoletin));
         $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
-                                      $boletin->publicacion->mes->nombre.
+                                      $boletin->publicacion->mes->nombre.'/'. $boletin->region->name.
                                       '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
         $arrayImages = array();
@@ -119,7 +119,7 @@ class BoletinController extends Controller
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
         }
-        //dd($arrayImages);
+        
         $subsecciones = $boletin->subsecciones()->first();
         $detalleMacrozona = $subsecciones->macrozonas()
         ->wherePivot('macrozona_id', '=', decrypt($macrozona))

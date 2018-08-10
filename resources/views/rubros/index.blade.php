@@ -24,7 +24,7 @@
                           @foreach($rubros as $rubro)
                            <tr>
                             <td>{{ $rubro->name }}</td>
-                            <td>{{ $rubro->subrubro }}</td>
+                            <td>@if($rubro->subrubro != null){{ $rubro->subrubro }}@else - @endif</td>
                                @can('products.edit')
                                <td style="text-align: center;">
                                    <a href="{{ route('rubros.edit', $rubro->id) }}"

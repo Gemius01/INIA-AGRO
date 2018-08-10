@@ -28,11 +28,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{$seccion->name}}
-                    @if($rol->id != 2 ?? $rol->id !=1)
+                    @if($rol->id != 2 && $rol->id !=1)
                     @can('seccion-'.$seccion->id)
                         @if($boletin->estado == 1)
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
-                        class="btn btn-sm btn-success pull-right"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                        class="btn btn-sm btn-success pull-right" style="margin-left: 5px;"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                         @else
                         <a href="#"
                         class="btn btn-sm btn-success pull-right disabled">Cerrado</a>
@@ -40,7 +40,7 @@
                     @endcan
                     @else
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
-                        class="btn btn-sm btn-success pull-right"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                        class="btn btn-sm btn-success pull-right" style="margin-left: 5px;"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                     @endif
                 </div>
                 <div class="card-body">
@@ -62,7 +62,7 @@
                                     @endif
                                 </strong>
                             </p>
-                            @if($rol->id !=2 ?? $rol->id != 1)
+                            @if($rol->id !=2 && $rol->id != 1)
                             @can('macrozona-'.$macrozona->id)
                                 @if($boletin->estado == 1)
                                     <a
@@ -114,8 +114,8 @@
                                         <a
                                         class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
-                                        href="#"
-                                    >Ver Resumen</a>
+                                        href="#" style="margin-left: 5px;"
+                                    ><i class="fa fa-eye" aria-hidden="true"></i> Ver Resumen</a>
                                      <div class="modal fade" id="modalResumen{{$macrozona->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -156,14 +156,14 @@
                             <!-- Admin -->
                                     <a
                                         class="btn btn-sm btn-primary pull-right"
-                                        href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}"
-                                    >Editar</a>
+                                        href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}" style="margin-left: 5px;"
+                                    ><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                                     @if( $macrozona->pivot->resumen != null)
                                         <a
                                         class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
-                                        href="#"
-                                    >Ver Resumen</a>
+                                        href="#" style="margin-left: 5px;"
+                                    ><i class="fa fa-eye" aria-hidden="true"></i> Ver Resumen</a>
                                      <div class="modal fade" id="modalResumen{{$macrozona->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">

@@ -4,7 +4,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Publicación: {{$resumen->publicacion->mes->nombre ?: '-' }} - {{ $resumen->publicacion->año ?: '-'}}</div>
+        <div class="card-header">Publicación: @if($resumen != null){{$resumen->publicacion->mes->nombre ?: '-' }} - {{ $resumen->publicacion->año ?: '-'}}@else No se ha asignado una publicación @endif</div>
         <div class="card-body">
           @if (session('status'))
           <div class="alert alert-success" role="alert">
