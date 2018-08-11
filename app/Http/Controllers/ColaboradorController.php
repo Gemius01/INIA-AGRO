@@ -74,7 +74,7 @@ class ColaboradorController extends Controller
         $from = $request->input('email');
         $asunto = $request->input('asunto');
         $contenido = $request->input('contenido');
-        Mail::send('mails.emailcolaborador', $data,
+        Mail::send('mails.emailColaborador', $data,
             function ($message) use ($to, $from, $asunto, $authUser, $toName)
         {
 
