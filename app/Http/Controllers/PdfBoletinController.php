@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Boletin;
 use PDF;
+use View;
 
 class PdfBoletinController extends Controller
 {
@@ -32,6 +33,8 @@ class PdfBoletinController extends Controller
 
       return PDF::loadView('boletines.pdfTemplate', compact([ 'boletin', 'arrayMacro', 'booleanSeccionMacro']), [], [
         'format' => 'A4'
-      ])->download('invoice.pdf');
+      ])->download(''.$boletin->region->name.'('.$boletin->publicacion->año.'-'.$boletin->publicacion->mes->nombre.')'.'.pdf');
     }
+
+   
 }

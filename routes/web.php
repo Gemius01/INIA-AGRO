@@ -226,6 +226,10 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('pdfExport/{boletin}','PdfBoletinController@exportarPDF')->name('boletines.pdfTemplate');
 
+    //prueba
+
+    Route::get('pdfExportPrueba/{boletin}','PdfBoletinController@testexportarPDF')->name('boletines.pdfTemplateprueba');
+
 	Route::get('editor/{boletin}/{seccion}','BoletinController@editarSeccion')->name('editor');
 
 	Route::post('/editor/update','BoletinController@guardarEdicion')->name('editor.update');

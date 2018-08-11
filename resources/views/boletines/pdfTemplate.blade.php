@@ -4,6 +4,11 @@
 	<title></title>
 	<link href="{!! asset('css/prueba.css') !!}" media="all" rel="stylesheet" type="text/css" />
 </head>
+<style>
+	table {
+		width: 100%;
+	}
+</style>
 <body>
  @php $i=0
  @endphp
@@ -89,4 +94,16 @@
 @endphp
 @endforeach
 </body>
+<script>
+	var element = document.getElementsByTagName("table")
+	console.log(element[4])
+	element[4].style.cssText  = "width: 100%;";
+	/*
+	for(var i = 0; i > element.lenght; i++)
+	{
+		console.log(i);
+		//element[i].removeAttribute("style")
+	}
+	*/
+</script>
 </html>
