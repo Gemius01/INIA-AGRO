@@ -1,3 +1,9 @@
+<h6><strong>Tu contraseña de Gmail (Correo que se enviará al colaborador agregado)</strong></h6>
+<div class="form-group">
+	{{ Form::label('password', 'Contraseña') }}
+	{{ Form::password('password', ['class' => 'form-control', 'id' => 'password']) }}
+</div>
+<hr>
 <div class="form-group">
 	{{ Form::label('name', 'Nombre') }}
 	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
@@ -42,7 +48,7 @@
 		@foreach($roles as $role)
 		<li>
 			<label>
-		        {{ Form::checkbox('roles[]', $role->id, null) }}
+		        {{ Form::radio('roles[]', $role->id, null) }}
 		        {{ $role->name }}
 		        <em>({{ $role->description ?: 'Sin descripción' }})</em>
 	        </label>

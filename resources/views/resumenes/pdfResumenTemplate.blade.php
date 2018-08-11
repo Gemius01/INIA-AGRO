@@ -9,7 +9,7 @@
 		@endphp
 		<htmlpageheader name="page-portada">
 		</htmlpageheader>
-		<center><img src="../../photos/shares/logo-inia.png" alt="" border="0" /></center>
+		<center><img src="../../images/logo-inia.png" alt="" border="0" /></center>
 		<p style="padding-top: 40px; padding-bottom: 40px;" align="center"><span style="color: green; font-size: 24px;"><strong>RESUMEN EJECUTIVO NACIONAL</strong></span></p>
 		<p style="padding-top: 40px; padding-bottom: 40px;" align="center"><span style="color: red; font-size: 24px;"><strong>BOLETÍN NACIONAL DE ANÁLISIS DE RIESGOS AGROCLIMÁTICOS
 			PARA LAS PRINCIPALES ESPECIES FRUTALES Y CULTIVOS, Y LA

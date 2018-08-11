@@ -23,12 +23,14 @@
 <div class="border"></div>
 </htmlpageheader>
 @if($i==5)
+	@if($booleanSeccionMacro)
 	<div class="titulo">
 		{{$seccion->name}}
 	</div>
 	<div class="contenido">
 		{!! $seccion->pivot->contenido !!}
 		<br>
+		@if($arrayMacro != null)
 		@foreach($arrayMacro as $macrozona)
 			@if($macrozona->pivot->contenido != null)
 			<div>
@@ -50,7 +52,11 @@
 			@else
 			@endif
 		@endforeach
+		@else
+		@endif
 	</div>
+	@else
+	@endif
 @else
 	@if($seccion->pivot->contenido != null)
 	<div class="titulo">
@@ -62,6 +68,11 @@
 	@else
 	@endif
 @endif
+<table style="width:0;">
+	<th>
+		<td>asd</td>
+	</th>
+</table>
 <htmlpagefooter name="page-footer">
 	<div class="border"></div>
 	<div class="footer">
@@ -78,6 +89,4 @@
 @endphp
 @endforeach
 </body>
-<script>
-</script>
 </html>

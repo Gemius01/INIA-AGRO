@@ -16,16 +16,21 @@ class PdfBoletinController extends Controller
 
     public function exportarPDF(Boletin $boletin)
     {
-
+      $arrayMacro = array();
+      $booleanSeccionMacro = false;
       foreach($boletin->subsecciones as $subseccion)
       {
         foreach($subseccion->macrozonas as $macrozona)
         {
+          if($macrozona->pivot->contenido != null)
+          {
+            $booleanSeccionMacro = true;
+          }
           $arrayMacro[] = $macrozona;
         }
       }
 
-      return PDF::loadView('boletines.pdfTemplate', compact([ 'boletin', 'arrayMacro']), [], [
+      return PDF::loadView('boletines.pdfTemplate', compact([ 'boletin', 'arrayMacro', 'booleanSeccionMacro']), [], [
         'format' => 'A4'
       ])->download('invoice.pdf');
     }

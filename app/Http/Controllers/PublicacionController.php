@@ -148,35 +148,62 @@ class PublicacionController extends Controller
     public function crearPortada(Boletin $boletin, Publicacion $publicacion)
     {
       $secciones = Seccion::get();
-      $users = User::get();
+      $users = User::where('id', '<>', 1)->get();
         $stringUsuarios = '';
+        $stringEncargados = '';
+        $stringColaboradores = '';
+        $stringAdministradores = '';
+        $stringEditores = '';
         foreach($users as $user)
         {
-          $userByRegion = $user->regiones()->wherePivot('region_id', '=', $boletin->region->id)->first();
-          if($userByRegion != null)
+          if($user->roles() !=null)
           {
-            $stringUsuarios .= '<span style="font-size: small;"><strong><em>'.$user->name.', '.$user->cargo.', '.$user->cri.'</em></strong></span><br />';
+            if($user->roles()->first()->id == 1) 
+            {
+              $stringAdministradores .= ''.$user->name.', '.$user->cargo.', '.$user->cri.'<br />';
+
+            }else if($user->roles()->first()->id == 2)
+            {
+              $stringEditores .= ''.$user->name.', '.$user->cargo.', '.$user->cri.'<br />';
+            }else{
+
+            }
+            $userByRegion = $user->regiones()->wherePivot('region_id', '=', $boletin->region->id)->first();
+            if($userByRegion != null)
+            {
+              if($user->roles()->first()->id == 4 )
+              {
+                $stringEncargados .= '<span style="font-size: small;"><strong><em>'.$user->name.', '.$user->cargo.', '.$user->cri.'</em></strong></span><br />';
+              }else if($user->roles()->first()->id == 3){
+
+                $stringColaboradores .= '<span style="font-size: small;"><strong><em>'.$user->name.', '.$user->cargo.', '.$user->cri.'</em></strong></span><br />';
+              }else{
+
+              }
+              
+            }
           }
 
-      }
+        }
+
       $portada ='<p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
-      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../photos/shares/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
+      <strong><img style="display: block; margin-left: auto; margin-right: auto;" src="../../images/logo-inia.png" alt="" width="585" height="124" /></strong></span></p>
       <p style="padding-top: 40px; padding-bottom: 40px;" align="center">
       <span style="color: red; font-size: 24px;">
       <strong>BOLETÍN NACIONAL DE ANÁLISIS DE RIESGOS AGROCLIMÁTICOS PARA LAS PRINCIPALES ESPECIES FRUTALES Y CULTIVOS, Y LA GANADERÍA</strong></span></p>
       <p align="center"><span style="color: red; font-size: 24px;">
-      <strong>'.strtoupper($publicacion->mes->nombre).' '.strtoupper($publicacion->año).'</strong></span></p>
+      <strong>'.mb_strtoupper($publicacion->mes->nombre).' '.mb_strtoupper($publicacion->año).'</strong></span></p>
       <p align="center">
-      <span style="color: black; font-size: 24px;"><strong>REGIÓN DE '.strtoupper($boletin->region->name).'</strong></span></p>
+      <span style="color: black; font-size: 24px;"><strong>REGIÓN '.mb_strtoupper($boletin->region->name).'</strong></span></p>
       <p><br /><br /></p>
       <p><span style="font-size: medium; color: green;">
       <strong><em>Autores INIA:</em></strong></span><br />
-      '.$stringUsuarios.'
+      '.$stringEncargados.'
+      '.$stringColaboradores.'
       <p><span style="font-size: medium; color: green;">
-      <strong><em>Marcel Fuentes Bustamante, Ing. Civil Agrícola M.Sc, INIA Quilamapu <br />Cristóbal Campos Muñoz, Ing. Civil Agrícola, INIA Quilamapu
-      <br />Rubén Ruiz Muñoz, Ing. Civil Agrícola, INIA Quilamapu </em></strong></span></p>
-      <p><span style="color: green; font-size: medium;"><strong><em>Coordinador INIA:</em></strong></span><br /><span style="font-size: small;"><strong><em>Claudio Pérez Castillo, Ing. Agr. M.Sc. Ph.D, INIA Kampenaike</em></strong></span></p>';
+      <strong><em>'.$stringAdministradores.'</em></strong></span></p>
+      <p><span style="color: green; font-size: medium;"><strong><em>Coordinador INIA:</em></strong></span><br /><span style="font-size: small;"><strong><em>'.$stringEditores.'</em></strong></span></p>';
                 $boletin->secciones()->sync($secciones);//sincroniza las secciones con el boletin
                 $seccionPortada = $boletin->secciones()//Busca la seccion de portada
                 ->wherePivot('boletin_id', '=', $boletin->id)
@@ -409,7 +436,7 @@ class PublicacionController extends Controller
         }
         File::deleteDirectory(public_path().'/photos/shares/'.$findPublicacion->año.'/'.$findPublicacion->mes->nombre);
          return redirect()->route('publicaciones.index', $findPublicacion->id)
-              ->with('info', 'Se ha eliminado el boletín');
+              ->with('info', 'Se ha eliminado la publicación');
       }else{
          return redirect()->back()->with('info-danger', '<center><h4>Contraseña inválida</h4></center>');
       }

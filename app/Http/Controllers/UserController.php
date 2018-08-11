@@ -56,16 +56,16 @@ class UserController extends Controller
         $authUser = Auth::user();
         $contadorUser = User::count();
         
-        config(['mail.username' => 'pablo.gmeio0123@gmail.com']);
-        config(['mail.password' => 'pablomundo2']);
-        try {
-        $user = User::create([
+        $user = (object) array(
             'name'      => $request['name'],
             'email'     => $request['email'],
             'cri'       => $request['cri'],
             'password'  => Hash::make('boletin'.$contadorUser),
             'cargo'     => $request['cargo'],
-        ]);
+        );
+        try {
+        config(['mail.username' => $authUser->email]);
+        config(['mail.password' => $request['password']]);
         $data = array('nombre'=> $request['name'], 'email'=> $request['email'], 'password' => 'boletin'.$contadorUser);
         $to = $user->email;
         $toName = $user->name;
@@ -77,6 +77,15 @@ class UserController extends Controller
                     ->subject('Registro en la plataforma Boletín Agrometeorológico');
             $message->from($from, $fromName);
         });
+
+        $user = User::create([
+            'name'      => $request['name'],
+            'email'     => $request['email'],
+            'cri'       => $request['cri'],
+            'password'  => Hash::make('boletin'.$contadorUser),
+            'cargo'     => $request['cargo'],
+        ]);
+
         //Sincroniza las tablas intermedias de macrozona_user
         $user->regiones()->sync($request->get('regions'));
         //Sincroniza las tablas intermedias de macrozona_user
@@ -97,9 +106,10 @@ class UserController extends Controller
         }
 
         return redirect()->route('users.index', $user->id)
-            ->with('info', 'Usuario registrado con exito');
+            ->with('info', 'Usuario registrado con exito y se envió el correo');
         }
         catch (\Exception $e) {
+
         $user = User::create([
             'name'      => $request['name'],
             'email'     => $request['email'],
@@ -107,6 +117,7 @@ class UserController extends Controller
             'password'  => Hash::make('boletin'.$contadorUser),
             'cargo'     => $request['cargo'],
         ]);
+
         //Sincroniza las tablas intermedias de macrozona_user
         $user->regiones()->sync($request->get('regions'));
         //Sincroniza las tablas intermedias de macrozona_user
@@ -126,7 +137,7 @@ class UserController extends Controller
         }
 
         return redirect()->route('users.index', $user->id)
-            ->with('info', 'No se envió el correo '.$e->getMessage());
+            ->with('info', 'Se ha creado el Usuario pero no se logró enviar el correo ');
         }
 
 
