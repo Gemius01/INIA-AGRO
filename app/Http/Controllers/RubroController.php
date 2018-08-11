@@ -40,7 +40,7 @@ class RubroController extends Controller
     {
         $rubro->update($request->all());
         return redirect()->route('rubros.index', $rubro->id)
-            ->with('info', 'Rubro Agregado con exito');
+            ->with('info', 'Rubro Editado con exito');
     }
 
     public function destroy(Rubro $rubro)
