@@ -4,11 +4,6 @@
 	<title></title>
 	<link href="{!! asset('css/prueba.css') !!}" media="all" rel="stylesheet" type="text/css" />
 </head>
-<style>
-	table {
-		width: 100%;
-	}
-</style>
 <body>
  @php $i=0
  @endphp
@@ -73,11 +68,6 @@
 	@else
 	@endif
 @endif
-<table style="width:0;">
-	<th>
-		<td>asd</td>
-	</th>
-</table>
 <htmlpagefooter name="page-footer">
 	<div class="border"></div>
 	<div class="footer">
@@ -94,6 +84,7 @@
 @endphp
 @endforeach
 </body>
+<!--
 <script>
 	var element = document.getElementsByTagName("table")
 	console.log(element[4])
@@ -106,4 +97,5 @@
 	}
 	*/
 </script>
+-->
 </html>
