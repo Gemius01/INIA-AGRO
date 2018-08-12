@@ -36,48 +36,73 @@ class HomeController extends Controller
         $rol = $user->roles()->first();
         $nacional = $user->regiones()->first();
         
-        if($rol != null and $nacional != null) {
-            if($rol->id != 1 and $nacional->id != 1)
+        if($rol != null) {
+            if($nacional != null)
             {
-                $queryRegion = $user->regiones()->pluck('region_id');
-                $publicacionElegida = Eleccion::find(1);
-                if($publicacionElegida != null && $publicacionElegida->publicacion_id != null){
+                if($rol->id != 1 and $nacional->id != 1)
+                {
 
-                $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
-                $boletines = $publicacion->boletines;
+                    $queryRegion = $user->regiones()->pluck('region_id');
+                    $publicacionElegida = Eleccion::find(1);
+                    if($publicacionElegida != null && $publicacionElegida->publicacion_id != null){
+
+                    $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
+                    $boletines = $publicacion->boletines;
 
 
-                $userBoletines = $boletines->whereIn('region_id', $queryRegion);
-                $resumen = $publicacion->resumen;
-                //dd($resumen);
-                return view('home', compact([ 'userBoletines', 'resumen' ]));
-                } else {
-                    $userBoletines = [];
-                    return view('home', compact([ 'userBoletines', ]));
+                    $userBoletines = $boletines->whereIn('region_id', $queryRegion);
+                    $resumen = $publicacion->resumen;
+                    //dd($resumen);
+                    return view('home', compact([ 'userBoletines', 'resumen' ]));
+                    } else {
+                        $resumen = [];
+                        $userBoletines = [];
+                        return view('home', compact([ 'userBoletines', 'resumen' ]));
+                    }
+                }else{
+                    //Lo que se le mostrará al administrador
+                    
+                    $publicacionElegida = Eleccion::find(1);
+                    $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
+                    if($publicacion != null)
+                    {
+                    $boletines = $publicacion->boletines;
+
+                    $queryRegion = Region::where('id', '<>', '1')->pluck('id');
+
+                    $userBoletines = $boletines->whereIn('region_id', $queryRegion);
+
+                    $resumen = $publicacion->resumen;
+                    return view('home', compact([ 'userBoletines', 'resumen' ]));
+                    }else
+                    {
+                        $resumen = [];
+                        $userBoletines = [];
+                        return view('home', compact(['resumen', 'userBoletines']));
+                    }
                 }
             }else{
-
-                //Lo que se le mostrará al administrador
                 $publicacionElegida = Eleccion::find(1);
-                $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
-                if($publicacion != null)
-                {
-                $boletines = $publicacion->boletines;
+                    $publicacion = Publicacion::find($publicacionElegida->publicacion_id);
+                    if($publicacion != null)
+                    {
+                    $boletines = $publicacion->boletines;
 
-                $queryRegion = Region::where('id', '<>', '1')->pluck('id');
+                    $queryRegion = Region::where('id', '<>', '1')->pluck('id');
 
-                $userBoletines = $boletines->whereIn('region_id', $queryRegion);
+                    $userBoletines = $boletines->whereIn('region_id', $queryRegion);
 
-                $resumen = $publicacion->resumen;
-                return view('home', compact([ 'userBoletines', 'resumen' ]));
-                }else
-                {
-                    $resumen = [];
-                    $userBoletines = [];
-                    return view('home', compact(['resumen', 'userBoletines']));
-                }
+                    $resumen = $publicacion->resumen;
+                    return view('home', compact([ 'userBoletines', 'resumen' ]));
+                    }else
+                    {
+                        $resumen = [];
+                        $userBoletines = [];
+                        return view('home', compact(['resumen', 'userBoletines']));
+                    }
             }
         }else{
+            
             $resumen = [];
             $userBoletines = [];
             return view('home', compact(['resumen', 'userBoletines']));
