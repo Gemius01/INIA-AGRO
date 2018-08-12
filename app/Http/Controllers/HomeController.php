@@ -35,8 +35,8 @@ class HomeController extends Controller
         $user = Auth::user();
         $rol = $user->roles()->first();
         $nacional = $user->regiones()->first();
-
-        if($rol != null) {
+        
+        if($rol != null and $nacional != null) {
             if($rol->id != 1 and $nacional->id != 1)
             {
                 $queryRegion = $user->regiones()->pluck('region_id');

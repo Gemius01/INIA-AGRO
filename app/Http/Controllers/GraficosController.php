@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Storage;
 use File;
 use App\Region;
+use App\Visita;
 
 class GraficosController extends Controller
 {
@@ -53,9 +54,12 @@ class GraficosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function visitas()
     {
-        //
+        $contador = Visita::first();
+        $contador->contador += 1;
+        $contador->save(); 
+        return $contador->contador;
     }
 
     /**
@@ -66,7 +70,8 @@ class GraficosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
     }
 
     /**

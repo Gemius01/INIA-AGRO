@@ -77,6 +77,7 @@ class BoletinController extends Controller
     {
         $boletin = Boletin::find(decrypt($idBoletin));
         $seccionDetail = $boletin->secciones()->where('seccion_id', '=', decrypt($seccion))->first();
+        $user = Auth::user()->roles()->first()->id;
 
         $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
                                       $boletin->publicacion->mes->nombre.'/'.$boletin->region->name.'/'.$seccionDetail->name.'/';
@@ -87,7 +88,7 @@ class BoletinController extends Controller
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
         }
         return view('editor', compact([
-             'seccionDetail', 'boletin', 'arrayImages', 'dirname',
+             'seccionDetail', 'boletin', 'arrayImages', 'dirname', 'user',
         ]));
     }
 
@@ -108,6 +109,7 @@ class BoletinController extends Controller
 
     public function editarSeccionMacrozona($idBoletin, $subseccion, $macrozona)
     {
+        $user = Auth::user()->roles()->first()->id;
         $boletin = Boletin::find(decrypt($idBoletin));
         $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
                                       $boletin->publicacion->mes->nombre.'/'. $boletin->region->name.
@@ -127,7 +129,7 @@ class BoletinController extends Controller
         ->first();
 
         return view('editorMacrozona', compact([
-             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname',
+             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname', 'user',
         ]));
     }
 
