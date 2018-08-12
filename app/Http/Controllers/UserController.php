@@ -137,7 +137,7 @@ class UserController extends Controller
         }
 
         return redirect()->route('users.index', $user->id)
-            ->with('info', 'Se ha creado el Usuario pero no se logró enviar el correo ');
+            ->with('info', 'Se ha creado el Usuario pero no se logró enviar el correo '.$e->getMessage());
         }
 
 
