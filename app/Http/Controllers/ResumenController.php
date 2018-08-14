@@ -62,6 +62,6 @@ class ResumenController extends Controller
     {
         return PDF::loadView('resumenes.pdfResumenTemplate', compact([ 'resumen', ]), [], [
         'format' => 'A4'
-      ])->download('invoice.pdf');
+      ])->download('Resumen ('.$resumen->publicacion->mes->nombre.'-'.$resumen->publicacion->año.').pdf');
     }
 }

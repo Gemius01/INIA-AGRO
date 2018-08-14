@@ -44,22 +44,30 @@ class PublicHtmlController extends Controller
     {
     	return PDF::loadView('public.resumenes.publicPDFREsumen', compact([ 'resumen', ]), [], [
         'format' => 'A4'
-      ])->download('invoice.pdf');
+      ])->download('Resumen ('.$resumen->publicacion->mes->nombre.'-'.$resumen->publicacion->año.').pdf');
     }
 
     public function pdfBoletin(Boletin $boletin)
     {
-    	foreach($boletin->subsecciones as $subseccion)
-      {
-        foreach($subseccion->macrozonas as $macrozona)
-        {
-          $arrayMacro[] = $macrozona;
-        }
-      }
 
-      return PDF::loadView('public.boletines.publicPDFBoletin', compact([ 'boletin', 'arrayMacro']), [], [
+      $arrayMacro = array();
+      $booleanSeccionMacro = false;
+    	foreach($boletin->subsecciones as $subseccion)
+          {
+
+            foreach($subseccion->macrozonas as $macrozona)
+            {
+               if($macrozona->pivot->contenido != null)
+                  {
+                    $booleanSeccionMacro = true;
+                  } 
+              $arrayMacro[] = $macrozona;
+            }
+          }
+
+      return PDF::loadView('public.boletines.publicPDFBoletin', compact([ 'boletin', 'arrayMacro', 'booleanSeccionMacro']), [], [
         'format' => 'A4'
-      ])->download('invoiceee.pdf');
+      ])->download(''.$boletin->region->name.'('.$boletin->publicacion->año.'-'.$boletin->publicacion->mes->nombre.')'.'.pdf');
       }
     
 }

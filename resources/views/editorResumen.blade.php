@@ -104,7 +104,7 @@ image_description: false,
 toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton",
 relative_urls: false,
 remove_script_host: false,
-height: 200,
+height: 350,
 setup: function(editor){
     editor.on('keydown', function(event) {
         if (event.keyCode == 9) { // tab pressed

@@ -23,6 +23,7 @@
 				<div class="border"></div>
 			</htmlpageheader>
 			@if($i==5)
+			@if($booleanSeccionMacro)
 			<div class="titulo">
 				{{$seccion->name}}
 			</div>
@@ -51,7 +52,8 @@
 				@endif
 				@endforeach
 			</div>
-			
+			@else
+			@endif
 			@else
 			@if($seccion->pivot->contenido != null)
 			<div class="titulo">
