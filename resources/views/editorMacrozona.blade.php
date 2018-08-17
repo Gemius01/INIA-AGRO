@@ -245,6 +245,7 @@ plugins: [
 "insertdatetime nonbreaking save table contextmenu directionality",
 "emoticons paste textcolor colorpicker textpattern "
 ],
+allow_script_urls: false,
 paste_enable_default_filters: false,
 menu: {
         file: {title: 'File', items: 'newdocument | print'},
@@ -262,6 +263,9 @@ toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncent
 relative_urls: false,
 remove_script_host: false,
 height: 350,
+paste_preprocess : function(pl, o) {
+    o.content =  o.content.replace('style="width: 0px;"', '')
+},
 setup: function(editor){
     editor.on('keydown', function(event) {
         if (event.keyCode == 9) { // tab pressed

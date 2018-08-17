@@ -217,6 +217,7 @@ var editor_config = {
 path_absolute : "/",
 selector: "textarea.my-editor",
 language_url : '/languages/es.js',
+allow_script_urls: false,
 plugins: [
 "advlist autolink lists link image charmap print preview hr",
 "searchreplace wordcount code fullscreen",
@@ -240,6 +241,10 @@ toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncent
 relative_urls: false,
 remove_script_host: false,
 height: 350,
+paste_preprocess : function(pl, o) {
+    // Content string containing the HTML from the clipboard
+    o.content =  o.content.replace('style="width: 0px;"', '')
+  },
 setup: function(editor){
     editor.on('keydown', function(event) {
         if (event.keyCode == 9) { // tab pressed
