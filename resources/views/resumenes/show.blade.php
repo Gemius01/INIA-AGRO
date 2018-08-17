@@ -11,12 +11,12 @@
                     </strong>
                     @if($rol->id == 1)
                     <a href="{{ route('publicaciones.show', $resumen->publicacion->id)}}"
-                    class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+                    class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                         Volver Atrás
                     </a>
                     @else
                     <a href="/home"
-                    class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> 
+                    class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                         Volver Atrás
                     </a>
                     @endif
@@ -60,11 +60,11 @@
             <div class="card">
                 <div class="card-header">{{$region->name}}
                     @if($rol->id == 2)
-                    <a href="{{ route('editorresumen', ['resumen'=>$resumen->id, 'region'=>$region->id])}}"
+                    <a href="{{ route('editorresumen', ['resumen'=>encrypt($resumen->id), 'region'=>encrypt($region->id)])}}"
                     class="btn btn-sm btn-success pull-right"><i class="fa fa-pencil" aria-hidden="true"></i>  Editar</a>
                     @else
                         @can('seccion-'.$region->id)
-                        <a href="{{ route('editorresumen', ['resumen'=>$resumen->id, 'region'=>$region->id])}}"
+                        <a href="{{ route('editorresumen', ['resumen'=>encrypt($resumen->id), 'region'=>encrypt($region->id)])}}"
                         class="btn btn-sm btn-success pull-right" ><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                         @endcan
                     @endif

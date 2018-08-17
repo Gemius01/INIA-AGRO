@@ -24,16 +24,16 @@ class ResumenController extends Controller
         }
     }
 
-    public function vistaSeccionResumen($idresumen, $region)
+    public function vistaSeccionResumen($idresumen, $idregion)
     {
-        
-        $resumen = Resumen::find($idresumen);
+        $region= decrypt($idregion);
+        $resumen = Resumen::find(decrypt($idresumen));
 
         $dirname = '../public/photos/shares/'.$resumen->publicacion->año.'/'.$resumen->publicacion->mes->nombre.'/Resumen Nacional/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
         $arrayImages = array();
 
-        foreach($images as $image) 
+        foreach($images as $image)
         {
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
@@ -62,7 +62,7 @@ class ResumenController extends Controller
 
     public function descargarPDF(Resumen $resumen)
     {
-     
+
         return PDF::loadView('resumenes.pdfResumenTemplate', compact([ 'resumen', ]), [], [
         'format' => 'A4'
       ])->download('Resumen ('.$resumen->publicacion->mes->nombre.'-'.$resumen->publicacion->año.').pdf');
