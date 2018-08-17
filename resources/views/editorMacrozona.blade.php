@@ -153,57 +153,14 @@
 </div>
 <!-- Fin Modal Visitas -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script>
   $( document ).ready(function() {
     var idRegion = document.getElementById("idRegion").value;
-    var options = {
-        chart: {
-            renderTo: 'container',
-            type: 'line'
-        },
-        title: {
-            text: 'Horas Frio',
-            x: -20 //center
-        },
-        subtitle: {
-            text: '',
-            x: -20
-        },
-        xAxis: {
-            categories: [],
-            title: {
-                text: 'Date'
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'áñ'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        tooltip: {
-            valueSuffix: 'Hz'
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series:
-        [{
-            data: []
-        }]
-    };
-    
-   $.ajax({
+    $.ajax({
       method: 'GET', 
       headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -221,18 +178,16 @@
                   text : item.nombre 
               }));
           });
+         
           $.each(emas[0].graficos, function (i, item) {
               $('#selectGrafico').append($('<option>', { 
                       value: i,
-                      text : item.yAxis.title.text 
+                      text : item.title.text 
                   }));
           });
-              options.title.text = emas[0].graficos[0].yAxis.title.text // Setea el título del gráfico
-              options.yAxis.title.text = emas[0].graficos[0].yAxis.title.text //Seteo de nombre Eje Y
-              options.xAxis.title.text = emas[0].graficos[0].xAxis.title.text //Seteo de nombre Eje X
-              options.xAxis.categories = emas[0].graficos[0].xAxis.categories //Setea las categorías del eje X
-              options.series = emas[0].graficos[0].series //Setea las series (lineas del gráfico)
-              chart = new Highcharts.Chart(options); //Creación del Gráfico
+
+              Highcharts.chart('container', emas[0].graficos[0]);//Creación del Gráfico
+
               $( "#textoEma" ).empty();
               $( "#textoEma" ).append( emas[0].texto );
           $("#selectEmas" ).change(function() { //Función change de select Emas
@@ -242,18 +197,14 @@
               $.each(graficos, function (i, item) {
               $('#selectGrafico').append($('<option>', { 
                       value: i,
-                      text : item.yAxis.title.text 
+                      text : item.title.text 
                   }));
               });
               $( "#textoEma" ).empty();
               $( "#textoEma" ).append( emas[value].texto );
 
-              options.title.text = emas[value].graficos[0].yAxis.title.text
-              options.yAxis.title.text = emas[value].graficos[0].yAxis.title.text //Seteo de nombre Eje Y
-              options.xAxis.title.text = emas[value].graficos[0].xAxis.title.text //Seteo de nombre Eje X
-              options.xAxis.categories = emas[value].graficos[0].xAxis.categories //Setea las categorías del eje X
-              options.series = emas[value].graficos[0].series //Setea las series (lineas del gráfico)
-              chart = new Highcharts.Chart(options); //Creación del Gráfico
+              Highcharts.chart('container', emas[value].graficos[0]); //Creación del Gráfico
+
           });
           $("#selectGrafico").change(function() {
                 
@@ -261,13 +212,7 @@
               var value = document.getElementById("selectEmas").value; //value index del select Emas
               var datosGrafico = emas[value].graficos[valueGrafico];
 
-              options.title.text = datosGrafico.yAxis.title.text
-              options.yAxis.title.text = datosGrafico.yAxis.title.text //Seteo de nombre Eje Y
-              options.xAxis.title.text = datosGrafico.xAxis.title.text //Seteo de nombre Eje X
-              options.xAxis.categories = datosGrafico.xAxis.categories //Setea las categorías del eje X
-              options.series = datosGrafico.series //Setea las series (lineas del gráfico)
-              chart = new Highcharts.Chart(options); //Creación del Gráfico
-              
+              Highcharts.chart('container', datosGrafico);//Creación del Gráfico
           });
 
       }else
@@ -280,10 +225,10 @@
 
       },
       error: function(jqXHR, textStatus, errorThrown) { 
-          //console.log(JSON.stringify(jqXHR));
-          //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+
       }
     });
+   
 });
 </script>
 <script>

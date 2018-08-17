@@ -26,7 +26,9 @@ class ResumenController extends Controller
 
     public function vistaSeccionResumen($idresumen, $region)
     {
-        $resumen = Resumen::find(decrypt($idresumen));
+        
+        $resumen = Resumen::find($idresumen);
+
         $dirname = '../public/photos/shares/'.$resumen->publicacion->año.'/'.$resumen->publicacion->mes->nombre.'/Resumen Nacional/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
         $arrayImages = array();
@@ -37,7 +39,7 @@ class ResumenController extends Controller
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
         }
 
-        $seccionDetail = $resumen->regiones()->where('region_id', '=', decrypt($region))->first();
+        $seccionDetail = $resumen->regiones()->where('region_id', '=', $region)->first();
         return view('editorResumen', compact([
              'seccionDetail', 'resumen', 'arrayImages', 'dirname',
         ]));
@@ -60,6 +62,7 @@ class ResumenController extends Controller
 
     public function descargarPDF(Resumen $resumen)
     {
+     
         return PDF::loadView('resumenes.pdfResumenTemplate', compact([ 'resumen', ]), [], [
         'format' => 'A4'
       ])->download('Resumen ('.$resumen->publicacion->mes->nombre.'-'.$resumen->publicacion->año.').pdf');

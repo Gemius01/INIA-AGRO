@@ -46,11 +46,11 @@ div.border {
   background-color: #C50505;
   color: white;
   font-size: 13px;
-  font-family: arial;
+  font-family: sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   padding: 15px;
 }
 .contenido{
-
+  font-family: sans-serif;
 }

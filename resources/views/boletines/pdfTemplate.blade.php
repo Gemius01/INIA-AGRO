@@ -11,7 +11,9 @@
 @if($i==0)
 <htmlpageheader name="page-portada">
 </htmlpageheader>
+<div class="contenido">
 	{!! $seccion->pivot->contenido !!}
+</div>
 	<htmlpagefooter name="page-footerPortada">
 	</htmlpagefooter>
 <pagebreak>
