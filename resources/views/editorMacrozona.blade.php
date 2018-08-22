@@ -44,7 +44,7 @@
                     <div style="display:none;">
                         <input id="obj" value="{{ $detalleMacrozona }}"></input>
                         <input id="boletin" value="{{ $boletin }}"></input>
-                        <input id="idRegion" value="{{ $boletin->region->id }}"></input>
+                        <input id="idRegion" value="{{ $boletin->region->numero }}"></input>
                     </div>
                     <div>
                     </div>

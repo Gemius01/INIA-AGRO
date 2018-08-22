@@ -141,6 +141,7 @@
 <script>
   $( document ).ready(function() {
     var idRegion = document.getElementById("idRegion").value;
+    console.log(idRegion);
    $.ajax({
       method: 'GET', 
       headers: {
