@@ -11,7 +11,7 @@ class RubroController extends Controller
 {
     public function index()
     {
-        $rubros = Rubro::get();
+        $rubros = Rubro::orderBy('name', 'asc')->get();
         return view('rubros.index', compact([ 'rubros', ]));
     }
     public function create()

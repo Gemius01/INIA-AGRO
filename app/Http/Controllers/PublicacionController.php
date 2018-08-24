@@ -130,7 +130,7 @@ class PublicacionController extends Controller
                     'seccion_id' => 6,
                     'boletin_id' => $boletin->id,
                 ]);
-      $macrozonasByRegion = Macrozona::where('region_id', '=', $region->id)->get();
+      $macrozonasByRegion = Macrozona::where('region_id', '=', $region->id)->orderBy('name', 'asc')->get();
       if($macrozonasByRegion != null){
         $subseccion->macrozonas()->sync($macrozonasByRegion);
       }

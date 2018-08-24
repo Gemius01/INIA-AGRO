@@ -16,8 +16,9 @@ class PublicHtmlController extends Controller
     	return view('public.publicaciones.index', compact(['publicaciones']));
     }
 
-    public function show(Publicacion $publicacion)
+    public function show($publicacion)
     {
+      $publicacion = Publicacion::find(decrypt($publicacion));
     	$boletines = $publicacion->boletines()->where('publico', '=', true)->get();
 
         if($publicacion->resumen != null)
@@ -30,13 +31,15 @@ class PublicHtmlController extends Controller
         return view('public.publicaciones.show', compact(['boletines', 'resumen', ]));
     }
 
-    public function showBoletin(Boletin $boletin)
+    public function showBoletin($boletin)
     {
+      $boletin = Boletin::find(decrypt($boletin));
     	return view('public.boletines.show', compact(['boletin']));
     }
 
-    public function showResumen(Resumen $resumen)
+    public function showResumen($resumen)
     {
+      $resumen = Resumen::find(decrypt($resumen));
     	return view('public.resumenes.show', compact(['resumen']));
     }
 

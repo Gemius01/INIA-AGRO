@@ -53,11 +53,11 @@ class HomeController extends Controller
                     $userBoletines = $boletines->whereIn('region_id', $queryRegion);
                     $resumen = $publicacion->resumen;
                     //dd($resumen);
-                    return view('home', compact([ 'userBoletines', 'resumen' ]));
+                    return view('home', compact([ 'userBoletines', 'resumen', 'rol' ]));
                     } else {
                         $resumen = [];
                         $userBoletines = [];
-                        return view('home', compact([ 'userBoletines', 'resumen' ]));
+                        return view('home', compact([ 'userBoletines', 'resumen', 'rol' ]));
                     }
                 }else{
                     //Lo que se le mostrará al administrador
@@ -73,12 +73,12 @@ class HomeController extends Controller
                     $userBoletines = $boletines->whereIn('region_id', $queryRegion);
 
                     $resumen = $publicacion->resumen;
-                    return view('home', compact([ 'userBoletines', 'resumen' ]));
+                    return view('home', compact([ 'userBoletines', 'resumen', 'rol' ]));
                     }else
                     {
                         $resumen = [];
                         $userBoletines = [];
-                        return view('home', compact(['resumen', 'userBoletines']));
+                        return view('home', compact(['resumen', 'userBoletines', 'rol']));
                     }
                 }
             }else{
@@ -93,19 +93,19 @@ class HomeController extends Controller
                     $userBoletines = $boletines->whereIn('region_id', $queryRegion);
 
                     $resumen = $publicacion->resumen;
-                    return view('home', compact([ 'userBoletines', 'resumen' ]));
+                    return view('home', compact([ 'userBoletines', 'resumen', 'rol' ]));
                     }else
                     {
                         $resumen = [];
                         $userBoletines = [];
-                        return view('home', compact(['resumen', 'userBoletines']));
+                        return view('home', compact(['resumen', 'userBoletines', 'rol']));
                     }
             }
         }else{
             
             $resumen = [];
             $userBoletines = [];
-            return view('home', compact(['resumen', 'userBoletines']));
+            return view('home', compact(['resumen', 'userBoletines', 'rol']));
         }
         
     }

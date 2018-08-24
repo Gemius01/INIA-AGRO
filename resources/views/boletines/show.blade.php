@@ -15,8 +15,12 @@
                     <a href="/home"
                 class="btn btn-sm btn-primary pull-right" style="margin-left: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                     @endif
+                    @if($rol->id ==2 || $rol->id == 1)
                         <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
                               class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+                    @else
+                    
+                    @endif
                 </div>
             </div>
         </div>

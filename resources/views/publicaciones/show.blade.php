@@ -19,6 +19,8 @@
                     </a>
                 </div>
                 <div class="card-body">
+                  <strong>RESUMEN</strong>
+                  <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>
                            <tr>
@@ -42,6 +44,8 @@
                           </tr>
                        </tbody>
                    </table>
+                   <hr>
+                   <strong>BOLETINES</strong>
                    <hr>
                    <table class="table table-striped table-hover table-bordered">
                        <thead>

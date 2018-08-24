@@ -7,8 +7,8 @@
         <div class="card-header">
           Publicación del mes de {{ $resumen->publicacion->mes->nombre }} del {{ $resumen->publicacion->año }}
           @can('products.create')
-          <a href="{{ route('publicaciones.create')}}"
-          class="btn btn-sm btn-primary pull-right">Crear</a>
+          <a href="{{ route('publicPublicaciones')}}"
+          class="btn btn-sm btn-primary pull-right">Volver Atrás</a>
           @endcan
         </div>
         <div class="card-body">
@@ -27,7 +27,7 @@
                 <td>{{ $resumen->publicacion->mes->nombre }}</td>
                 <td>{{ $resumen->publicacion->año }}</td>
                 <td style="text-align: center;">
-                  <a href="{{ route('PublicResumen.show', $resumen->id) }}"
+                  <a href="{{ route('PublicResumen.show', encrypt($resumen->id)) }}"
                   class="btn btn-sm btn-primary">Ver</a>
                 </td>
                 <td style="text-align: center;">
@@ -51,7 +51,7 @@
               <tr>
                 <td>{{ $boletin->region->name }}</td>
                 <td style="text-align: center;">
-                  <a href="{{ route('Publicboletines.show', $boletin->id) }}"
+                  <a href="{{ route('Publicboletines.show', encrypt($boletin->id)) }}"
                   class="btn btn-sm btn-primary">Ver</a>
                 </td>
                 <td style="text-align: center;">

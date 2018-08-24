@@ -12,8 +12,8 @@
                 <div class="card-body">
                     <p><strong>Nombre: </strong> {{ $user->name }} </p>
                     <p><strong>E-mail: </strong> {{ $user->email }} </p>
-                    <p><strong>Cargo: </strong> {{ $user->cargo }} </p>
-                    <p><strong>Cri: </strong> {{ $user->cri }} </p>
+                    <p><strong>Cargo Académico: </strong> {{ $user->cargo }} </p>
+                    <p><strong>CRI: </strong> {{ $user->cri }} </p>
                     <p><strong>Rol:</strong> @if($rol != null) {{ $rol->name}}@else No tiene @endif </p>
                     <hr>
                     <label><strong>Región(es): </strong></label>

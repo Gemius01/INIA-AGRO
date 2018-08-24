@@ -21,13 +21,10 @@
                 <td>{{$publicacion->mes->nombre}}</td>
                 <td>{{$publicacion->año}}</td>
                 <td style="text-align: center;">
-                  <a href="{{ route('publicPublicacion.show', $publicacion->id) }}"
+                  <a href="{{ route('publicPublicacion.show', encrypt($publicacion->id)) }}"
                   class="btn btn-sm btn-primary">Ver</a>
                 </td>
-                <td style="text-align: center;">
-                  <a href="{{ route('xmlviewPublic', $publicacion->id) }}"
-                  class="btn btn-sm btn-warning">XML</a>
-                </td>
+                
               </tr>
               @endforeach
             </tbody>

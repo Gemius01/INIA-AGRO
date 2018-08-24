@@ -40,12 +40,12 @@
                     class="btn btn-sm btn-primary">Ver</a>
                 </td>
                 @endcan
-                <td style="text-align: center;">
-                  <a href="{{ route('resumenespdf', $resumen->id) }}"
-                     class="btn btn-sm btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
-                </td>
-                @else
-
+                  
+                    <td style="text-align: center;">
+                      <a href="{{ route('resumenespdf', $resumen->id) }}"
+                         class="btn btn-sm btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+                    </td>
+                 
                 @endif
 
               </tr>
@@ -83,10 +83,13 @@
                   <a href="{{ route('boletines.show', encrypt($boletin->id)) }}"
                   class="btn btn-sm btn-primary">Ver</a>
                 </td>
-                <td style="text-align: center;">
-                  <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
-                     class="btn btn-sm btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
-                </td>
+                  @if($rol->id ==2 || $rol->id == 1)
+                    <td style="text-align: center;">
+                      <a href="{{ route('boletines.pdfTemplate', $boletin->id) }}"
+                         class="btn btn-sm btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+                    </td>
+                    @else
+                  @endif
               </tr>
               @endforeach
               @else

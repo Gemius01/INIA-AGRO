@@ -14,7 +14,7 @@
 	@endif
 </div>
 <div class="form-group">
-	{{ Form::label('cargo', 'Cargo') }}
+	{{ Form::label('cargo', 'Cargo Académico') }}
 	{{ Form::text('cargo', null, ['class' => 'form-control', 'id' => 'cargo']) }}
 	@if($errors->has('cargo'))
 	@foreach($errors->get('cargo',":message") as $error)
@@ -50,7 +50,7 @@
 			<label>
 		        {{ Form::radio('roles[]', $role->id, null) }}
 		        {{ $role->name }}
-		        <em>({{ $role->description ?: 'Sin descripción' }})</em>
+		       
 	        </label>
 		</li>
 		@endforeach
