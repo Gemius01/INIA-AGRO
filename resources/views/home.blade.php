@@ -57,7 +57,6 @@
           <table class="table table-striped table-hover table-bordered" width="100%">
             <thead>
               <tr>
-                <!--<th width="10px">ID</th>-->
                 <th>Región</th>
                 <th>Estado</th>
                 <th colspan="2" width="30%"><center>Opciones</center></th>

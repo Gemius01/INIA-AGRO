@@ -49,6 +49,11 @@
               <i class="fa fa-arrow-left"></i>
               <span class="hidden-xs">{{ trans('laravel-filemanager::lfm.nav-back') }}</span>
             </a>
+             <a class="navbar-brand"  id="carpeta-actual">
+              <i class="fa fa-arrow-left"></i>
+              <span class="hidden-xs" ></span>
+            </a>
+            
             <a class="navbar-brand visible-xs" href="#">{{ trans('laravel-filemanager::lfm.title-panel') }}</a>
           </div>
           <div class="collapse navbar-collapse" id="nav-buttons">

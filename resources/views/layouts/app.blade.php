@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Agrometeorológico</title>
+    <link rel="icon" href="{!! asset('images/logo-pestaña.ico') !!}"/>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
@@ -109,6 +110,10 @@ div.desc {
                                     </a>
                                     @else
                                     @endif
+                                    <a class="dropdown-item" href="{{ route('publicPublicaciones') }}">Publicaciones
+                                       
+                                    </a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
