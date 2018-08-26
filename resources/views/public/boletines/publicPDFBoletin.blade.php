@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title></title>
-		<link href="{!! asset('css/prueba.css') !!}" media="all" rel="stylesheet" type="text/css" />
+		<link href="{!! asset('css/pdfBoletin.css') !!}" media="all" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		@php $i=0
