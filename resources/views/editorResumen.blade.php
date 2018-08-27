@@ -126,6 +126,7 @@ setup: function(editor){
     editor.on('change', function(event){
       unsavedd = true;
     });
+/*
 editor.addButton('mybutton', {
 image: "{{ URL::to('/') }}/images//grafico.png",
 tooltip: "Gráficos de información",
@@ -133,6 +134,7 @@ onclick: function () {
 alert("Proximamente");
 }
 });
+*/
 },
 file_browser_callback : function(field_name, url, type, win) {
 var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;

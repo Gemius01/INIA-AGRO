@@ -238,7 +238,7 @@ menu: {
 paste_data_images: false,
 branding: false,
 image_description: false,
-toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton",
+toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton | pronostico",
 relative_urls: false,
 remove_script_host: false,
 height: 350,
@@ -263,9 +263,20 @@ setup: function(editor){
       unsaved = true;
     });
 editor.addButton('mybutton', {
-//icon: 'sun',
-image: "{{ URL::to('/') }}/images//grafico.png",
+icon: 'sun',
+text: 'Gráficos',
+//image: "{{ URL::to('/') }}/images//grafico.png",
 tooltip: "Gráficos de información",
+onclick: function () {
+$('#modalGraficos').modal('show');
+contadorVisita()
+}
+});
+editor.addButton('pronostico', {
+icon: 'sun',
+text: 'Pronóstico',
+//image: "{{ URL::to('/') }}/images//grafico.png",
+tooltip: "Pronóstico",
 onclick: function () {
 $('#modalGraficos').modal('show');
 contadorVisita()
