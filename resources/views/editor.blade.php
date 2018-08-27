@@ -163,7 +163,7 @@
 </div>
 <!-- Fin Modal Visitas -->
 
-
+<link href="{!! asset('css/dmc.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
