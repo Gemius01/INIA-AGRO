@@ -341,6 +341,8 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('json/graficos/{region}', 'GraficosController@index')->name('graficos.todos');
 
+	Route::get('json/dmc/{region}', 'GraficosController@dmcData')->name('dmc.todos');
+
 	Route::get('contador/graficos', 'GraficosController@visitas')->name('graficos.visitas');
 	
 

@@ -17,7 +17,6 @@ class GraficosController extends Controller
      */
     public function index($regionNumero)
     {   
-        $url = 'storage/json/es/noticia.json';
         $path = storage_path() . "/inia.json";
         $datos = file_get_contents($path);
         $regiones = json_decode($datos, true);
@@ -30,23 +29,25 @@ class GraficosController extends Controller
              return $region;
            }           
         }
-        return null;
-        //dd($arrayasd);
-        /*
-        $path = storage_path() . "/inia.json"; // ie: /var/www/laravel/app/storage/json/filename.json
-        $regiones = json_decode(file_get_contents($path), false);
-        //$jsonString = file_get_contents(base_path('resources/lang/en.json'));
-        dd($regiones[0].id);
-        //$data = json_decode($regiones, false);
-        $asdregion = Region::get();
-        dd($asdregion);
+        return null;   
+    }
+
+    public function dmcData($regionNumero)
+    {   
         
-        $arrayVacio = array();
-        foreach($regiones as $obj){
-           $arrayVacio[] = (object) $obj;
+        $path = storage_path() . "/dmc.json";
+        $datos = file_get_contents($path);
+        $regiones = json_decode($datos, true);
+        
+        $arrayasd = array();
+        foreach($regiones as $region){
+            
+           if($region['region']['id'] == $regionNumero)
+           {
+             return $region;
+           }           
         }
-        */
-        
+        return null;   
     }
 
     /**

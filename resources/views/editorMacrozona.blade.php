@@ -125,11 +125,43 @@
       <div id="textoEma">
         
       </div>
+      
     </div>
     </div>
   </div>
 </div>
 <!-- Fin Modal Gráficos -->
+<!-- Inicio Modal DMC -->
+<div class="modal fade bd-example-modal-lg" id="modalDMC" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+    <div class="modal-header">
+        <h6 class="modal-title"><strong>Dirección Meteorológica Chile</strong></h6>
+        @if($user == 1)
+        <button type="button" class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#modalVisitas"><i class="fa fa-eye" aria-hidden="true"></i>
+        @else
+        @endif
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div class="container" id="bodyModal">
+    <label><strong>Seleccione EMA</strong></label>
+    <select class="custom-select" id="selectEmasDMC">
+      <!--<option selected>Seleccione Estación Meteorológica Automática</option>-->
+    </select>
+    <hr>
+      
+      <div id="textoDMC">
+        
+      </div>
+    <br>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal DMC -->
 <!-- Modal Visitas-->
 <div class="modal fade" id="modalVisitas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -151,7 +183,9 @@
     </div>
   </div>
 </div>
+
 <!-- Fin Modal Visitas -->
+<link href="{!! asset('css/dmc.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
@@ -167,10 +201,10 @@
       },
       url: '/json/graficos/'+ idRegion +'', 
       success: function(response){ 
-
+          console.log(response)
           if(!!response) {
           var json = response;
-          var emas = json.region.emas;
+          var emas = response.region.emas;
 
           $.each(emas, function (i, item) {
               $('#selectEmas').append($('<option>', { 
@@ -207,7 +241,7 @@
 
           });
           $("#selectGrafico").change(function() {
-                
+              
               var valueGrafico = document.getElementById("selectGrafico").value; //value index del select Gráfico
               var value = document.getElementById("selectEmas").value; //value index del select Emas
               var datosGrafico = emas[value].graficos[valueGrafico];
@@ -220,6 +254,52 @@
         $("#bodyModal").empty(); //Limpiar el Modal
 
         $('#bodyModal').append('<br><center><h4>ESTA REGIÓN NO CUENTA CON GRÁFICOS</h4></center>'); //Msj cuando no hayan gráficos
+      }    
+
+
+      },
+      error: function(jqXHR, textStatus, errorThrown) { 
+
+      }
+    });
+
+/////////////////////////////////////////// CONSULTA DMC /////////////////////////////////////
+    $.ajax({
+      method: 'GET', 
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: '/json/dmc/'+ idRegion +'', 
+      success: function(response){ 
+          //console.log(response)
+          if(!!response) {
+          var json = response;
+          var emas = json.region.emas;
+          
+          $( "#textoDMC" ).append( emas[0].texto );
+          $.each(emas, function (i, item) {
+              $('#selectEmasDMC').append($('<option>', { 
+                  value: i,
+                  text : item.nombre 
+              }));
+          });
+         
+          
+          $("#selectEmasDMC" ).change(function() { //Función change de select Emas
+            
+              var value = document.getElementById("selectEmasDMC").value;
+              $( "#textoDMC" ).empty();
+              $( "#textoDMC" ).append( emas[value].texto );
+              
+
+          });
+
+
+      }else
+      {
+        $("#bodyModal").empty(); //Limpiar el Modal
+
+        $('#bodyModal').append('<br><center><h4>ESTA REGIÓN NO CUENTA CON INFORMACIÓN</h4></center>'); //Msj cuando no hayan gráficos
       }    
 
 
@@ -298,8 +378,8 @@ text: 'Pronóstico',
 //image: "{{ URL::to('/') }}/images//grafico.png",
 tooltip: "Pronóstico",
 onclick: function () {
-$('#modalGraficos').modal('show');
-contadorVisita()
+$('#modalDMC').modal('show');
+
 }
 });
 },
@@ -350,7 +430,7 @@ window.onbeforeunload = unloadPage;
 function pruebaConsole()
 {
   var selectContent = tinymce.get('tinymce').getContent();
-    console.log(selectContent);
+
 }
 
 function guardarDatos()
@@ -395,7 +475,7 @@ function guardarDatos()
     var boletin_id = boletinObj.id;
 
     var contentResumen = document.getElementById('resumen').value;
-    console.log(contentResumen);
+    
 
     $.ajax({
     method: 'POST', // Type of response and matches what we said in the route

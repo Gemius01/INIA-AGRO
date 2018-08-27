@@ -1,0 +1,462 @@
+[
+  {
+    "region":{
+      "id":      2,
+      "nombreRegion":"Antofagasta",
+      "emas":[
+        {
+          "nombre":"Quillagua",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Quillagua</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=2' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Tocopilla",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Tocopilla</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=2' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Calama",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Calama</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>21.7  a  22\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>-0.6  a  0.4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=2' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Antofagasta",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Antofagasta</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>16.9  a  17.2\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>11.9  a  12.3\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=2' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Taltal",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Taltal</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=2' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      3,
+      "nombreRegion":"Atacama",
+      "emas":[
+        {
+          "nombre":"Caldera",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Caldera</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  0mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=3' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Copiap\u00f3",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Copiap\u00f3</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>-</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=3' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Los Loros",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Los Loros</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  1mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>25.8  a  26.2\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>5.5  a  6.6\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=3' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Freirina",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Freirina</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>-</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=3' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Vallenar",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Vallenar</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  5mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=3' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      4,
+      "nombreRegion":"Coquimbo",
+      "emas":[
+        {
+          "nombre":"Vicu\u00f1a",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Vicu\u00f1a</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  23mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=4' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Cogoti Embalse",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Cogoti Embalse</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  40mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=4' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Salamanca",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Salamanca</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  76mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=4' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Rivadavia",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Rivadavia</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  39mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>22  a  23\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>7.6  a  8.4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=4' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Illapel",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Illapel</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  51mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=4' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"La Serena",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n La Serena</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  19mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>15.6  a  16\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>8.1  a  8.4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=4' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      5,
+      "nombreRegion":"Valparaiso",
+      "emas":[
+        {
+          "nombre":"Santo Domingo",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Santo Domingo</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>152  a  226mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>15.4  a  15.7\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>5.1  a  6.2\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=5' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"San Felipe",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n San Felipe</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  54mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>19.1  a  20.2\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>3.6  a  4.3\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=5' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Llaillay",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Llaillay</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  94mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>19.4  a  19.9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>3.9  a  4.9\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=5' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Olmu\u00e9",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Olmu\u00e9</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  110mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>18.7  a  19.3\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>4.7  a  5.5\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=5' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Jard\u00edn Bot\u00e1nico",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Jard\u00edn Bot\u00e1nico</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  183mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>16  a  16.6\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>5.1  a  6\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=5' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Alicahue",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Alicahue</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  71mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>-</td><td>-\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=5' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Artificio",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Artificio</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  68mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=5' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      6,
+      "nombreRegion":"O'Higgins",
+      "emas":[
+        {
+          "nombre":"Convento Viejo",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Convento Viejo</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>228  a  321mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  14.6\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  5.3\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=6' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"San Fernando",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n San Fernando</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>201  a  354mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=6' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Graneros",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Graneros</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>171  a  303mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  16.2\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=6' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Quim\u00e1vida",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Quim\u00e1vida</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>181  a  296mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  16.9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  4.2\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=6' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Totihue",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Totihue</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>171  a  198mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  16.7\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  3.4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=6' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"La Rosa",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n La Rosa</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>179  a  284mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>-</td><td>-\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>-</td><td>-\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=6' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Nilahue Barahona",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Nilahue Barahona</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>201  a  286mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=6' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Litueche",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Litueche</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>212  a  374mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=6' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      7,
+      "nombreRegion":"Maule",
+      "emas":[
+        {
+          "nombre":"Nirivilo",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Nirivilo</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>251  a  385mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=7' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Pencahue",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Pencahue</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>204  a  283mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  16.3\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  5.1\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=7' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Colorado",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Colorado</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>476  a  647mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  14.3\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  4.9\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=7' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Parral",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Parral</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>305  a  392mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  14.6\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  5.3\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=7' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Curic\u00f3",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Curic\u00f3</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>189  a  285mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  14.9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  4.8\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=7' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Talca U.C.",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Talca U.C.</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>197  a  283mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  15.3\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  4.9\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=7' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"El Alamo",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n El Alamo</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>274  a  386mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=7' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      8,
+      "nombreRegion":"Biobio",
+      "emas":[
+        {
+          "nombre":"Concepci\u00f3n",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Concepci\u00f3n</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>371  a  444mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>14  a  14.4\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  6.2\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=8' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Los Angeles",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Los Angeles</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>-</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=8' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Ca\u00f1ete",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Ca\u00f1ete</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>453  a  499mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=8' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      9,
+      "nombreRegion":"Araucania",
+      "emas":[
+        {
+          "nombre":"Curacaut\u00edn",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Curacaut\u00edn</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>486  a  547mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=9' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Temuco",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Temuco</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>344  a  399mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>13.2  a  13.6\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>3.9  a  4.3\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=9' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Loncoche",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Loncoche</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>-</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=9' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Puc\u00f3n",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Puc\u00f3n</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>690  a  741mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>12.5  a  13.3\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=9' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Teodoro Schmidt",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Teodoro Schmidt</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>521  a  555mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=9' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      10,
+      "nombreRegion":"Lagos",
+      "emas":[
+        {
+          "nombre":"Osorno",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Osorno</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  367mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>12.1  a  12.3\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>3.3  a  3.8\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=10' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Fresia",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Fresia</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  483mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=10' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Puerto Montt",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Puerto Montt</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  422mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>11.2  a  11.6\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>3.6  a  4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=10' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Quemchi",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Quemchi</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  709mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=10' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Chait\u00e9n",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Chait\u00e9n</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  932mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>10.5  a  10.9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>4.2  a  4.7\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=10' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      11,
+      "nombreRegion":"Aysen",
+      "emas":[
+        {
+          "nombre":"Coyhaique",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Coyhaique</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>249  a  306mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='frio'>FRIO</td><td>&lt;  7.9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>0.4  a  1.1\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=11' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Balmaceda",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Balmaceda</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>135  a  171mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='frio'>FRIO</td><td>&lt;  6.3\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>-2  a  -0.9\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=11' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Chile Chico",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Chile Chico</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>72  a  116mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='frio'>FRIO</td><td>&lt;  9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>-0.5  a  0.2\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=11' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Lord Cochrane",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Lord Cochrane</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>184  a  234mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='frio'>FRIO</td><td>&lt;  7.5\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>-0.5  a  0\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=11' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      12,
+      "nombreRegion":"Magallanes",
+      "emas":[
+        {
+          "nombre":"Cerro Sombrero",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Cerro Sombrero</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>39  a  59mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=12' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Punta Arenas",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Punta Arenas</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>77  a  98mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='frio'>FRIO</td><td>&lt;  5.6\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>-0.3  a  0.6\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=12' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Porvenir",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Porvenir</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>43  a  58mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='frio'>FRIO</td><td>&lt;  5.5\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>-0.4  a  0.5\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=12' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Ovalle esc agr\u00edcola",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Ovalle esc agr\u00edcola</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>-</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>-</td><td>-\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>-</td><td>-\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=12' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Yerbas Buenas",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Yerbas Buenas</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>251  a  290mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  15.2\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  4.7\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=12' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      13,
+      "nombreRegion":"Metropolitana",
+      "emas":[
+        {
+          "nombre":"Polpaico",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Polpaico</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>102  a  158mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  18.3\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>2.2  a  3.1\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Colina",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Colina</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>74  a  144mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>-</td><td>-\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>-</td><td>-\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Pudahuel",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Pudahuel</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>70  a  138mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  16.7\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>3.4  a  4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Quinta Normal",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Quinta Normal</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>96  a  176mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  17.5\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>5  a  5.5\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Chorombo",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Chorombo</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>75  a  156mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Mallarauco",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Mallarauco</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>89  a  164mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Melipilla",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Melipilla</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>112  a  180mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  17.7\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>5.4  a  5.9\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Talagante",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Talagante</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>125  a  214mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  17.2\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>3.9  a  4.4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Pirque",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Pirque</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>119  a  223mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  17.8\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>1.8  a  3.1\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Angostura de Paine",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Angostura de Paine</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>138  a  222mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Hospital",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Hospital</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>148  a  243mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  17.9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>4.6  a  5.2\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Longovilo",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Longovilo</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>-</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  17.4\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>4.4  a  5.4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Alhu\u00e9",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Alhu\u00e9</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>197  a  262mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='calido'>CALIDO</td><td>&gt;  17.4\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>4  a  4.5\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=13' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      14,
+      "nombreRegion":"Los Rios",
+      "emas":[
+        {
+          "nombre":"San Jos\u00e9 Mariquina",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n San Jos\u00e9 Mariquina</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  482mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=14' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Valdivia",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Valdivia</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  570mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>12.6  a  12.8\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>3.9  a  4.2\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=14' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Catamut\u00fan",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Catamut\u00fan</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  645mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=14' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Lago Ranco",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Lago Ranco</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal a lluvioso'>NORMAL a LLUVIOSO</td><td>&gt;  641mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=14' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      15,
+      "nombreRegion":"Arica y Parinacota",
+      "emas":[
+        {
+          "nombre":"Arica",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Arica</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>18.2  a  18.9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>14.4  a  14.8\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=15' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Visviri",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Visviri</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=15' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Putre",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Putre</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=15' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Azapa",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Azapa</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>19.5  a  19.9\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>11.8  a  12.1\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=15' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Codpa",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Codpa</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='eseca'>ESTACION SECA</td><td>-mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>25.2  a  25.6\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>NORMAL</td><td>5  a  5.4\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=15' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  },
+  {
+    "region":{
+      "id":      16,
+      "nombreRegion":"\u00d1uble",
+      "emas":[
+        {
+          "nombre":"Coelemu",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Coelemu</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>275  a  378mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=16' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Chill\u00e1n",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Chill\u00e1n</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>323  a  393mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>NORMAL</td><td>14.2  a  14.5\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='calido'>CALIDO</td><td>&gt;  4.8\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=16' target='_blank'>M\u00e1s info...</a></p>"
+        },
+        {
+          "nombre":"Pemuco",
+          "texto":"<h2>Pron\u00f3stico Estaci\u00f3n Pemuco</h2><table class='dmcTable'><tr><td>Precipitaci\u00f3n</td><td class='normal'>NORMAL</td><td>400  a  531mm</td></tr><tr><td>Temperatura m\u00e1xima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr><tr><td>Temperatura m\u00ednima</td><td class='normal'>s/i</td><td>s/i\u00b0C</td></tr></table><p class='dmcP'><a href='http://archivos.meteochile.gob.cl/portaldmc/serviciosClimaticos/Agro/tendencia.html?reg=16' target='_blank'>M\u00e1s info...</a></p>"
+        }
+      ]
+    }
+  }
+]
