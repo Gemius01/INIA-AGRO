@@ -63,6 +63,14 @@ class GraficosController extends Controller
         return $contador->contador;
     }
 
+    public function visitasDMC()
+    {
+        $contador = Visita::find(2);
+        $contador->contador +=1;
+        $contador->save();
+        return $contador->contador;
+    }
+
     /**
      * Store a newly created resource in storage.
      *

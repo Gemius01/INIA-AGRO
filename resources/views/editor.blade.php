@@ -117,7 +117,7 @@
     <div class="modal-header">
         <h6 class="modal-title"><strong>Dirección Meteorológica Chile</strong></h6>
         @if($user == 1)
-        <button type="button" class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#modalVisitas"><i class="fa fa-eye" aria-hidden="true"></i>
+        <button type="button" class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#modalVisitasDMC"><i class="fa fa-eye" aria-hidden="true"></i>
         @else
         @endif
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -162,6 +162,27 @@
   </div>
 </div>
 <!-- Fin Modal Visitas -->
+<!-- Modal Visitas DMC-->
+<div class="modal fade" id="modalVisitasDMC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Visitas a los Gráficos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12" id="bodyModalVisitasDMC">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal Visitas DMC-->
 
 <link href="{!! asset('css/dmc.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -356,7 +377,7 @@ text: 'Pronóstico',
 tooltip: "Pronóstico",
 onclick: function () {
 $('#modalDMC').modal('show');
-
+contadorVisitaDMC()
 }
 });
 },
@@ -445,6 +466,29 @@ function contadorVisita()
           
       },
       error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+          //console.log(JSON.stringify(jqXHR));
+          //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+      }
+    });
+}
+ function contadorVisitaDMC()
+{
+  $.ajax({
+      method: 'GET', // Type of response and matches what we said in the route
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: '/contador/graficos/dmc', // This is the url we gave in the route
+      //data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
+      success: function(response){ // What to do if we succeed
+          //console.log(response);
+          //window.location.href = response;
+          $('#bodyModalVisitasDMC').empty();
+          $('#bodyModalVisitasDMC').append('<p style="word-wrap: break-word;"><strong>Cantidad : </strong>'+ response +'</p>');
+          
+      },
+      error: function(jqXHR, textStatus, errorThrown) { 
+          // What to do if we fail
           //console.log(JSON.stringify(jqXHR));
           //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
       }

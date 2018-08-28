@@ -14,5 +14,9 @@ class ContadorVisitasSeeder extends Seeder
         Visita::create([
         	'contador' => 0
         ]);
+
+        Visita::create([
+            'contador' => 0
+        ]);
     }
 }
