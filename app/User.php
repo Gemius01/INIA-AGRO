@@ -33,4 +33,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Macrozona::class);
     }
+
+    public function alertas()
+    {
+        
+    }
+  
 }

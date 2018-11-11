@@ -347,5 +347,9 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('contador/graficos/dmc', 'GraficosController@visitasDMC')->name('dmc.visitas');
 
+	//Alertas
+
+	Route::get('quitar/alerta/{seccion}/{boletin}', 'BoletinController@salirSeccion')->name('quitar.alerta');
+	Route::get('quitar/alertaMacro/{seccion}/{boletin}/{macrozona}', 'BoletinController@salirMacrozona')->name('quitar.alertaMacro');
 
 });

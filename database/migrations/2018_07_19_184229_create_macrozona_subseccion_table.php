@@ -20,6 +20,7 @@ class CreateMacrozonaSubseccionTable extends Migration
             $table->integer('subseccion_id')->unsigned()->index();
             $table->foreign('subseccion_id')->references('id')->on('subsecciones')->onDelete('cascade');
             $table->text('resumen')->nullable();
+            //$table->boolean('editando')->default(false);
             $table->text('contenido')->nullable();
             $table->string('autor')->nullable();
             $table->string('email')->nullable();

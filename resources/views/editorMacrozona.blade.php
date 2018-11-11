@@ -45,6 +45,9 @@
                         <input id="obj" value="{{ $detalleMacrozona }}"></input>
                         <input id="boletin" value="{{ $boletin }}"></input>
                         <input id="idRegion" value="{{ $boletin->region->numero }}"></input>
+                        <input id="idSubSeccion" value="{{ $detalleMacrozona->pivot->subseccion_id }}"></input>
+                        <input id="idMacrozona" value="{{ $detalleMacrozona->pivot->macrozona_id }}"></input>
+                        <input id="idBoletin" value="{{ $boletin->id }}"></input>
                     </div>
                     <div>
                     </div>
@@ -212,6 +215,7 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script>
   $( document ).ready(function() {
+
     var idRegion = document.getElementById("idRegion").value;
     $.ajax({
       method: 'GET', 
@@ -358,7 +362,7 @@ menu: {
 paste_data_images: false,
 branding: false,
 image_description: false,
-toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton | pronostico",
+toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton | pronostico",
 relative_urls: false,
 remove_script_host: false,
 height: 350,
@@ -429,6 +433,7 @@ tinymce.init(editor_config);
 </script>
 <script>
 $( document ).ready(function() {
+
     $("#resumen").on('change keyup paste', function() {
       unsavedResumen = true;
     // your code here
@@ -436,6 +441,7 @@ $( document ).ready(function() {
 });
 
 function unloadPage(){
+  quitarAlerta();
     if(unsaved){
         return confirm('Tienes Cambios sin guardar en la macrozona ¿Deseas salir?');
     }else if (unsavedResumen)
@@ -562,5 +568,32 @@ function guardarDatos()
       }
     });
 }
+function quitarAlerta()
+{
+
+  var idSeccion = document.getElementById('idSubSeccion').value
+  var idMacrozona = document.getElementById('idMacrozona').value
+  var idBoletin = document.getElementById('idBoletin').value
+  console.log( idSeccion  + ' ' + idMacrozona + ' ' + idBoletin)
+  $.ajax({
+      method: 'GET', // Type of response and matches what we said in the route
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: '/quitar/alertaMacro/'+ idSeccion + '/' + idBoletin + '/' + idMacrozona, // This is the url we gave in the route
+      //data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
+      success: function(response){ // What to do if we succeed
+          //console.log(response);
+          //window.location.href = response;
+         
+          
+      },
+      error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+          //console.log(JSON.stringify(jqXHR));
+          //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+      }
+    });
+}
+
 </script>
 @endsection

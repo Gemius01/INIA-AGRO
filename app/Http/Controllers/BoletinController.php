@@ -75,8 +75,15 @@ class BoletinController extends Controller
 
     public function editarSeccion($idBoletin, $seccion)
     {
+        
         $boletin = Boletin::find(decrypt($idBoletin));
         $seccionDetail = $boletin->secciones()->where('seccion_id', '=', decrypt($seccion))->first();
+        //dd($seccionDetail->pivot->editando);
+        
+        $seccionDetail->pivot->editando = 1;
+        
+        $seccionDetail->pivot->save();
+        //dd($seccionDetail->pivot);
         $user = Auth::user()->roles()->first()->id;
 
         $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
@@ -111,6 +118,7 @@ class BoletinController extends Controller
     {
         $user = Auth::user()->roles()->first()->id;
         $boletin = Boletin::find(decrypt($idBoletin));
+        
         $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
                                       $boletin->publicacion->mes->nombre.'/'. $boletin->region->name.
                                       '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
@@ -127,7 +135,9 @@ class BoletinController extends Controller
         ->wherePivot('macrozona_id', '=', decrypt($macrozona))
         ->wherePivot('subseccion_id', '=', decrypt($subseccion))
         ->first();
-
+        $detalleMacrozona->pivot->editando = 1;
+        $detalleMacrozona->pivot->save();
+        
         return view('editorMacrozona', compact([
              'detalleMacrozona', 'boletin', 'arrayImages', 'dirname', 'user',
         ]));
@@ -200,5 +210,35 @@ class BoletinController extends Controller
         );
         $content = view('boletines.xml', compact(['array', 'publicacion', ]))->render();
         return response()->attachment($content, date('Y-m-d'));
+    }
+
+    public function salirSeccion($boletin, $seccion)
+    {
+        $boletin = Boletin::find($boletin);
+        $seccionDetail = $boletin->secciones()->where('seccion_id', '=', $seccion)->first();
+        //dd($seccionDetail->pivot->editando);
+        
+        $seccionDetail->pivot->editando = 0;
+        
+        $seccionDetail->pivot->save();
+
+        //return $seccionDetail->pivot;
+    }
+
+    public function salirMacrozona($boletin, $subseccion, $macrozona)
+    {
+        $boletin = Boletin::find($boletin);
+        $subsecciones = $boletin->subsecciones()->first();
+        $detalleMacrozona = $subsecciones->macrozonas()
+        ->wherePivot('macrozona_id', '=', $macrozona)
+        ->wherePivot('subseccion_id', '=', $subseccion)
+        ->first();
+        //dd($seccionDetail->pivot->editando);
+        
+        $detalleMacrozona->pivot->editando = 0;
+        
+        $detalleMacrozona->pivot->save();
+
+        //return $seccionDetail->pivot;
     }
 }

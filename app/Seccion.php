@@ -25,4 +25,9 @@ class Seccion extends Model
     {
         return $this->hasMany(Subseccion::class);
     }
+
+    public function alertas()
+    {
+        return $this->hasMany(Alerta::class);
+    }
 }

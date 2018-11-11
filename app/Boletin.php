@@ -25,7 +25,7 @@ class Boletin extends Model
     
     public function secciones()
     {
-        return $this->belongsToMany(Seccion::class)->withPivot('contenido');
+        return $this->belongsToMany(Seccion::class)->withPivot('contenido','id','editando');
     }
 
     public function subsecciones()

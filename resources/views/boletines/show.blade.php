@@ -46,6 +46,11 @@
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right" style="margin-left: 5px;"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                     @endif
+                    @if($seccion->pivot->editando)
+                    <a href="#"
+                        class="btn btn-sm btn-warning pull-right"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Están Editando</a>
+                    @else
+                    @endif
                 </div>
                 <div class="card-body">
                  {!! $seccion->pivot->contenido !!}
@@ -67,13 +72,23 @@
                                 </strong>
                             </p>
                             @if($rol->id !=2 && $rol->id != 1)
+                            
                             @can('macrozona-'.$macrozona->id)
                                 @if($boletin->estado == 1)
+                                    
                                     <a
+                                    
                                         class="btn btn-sm btn-primary pull-right"
                                         href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}" style="margin-left: 5px;"
                                     > <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                                    @if($macrozona->pivot->editando)
+                                        <a href="#"
+                                            class="btn btn-sm btn-warning pull-right"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Están Editando</a>
+                                        @else
+                                        @endif
                                     @if( $macrozona->pivot->resumen != null)
+                                    
+                                        
                                         <a
                                         class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
@@ -158,11 +173,13 @@
                             @endcan
                             @else
                             <!-- Admin -->
+                                    
                                     <a
                                         class="btn btn-sm btn-primary pull-right"
                                         href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}" style="margin-left: 5px;"
                                     ><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                                     @if( $macrozona->pivot->resumen != null)
+                                    
                                         <a
                                         class="btn btn-sm btn-info pull-right "
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
@@ -195,12 +212,21 @@
                                   </div>
                                 </div>
                                     @else
+                                    
                                     <a
                                         class="btn btn-sm btn-info pull-right disabled"
                                         href="#"
+                                        style="margin-left: 5px;"
                                     >Resumen Vacío
                                     </a>
+                                    
                                     @endif
+                                    @if($macrozona->pivot->editando)
+                                        <a href="#"
+                                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i> Editando</a>
+                                        
+                                        @else
+                                        @endif
                             <!--end admin -->
                             @endif
                         </p>

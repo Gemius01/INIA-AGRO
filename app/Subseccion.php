@@ -24,6 +24,6 @@ class Subseccion extends Model
 
     public function macrozonas()
     {
-    	return $this->belongsToMany(Macrozona::class)->withPivot('contenido', 'resumen', 'autor', 'email', 'id');
+    	return $this->belongsToMany(Macrozona::class)->withPivot('contenido', 'resumen', 'autor', 'email', 'id', 'editando');
     }
 }

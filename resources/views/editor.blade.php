@@ -30,7 +30,9 @@
                     </form>
                     <div style="display:none;">
                         <input id="obj" value="{{ $seccionDetail }}"></input>
-                        <input id="idRegion" value="{{ $boletin->region->numero}}"/>
+                        <input id="idRegion" value="{{ $boletin->region->numero }}"/>
+                        <input id="idBoletin" value="{{ $boletin->id }}"/>
+                        <input id="idSeccion" value="{{ $seccionDetail->pivot->id }}"/>
                     </div>
                     <div>
                     </div>
@@ -336,7 +338,7 @@ menu: {
 paste_data_images: false,
 branding: false,
 image_description: false,
-toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton | pronostico",
+toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton | pronostico",
 relative_urls: false,
 remove_script_host: false,
 height: 350,
@@ -407,9 +409,11 @@ tinymce.init(editor_config);
 </script>
 <script>
 function unloadPage(){
+    quitarAlerta();
     if(unsaved){
         return confirm('Tienes Cambios sin guardar ¿Deseas salir?');
     }
+    
 }
 window.onbeforeunload = unloadPage;
 </script>
@@ -489,6 +493,31 @@ function contadorVisita()
       },
       error: function(jqXHR, textStatus, errorThrown) { 
           // What to do if we fail
+          //console.log(JSON.stringify(jqXHR));
+          //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+      }
+    });
+}
+//console.log(document.getElementById('idSeccion').value)
+function quitarAlerta()
+{
+
+  var idSeccion = document.getElementById('idSeccion').value
+  var idBoletin = document.getElementById('idBoletin').value
+  $.ajax({
+      method: 'GET', // Type of response and matches what we said in the route
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: '/quitar/alerta/'+ idSeccion + '/' + idBoletin, // This is the url we gave in the route
+      //data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
+      success: function(response){ // What to do if we succeed
+          //console.log(response);
+          //window.location.href = response;
+         
+          
+      },
+      error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
           //console.log(JSON.stringify(jqXHR));
           //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
       }
