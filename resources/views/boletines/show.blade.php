@@ -81,11 +81,7 @@
                                         class="btn btn-sm btn-primary pull-right"
                                         href="{{ route('editormacrozona', ['boletin'=>encrypt($boletin->id), 'subseccion'=>encrypt($subseccion->id), 'macrozona' => encrypt($macrozona->id) ])}}" style="margin-left: 5px;"
                                     > <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-                                    @if($macrozona->pivot->editando)
-                                        <a href="#"
-                                            class="btn btn-sm btn-warning pull-right"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Están Editando</a>
-                                        @else
-                                        @endif
+                                    
                                     @if( $macrozona->pivot->resumen != null)
                                     
                                         
@@ -124,6 +120,7 @@
                                     <a
                                         class="btn btn-sm btn-info pull-right disabled"
                                         href="#"
+                                        style="margin-left: 5px;"
                                     >Resumen Vacío
                                     </a>
                                     @endif
@@ -164,13 +161,21 @@
                                     @else
                                     <a
                                         class="btn btn-sm btn-info pull-right disabled"
-
+                                        style="margin-left: 5px;"
                                         href="#"
                                     >Resumen Vacío
                                     </a>
                                     @endif
                                 @endif
+                                @if($macrozona->pivot->editando)
+                                        <a href="#"
+                                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i> Editando</a>
+                                        
+                                        @else
+                                        @endif
+                            
                             @endcan
+                            
                             @else
                             <!-- Admin -->
                                     
