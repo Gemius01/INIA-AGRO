@@ -493,6 +493,7 @@ function guardarDatos()
  function guardarResumen()
  {
     unsavedResumen = false;
+    
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     var boletinObj = JSON.parse(document.getElementById('boletin').value);
 

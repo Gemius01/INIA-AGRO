@@ -13,7 +13,7 @@ class AddEditandoToBoletinSubseccion extends Migration
      */
     public function up()
     {
-        Schema::table('boletin_subseccion', function (Blueprint $table) {
+        Schema::table('boletin_seccion', function (Blueprint $table) {
             $table->boolean('editando')->default(false);
         });
     }
@@ -25,7 +25,7 @@ class AddEditandoToBoletinSubseccion extends Migration
      */
     public function down()
     {
-        Schema::table('boletin_subseccion', function (Blueprint $table) {
+        Schema::table('boletin_seccion', function (Blueprint $table) {
             //
         });
     }

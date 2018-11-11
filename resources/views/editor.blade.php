@@ -428,6 +428,7 @@ function pruebaConsole()
 function guardarDatos()
 {
     unsaved = false;
+    quitarAlerta()
     var objSeccion = JSON.parse(document.getElementById('obj').value);
     
     var boletin_id = objSeccion.pivot.boletin_id;
