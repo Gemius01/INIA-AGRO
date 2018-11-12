@@ -31,7 +31,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$seccion->name}} {{$seccion->id}}  {{$boletin->id}}
+                <div class="card-header">{{$seccion->name}}
                     @if($rol->id != 2 && $rol->id !=1)
                         @can('seccion-'.$seccion->id)
                             @if($boletin->estado == 1)
