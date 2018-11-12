@@ -17,8 +17,8 @@
                     {{ $boletin->publicacion->año }}
                     
                     </label>
-                    <a href="#"
-                       onClick="quitarAlerta()"
+                    <a href="{{ route('boletines.show', encrypt($boletin->id))}}"
+                       
                     class="btn btn-sm btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                 </div>
 
