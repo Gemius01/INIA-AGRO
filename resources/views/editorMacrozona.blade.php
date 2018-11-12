@@ -15,7 +15,7 @@
                     {{ $boletin->region->name }} -
                     {{ $boletin->publicacion->mes->nombre }}
                     {{ $boletin->publicacion->año }}
-                    {{ $detalleMacrozona }}
+                    
                     </label>
                     <a href="#"
                        onClick="quitarAlerta()"
