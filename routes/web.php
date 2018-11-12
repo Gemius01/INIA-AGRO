@@ -349,7 +349,7 @@ Route::middleware(['auth'])->group(function(){
 
 	//Alertas
 
-	Route::get('quitar/alerta/{seccion}/{boletin}', 'BoletinController@salirSeccion')->name('quitar.alerta');
+	Route::post('quitar/alerta', 'BoletinController@salirSeccion');
 	Route::get('quitar/alertaMacro/{seccion}/{boletin}/{macrozona}', 'BoletinController@salirMacrozona')->name('quitar.alertaMacro');
 
 });

@@ -15,8 +15,10 @@
                     {{ $boletin->region->name }} -
                     {{ $boletin->publicacion->mes->nombre }}
                     {{ $boletin->publicacion->año }}
+                    {{ $detalleMacrozona }}
                     </label>
-                    <a href="{{ route('boletines.show', encrypt($boletin->id))}}"
+                    <a href="#"
+                       onClick="quitarAlerta()"
                     class="btn btn-sm btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                 </div>
 
@@ -586,6 +588,7 @@ function quitarAlerta()
       success: function(response){ // What to do if we succeed
           //console.log(response);
           //window.location.href = response;
+          console.log(response)
          
           
       },

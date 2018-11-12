@@ -212,28 +212,33 @@ class BoletinController extends Controller
         return response()->attachment($content, date('Y-m-d'));
     }
 
-    public function salirSeccion($boletin, $seccion)
+    public function salirSeccion(Request $request)
     {
-        $boletin = Boletin::find($boletin);
-        $seccionDetail = $boletin->secciones()->where('seccion_id', '=', $seccion)->first();
-        //dd($seccionDetail->pivot->editando);
         
-        $seccionDetail->pivot->editando = 0;
+        
+        $boletin = Boletin::find($request->boletin_id);
+        $seccionDetail = 1;
+        $seccionDetail = $boletin->secciones()->wherePivot("id", "=", $request->seccion_id)->first();
+        
+        $seccionDetail->pivot->editando = false;
         
         $seccionDetail->pivot->save();
-
-        //return $seccionDetail->pivot;
+        
+       
+        return $seccionDetail->pivot;
     }
 
     public function salirMacrozona($boletin, $subseccion, $macrozona)
     {
         $boletin = Boletin::find($boletin);
+        
         $subsecciones = $boletin->subsecciones()->first();
         $detalleMacrozona = $subsecciones->macrozonas()
         ->wherePivot('macrozona_id', '=', $macrozona)
         ->wherePivot('subseccion_id', '=', $subseccion)
         ->first();
-        //dd($seccionDetail->pivot->editando);
+        
+        
         
         $detalleMacrozona->pivot->editando = 0;
         

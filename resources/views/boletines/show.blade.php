@@ -31,26 +31,33 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$seccion->name}}
+                <div class="card-header">{{$seccion->name}} {{$seccion->id}}  {{$boletin->id}}
                     @if($rol->id != 2 && $rol->id !=1)
-                    @can('seccion-'.$seccion->id)
-                        @if($boletin->estado == 1)
-                        <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
-                        class="btn btn-sm btn-success pull-right" style="margin-left: 5px;"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-                        @else
+                        @can('seccion-'.$seccion->id)
+                            @if($boletin->estado == 1)
+                            <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
+                            class="btn btn-sm btn-success pull-right" style="margin-left: 5px;"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                            @if($seccion->pivot->editando)
                         <a href="#"
-                        class="btn btn-sm btn-success pull-right disabled">Cerrado</a>
-                    @endif
-                    @endcan
+                            class="btn btn-sm btn-warning pull-right"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Están Editando</a>
+                        @else
+                        @endif
+                            @else
+                            <a href="#"
+                            class="btn btn-sm btn-success pull-right disabled">Cerrado</a>
+                        @endif
+                        @endcan
                     @else
+                    
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right" style="margin-left: 5px;"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-                    @endif
-                    @if($seccion->pivot->editando)
+                        @if($seccion->pivot->editando)
                     <a href="#"
-                        class="btn btn-sm btn-warning pull-right"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Están Editando</a>
+                        class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Están Editando</a>
                     @else
                     @endif
+                    @endif
+                   
                 </div>
                 <div class="card-body">
                  {!! $seccion->pivot->contenido !!}

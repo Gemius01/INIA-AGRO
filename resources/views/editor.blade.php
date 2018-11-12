@@ -9,10 +9,11 @@
             <div class="card">
                 <div class="card-header">
                     <strong>
-                    Boletín Agrometeorológico - Región: {{ $boletin->region->name}} -
+                    Boletín Agrometeorológico - Región: {{ $boletin->region->name}} - 
                     {{ $boletin->publicacion->mes->nombre }} - {{ $boletin->publicacion->año }}
                     </strong>
                      <a href="{{ route('boletines.show', encrypt($boletin->id))}}"
+                     
                     class="btn btn-sm btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver Atrás</a>
                 </div>
 
@@ -503,16 +504,19 @@ function contadorVisita()
 function quitarAlerta()
 {
 
-  var idSeccion = document.getElementById('idSeccion').value
-  var idBoletin = document.getElementById('idBoletin').value
+  var idSeccion1 = document.getElementById('idSeccion').value
+  var idBoletin1 = document.getElementById('idBoletin').value
+  console.log('seccion' + idSeccion1)
+  console.log(idBoletin1)
   $.ajax({
-      method: 'GET', // Type of response and matches what we said in the route
+      method: 'POST', // Type of response and matches what we said in the route
       headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
-      url: '/quitar/alerta/'+ idSeccion + '/' + idBoletin, // This is the url we gave in the route
-      //data: {boletin_id: boletin_id, seccion_id: seccion_id, contenido: contentTinymce}, // a JSON object to send back
+      url: '/quitar/alerta', // This is the url we gave in the route
+      data: {boletin_id: idBoletin1, seccion_id: idSeccion1}, // a JSON object to send back
       success: function(response){ // What to do if we succeed
+      console.log(response)
           //console.log(response);
           //window.location.href = response;
          
