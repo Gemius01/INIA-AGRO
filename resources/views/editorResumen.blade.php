@@ -102,6 +102,7 @@ menu: {
 paste_data_images: false,
 branding: false,
 image_description: false,
+paste_as_text: true,
 toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton",
 relative_urls: false,
 remove_script_host: false,

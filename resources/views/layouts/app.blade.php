@@ -111,8 +111,13 @@ div.desc {
                                     @else
                                     @endif
                                     <a class="dropdown-item" href="{{ route('publicPublicaciones') }}">Publicaciones
-                                       
+                                    
                                     </a>
+                                    @can('comunas.index')
+                                    <a class="dropdown-item" href="{{ route('comunas.index') }}">
+                                        Comunas
+                                    </a>
+                                    @endcan   
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

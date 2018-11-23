@@ -320,6 +320,7 @@ path_absolute : "/",
 selector: "textarea.my-editor",
 language_url : '/languages/es.js',
 allow_script_urls: false,
+paste_as_text: true,
 plugins: [
 "advlist autolink lists link image charmap print preview hr",
 "searchreplace wordcount code fullscreen",

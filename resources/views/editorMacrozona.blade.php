@@ -351,6 +351,7 @@ plugins: [
 "emoticons paste textcolor colorpicker textpattern "
 ],
 allow_script_urls: false,
+paste_as_text: true,
 paste_enable_default_filters: false,
 menu: {
         file: {title: 'File', items: 'newdocument | print'},
