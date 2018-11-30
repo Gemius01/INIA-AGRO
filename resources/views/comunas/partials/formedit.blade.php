@@ -9,8 +9,8 @@
 </div>
 <div class="form-group">
 	{{ Form::label('codigo', 'Código de la Comuna') }}
-	{{ Form::text('codigo', null, ['class' => 'form-control']) }}
-	@if($errors->has('nombre'))
+	{{ Form::number('codigo', null, ['class' => 'form-control']) }}
+	@if($errors->has('codigo'))
 	@foreach($errors->get('codigo',":message") as $error)
 	<p class="alert alert-danger alert-dismissible" >{{$error}}</p>
 	@endforeach

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ComunaStoreRequest;
+use App\Http\Requests\ComunaUpdateRequest;
 use App\Comuna;
 use App\Region;
 use App\Macrozona;
@@ -38,11 +40,11 @@ class ComunaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComunaStoreRequest $request)
     {
         $comuna = Comuna::create($request->all());
 
-        return redirect()->route('comunas.index', $macrozona->id)
+        return redirect()->route('comunas.index', $comuna->id)
         ->with('info', 'Comuna agregada con exito'); 
     }
 
@@ -65,7 +67,7 @@ class ComunaController extends Controller
      */
     public function edit($id)
     {
-        $comuna = Comuna::find($id)->first();
+        $comuna = Comuna::find($id);
         $regiones = Region::where('id', '<>', 1)->pluck('name', 'id');
         return view('comunas.edit', compact(['comuna', 'regiones']));
     }
@@ -77,9 +79,9 @@ class ComunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComunaUpdateRequest $request, Comuna $comuna)
     {
-        $comuna = Comuna::find($id)->first();
+
         $comuna->update($request->all());
 
         return redirect()->route('comunas.index', $comuna->id)
@@ -92,9 +94,10 @@ class ComunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comuna $comuna)
     {
-        //
+        $comuna->delete();
+        return back()->with('info', 'Eliminado Correctamente');
     }
 
     public function macrozonas(Comuna $comuna)
