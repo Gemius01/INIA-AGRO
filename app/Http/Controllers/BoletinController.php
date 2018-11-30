@@ -12,6 +12,7 @@ use App\Publicacion;
 use App\User;
 use File;
 use Response;
+use PDF;
 
 class BoletinController extends Controller
 {
@@ -104,6 +105,7 @@ class BoletinController extends Controller
 
     public function guardarEdicion(Request $request)
     {
+        $user = Auth::user();
         $response = array(
           'status' => 'success',
           'boletin_id' => $request->input('boletin_id'),
@@ -113,6 +115,7 @@ class BoletinController extends Controller
         $boletin = Boletin::find($response['boletin_id']);
         $detail = $boletin->secciones()->where('seccion_id', '=', $response['seccion_id'])->first();
         $detail->pivot->contenido =  $request->input('contenido');
+        $detail->pivot->autor =  $user->name;
         $detail->pivot->save();
         return '/boletines/'.encrypt($request->input('boletin_id'));
     }
@@ -251,5 +254,15 @@ class BoletinController extends Controller
         $detalleMacrozona->pivot->save();
 
         //return $seccionDetail->pivot;
+    }
+
+    public function pdfSeccionAgua($idBoletin, $seccion)
+    {
+        $boletin = Boletin::find($idBoletin);
+        $seccionDetail = $boletin->secciones()->where('seccion_id', '=', $seccion)->first();
+        
+        return PDF::loadView('boletines.pdfhidro', compact([ 'seccionDetail', 'boletin' ]), [], [
+            'format' => 'A4'
+          ])->download('Seccion ('.$seccionDetail->name.'-'.$boletin->publicacion->año.'-'.$boletin->publicacion->mes->nombre.').pdf');
     }
 }

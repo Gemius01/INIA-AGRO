@@ -31,6 +31,7 @@ class ResumenController extends Controller
 
         $dirname = '../public/photos/shares/'.$resumen->publicacion->año.'/'.$resumen->publicacion->mes->nombre.'/Resumen Nacional/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
+        $dirnameFolder = '/shares/'.$resumen->publicacion->año.'/'.$resumen->publicacion->mes->nombre.'/Resumen Nacional/';
         $arrayImages = array();
 
         foreach($images as $image)
@@ -41,7 +42,7 @@ class ResumenController extends Controller
 
         $seccionDetail = $resumen->regiones()->where('region_id', '=', $region)->first();
         return view('editorResumen', compact([
-             'seccionDetail', 'resumen', 'arrayImages', 'dirname',
+             'seccionDetail', 'resumen', 'arrayImages', 'dirname', 'dirnameFolder'
         ]));
     }
 

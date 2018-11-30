@@ -21,6 +21,8 @@
                     @else
                     
                     @endif
+                    
+
                 </div>
             </div>
         </div>
@@ -51,13 +53,25 @@
                     
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right" style="margin-left: 5px;"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-                        @if($seccion->pivot->editando)
+                    @if($seccion->id == 7 || $seccion->id == 8 || $seccion->id == 9 || $seccion->id == 10)
+                        <a href="{{ route('seccionHidro.pdf', ['boletin'=> $boletin->id, 'seccion'=>$seccion->id])}}"
+                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                            PDF
+                        </a>
+                    @endif
+                        
+                    @if($seccion->pivot->editando)
                     <a href="#"
                         class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Están Editando</a>
                     @else
                     @endif
                     @endif
-                   
+                    @if($seccion->pivot->autor)
+                        <div 
+                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;">
+                            Editado por : {{ $seccion->pivot->autor }}
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body">
                  {!! $seccion->pivot->contenido !!}
@@ -78,6 +92,7 @@
                                     @endif
                                 </strong>
                             </p>
+                            
                             @if($rol->id !=2 && $rol->id != 1)
                             
                             @can('macrozona-'.$macrozona->id)
@@ -241,6 +256,13 @@
                                         @endif
                             <!--end admin -->
                             @endif
+                            @if($macrozona->pivot->autor)
+                            <div 
+                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;">
+                            Editado por : {{ $macrozona->pivot->autor }}
+                            </div>
+                            @endif
+                        
                         </p>
                         {!! $macrozona->pivot->contenido !!}
                         <hr>
@@ -248,6 +270,7 @@
                      @endforeach
                  @else
                  @endif
+                 
                 </div>
             </div>
         </div>

@@ -225,7 +225,9 @@ Route::middleware(['auth'])->group(function(){
 		->middleware('permission:boletines.show');
 
 
-    Route::get('pdfExport/{boletin}','PdfBoletinController@exportarPDF')->name('boletines.pdfTemplate');
+	Route::get('pdfExport/{boletin}','PdfBoletinController@exportarPDF')->name('boletines.pdfTemplate');
+	
+	Route::get('pdfExportSeccion/{boletin}/{seccion}','BoletinController@pdfSeccionAgua')->name('seccionHidro.pdf');
 
     //prueba
 

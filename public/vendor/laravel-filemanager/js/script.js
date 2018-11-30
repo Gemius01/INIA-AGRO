@@ -97,14 +97,18 @@ $('#list-sort-time').click(function() {
 
 $(document).on('click', '.file-item', function (e) {
   useFile($(this).data('id'));
+  
 });
 
 $(document).on('click', '.folder-item', function (e) {
   goTo($(this).data('id'));
+  
 });
 
 function goTo(new_dir) {
   $('#working_dir').val(new_dir);
+  
+  
   loadItems();
 }
 
@@ -113,6 +117,7 @@ function getPreviousDir() {
   var working_dir = $('#working_dir').val();
   var last_ds = working_dir.lastIndexOf(ds);
   var previous_dir = working_dir.substring(0, last_ds);
+  
   return previous_dir;
 }
 
@@ -122,7 +127,7 @@ function dir_starts_with(str) {
 
 function setOpenFolders() {
   var folders = $('.folder-item');
-
+  
   for (var i = folders.length - 1; i >= 0; i--) {
     // close folders that are not parent
     if (! dir_starts_with($(folders[i]).data('id'))) {
@@ -195,6 +200,23 @@ function loadFolders() {
 }
 
 function loadItems() {
+    var url = new URL(window.location.href);
+    var c = url.searchParams.get("folder");
+    if(c !== null)
+    {
+      var htmlCarpeta = "";
+        htmlCarpeta += "<li>";
+        htmlCarpeta += '<a class="clickable folder-item" data-id="'+c+'">';
+        htmlCarpeta += "<i class='fa fa-folder-open'></i> Acceso Directo Sección";
+        htmlCarpeta += "</a>";
+        htmlCarpeta += "</li>";
+        $('#carpeta-seccion').empty();
+        $('#carpeta-seccion').append(htmlCarpeta);
+    }else {
+
+    }
+    
+    
   $('#lfm-loader').show();
   performLfmRequest('jsonitems', {show_list: show_list, sort_type: sort_type}, 'html')
     .done(function (data) {
@@ -203,7 +225,9 @@ function loadItems() {
       $('#nav-buttons > ul').removeClass('hidden');
       $('#working_dir').val(response.working_dir);
       $('#current_dir').text(response.working_dir);
-      console.log('Current working_dir : ' + $('#working_dir').val());
+      //console.log('Current working_dir : ' + $('#working_dir').val());
+      $( "#carpeta-actual" ).empty();
+      $( "#carpeta-actual" ).append($('#working_dir').val());
       if (getPreviousDir() == '') {
         $('#to-previous').addClass('hide');
       } else {
