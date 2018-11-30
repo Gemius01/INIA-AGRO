@@ -89,13 +89,16 @@ class BoletinController extends Controller
         $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
                                       $boletin->publicacion->mes->nombre.'/'.$boletin->region->name.'/'.$seccionDetail->name.'/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
+        $dirnameFolder = '/shares/'.$boletin->publicacion->año.'/'.
+                $boletin->publicacion->mes->nombre.'/'.$boletin->region->name.'/'.$seccionDetail->name.'/';
+        
         $arrayImages = array();
         foreach($images as $image) {
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
         }
         return view('editor', compact([
-             'seccionDetail', 'boletin', 'arrayImages', 'dirname', 'user',
+             'seccionDetail', 'boletin', 'arrayImages', 'dirname', 'user', 'dirnameFolder'
         ]));
     }
 
@@ -123,6 +126,9 @@ class BoletinController extends Controller
                                       $boletin->publicacion->mes->nombre.'/'. $boletin->region->name.
                                       '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
+        $dirnameFolder = $dirname = '/shares/'.$boletin->publicacion->año.'/'.
+        $boletin->publicacion->mes->nombre.'/'. $boletin->region->name.
+        '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
         $arrayImages = array();
 
         foreach($images as $image) {
@@ -139,7 +145,7 @@ class BoletinController extends Controller
         $detalleMacrozona->pivot->save();
         
         return view('editorMacrozona', compact([
-             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname', 'user',
+             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname', 'user', 'dirnameFolder'
         ]));
     }
 

@@ -346,7 +346,7 @@ class PublicacionController extends Controller
 
     public function publicHtmlvista()
     {
-      $publicaciones = Publicacion::get();
+      $publicaciones = Publicacion::orderBy('año', 'desc')->orderBy('mes_id', 'desc')->get();
       return view('publicaciones.publicar', compact(['publicaciones']));
     }
 

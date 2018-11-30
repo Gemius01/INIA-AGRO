@@ -34,6 +34,7 @@
                         <input id="idRegion" value="{{ $boletin->region->numero }}"/>
                         <input id="idBoletin" value="{{ $boletin->id }}"/>
                         <input id="idSeccion" value="{{ $seccionDetail->pivot->id }}"/>
+                        <input id="dirnameFolder" value="{{ $dirnameFolder }}"/>
                     </div>
                     <div>
                     </div>
@@ -388,10 +389,10 @@ contadorVisitaDMC()
 file_browser_callback : function(field_name, url, type, win) {
 var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
 var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-
+var dirnameFolder = document.getElementById('dirnameFolder').value
 var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
 if (type == 'image') {
-cmsURL = cmsURL + "&type=Images";
+cmsURL = cmsURL + "&type=Images&folder=" +dirnameFolder+"";
 } else {
 cmsURL = cmsURL + "&type=Files";
 }

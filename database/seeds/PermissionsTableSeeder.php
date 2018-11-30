@@ -11,7 +11,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {	
-    	//Permisos
+    	//Permisos 
 
         Permission::create([
         	'name' => 'Navegar Usuarios',
