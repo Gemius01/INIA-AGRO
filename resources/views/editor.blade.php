@@ -53,13 +53,13 @@
                       <hr>
                       @if($arrayImages != null)
                       <div width="100%" style="overflow-y:scroll; overflow-x:hidden; height:500px;">
-                      @foreach($arrayImages as $image)
+                      @foreach($arrayImages as $key=>$image)
                          <div class="responsive">
                           <div class="gallery" >
                             <a  href="#">
                               {!! $image !!}
                             </a>
-                          <div class="desc"></div>
+                          <div class="desc">{{ $arrayNameImages[$key] }}</div>
                           </div>
                          </div>
                       @endforeach

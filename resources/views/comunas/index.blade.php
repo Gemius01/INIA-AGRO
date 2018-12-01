@@ -16,9 +16,9 @@
                        <thead>
                            <tr>
                                <th width="20%">Región</th>
-                               <th width="50%">Nombre</th>
-                               
-                               <th colspan="3" width="30%" style="text-align: center;">Opciones</th>
+                               <th width="30%">Nombre</th>
+                               <th width="20%">Codigo</th>
+                               <th colspan="4" width="30%" style="text-align: center;">Opciones</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -26,6 +26,32 @@
                            <tr>
                             <td>{{ $comuna->region->name }} [ {{ $comuna->region->numero }} ]</td>
                             <td>{{ $comuna->nombre }}</td>
+                            <td>{{ $comuna->codigo }}</td>
+                            <td style="text-align: center;">
+                                   <a href="{{ route('comunas.macrozonas', $comuna->id) }}"
+                                    data-toggle="modal" data-target="#modalResumen{{$comuna->id}}"
+                                    class="btn btn-sm btn-primary"><i class="fa fa-code" aria-hidden="true"></i> 
+                                    
+                                  </a>
+                             </td>
+                             <div class="modal fade" id="modalResumen{{$comuna->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h6 class="modal-title" id="myModalLabel">
+                                            <strong>Ruta para obtener las recomendaciones</strong>
+                                        </h4>
+                                      </div>
+                                      <div class="modal-body">
+                                      {{  url('/')."/public/comunas/".$comuna->codigo}}
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                                 @can('comunas.macrozonas')
                                <td style="text-align: center;">
                                    <a href="{{ route('comunas.macrozonas', $comuna->id) }}"

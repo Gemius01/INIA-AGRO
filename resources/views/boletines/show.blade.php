@@ -112,7 +112,7 @@
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
                                         href="#" style="margin-left: 5px;"
                                     > <i class="fa fa-eye" aria-hidden="true"></i> Ver Resumen</a>
-                                     <div class="modal fade" id="modalResumen{{$macrozona->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                 <div class="modal fade" id="modalResumen{{$macrozona->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">

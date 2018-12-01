@@ -94,12 +94,15 @@ class BoletinController extends Controller
                 $boletin->publicacion->mes->nombre.'/'.$boletin->region->name.'/'.$seccionDetail->name.'/';
         
         $arrayImages = array();
+        $arrayNameImages = array();
+        basename($images[0]);
         foreach($images as $image) {
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
+            $arrayNameImages[] =  pathinfo($image, PATHINFO_FILENAME);
         }
         return view('editor', compact([
-             'seccionDetail', 'boletin', 'arrayImages', 'dirname', 'user', 'dirnameFolder'
+             'seccionDetail', 'boletin', 'arrayImages', 'dirname', 'user', 'dirnameFolder', 'arrayNameImages'
         ]));
     }
 
@@ -133,10 +136,11 @@ class BoletinController extends Controller
         $boletin->publicacion->mes->nombre.'/'. $boletin->region->name.
         '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
         $arrayImages = array();
-
+        $arrayNameImages = array();
         foreach($images as $image) {
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
+            $arrayNameImages[] = pathinfo($image, PATHINFO_FILENAME);
         }
         
         $subsecciones = $boletin->subsecciones()->first();
@@ -148,7 +152,7 @@ class BoletinController extends Controller
         $detalleMacrozona->pivot->save();
         
         return view('editorMacrozona', compact([
-             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname', 'user', 'dirnameFolder'
+             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname', 'user', 'dirnameFolder', 'arrayNameImages'
         ]));
     }
 

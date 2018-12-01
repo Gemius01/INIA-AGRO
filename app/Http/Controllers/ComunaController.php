@@ -144,6 +144,6 @@ class ComunaController extends Controller
             }
         }
         
-        return view('comunas.publicComuna', compact(['comuna', 'macrozonas', 'recomendaciones']));
+        return view('comunas.publicComuna', compact(['comuna', 'macrozonas', 'recomendaciones', 'boletin']));
     }
 }
