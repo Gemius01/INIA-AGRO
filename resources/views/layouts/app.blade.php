@@ -57,6 +57,10 @@ div.desc {
     display: table;
     clear: both;
 }
+.resize img{
+    max-height:100%;
+    max-width:100%;
+}
 </style>
 </head>
 <body>

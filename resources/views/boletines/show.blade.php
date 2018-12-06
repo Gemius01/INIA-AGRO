@@ -73,7 +73,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="card-body">
+                <div class="card-body resize">
                  {!! $seccion->pivot->contenido !!}
                  @if($seccion->id == 6)
                      @foreach($boletin->subsecciones as $subseccion)
@@ -128,7 +128,7 @@
                                             @endif
                                         </h4>
                                       </div>
-                                      <div class="modal-body">
+                                      <div class="modal-body resize">
                                         {!! $macrozona->pivot->resumen !!}
                                       </div>
                                       <div class="modal-footer">
@@ -170,7 +170,7 @@
                                             @endif
                                         </h4>
                                       </div>
-                                      <div class="modal-body">
+                                      <div class="modal-body resize">
                                         {!! $macrozona->pivot->resumen !!}
                                       </div>
                                       <div class="modal-footer">
@@ -190,8 +190,8 @@
                                     @endif
                                 @endif
                                 @if($macrozona->pivot->editando)
-                                        <a href="#"
-                                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i> Editando</a>
+                                        <div
+                                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i> Editando</div>
                                         
                                         @else
                                         @endif
@@ -228,7 +228,7 @@
                                             @endif
                                         </h6>
                                       </div>
-                                      <div class="modal-body">
+                                      <div class="modal-body resize">
                                         {!! $macrozona->pivot->resumen !!}
                                       </div>
                                       <div class="modal-footer">
@@ -264,7 +264,9 @@
                             @endif
                         
                         </p>
+                        <div class="resize">
                         {!! $macrozona->pivot->contenido !!}
+                        </div>
                         <hr>
                         @endforeach
                      @endforeach

@@ -95,7 +95,7 @@ class BoletinController extends Controller
         
         $arrayImages = array();
         $arrayNameImages = array();
-        basename($images[0]);
+        //basename($images[0]);
         foreach($images as $image) {
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
@@ -241,23 +241,19 @@ class BoletinController extends Controller
         return $seccionDetail->pivot;
     }
 
-    public function salirMacrozona($boletin, $subseccion, $macrozona)
+    public function salirMacrozona($subseccion, $boletin, $macrozona)
     {
         $boletin = Boletin::find($boletin);
         
         $subsecciones = $boletin->subsecciones()->first();
-        $detalleMacrozona = $subsecciones->macrozonas()
-        ->wherePivot('macrozona_id', '=', $macrozona)
+        $detalleMacrozona =$subsecciones->macrozonas()
         ->wherePivot('subseccion_id', '=', $subseccion)
+        ->wherePivot('macrozona_id', '=', $macrozona)
         ->first();
-        
-        
-        
         $detalleMacrozona->pivot->editando = 0;
         
         $detalleMacrozona->pivot->save();
 
-        //return $seccionDetail->pivot;
     }
 
     public function pdfSeccionAgua($idBoletin, $seccion)
