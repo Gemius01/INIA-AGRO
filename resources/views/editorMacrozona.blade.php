@@ -50,6 +50,7 @@
                         <input id="idSubSeccion" value="{{ $detalleMacrozona->pivot->subseccion_id }}"></input>
                         <input id="idMacrozona" value="{{ $detalleMacrozona->pivot->macrozona_id }}"></input>
                         <input id="idBoletin" value="{{ $boletin->id }}"></input>
+                        <input id="dirnameFolder" value="{{ $dirnameFolder }}"/>
                     </div>
                     <div>
                     </div>
@@ -75,13 +76,13 @@
                       <hr>
                       @if($arrayImages != null)
                       <div width="100%" style="overflow-y:scroll; overflow-x:hidden; height:500px;">
-                      @foreach($arrayImages as $image)
+                      @foreach($arrayImages as $key=>$image)
                          <div class="responsive">
                           <div class="gallery" >
                             <a  href="#">
                               {!! $image !!}
                             </a>
-                          <div class="desc"></div>
+                          <div class="desc">{{ $arrayNameImages[$key] }}</div>
                           </div>
                          </div>
                       @endforeach
@@ -351,6 +352,7 @@ plugins: [
 "emoticons paste textcolor colorpicker textpattern "
 ],
 allow_script_urls: false,
+paste_as_text: true,
 paste_enable_default_filters: false,
 menu: {
         file: {title: 'File', items: 'newdocument | print'},
@@ -412,10 +414,10 @@ contadorVisitaDMC()
 file_browser_callback : function(field_name, url, type, win) {
 var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
 var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-
+var dirnameFolder = document.getElementById('dirnameFolder').value
 var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
 if (type == 'image') {
-cmsURL = cmsURL + "&type=Images";
+cmsURL = cmsURL + "&type=Images&folder=" +dirnameFolder+"";
 } else {
 cmsURL = cmsURL + "&type=Files";
 }

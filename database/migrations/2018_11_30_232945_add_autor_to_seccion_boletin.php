@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddEditandoToBoletinSubseccion extends Migration
+class AddAutorToSeccionBoletin extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddEditandoToBoletinSubseccion extends Migration
     public function up()
     {
         Schema::table('boletin_seccion', function (Blueprint $table) {
-            //$table->boolean('editando')->default(false);
+            $table->string('autor')->default(null)->nullable();
         });
     }
 

@@ -30,4 +30,9 @@ class Macrozona extends Model
         return $this->belongsToMany(Subseccion::class);
     }
 
+    public function comunas()
+    {
+        return $this->belongsToMany(Comuna::class);
+    }
+
 }

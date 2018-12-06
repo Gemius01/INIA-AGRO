@@ -34,6 +34,11 @@
     <div class="row">
       <div class="col-sm-2 hidden-xs">
         <div id="tree"></div>
+        <div>
+          <hr>
+          <ul class="list-unstyled" id="carpeta-seccion">
+          </ul>
+        </div>
       </div>
 
       <div class="col-sm-10 col-xs-12" id="main">
@@ -113,6 +118,7 @@
             </li>
           </ul>
         </li>
+        
       </ul>
     </div>
   </div>
@@ -149,7 +155,7 @@
   <div id="lfm-loader">
     <img src="{{asset('vendor/laravel-filemanager/img/loader.svg')}}">
   </div>
-
+ 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
@@ -162,9 +168,9 @@
     var lfm_route = "{{ url(config('lfm.url_prefix', config('lfm.prefix'))) }}";
     var lang = {!! json_encode(trans('laravel-filemanager::lfm')) !!};
   </script>
-  <script>{!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/script.js')) !!}</script>
-  {{-- Use the line below instead of the above if you need to cache the script. --}}
-  {{-- <script src="{{ asset('vendor/laravel-filemanager/js/script.js') }}"></script> --}}
+
+
+  <script src="{{ asset('vendor/laravel-filemanager/js/script.js') }}"></script>
   <script>
     $.fn.fab = function () {
       var menu = this;
@@ -194,6 +200,7 @@
         }
       ]
     });
+
 
     Dropzone.options.uploadForm = {
       paramName: "upload[]", // The name that will be used to transfer the file

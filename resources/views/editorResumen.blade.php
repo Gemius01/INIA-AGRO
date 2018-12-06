@@ -35,7 +35,7 @@
                     </form>
                     <div style="display:none;">
                         <input id="obj" value="{{ $seccionDetail }}"></input>
-
+                        <input id="dirnameFolder" value="{{ $dirnameFolder }}"/>
                     </div>
                     <div>
                     </div>
@@ -54,13 +54,13 @@
                       <hr>
                       @if($arrayImages != null)
                       <div width="100%" style="overflow-y:scroll; overflow-x:hidden; height:500px;">
-                      @foreach($arrayImages as $image)
+                      @foreach($arrayImages as $key=>$image)
                          <div class="responsive">
                           <div class="gallery" >
                             <a  href="#">
                               {!! $image !!}
                             </a>
-                          <div class="desc"></div>
+                          <div class="desc">{{ $arrayNameImages[$key] }}</div>
                           </div>
                          </div>
                       @endforeach
@@ -102,6 +102,7 @@ menu: {
 paste_data_images: false,
 branding: false,
 image_description: false,
+paste_as_text: true,
 toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | mybutton",
 relative_urls: false,
 remove_script_host: false,
@@ -139,10 +140,10 @@ alert("Proximamente");
 file_browser_callback : function(field_name, url, type, win) {
 var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
 var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-
+var dirnameFolder = document.getElementById('dirnameFolder').value
 var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
 if (type == 'image') {
-cmsURL = cmsURL + "&type=Images";
+cmsURL = cmsURL + "&type=Images&folder=" +dirnameFolder+"";
 } else {
 cmsURL = cmsURL + "&type=Files";
 }

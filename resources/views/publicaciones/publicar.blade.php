@@ -21,7 +21,7 @@
                        <tbody>
                         @foreach($publicaciones as $publicacion)
                           @if($publicacion->public == true)
-                          <tr style="background-color: #80ff80">
+                          <tr style="background-color: #33cc33">
                             <td>{{$publicacion->mes->nombre}}</td>
                             <td>{{$publicacion->año}}</td>
                             <td>Habilitado</td>

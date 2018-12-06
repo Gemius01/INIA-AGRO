@@ -12,6 +12,7 @@ use App\Publicacion;
 use App\User;
 use File;
 use Response;
+use PDF;
 
 class BoletinController extends Controller
 {
@@ -89,18 +90,25 @@ class BoletinController extends Controller
         $dirname = '../public/photos/shares/'.$boletin->publicacion->año.'/'.
                                       $boletin->publicacion->mes->nombre.'/'.$boletin->region->name.'/'.$seccionDetail->name.'/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
+        $dirnameFolder = '/shares/'.$boletin->publicacion->año.'/'.
+                $boletin->publicacion->mes->nombre.'/'.$boletin->region->name.'/'.$seccionDetail->name.'/';
+        
         $arrayImages = array();
+        $arrayNameImages = array();
+        //basename($images[0]);
         foreach($images as $image) {
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
+            $arrayNameImages[] =  pathinfo($image, PATHINFO_FILENAME);
         }
         return view('editor', compact([
-             'seccionDetail', 'boletin', 'arrayImages', 'dirname', 'user',
+             'seccionDetail', 'boletin', 'arrayImages', 'dirname', 'user', 'dirnameFolder', 'arrayNameImages'
         ]));
     }
 
     public function guardarEdicion(Request $request)
     {
+        $user = Auth::user();
         $response = array(
           'status' => 'success',
           'boletin_id' => $request->input('boletin_id'),
@@ -110,6 +118,7 @@ class BoletinController extends Controller
         $boletin = Boletin::find($response['boletin_id']);
         $detail = $boletin->secciones()->where('seccion_id', '=', $response['seccion_id'])->first();
         $detail->pivot->contenido =  $request->input('contenido');
+        $detail->pivot->autor =  $user->name;
         $detail->pivot->save();
         return '/boletines/'.encrypt($request->input('boletin_id'));
     }
@@ -123,11 +132,15 @@ class BoletinController extends Controller
                                       $boletin->publicacion->mes->nombre.'/'. $boletin->region->name.
                                       '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
         $images = glob($dirname."*.{jpg,gif,png}",GLOB_BRACE);
+        $dirnameFolder = $dirname = '/shares/'.$boletin->publicacion->año.'/'.
+        $boletin->publicacion->mes->nombre.'/'. $boletin->region->name.
+        '/Análisis de Posibles Riesgos Agroclimáticos en los Principales Rubros Agrícolas/';
         $arrayImages = array();
-
+        $arrayNameImages = array();
         foreach($images as $image) {
             $rest = substr($image, 10);
             $arrayImages[] = '<img src="../../../'.$rest.'" alt="" style="width: 100%;height: 190px" />';
+            $arrayNameImages[] = pathinfo($image, PATHINFO_FILENAME);
         }
         
         $subsecciones = $boletin->subsecciones()->first();
@@ -139,7 +152,7 @@ class BoletinController extends Controller
         $detalleMacrozona->pivot->save();
         
         return view('editorMacrozona', compact([
-             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname', 'user',
+             'detalleMacrozona', 'boletin', 'arrayImages', 'dirname', 'user', 'dirnameFolder', 'arrayNameImages'
         ]));
     }
 
@@ -228,22 +241,28 @@ class BoletinController extends Controller
         return $seccionDetail->pivot;
     }
 
-    public function salirMacrozona($boletin, $subseccion, $macrozona)
+    public function salirMacrozona($subseccion, $boletin, $macrozona)
     {
         $boletin = Boletin::find($boletin);
         
         $subsecciones = $boletin->subsecciones()->first();
-        $detalleMacrozona = $subsecciones->macrozonas()
-        ->wherePivot('macrozona_id', '=', $macrozona)
+        $detalleMacrozona =$subsecciones->macrozonas()
         ->wherePivot('subseccion_id', '=', $subseccion)
+        ->wherePivot('macrozona_id', '=', $macrozona)
         ->first();
-        
-        
-        
         $detalleMacrozona->pivot->editando = 0;
         
         $detalleMacrozona->pivot->save();
 
-        //return $seccionDetail->pivot;
+    }
+
+    public function pdfSeccionAgua($idBoletin, $seccion)
+    {
+        $boletin = Boletin::find($idBoletin);
+        $seccionDetail = $boletin->secciones()->where('seccion_id', '=', $seccion)->first();
+        
+        return PDF::loadView('boletines.pdfhidro', compact([ 'seccionDetail', 'boletin' ]), [], [
+            'format' => 'A4'
+          ])->download('Seccion ('.$seccionDetail->name.'-'.$boletin->publicacion->año.'-'.$boletin->publicacion->mes->nombre.').pdf');
     }
 }

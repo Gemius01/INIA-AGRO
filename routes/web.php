@@ -40,7 +40,8 @@ Route::get('public/resumenPDF/{resumen}','PublicHtmlController@pdfResumen')->nam
 
 Route::get('public/boletinPDF/{boletin}','PublicHtmlController@pdfBoletin')->name('PublicBoletinPDF');	
 
-
+//Comunas Publico
+Route::get('public/comunas/{comuna}', 'ComunaController@verComuna')->name('comunasPublic.index');
 
 //Routes
 Route::get("download-pdf","HomeController@downloadPDF");
@@ -224,7 +225,9 @@ Route::middleware(['auth'])->group(function(){
 		->middleware('permission:boletines.show');
 
 
-    Route::get('pdfExport/{boletin}','PdfBoletinController@exportarPDF')->name('boletines.pdfTemplate');
+	Route::get('pdfExport/{boletin}','PdfBoletinController@exportarPDF')->name('boletines.pdfTemplate');
+	
+	Route::get('pdfExportSeccion/{boletin}/{seccion}','BoletinController@pdfSeccionAgua')->name('seccionHidro.pdf');
 
     //prueba
 
@@ -352,4 +355,34 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('quitar/alerta', 'BoletinController@salirSeccion');
 	Route::get('quitar/alertaMacro/{seccion}/{boletin}/{macrozona}', 'BoletinController@salirMacrozona')->name('quitar.alertaMacro');
 
+
+	//Comunas
+	Route::get('comunas/create','ComunaController@create')->name('comunas.create')
+		->middleware('permission:comunas.create');
+
+	Route::post('comunas/store','ComunaController@store')->name('comunas.store')
+		->middleware('permission:comunas.create');
+
+	Route::get('comunas','ComunaController@index')->name('comunas.index')
+		->middleware('permission:comunas.index');
+
+	Route::get('comunas/{comuna}','ComunaController@show')->name('comunas.show')
+		->middleware('permission:comunas.show');
+
+	Route::get('comunas/{comuna}/edit','ComunaController@edit')->name('comunas.edit')
+		->middleware('permission:comunas.edit');
+
+	Route::put('comunas/{comuna}','ComunaController@update')->name('comunas.update')
+		->middleware('permission:comunas.edit');
+
+	Route::delete('comunas/{comuna}','ComunaController@destroy')->name('comunas.destroy')
+		->middleware('permission:comunas.destroy');
+	
+	Route::get('comunas/macrozonas/{comuna}','ComunaController@macrozonas')->name('comunas.macrozonas')
+		->middleware('permission:comunas.macrozonas');
+		
+	Route::post('comunas/macrozonas/{comuna}','ComunaController@macrozonasStore')->name('comunas.macrozonasGuardar')
+		->middleware('permission:comunas.macrozonas');
+
+	
 });

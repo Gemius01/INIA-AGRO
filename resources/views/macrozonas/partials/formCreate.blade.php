@@ -14,7 +14,7 @@
 <div class="form-group" style="display: none;">
 </div>
 <div class="form-group">
-	{{ Form::label('region', 'Seleccione Rubro (Opcional)') }}
+	{{ Form::label('rubro', 'Seleccione Rubro (Opcional)') }}
 	{!! Form::select('rubro', $arrayRubros, null, ['class' => 'form-control', 'placeholder' => 'Ninguno']) !!}
 </div>
 <center>

@@ -21,6 +21,8 @@
                     @else
                     
                     @endif
+                    
+
                 </div>
             </div>
         </div>
@@ -51,15 +53,27 @@
                     
                         <a href="{{ route('editor', ['boletin'=>encrypt($boletin->id), 'seccion'=>encrypt($seccion->id)])}}"
                         class="btn btn-sm btn-success pull-right" style="margin-left: 5px;"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-                        @if($seccion->pivot->editando)
+                    @if($seccion->id == 7 || $seccion->id == 8 || $seccion->id == 9 || $seccion->id == 10)
+                        <a href="{{ route('seccionHidro.pdf', ['boletin'=> $boletin->id, 'seccion'=>$seccion->id])}}"
+                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                            PDF
+                        </a>
+                    @endif
+                        
+                    @if($seccion->pivot->editando)
                     <a href="#"
                         class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Están Editando</a>
                     @else
                     @endif
                     @endif
-                   
+                    @if($seccion->pivot->autor)
+                        <div 
+                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;">
+                            Editado por : {{ $seccion->pivot->autor }}
+                        </div>
+                    @endif
                 </div>
-                <div class="card-body">
+                <div class="card-body resize">
                  {!! $seccion->pivot->contenido !!}
                  @if($seccion->id == 6)
                      @foreach($boletin->subsecciones as $subseccion)
@@ -78,6 +92,7 @@
                                     @endif
                                 </strong>
                             </p>
+                            
                             @if($rol->id !=2 && $rol->id != 1)
                             
                             @can('macrozona-'.$macrozona->id)
@@ -97,7 +112,7 @@
                                         data-toggle="modal" data-target="#modalResumen{{$macrozona->id}}"
                                         href="#" style="margin-left: 5px;"
                                     > <i class="fa fa-eye" aria-hidden="true"></i> Ver Resumen</a>
-                                     <div class="modal fade" id="modalResumen{{$macrozona->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                 <div class="modal fade" id="modalResumen{{$macrozona->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
@@ -113,7 +128,7 @@
                                             @endif
                                         </h4>
                                       </div>
-                                      <div class="modal-body">
+                                      <div class="modal-body resize">
                                         {!! $macrozona->pivot->resumen !!}
                                       </div>
                                       <div class="modal-footer">
@@ -155,7 +170,7 @@
                                             @endif
                                         </h4>
                                       </div>
-                                      <div class="modal-body">
+                                      <div class="modal-body resize">
                                         {!! $macrozona->pivot->resumen !!}
                                       </div>
                                       <div class="modal-footer">
@@ -175,8 +190,8 @@
                                     @endif
                                 @endif
                                 @if($macrozona->pivot->editando)
-                                        <a href="#"
-                                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i> Editando</a>
+                                        <div
+                                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i> Editando</div>
                                         
                                         @else
                                         @endif
@@ -213,7 +228,7 @@
                                             @endif
                                         </h6>
                                       </div>
-                                      <div class="modal-body">
+                                      <div class="modal-body resize">
                                         {!! $macrozona->pivot->resumen !!}
                                       </div>
                                       <div class="modal-footer">
@@ -241,13 +256,23 @@
                                         @endif
                             <!--end admin -->
                             @endif
+                            @if($macrozona->pivot->autor)
+                            <div 
+                            class="btn btn-sm btn-warning pull-right" style="margin-left: 5px;">
+                            Editado por : {{ $macrozona->pivot->autor }}
+                            </div>
+                            @endif
+                        
                         </p>
+                        <div class="resize">
                         {!! $macrozona->pivot->contenido !!}
+                        </div>
                         <hr>
                         @endforeach
                      @endforeach
                  @else
                  @endif
+                 
                 </div>
             </div>
         </div>
