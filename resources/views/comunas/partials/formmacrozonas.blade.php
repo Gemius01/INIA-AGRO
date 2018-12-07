@@ -40,6 +40,7 @@
 	<tr>
 		<th style="text-align: center;">Check</th>
 		<th>Región</th>
+		<th>id</th>
 		<th>Macrozona</th>
 		<th>Rubro</th>
 		<th>Subrubro</th>
@@ -50,9 +51,11 @@
 		 <tr>
 		 <td style="text-align: center;">{{ Form::checkbox('macrozonas[]', $macrozona->id) }}</td>
 			<td>{{ $macrozona->region->name }}</td>
+			<td>{{ $macrozona->id }}</td>
 			<td>{{ $macrozona->name }}</td>
 			
 				@if($macrozona->rubro != null)
+				
 		         <td>{{ $macrozona->rubro->name }}</td>
 		         @if($macrozona->rubro->subrubro !=null)
 		         <td>{{ $macrozona->rubro->subrubro }}</td>
