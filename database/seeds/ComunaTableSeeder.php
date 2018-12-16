@@ -1766,5 +1766,50 @@ class ComunaTableSeeder extends Seeder
             "region_id" => "16"
         ]);
 
+        Comuna::create([
+            "nombre" => "Quemchi",
+            "codigo" => "10209",
+            "region_id" => "13"
+        ]);
+
+        Comuna::create([
+            "nombre" => "Quinchao",
+            "codigo" => "10210",
+            "region_id" => "13"
+        ]);
+
+        Comuna::create([
+            "nombre" => "Huailaihue",
+            "codigo" => "10403",
+            "region_id" => "13"
+        ]);
+
+        Comuna::create([
+            "nombre" => "Futaleufu",
+            "codigo" => "10402",
+            "region_id" => "13"
+        ]);
+
+        //349
+        Comuna::create([
+            "nombre" => "Palena",
+            "codigo" => "10402",
+            "region_id" => "13"
+        ]);
+        
+        //350
+        Comuna::create([
+            "nombre" => "Chaitén",
+            "codigo" => "10401",
+            "region_id" => "13"
+        ]);
+
+        //351
+        Comuna::create([
+            "nombre" => "Huala",
+            "codigo" => "07302",
+            "region_id" => "13"
+        ]);
+
     }
 }

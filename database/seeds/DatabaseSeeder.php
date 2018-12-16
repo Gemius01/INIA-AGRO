@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MesTableSeeder::class);
         $this->call(ContadorVisitasSeeder::class);
         $this->call(ComunaTableSeeder::class);
+        $this->call(DetalleComunaMacrozonaSeeder::class);
     }
 }
