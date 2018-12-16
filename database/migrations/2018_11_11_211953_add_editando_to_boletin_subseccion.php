@@ -14,7 +14,7 @@ class AddEditandoToBoletinSubseccion extends Migration
     public function up()
     {
         Schema::table('boletin_seccion', function (Blueprint $table) {
-            //$table->boolean('editando')->default(false);
+            $table->boolean('editando')->default(false);
         });
     }
 

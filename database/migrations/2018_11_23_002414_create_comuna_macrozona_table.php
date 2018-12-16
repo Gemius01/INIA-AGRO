@@ -18,7 +18,7 @@ class CreateComunaMacrozonaTable extends Migration
             $table->integer('comuna_id')->unsigned()->index();
             $table->foreign('comuna_id')->references('id')->on('comunas')->onDelete('cascade');
             $table->integer('macrozona_id')->unsigned()->index();
-            $table->foreign('macrozona_id')->references('id')->on('regions')->onDelete('cascade');
+            $table->foreign('macrozona_id')->references('id')->on('macrozonas')->onDelete('cascade');
             $table->timestamps();
         });
     }

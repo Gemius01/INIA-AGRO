@@ -195,6 +195,7 @@ function loadFolders() {
   performLfmRequest('folders', {}, 'html')
     .done(function (data) {
       $('#tree').html(data);
+      $('#tree-resize').html(data);
       loadItems();
     });
 }
@@ -212,6 +213,8 @@ function loadItems() {
         htmlCarpeta += "</li>";
         $('#carpeta-seccion').empty();
         $('#carpeta-seccion').append(htmlCarpeta);
+        $('#carpeta-seccion-resize').empty();
+        $('#carpeta-seccion-resize').append(htmlCarpeta);
     }else {
 
     }

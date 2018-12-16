@@ -54,7 +54,7 @@
               <i class="fa fa-arrow-left"></i>
               <span class="hidden-xs">{{ trans('laravel-filemanager::lfm.nav-back') }}</span>
             </a>
-             <a class="navbar-brand"  id="carpeta-actual">
+             <a class="navbar-brand hidden-xs"  id="carpeta-actual">
               <i class="fa fa-arrow-left"></i>
               <span class="hidden-xs" ></span>
             </a>
@@ -62,7 +62,7 @@
             <a class="navbar-brand visible-xs" href="#">{{ trans('laravel-filemanager::lfm.title-panel') }}</a>
           </div>
           <div class="collapse navbar-collapse" id="nav-buttons">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right hidden-xs">
               <li>
                 <a class="clickable" id="thumbnail-display">
                   <i class="fa fa-th-large"></i>
@@ -93,12 +93,22 @@
                 </ul>
               </li>
             </ul>
+            <div class="visible-xs">
+            <div class="col-sm-2">
+              <div id="tree-resize"></div>
+              <div>
+                <hr>
+                <ul class="list-unstyled" id="carpeta-seccion-resize">
+                </ul>
+              </div>
+            </div>
+            </div>
           </div>
         </nav>
         <div class="visible-xs" id="current_dir" style="padding: 5px 15px;background-color: #f8f8f8;color: #5e5e5e;"></div>
-
+        
         <div id="alerts"></div>
-
+        
         <div id="content"></div>
       </div>
 

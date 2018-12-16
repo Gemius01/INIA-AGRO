@@ -3,7 +3,7 @@
     <img id="resize" src="{{ $img->url . '?timestamp=' . $img->updated }}" height="{{ $height }}" width="{{ $width }}">
   </div>
   <div class="col-md-4">
-
+  
     <table class="table table-compact table-striped">
       <thead></thead>
       <tbody>

@@ -14,7 +14,7 @@ class AddAutorToSeccionBoletin extends Migration
     public function up()
     {
         Schema::table('boletin_seccion', function (Blueprint $table) {
-            //$table->string('autor')->default(null)->nullable();
+            $table->string('autor')->default(null)->nullable();
         });
     }
 

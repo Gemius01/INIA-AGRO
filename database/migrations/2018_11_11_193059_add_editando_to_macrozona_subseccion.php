@@ -14,7 +14,7 @@ class AddEditandoToMacrozonaSubseccion extends Migration
     public function up()
     {
         Schema::table('macrozona_subseccion', function (Blueprint $table) {
-            //$table->boolean('editando')->default(false);
+            $table->boolean('editando')->default(false);
         });
     }
 
