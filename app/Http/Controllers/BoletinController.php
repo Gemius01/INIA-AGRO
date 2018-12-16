@@ -158,6 +158,7 @@ class BoletinController extends Controller
 
     public function guardarEdicionMacrozona(Request $request)
     {
+      $user = Auth::user();
       $response = array(
         'boletin_id' => $request->input('boletin_id'),
         'subseccion_id' => $request->input('subseccion_id'),
@@ -173,6 +174,8 @@ class BoletinController extends Controller
         ->first();
 
       $detail->pivot->contenido =  $request->input('contenido');
+      $detail->pivot->autor = $user->name;
+      $detail->pivot->email = $user->email;
       $detail->pivot->save();
 
       return '/boletines/'.$request->input('boletin_id');
