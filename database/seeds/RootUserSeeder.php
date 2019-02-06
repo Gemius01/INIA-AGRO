@@ -14,8 +14,8 @@ class RootUserSeeder extends Seeder
     {
         User::create([
         	'name' => 'USUARIO ROOT',
-	        'email' => 'usuarioROOTINIA@inia.cl',
-	        'password' => '$2y$10$wUG7gTKRnpQ2rB0Ehdu/qubJoiqWwnF1yjoQOMP.jea0h8wVgF1Xe',
+	        'email' => '1@asd.cl',
+	        'password' => '1',
 	        'cargo' => 'cargoROOT',
 	        'cri' => 'CRIROOT',
 	        //'remember_token' => str_random(10),
