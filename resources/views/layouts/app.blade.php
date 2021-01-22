@@ -13,7 +13,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/kffi5cix30c3uaob8snjtrfycea95rp8csfcrbr0iybp21wp/tinymce/5/tinymce.min.js"></script>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <script src="{{ asset('js/jquery.js') }}"></script>
     <!-- Styles -->

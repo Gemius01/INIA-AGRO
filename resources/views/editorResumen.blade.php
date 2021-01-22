@@ -81,6 +81,7 @@ var unsavedd = false;
 var editor_config = {
 path_absolute : "/",
 selector: "textarea.my-editor",
+language: 'es',
 language_url : '/languages/es.js',
 plugins: [
 "advlist autolink lists link image charmap print preview hr",

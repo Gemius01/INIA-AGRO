@@ -319,6 +319,7 @@ var unsaved = false;
 var editor_config = {
 path_absolute : "/",
 selector: "textarea.my-editor",
+language: 'es',
 language_url : '/languages/es.js',
 allow_script_urls: false,
 paste_as_text: true,
@@ -365,26 +366,26 @@ setup: function(editor){
      editor.on('change', function(event){
       unsaved = true;
     });
-editor.addButton('mybutton', {
-icon: 'sun',
-text: 'Gráficos',
-//image: "{{ URL::to('/') }}/images//grafico.png",
-tooltip: "Gráficos de información",
-onclick: function () {
-$('#modalGraficos').modal('show');
-contadorVisita()
-}
-});
-editor.addButton('pronostico', {
-icon: 'sun',
-text: 'Pronóstico',
-//image: "{{ URL::to('/') }}/images//grafico.png",
-tooltip: "Pronóstico",
-onclick: function () {
-$('#modalDMC').modal('show');
-contadorVisitaDMC()
-}
-});
+  editor.ui.registry.addButton('mybutton', {
+    icon: 'info',
+    text: 'Gráficos',
+    //image: "{{ URL::to('/') }}/images//grafico.png",
+    tooltip: "Gráficos de información",
+    onAction: function () {
+    $('#modalGraficos').modal('show');
+    contadorVisita()
+    }
+  });
+  editor.ui.registry.addButton('pronostico', {
+    icon: 'brightness',
+    text: 'Pronóstico',
+    //image: "{{ URL::to('/') }}/images//grafico.png",
+    tooltip: "Pronóstico",
+    onAction: function () {
+    $('#modalDMC').modal('show');
+    contadorVisitaDMC()
+    }
+  });
 },
 file_browser_callback : function(field_name, url, type, win) {
 var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
